@@ -1,1 +1,75 @@
-hhh
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Anagrafica Utente</title>
+  <link rel="stylesheet" href="stile.css">
+</head>
+<body>
+
+  <h2>Inserisci i tuoi dati</h2>
+
+  <div class="form-container">
+    <label>Nome:</label>
+    <input type="text" id="nome"><br><br>
+
+    <label>Cognome:</label>
+    <input type="text" id="cognome"><br><br>
+
+    <label>Indirizzo:</label>
+    <input type="text" id="indirizzo"><br><br>
+
+    <label>Città:</label>
+    <input type="text" id="citta"><br><br>
+
+    <label>CAP:</label>
+    <input type="text" id="cap"><br><br>
+
+    <label>Data di nascita:</label>
+    <input type="date" id="dataNascita"><br><br>
+
+    <button onclick="mostraDati()">Invia</button>
+  </div>
+
+  <p id="risultato"></p>
+
+  <script>
+    function mostraDati() {
+      // Prendo tutti i valori e li metto in un array
+      var dati = [
+        document.getElementById("nome").value,
+        document.getElementById("cognome").value,
+        document.getElementById("indirizzo").value,
+        document.getElementById("citta").value,
+        document.getElementById("cap").value,
+        document.getElementById("dataNascita").value
+      ];
+
+      // Calcolo l'anno di nascita e la generazione
+      var anno = new Date(dati[5]).getFullYear();
+      var generazione = "";
+
+      if (anno >= 1901 && anno <= 1927) generazione = "Greatest Generation";
+      else if (anno >= 1928 && anno <= 1945) generazione = "Silent Generation";
+      else if (anno >= 1946 && anno <= 1964) generazione = "Baby Boomers";
+      else if (anno >= 1965 && anno <= 1980) generazione = "Generazione X";
+      else if (anno >= 1981 && anno <= 1996) generazione = "Millennials";
+      else if (anno >= 1997 && anno <= 2012) generazione = "Generazione Z";
+      else if (anno >= 2013 && anno <= 2023) generazione = "Generazione Alpha";
+      else generazione = "Anno non valido";
+
+      // Mostro i dati
+      document.getElementById("risultato").innerHTML =
+        "<strong>Dati inseriti:</strong><br><br>" +
+        "Nome: " + dati[0] + "<br>" +
+        "Cognome: " + dati[1] + "<br>" +
+        "Indirizzo: " + dati[2] + "<br>" +
+        "Città: " + dati[3] + "<br>" +
+        "CAP: " + dati[4] + "<br>" +
+        "Anno di nascita: " + anno + "<br><br>" +
+        "<strong>Fai parte di: " + generazione + "</strong>";
+    }
+  </script>
+
+</body>
+</html>
