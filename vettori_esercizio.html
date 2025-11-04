@@ -2,46 +2,54 @@
 <html lang="it">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Array e Statistiche</title>
-    <!-- collegamento al tuo file CSS -->
     <link rel="stylesheet" href="stile_vettori.css">
 </head>
 <body>
 
-<h2>Array Generato</h2>
-<div id="arrayGrid" class="grid"></div>
+    <h2>Numeri dell’Array</h2>
+    <div id="array" class="grid"></div>
 
-<h3>Statistiche</h3>
-<p id="stats"></p>
+    <h3>Statistiche</h3>
+    <p id="info"></p>
 
-<h2>Numeri Pari Maggiori di 50</h2>
-<div id="evenGrid" class="grid"></div>
+    <h3>Numeri Pari > 50</h3>
+    <div id="pari" class="grid"></div>
 
-<script>
-    // Genera array di 100 numeri casuali tra -100 e 100
-    const array = [];
-    for (let i = 0; i < 100; i++) {
-        const num = Math.floor(Math.random() * 201) - 100;
-        array.push(num);
-    }
+    <script>
+        // crea un array di 100 numeri casuali tra -100 e 100
+        const numeri = [];
+        for (let i = 0; i < 100; i++) {
+            numeri.push(Math.floor(Math.random() * 201) - 100);
+        }
 
-    // Calcola media
-    let sum = 0;
-    for (let i = 0; i < array.length; i++) {
-        sum += array[i];
-    }
-    const media = sum / array.length;
+        // mostra tutti i numeri
+        const arrayDiv = document.getElementById("array");
+        numeri.forEach(n => {
+            const el = document.createElement("div");
+            el.textContent = n;
+            arrayDiv.appendChild(el);
+        });
 
-    // Trova massimo e minimo
-    let massimo = array[0];
-    let minimo = array[0];
-    for (let i = 1; i < array.length; i++) {
-        if (array[i] > massimo) massimo = array[i];
-        if (array[i] < minimo) minimo = array[i];
-    }
+        // calcola media, max, min
+        const somma = numeri.reduce((a, b) => a + b, 0);
+        const media = somma / numeri.length;
+        const max = Math.max(...numeri);
+        const min = Math.min(...numeri);
 
-    // Numeri pari maggiori di 50
-    const evenNumbers = [];
-    for (let i = 0; i < array.length; i++) {
-        if (array[i] > 50 && a
+        // mostra statistiche
+        document.getElementById("info").textContent =
+            `Media: ${media.toFixed(2)} | Massimo: ${max} | Minimo: ${min}`;
+
+        // trova numeri pari > 50
+        const pariGrandi = numeri.filter(n => n > 50 && n % 2 === 0);
+        const pariDiv = document.getElementById("pari");
+        pariGrandi.forEach(n => {
+            const el = document.createElement("div");
+            el.textContent = n;
+            pariDiv.appendChild(el);
+        });
+    </script>
+
+</body>
+</html>
