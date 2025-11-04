@@ -1,22 +1,54 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
+    background: linear-gradient(135deg, #d9e4f5, #f1f1f1);
+    color: #333;
+    text-align: center;
+    margin: 0;
     padding: 20px;
+}
+
+h2, h3 {
+    color: #2c3e50;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 30px;
 }
 
 .grid {
     display: grid;
-    grid-template-columns: repeat(10, 50px);
-    gap: 5px;
-    margin-bottom: 20px;
+    grid-template-columns: repeat(10, 1fr);
+    gap: 8px;
+    max-width: 600px;
+    margin: 20px auto;
 }
 
 .grid div {
-    background-color: #f0f0f0;
-    text-align: center;
+    background-color: white;
+    border: 1px solid #ccc;
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.grid div:hover {
+    transform: scale(1.05);
+    background-color: #eaf1ff;
 }
 
 .highlight {
-    background-color: #a0e7a0;
+    background-color: #ffd54f;
+    border: 2px solid #fbc02d;
+    color: #000;
+    font-weight: bold;
+    box-shadow: 0 0 8px rgba(255, 215, 64, 0.6);
+}
+
+p {
+    font-size: 18px;
+    background-color: #fff;
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
