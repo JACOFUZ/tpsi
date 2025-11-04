@@ -17,13 +17,13 @@
     <div id="pari" class="grid"></div>
 
     <script>
-        // crea un array di 100 numeri casuali tra -100 e 100
+        // Crea un array di 100 numeri casuali tra -100 e 100
         const numeri = [];
         for (let i = 0; i < 100; i++) {
             numeri.push(Math.floor(Math.random() * 201) - 100);
         }
 
-        // mostra tutti i numeri
+        // Mostra tutti i numeri
         const arrayDiv = document.getElementById("array");
         numeri.forEach(n => {
             const el = document.createElement("div");
@@ -31,17 +31,17 @@
             arrayDiv.appendChild(el);
         });
 
-        // calcola media, max, min
+        // Calcola media, massimo e minimo
         const somma = numeri.reduce((a, b) => a + b, 0);
         const media = somma / numeri.length;
         const max = Math.max(...numeri);
         const min = Math.min(...numeri);
 
-        // mostra statistiche
+        // Mostra statistiche
         document.getElementById("info").textContent =
             `Media: ${media.toFixed(2)} | Massimo: ${max} | Minimo: ${min}`;
 
-        // trova numeri pari > 50
+        // Trova numeri pari maggiori di 50
         const pariGrandi = numeri.filter(n => n > 50 && n % 2 === 0);
         const pariDiv = document.getElementById("pari");
         pariGrandi.forEach(n => {
