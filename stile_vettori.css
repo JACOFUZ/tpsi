@@ -1,14 +1,14 @@
 body {
     font-family: "Poppins", sans-serif;
-    background: linear-gradient(135deg, #d9e4f5, #f1f1f1);
-    color: #333;
+    background: linear-gradient(135deg, #c9d6ff, #e2e2e2);
+    color: #222;
     text-align: center;
     margin: 0;
     padding: 20px;
 }
 
 h2, h3 {
-    color: #2c3e50;
+    color: #1a1a1a;
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-top: 30px;
@@ -23,17 +23,19 @@ h2, h3 {
 }
 
 .grid div {
-    background-color: white;
-    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #222;
+    border: 1px solid #bbb;
     padding: 10px;
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, background-color 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.2s, background-color 0.2s, color 0.2s;
 }
 
 .grid div:hover {
     transform: scale(1.05);
-    background-color: #eaf1ff;
+    background-color: #3b82f6;
+    color: white;
 }
 
 .highlight {
@@ -47,6 +49,7 @@ h2, h3 {
 p {
     font-size: 18px;
     background-color: #fff;
+    color: #111;
     display: inline-block;
     padding: 10px 20px;
     border-radius: 10px;
