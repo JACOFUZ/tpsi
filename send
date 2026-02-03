@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Receiver</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Pagina Receiver</h2>
+        <p id="risultato"></p>
+    </div>
+
+    <script>
+        let p1 = localStorage.getItem("parametro1");
+        let p2 = localStorage.getItem("parametro2");
+
+        document.getElementById("risultato").innerHTML =
+            "Parametro 1: <strong>" + p1 + "</strong><br>" +
+            "Parametro 2: <strong>" + p2 + "</strong>";
+    </script>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Sender</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Pagina Sender</h2>
+
+        <label>Parametro 1</label>
+        <input type="text" id="param1">
+
+        <label>Parametro 2</label>
+        <input type="text" id="param2">
+
+        <button onclick="salvaParametri()">Invia</button>
+    </div>
+
+    <script>
+        function salvaParametri() {
+            let p1 = document.getElementById("param1").value;
+            let p2 = document.getElementById("param2").value;
+
+            localStorage.setItem("parametro1", p1);
+            localStorage.setItem("parametro2", p2);
+        }
+    </script>
+
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.container {
+    width: 300px;
+    margin: 100px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 6px;
+    margin-top: 5px;
+}
+
+button {
+    width: 100%;
+    margin-top: 15px;
+    padding: 8px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
