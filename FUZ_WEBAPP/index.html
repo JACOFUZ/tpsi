@@ -1,143 +1,126 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>JACOFUZ | Portfolio</title>
-  <meta name="description" content="Portfolio personale di JACOFUZ - Video e Foto Creator" />
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JACOFUZ</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Font elegante e spesso -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-  <!-- HEADER -->
-  <header class="header">
-    <div class="container header-container">
-      <a href="#hero" class="logo" aria-label="Homepage JACOFUZ">JACOFUZ</a>
-      <button type="button" class="nav-toggle" aria-label="Apri menu" aria-expanded="false">
-        <span class="hamburger"></span>
-      </button>
-      <nav class="nav" aria-label="Navigazione principale">
-        <ul class="nav-list">
-          <li><a href="#hero">Home</a></li>
-          <li><a href="#timeline">Timeline</a></li>
-          <li><a href="#gallery">Galleria</a></li>
-          <li><a href="#packages">Pacchetti</a></li>
-          <li><a href="#contact">Contatti</a></li>
-        </ul>
-      </nav>
+<!-- HERO -->
+<section class="hero">
+  <h1>JACOFUZ</h1>
+</section>
+
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <h2>La mia storia</h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item left">
+      <div class="content">
+        <h3>2015</h3>
+        <p>Nasce la mia passione per tecnologia e creatività.</p>
+      </div>
     </div>
-  </header>
 
-  <main>
-
-    <!-- HERO -->
-    <section id="hero" class="hero">
-      <div class="container hero-content">
-        <h1 class="hero-title">JACOFUZ</h1>
+    <div class="timeline-item right">
+      <div class="content">
+        <h3>2019</h3>
+        <p>Inizio a sperimentare con fotografia e video editing.</p>
       </div>
-    </section>
-
-    <!-- TIMELINE -->
-    <section id="timeline" class="timeline section">
-      <div class="container">
-        <h2>La mia storia</h2>
-        <div class="timeline-container">
-          <div class="timeline-item left">
-            <span class="year">2010</span>
-            <p>Inizio della mia passione per la tecnologia.</p>
-          </div>
-          <div class="timeline-item right">
-            <span class="year">2015</span>
-            <p>Primi esperimenti di fotografia e video.</p>
-          </div>
-          <div class="timeline-item left">
-            <span class="year">2020</span>
-            <p>Scopro il mondo delle moto e sviluppo contenuti digitali.</p>
-          </div>
-          <div class="timeline-item right">
-            <span class="year">2025</span>
-            <p>Oggi: Video e foto creator professionale.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY PANORAMI / MOTO -->
-    <section id="gallery" class="photos section">
-      <div class="container gallery-container">
-        <div class="gallery-column panorami">
-          <h2>Panorami</h2>
-          <div class="photos-grid">
-            <img src="assets/images/panorami1.jpg" alt="Panorama 1" />
-            <img src="assets/images/panorami2.jpg" alt="Panorama 2" />
-          </div>
-        </div>
-        <div class="gallery-column moto">
-          <h2>Moto</h2>
-          <div class="photos-grid">
-            <img src="assets/images/moto1.jpg" alt="Moto 1" />
-            <img src="assets/images/moto2.jpg" alt="Moto 2" />
-          </div>
-        </div>
-      </div>
-      <div class="gallery-button">
-        <a href="#packages" class="btn-primary">Scopri di più</a>
-      </div>
-    </section>
-
-    <!-- PACCHETTI / PREZZI -->
-    <section id="packages" class="packages section">
-      <div class="container">
-        <h2>Pacchetti e Prezzi</h2>
-        <div class="packages-grid">
-          <div class="package-card">
-            <h3>Pacchetto Base</h3>
-            <p>Include XYZ. Prezzo da inserire.</p>
-          </div>
-          <div class="package-card">
-            <h3>Pacchetto Standard</h3>
-            <p>Include XYZ. Prezzo da inserire.</p>
-          </div>
-          <div class="package-card">
-            <h3>Pacchetto Premium</h3>
-            <p>Include XYZ. Prezzo da inserire.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTATTI -->
-    <section id="contact" class="contact section">
-      <div class="container">
-        <h2>Contattami</h2>
-        <form id="contactForm" novalidate>
-          <div class="form-group">
-            <label for="name">Nome</label>
-            <input type="text" id="name" name="name" required />
-          </div>
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div class="form-group">
-            <label for="message">Messaggio</label>
-            <textarea id="message" name="message" rows="5" required></textarea>
-          </div>
-          <button type="submit" class="btn-primary">Invia messaggio</button>
-        </form>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <p>Email: <a href="mailto:jacopo.fuse@gmail.com">jacopo.fuse@gmail.com</a> | Tel: 375 627 88 07</p>
     </div>
-  </footer>
 
-  <script src="script.js"></script>
+    <div class="timeline-item left">
+      <div class="content">
+        <h3>2022</h3>
+        <p>Mi avvicino al mondo delle moto e ai contenuti dinamici.</p>
+      </div>
+    </div>
+
+    <div class="timeline-item right">
+      <div class="content">
+        <h3>2025</h3>
+        <p>Video maker e photo editor in crescita costante.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- FOTO PANORAMI + MOTO -->
+<section class="gallery-section">
+
+  <div class="gallery-container">
+
+    <div class="gallery-left">
+      <h2>Panorami</h2>
+      <div class="image-box">
+        <img src="panorama1.jpg" alt="">
+        <img src="panorama2.jpg" alt="">
+      </div>
+    </div>
+
+    <div class="gallery-right">
+      <h2>Moto</h2>
+      <div class="image-box">
+        <img src="moto1.jpg" alt="">
+        <img src="moto2.jpg" alt="">
+      </div>
+    </div>
+
+  </div>
+
+  <div class="center-button">
+    <a href="#pacchetti" class="btn">Prezzi e Pacchetti</a>
+  </div>
+
+</section>
+
+
+<!-- PACCHETTI -->
+<section id="pacchetti" class="packages-section">
+
+  <h2>Servizi & Pacchetti</h2>
+
+  <div class="packages-container">
+
+    <div class="package">
+      <h3>Pacchetto Base</h3>
+      <p>Video breve + editing base</p>
+      <p class="price">Prezzo da inserire</p>
+    </div>
+
+    <div class="package">
+      <h3>Pacchetto Pro</h3>
+      <p>Video completo + color grading + effetti</p>
+      <p class="price">Prezzo da inserire</p>
+    </div>
+
+    <div class="package">
+      <h3>Pacchetto Premium</h3>
+      <p>Video + foto professionali + strategia social</p>
+      <p class="price">Prezzo da inserire</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <p>jacopo.fuse@gmail.com | 375 627 88 07</p>
+</footer>
+
 </body>
 </html>
