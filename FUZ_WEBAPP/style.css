@@ -1,3 +1,4 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -17,7 +18,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('hero-bg.jpg') center/cover no-repeat;
+  background: url('images/hero-bg.jpg') center/cover no-repeat; /* percorso corretto */
 }
 
 .hero-overlay {
@@ -31,6 +32,7 @@ body {
   font-size: 4rem;
   font-weight: 700;
   letter-spacing: 4px;
+  color: white;
   z-index: 1;
 }
 
@@ -132,7 +134,7 @@ body {
 .image-box {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 20px;
 }
 
 .image-box img {
@@ -197,122 +199,6 @@ body {
   font-weight: 600;
   color: #0A1F44;
 }
-
-/* FOOTER */
-footer {
-  padding: 20px;
-  text-align: center;
-  font-size: 0.9rem;
-  background-color: #0a0a0a;
-}  border-radius: 12px;
-}
-
-.timeline-item.left {
-  left: 0;
-  text-align: right;
-}
-
-.timeline-item.right {
-  left: 50%;
-}
-
-.timeline-item::before {
-  content: '';
-  position: absolute;
-  width: 20px;
-  height: 20px;
-  background-color: #0A1F44;
-  border-radius: 50%;
-  top: 25px;
-  right: -10px;
-}
-
-.timeline-item.right::before {
-  left: -10px;
-}
-
-
-/* GALLERY */
-.gallery-section {
-  padding: 100px 0;
-}
-
-.gallery-container {
-  display: flex;
-  justify-content: space-between;
-  width: 85%;
-  margin: auto;
-  gap: 50px;
-}
-
-.image-box {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-}
-
-.image-box img {
-  width: 100%;
-  border-radius: 15px;
-  transition: 0.3s;
-}
-
-.image-box img:hover {
-  transform: scale(1.03);
-}
-
-.center-button {
-  text-align: center;
-  margin-top: 60px;
-}
-
-.btn {
-  background-color: #0A1F44;
-  padding: 15px 35px;
-  border-radius: 30px;
-  text-decoration: none;
-  color: white;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.btn:hover {
-  background-color: #132d63;
-}
-
-
-/* PACCHETTI */
-.packages-section {
-  padding: 100px 0;
-  text-align: center;
-}
-
-.packages-container {
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 60px;
-  flex-wrap: wrap;
-}
-
-.package {
-  background-color: #1a1a1a;
-  padding: 40px;
-  border-radius: 20px;
-  width: 300px;
-  transition: 0.3s;
-}
-
-.package:hover {
-  transform: translateY(-10px);
-}
-
-.price {
-  margin-top: 20px;
-  font-weight: 600;
-  color: #0A1F44;
-}
-
 
 /* FOOTER */
 footer {
