@@ -3,187 +3,81 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JACOFUZ</title>
+  <title>JACOFUZ | Portfolio</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-overlay"></div>
-  <h1>JACOFUZ</h1>
-</section>
+  <!-- HERO -->
+  <section class="hero">
+    <h1>JACOFUZ</h1>
+  </section>
 
-<!-- TIMELINE -->
-<section class="timeline-section">
-  <h2>La mia storia</h2>
+  <!-- TIMELINE -->
+  <section class="timeline-section">
+    <h2>La mia storia</h2>
+    <div class="timeline">
+      <div class="timeline-item left">
+        <div class="content">
+          <h3>2015</h3>
+          <p>Inizio la mia passione per la tecnologia.</p>
+          <img src="images/story1.jpg" alt="Storia 2015">
+        </div>
+      </div>
+      <div class="timeline-item right">
+        <div class="content">
+          <h3>2019</h3>
+          <p>Primi video editing e progetti web.</p>
+          <img src="images/story2.jpg" alt="Storia 2019">
+        </div>
+      </div>
+      <!-- Aggiungi altri anni come vuoi -->
+    </div>
+  </section>
 
-  <div class="timeline">
+  <!-- GALLERY / CAROSELLO -->
+  <section class="gallery-section">
+    <div class="gallery-container">
+      <!-- Carosello Urban -->
+      <div class="carousel" id="carousel-urban">
+        <button class="carousel-btn left">&#10094;</button>
+        <div class="carousel-track">
+          <img src="images/urban1.jpg" alt="">
+          <img src="images/urban2.jpg" alt="">
+          <img src="images/urban3.jpg" alt="">
+          <img src="images/urban4.jpg" alt="">
+          <img src="images/urban5.jpg" alt="">
+        </div>
+        <button class="carousel-btn right">&#10095;</button>
+      </div>
 
-    <div class="timeline-item left">
-      <div class="content">
-        <h3>2015</h3>
-        <img src="story1.jpg" alt="">
-        <p>Nasce la mia passione per tecnologia e creatività.</p>
+      <!-- Carosello Bikes -->
+      <div class="carousel" id="carousel-bikes">
+        <button class="carousel-btn left">&#10094;</button>
+        <div class="carousel-track">
+          <img src="images/bike1.jpg" alt="">
+          <img src="images/bike2.jpg" alt="">
+          <img src="images/bike3.jpg" alt="">
+          <img src="images/bike4.jpg" alt="">
+          <img src="images/bike5.jpg" alt="">
+        </div>
+        <button class="carousel-btn right">&#10095;</button>
       </div>
     </div>
+  </section>
 
-    <div class="timeline-item right">
-      <div class="content">
-        <h3>2019</h3>
-        <img src="story2.jpg" alt="">
-        <p>Inizio a sperimentare con fotografia e video editing.</p>
-      </div>
-    </div>
+  <!-- SPONSOR SECTION -->
+  <section class="sponsor-section">
+    <h2>Diventa Sponsor</h2>
+    <p>Se vuoi supportare il mio canale YouTube e le mie attività come video editor e content creator, qui puoi scoprire come diventare sponsor.</p>
+    <a href="#" class="btn">Contattami per sponsorizzazione</a>
+  </section>
 
-    <div class="timeline-item left">
-      <div class="content">
-        <h3>2022</h3>
-        <img src="story3.jpg" alt="">
-        <p>Mi avvicino al mondo delle moto e ai contenuti dinamici.</p>
-      </div>
-    </div>
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2026 Jacopo Fusé | jacopo.fuse@gmail.com | 375 627 88 07</p>
+  </footer>
 
-    <div class="timeline-item right">
-      <div class="content">
-        <h3>2025</h3>
-        <img src="story4.jpg" alt="">
-        <p>Video maker e photo editor in crescita costante.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- GALLERY PANORAMI / MOTO -->
-<section class="gallery-section">
-
-  <div class="gallery-container">
-
-    <div class="gallery-left">
-      <h2>Urban</h2>
-      <div class="image-box">
-        <img src="urban1.jpg" alt="">
-        <img src="urban2.jpg" alt="">
-        <img src="urban3.jpg" alt="">
-        <img src="urban4.jpg" alt="">
-      </div>
-    </div>
-
-    <div class="gallery-right">
-      <h2>Bikes</h2>
-      <div class="image-box">
-        <img src="bike1.jpg" alt="">
-        <img src="bike2.jpg" alt="">
-        <img src="bike3.jpg" alt="">
-        <img src="bike4.jpg" alt="">
-      </div>
-    </div>
-
-  </div>
-
-  <div class="center-button">
-    <a href="#pacchetti" class="btn">Prezzi e Pacchetti</a>
-  </div>
-
-</section>
-
-<!-- PACCHETTI -->
-<section id="pacchetti" class="packages-section">
-
-  <h2>Servizi & Pacchetti</h2>
-
-  <div class="packages-container">
-
-    <div class="package">
-      <h3>Pacchetto Base</h3>
-      <p>Video breve + editing base</p>
-      <p class="price">Prezzo da inserire</p>
-    </div>
-
-    <div class="package">
-      <h3>Pacchetto Pro</h3>
-      <p>Video completo + color grading + effetti</p>
-      <p class="price">Prezzo da inserire</p>
-    </div>
-
-    <div class="package">
-      <h3>Pacchetto Premium</h3>
-      <p>Video + foto professionali + strategia social</p>
-      <p class="price">Prezzo da inserire</p>
-    </div>
-
-  </div>
-
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <p>jacopo.fuse@gmail.com | 375 627 88 07</p>
-</footer>
-
-</body>
-</html>
-    <div class="gallery-left">
-      <h2>Panorami</h2>
-      <div class="image-box">
-        <img src="panorama1.jpg" alt="">
-        <img src="panorama2.jpg" alt="">
-      </div>
-    </div>
-
-    <div class="gallery-right">
-      <h2>Moto</h2>
-      <div class="image-box">
-        <img src="moto1.jpg" alt="">
-        <img src="moto2.jpg" alt="">
-      </div>
-    </div>
-
-  </div>
-
-  <div class="center-button">
-    <a href="#pacchetti" class="btn">Prezzi e Pacchetti</a>
-  </div>
-
-</section>
-
-
-<!-- PACCHETTI -->
-<section id="pacchetti" class="packages-section">
-
-  <h2>Servizi & Pacchetti</h2>
-
-  <div class="packages-container">
-
-    <div class="package">
-      <h3>Pacchetto Base</h3>
-      <p>Video breve + editing base</p>
-      <p class="price">Prezzo da inserire</p>
-    </div>
-
-    <div class="package">
-      <h3>Pacchetto Pro</h3>
-      <p>Video completo + color grading + effetti</p>
-      <p class="price">Prezzo da inserire</p>
-    </div>
-
-    <div class="package">
-      <h3>Pacchetto Premium</h3>
-      <p>Video + foto professionali + strategia social</p>
-      <p class="price">Prezzo da inserire</p>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- FOOTER -->
-<footer>
-  <p>jacopo.fuse@gmail.com | 375 627 88 07</p>
-</footer>
-
+  <script src="script.js"></script>
 </body>
 </html>
