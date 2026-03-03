@@ -1,0 +1,271 @@
+/* =========================
+   RESET BASE
+========================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.6;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+/* =========================
+   VARIABILI GLOBALI
+========================= */
+
+:root {
+  --color-primary: #111111;
+  --color-accent: #ff3c00;
+  --color-bg: #ffffff;
+  --color-text: #111111;
+  --color-muted: #666666;
+
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+
+  --radius: 8px;
+  --transition: 0.3s ease;
+}
+
+/* =========================
+   UTILITIES
+========================= */
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section {
+  padding: var(--spacing-xl) 0;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+h2 {
+  font-size: 1.6rem;
+  margin-bottom: var(--spacing-md);
+}
+
+h3 {
+  font-size: 1.2rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+p {
+  margin-bottom: var(--spacing-sm);
+  color: var(--color-muted);
+}
+
+.highlight {
+  color: var(--color-accent);
+}
+
+.btn-primary {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: var(--radius);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--color-accent);
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.header {
+  position: fixed;
+  width: 100%;
+  background: white;
+  border-bottom: 1px solid #eee;
+  z-index: 1000;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-sm) 0;
+}
+
+.logo {
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--color-primary);
+}
+
+/* NAV */
+
+.nav {
+  display: none;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+}
+
+.nav a {
+  text-decoration: none;
+  color: var(--color-primary);
+  transition: var(--transition);
+}
+
+.nav a:hover,
+.nav a:focus {
+  color: var(--color-accent);
+}
+
+/* HAMBURGER */
+
+.nav-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.hamburger {
+  width: 25px;
+  height: 2px;
+  background: var(--color-primary);
+  display: block;
+  position: relative;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: "";
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background: var(--color-primary);
+  left: 0;
+  transition: var(--transition);
+}
+
+.hamburger::before {
+  top: -8px;
+}
+
+.hamburger::after {
+  top: 8px;
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  padding-top: 120px;
+  padding-bottom: var(--spacing-xl);
+  text-align: center;
+}
+
+.hero-subtitle {
+  max-width: 600px;
+  margin: 0 auto var(--spacing-md);
+}
+
+/* =========================
+   SKILLS
+========================= */
+
+.skills-grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.skill-card {
+  padding: var(--spacing-md);
+  border: 1px solid #eee;
+  border-radius: var(--radius);
+  transition: var(--transition);
+}
+
+.skill-card:hover {
+  transform: translateY(-5px);
+}
+
+/* =========================
+   PROJECTS
+========================= */
+
+.projects-controls {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+}
+
+.projects-controls input,
+.projects-controls select,
+.projects-controls button {
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid #ddd;
+}
+
+.projects-grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-group {
+  margin-bottom: var(--spacing-md);
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  border-radius: var(--radius);
+  border: 1px solid #ddd;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.8rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+.footer {
+  text-align: center;
+  padding: var(--spacing-md) 0;
+  border-top: 1px solid #eee;
+  font-size: 0.9rem;
+}
