@@ -47,7 +47,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('hero-bg.jpg') center/cover no-repeat;
+  background: url('FUZ_WEBAPP/hero-bg.jpg') center/cover no-repeat;
 }
 
 .hero-overlay {
