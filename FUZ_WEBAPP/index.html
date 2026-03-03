@@ -8,14 +8,26 @@
 </head>
 <body>
 
+  <!-- NAVBAR -->
+  <header class="navbar">
+    <nav class="nav-container">
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#photos">Photos</a></li>
+        <li><a href="#packages">Offerte</a></li>
+      </ul>
+    </nav>
+  </header>
+
   <!-- HERO -->
-  <section class="hero">
+  <section id="hero" class="hero">
     <h1>JACOFUZ</h1>
     <div class="hero-overlay"></div>
   </section>
 
   <!-- TIMELINE -->
-  <section class="timeline-section">
+  <section id="timeline" class="timeline-section">
     <h2>La mia storia</h2>
     <div class="timeline">
       <div class="timeline-item left">
@@ -26,54 +38,43 @@
       </div>
       <div class="timeline-item right">
         <div class="content">
-          <h3>2019</h3>
+          <h3>2018</h3>
           <p>Primi video editing e progetti web.</p>
         </div>
       </div>
       <div class="timeline-item left">
         <div class="content">
-          <h3>2022</h3>
+          <h3>2020</h3>
           <p>Collaborazioni e contenuti automotive.</p>
         </div>
       </div>
-      <!-- altri anni -->
+      <div class="timeline-item right">
+        <div class="content">
+          <h3>2023</h3>
+          <p>Avvio del canale e nuovi progetti professionali.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- FOTO SEZIONE -->
-  <section class="photos-section">
-    <div class="container">
-      <div class="photo-row">
-        <img src="images/photo1.jpg" alt="Foto 1">
-        <img src="images/photo2.jpg" alt="Foto 2">
-        <img src="images/photo3.jpg" alt="Foto 3">
-      </div>
+  <section id="photos" class="photos-section">
+    <div class="photo-row">
+      <img src="images/photo1.jpg" alt="Foto 1">
+      <img src="images/photo2.jpg" alt="Foto 2">
+      <img src="images/photo3.jpg" alt="Foto 3">
+      <img src="images/photo4.jpg" alt="Foto 4">
     </div>
   </section>
 
-  <!-- SPONSOR -->
-  <section class="sponsor-section">
-    <h2>Diventa Sponsor</h2>
-    <p>Supporta il mio canale YouTube e le mie attività come video editor e content creator.  
-       Offriamo visibilità ai tuoi brand tramite i nostri video e progetti digitali.</p>
-    <div class="sponsor-options">
-      <div class="sponsor-card">
-        <h3>Pacchetto Base</h3>
-        <p>Presenza nei video e menzione social.</p>
-        <span class="price">€50</span>
-      </div>
-      <div class="sponsor-card">
-        <h3>Pacchetto Standard</h3>
-        <p>Video dedicato + menzione social + logo sul sito.</p>
-        <span class="price">€150</span>
-      </div>
-      <div class="sponsor-card">
-        <h3>Pacchetto Premium</h3>
-        <p>Video dedicato + menzione + logo + post sponsorizzati.</p>
-        <span class="price">€300</span>
-      </div>
+  <!-- PACCHETTI / OFFERS -->
+  <section id="packages" class="packages-section">
+    <h2>Offerte</h2>
+    <div class="packages-container">
+      <a href="pacchetto-base.html" class="package btn">Pacchetto Base</a>
+      <a href="pacchetto-standard.html" class="package btn">Pacchetto Standard</a>
+      <a href="pacchetto-premium.html" class="package btn">Pacchetto Premium</a>
     </div>
-    <a href="#" class="btn">Contattami per Sponsorizzazione</a>
   </section>
 
   <!-- FOOTER -->
