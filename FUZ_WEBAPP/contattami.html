@@ -1,1 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contattami | JACOFUZ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+  <!-- HERO CONTATTO -->
+  <section class="contact-hero">
+    <h1>Contattami</h1>
+  </section>
+
+  <!-- FORM CONTATTO -->
+  <section class="contact-section">
+    <div class="contact-container">
+      <p class="contact-subtitle">
+        Hai una proposta, collaborazione o domanda? Scrivimi direttamente qui.
+      </p>
+
+      <form action="https://formsubmit.co/jacopo.fuse@gmail.com" method="POST" class="contact-form">
+        
+        <!-- Disattiva captcha -->
+        <input type="hidden" name="_captcha" value="false">
+
+        <input type="email" name="email" placeholder="La tua email" required>
+        <input type="text" name="oggetto" placeholder="Oggetto" required>
+        <textarea name="messaggio" rows="6" placeholder="Scrivi il tuo messaggio..." required></textarea>
+
+        <button type="submit">Invia Messaggio</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 Jacopo Fusé | jacopo.fuse@gmail.com</p>
+  </footer>
+
+</body>
+</html>
