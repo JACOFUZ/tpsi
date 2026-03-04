@@ -10,20 +10,26 @@
 
   <!-- NAVBAR -->
   <header class="navbar">
-    <div class="nav-content">
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    <div class="logo">JACOFUZ</div>
+    <nav class="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#timeline">Timeline</a>
+      <a href="#photos">Portfolio</a>
+      <a href="#packages">Offerte</a>
+      <a href="contattami.html">Contattami</a>
+    </nav>
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
   </header>
 
-  <!-- SIDEBAR -->
+  <!-- SIDEBAR MOBILE -->
   <div class="sidebar" id="sidebar">
     <a href="#hero">Home</a>
     <a href="#timeline">Timeline</a>
-    <a href="#photos">Photos</a>
+    <a href="#photos">Portfolio</a>
     <a href="#packages">Offerte</a>
     <a href="contattami.html">Contattami</a>
   </div>
@@ -31,7 +37,10 @@
   <!-- HERO -->
   <section id="hero" class="hero">
     <div class="hero-overlay"></div>
-    <a href="#packages" class="hero-btn">Scopri di più</a>
+    <div class="hero-content">
+      <h1></h1> <!-- titolo nella foto di sfondo -->
+      <a href="#packages" class="btn-hero">Scopri di più</a>
+    </div>
   </section>
 
   <!-- TIMELINE -->
@@ -65,43 +74,39 @@
     </div>
   </section>
 
-  <!-- FOTO SEZIONE -->
+  <!-- PORTFOLIO / FOTO -->
   <section id="photos" class="photos-section">
+    <h2>Portfolio</h2>
     <div class="photo-row">
-      <img src="FUZ_WEBAPP/photo1.jpg" alt="Foto 1">
-      <img src="FUZ_WEBAPP/photo2.jpg" alt="Foto 2">
-      <img src="FUZ_WEBAPP/photo3.jpg" alt="Foto 3">
-      <img src="FUZ_WEBAPP/photo4.jpg" alt="Foto 4">
+      <div class="photo-box"><img src="FUZ_WEBAPP/photo1.jpg" alt=""></div>
+      <div class="photo-box"><img src="FUZ_WEBAPP/photo2.jpg" alt=""></div>
+      <div class="photo-box"><img src="FUZ_WEBAPP/photo3.jpg" alt=""></div>
+      <div class="photo-box"><img src="FUZ_WEBAPP/photo4.jpg" alt=""></div>
     </div>
   </section>
 
-  <!-- PACCHETTI / OFFERS -->
+  <!-- OFFERS / PACCHETTI -->
   <section id="packages" class="packages-section">
     <h2>Offerte</h2>
-
     <div class="packages-container">
-
       <div class="package-card">
         <img src="FUZ_WEBAPP/base.jpg" alt="Base">
         <h3>Pacchetto Base</h3>
         <p>Soluzione semplice per iniziare.</p>
         <a href="pacchetto-base.html" class="package-btn">Scopri</a>
       </div>
-
       <div class="package-card">
         <img src="FUZ_WEBAPP/standard.jpg" alt="Standard">
         <h3>Pacchetto Standard</h3>
         <p>Perfetto per collaborazioni strutturate.</p>
         <a href="pacchetto-standard.html" class="package-btn">Scopri</a>
       </div>
-
       <div class="package-card">
         <img src="FUZ_WEBAPP/premium.jpg" alt="Premium">
         <h3>Pacchetto Premium</h3>
         <p>Massima visibilità e contenuti dedicati.</p>
         <a href="pacchetto-premium.html" class="package-btn">Scopri</a>
       </div>
-
     </div>
   </section>
 
@@ -114,7 +119,6 @@
   <script>
     const hamburger = document.getElementById("hamburger");
     const sidebar = document.getElementById("sidebar");
-
     hamburger.addEventListener("click", () => {
       sidebar.classList.toggle("active");
       hamburger.classList.toggle("open");
