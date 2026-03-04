@@ -190,3 +190,76 @@ footer {
   font-size: 0.9rem;
   background-color: #0a0a0a;
 }
+/* PAGINA CONTATTO */
+
+/* Hero */
+.contact-hero {
+  height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #111;
+  text-align: center;
+}
+
+.contact-hero h1 {
+  font-size: 3rem;
+  color: white;
+}
+
+/* Sezione form */
+.contact-section {
+  padding: 80px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.contact-container {
+  width: 90%;
+  max-width: 600px;
+  text-align: center;
+}
+
+.contact-subtitle {
+  margin-bottom: 40px;
+  color: #ccc;
+  line-height: 1.6;
+}
+
+/* Form */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: #1a1a1a;
+  color: white;
+  font-size: 1rem;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: 2px solid #1b4d9e;
+}
+
+/* Bottone */
+.contact-form button {
+  padding: 15px;
+  border-radius: 30px;
+  border: none;
+  background-color: #1b4d9e;
+  color: white;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.contact-form button:hover {
+  background-color: #163d7a;
+}
