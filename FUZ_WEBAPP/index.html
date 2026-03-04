@@ -10,7 +10,7 @@
 
   <!-- NAVBAR -->
   <header class="navbar">
-    <nav class="nav-container">
+    <div class="nav-container">
       <div class="menu-toggle" id="mobile-menu">
         <span></span>
         <span></span>
@@ -22,14 +22,13 @@
         <li><a href="#photos">Photos</a></li>
         <li><a href="#packages">Offerte</a></li>
       </ul>
-    </nav>
+    </div>
   </header>
 
   <!-- HERO -->
   <section id="hero" class="hero">
-    <div class="hero-overlay glass">
-      <a href="#packages" class="btn">Scopri di più</a>
-    </div>
+    <div class="hero-overlay"></div>
+    <a href="#packages" class="btn hero-btn">Scopri di più</a>
   </section>
 
   <!-- TIMELINE -->
@@ -37,25 +36,25 @@
     <h2>La mia storia</h2>
     <div class="timeline">
       <div class="timeline-item left">
-        <div class="content glass">
+        <div class="content">
           <h3>2015</h3>
           <p>Inizio la mia passione per la tecnologia.</p>
         </div>
       </div>
       <div class="timeline-item right">
-        <div class="content glass">
+        <div class="content">
           <h3>2018</h3>
           <p>Primi video editing e progetti web.</p>
         </div>
       </div>
       <div class="timeline-item left">
-        <div class="content glass">
+        <div class="content">
           <h3>2020</h3>
           <p>Collaborazioni e contenuti automotive.</p>
         </div>
       </div>
       <div class="timeline-item right">
-        <div class="content glass">
+        <div class="content">
           <h3>2023</h3>
           <p>Avvio del canale e nuovi progetti professionali.</p>
         </div>
@@ -66,10 +65,10 @@
   <!-- FOTO SEZIONE -->
   <section id="photos" class="photos-section">
     <div class="photo-row">
-      <div class="photo-box glass"><img src="FUZ_WEBAPP/photo1.jpg" alt="Foto 1"></div>
-      <div class="photo-box glass"><img src="FUZ_WEBAPP/photo2.jpg" alt="Foto 2"></div>
-      <div class="photo-box glass"><img src="FUZ_WEBAPP/photo3.jpg" alt="Foto 3"></div>
-      <div class="photo-box glass"><img src="FUZ_WEBAPP/photo4.jpg" alt="Foto 4"></div>
+      <img src="FUZ_WEBAPP/photo1.jpg" alt="Foto 1">
+      <img src="FUZ_WEBAPP/photo2.jpg" alt="Foto 2">
+      <img src="FUZ_WEBAPP/photo3.jpg" alt="Foto 3">
+      <img src="FUZ_WEBAPP/photo4.jpg" alt="Foto 4">
     </div>
   </section>
 
@@ -77,30 +76,25 @@
   <section id="packages" class="packages-section">
     <h2>Offerte</h2>
     <div class="packages-container">
-      <a href="pacchetto-base.html" class="package glass">
-        <img src="FUZ_WEBAPP/base.png" alt="Base">
-        <h3>Base</h3>
-        <p>Descrizione pacchetto base</p>
+      <a href="pacchetto-base.html" class="package btn">
+        <img src="FUZ_WEBAPP/base.jpg" alt="Pacchetto Base">
+        <h3>Pacchetto Base</h3>
       </a>
-      <a href="pacchetto-standard.html" class="package glass">
-        <img src="FUZ_WEBAPP/standard.png" alt="Standard">
-        <h3>Standard</h3>
-        <p>Descrizione pacchetto standard</p>
+      <a href="pacchetto-standard.html" class="package btn">
+        <img src="FUZ_WEBAPP/standard.jpg" alt="Pacchetto Standard">
+        <h3>Pacchetto Standard</h3>
       </a>
-      <a href="pacchetto-premium.html" class="package glass">
-        <img src="FUZ_WEBAPP/premium.png" alt="Premium">
-        <h3>Premium</h3>
-        <p>Descrizione pacchetto premium</p>
+      <a href="pacchetto-premium.html" class="package btn">
+        <img src="FUZ_WEBAPP/premium.jpg" alt="Pacchetto Premium">
+        <h3>Pacchetto Premium</h3>
       </a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="glass">
+  <footer>
     <p>© 2026 Jacopo Fusé | jacopo.fuse@gmail.com | 375 627 88 07</p>
   </footer>
-
-  <script src="script.js"></script>
 
   <script src="script.js"></script>
 </body>
