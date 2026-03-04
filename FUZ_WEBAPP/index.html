@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JACOFUZ | Portfolio</title>
+  <title>Contattami | JACOFUZ</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -12,73 +12,35 @@
   <header class="navbar">
     <nav class="nav-container">
       <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#timeline">Timeline</a></li>
-        <li><a href="#photos">Photos</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#timeline">Timeline</a></li>
+        <li><a href="index.html#photos">Photos</a></li>
+        <li><a href="index.html#packages">Offerte</a></li>
+        <li><a href="contattami.html">Contattami</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- HERO -->
-  <section id="hero" class="hero">
-    <h1>JACOFUZ</h1>
-    <div class="hero-overlay"></div>
+  <!-- SEZIONE CONTATTO -->
+  <section class="contact-section">
+    <h2>Contattami</h2>
+    <p>Compila il modulo qui sotto per inviarmi una proposta o richiesta.</p>
+
+    <form action="https://formsubmit.co/jacopo.fuse@gmail.com" method="POST" class="contact-form">
+      
+      <!-- Disabilita captcha -->
+      <input type="hidden" name="_captcha" value="false">
+
+      <input type="email" name="email" placeholder="La tua email" required>
+      <input type="text" name="oggetto" placeholder="Oggetto" required>
+      <textarea name="messaggio" rows="6" placeholder="Scrivi il tuo messaggio..." required></textarea>
+
+      <button type="submit">Invia Email</button>
+    </form>
   </section>
 
-  <!-- TIMELINE -->
-  <section id="timeline" class="timeline-section">
-    <h2>La mia storia</h2>
-    <div class="timeline">
-      <div class="timeline-item left">
-        <div class="content">
-          <h3>2015</h3>
-          <p>Inizio la mia passione per la tecnologia.</p>
-        </div>
-      </div>
-      <div class="timeline-item right">
-        <div class="content">
-          <h3>2018</h3>
-          <p>Primi video editing e progetti web.</p>
-        </div>
-      </div>
-      <div class="timeline-item left">
-        <div class="content">
-          <h3>2020</h3>
-          <p>Collaborazioni e contenuti automotive.</p>
-        </div>
-      </div>
-      <div class="timeline-item right">
-        <div class="content">
-          <h3>2023</h3>
-          <p>Avvio del canale e nuovi progetti professionali.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOTO SEZIONE -->
-  <section id="photos" class="photos-section">
-    <div class="photo-row">
-      <img src="FUZ_WEBAPP/DANNY.jpg" alt="Foto 1">
-      <img src="images/photo2.jpg" alt="Foto 2">
-      <img src="images/photo3.jpg" alt="Foto 3">
-      <img src="images/photo4.jpg" alt="Foto 4">
-    </div>
-  </section>
-
-  <!-- PACCHETTI / OFFERS -->
-  <section id="packages" class="packages-section">
-    <h2>Offerte</h2>
-    <div class="packages-container">
-      <a href="pacchetto-base.html" class="package btn">Pacchetto Base</a>
-      <a href="pacchetto-standard.html" class="package btn">Pacchetto Standard</a>
-      <a href="pacchetto-premium.html" class="package btn">Pacchetto Premium</a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
   <footer>
-    <p>© 2026 Jacopo Fusé | jacopo.fuse@gmail.com | 375 627 88 07</p>
+    <p>© 2026 Jacopo Fusé</p>
   </footer>
 
 </body>
