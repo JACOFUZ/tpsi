@@ -10,36 +10,25 @@
 
   <!-- NAVBAR -->
   <header class="navbar">
-    <div class="logo">JACOFUZ</div>
-    <nav class="nav-links">
-      <a href="#hero">Home</a>
-      <a href="#timeline">Timeline</a>
-      <a href="#photos">Portfolio</a>
-      <a href="#packages">Offerte</a>
-      <a href="contattami.html">Contattami</a>
+    <nav class="nav-container">
+      <div class="menu-toggle" id="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#photos">Photos</a></li>
+        <li><a href="#packages">Offerte</a></li>
+      </ul>
     </nav>
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
   </header>
-
-  <!-- SIDEBAR MOBILE -->
-  <div class="sidebar" id="sidebar">
-    <a href="#hero">Home</a>
-    <a href="#timeline">Timeline</a>
-    <a href="#photos">Portfolio</a>
-    <a href="#packages">Offerte</a>
-    <a href="contattami.html">Contattami</a>
-  </div>
 
   <!-- HERO -->
   <section id="hero" class="hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1></h1> <!-- titolo nella foto di sfondo -->
-      <a href="#packages" class="btn-hero">Scopri di più</a>
+    <div class="hero-overlay glass">
+      <a href="#packages" class="btn">Scopri di più</a>
     </div>
   </section>
 
@@ -48,25 +37,25 @@
     <h2>La mia storia</h2>
     <div class="timeline">
       <div class="timeline-item left">
-        <div class="content">
+        <div class="content glass">
           <h3>2015</h3>
           <p>Inizio la mia passione per la tecnologia.</p>
         </div>
       </div>
       <div class="timeline-item right">
-        <div class="content">
+        <div class="content glass">
           <h3>2018</h3>
           <p>Primi video editing e progetti web.</p>
         </div>
       </div>
       <div class="timeline-item left">
-        <div class="content">
+        <div class="content glass">
           <h3>2020</h3>
           <p>Collaborazioni e contenuti automotive.</p>
         </div>
       </div>
       <div class="timeline-item right">
-        <div class="content">
+        <div class="content glass">
           <h3>2023</h3>
           <p>Avvio del canale e nuovi progetti professionali.</p>
         </div>
@@ -74,56 +63,43 @@
     </div>
   </section>
 
-  <!-- PORTFOLIO / FOTO -->
+  <!-- FOTO SEZIONE -->
   <section id="photos" class="photos-section">
-    <h2>Portfolio</h2>
     <div class="photo-row">
-      <div class="photo-box"><img src="FUZ_WEBAPP/photo1.jpg" alt=""></div>
-      <div class="photo-box"><img src="FUZ_WEBAPP/photo2.jpg" alt=""></div>
-      <div class="photo-box"><img src="FUZ_WEBAPP/photo3.jpg" alt=""></div>
-      <div class="photo-box"><img src="FUZ_WEBAPP/photo4.jpg" alt=""></div>
+      <div class="photo-box glass"><img src="FUZ_WEBAPP/photo1.jpg" alt="Foto 1"></div>
+      <div class="photo-box glass"><img src="FUZ_WEBAPP/photo2.jpg" alt="Foto 2"></div>
+      <div class="photo-box glass"><img src="FUZ_WEBAPP/photo3.jpg" alt="Foto 3"></div>
+      <div class="photo-box glass"><img src="FUZ_WEBAPP/photo4.jpg" alt="Foto 4"></div>
     </div>
   </section>
 
-  <!-- OFFERS / PACCHETTI -->
+  <!-- PACCHETTI / OFFERS -->
   <section id="packages" class="packages-section">
     <h2>Offerte</h2>
     <div class="packages-container">
-      <div class="package-card">
-        <img src="FUZ_WEBAPP/base.jpg" alt="Base">
-        <h3>Pacchetto Base</h3>
-        <p>Soluzione semplice per iniziare.</p>
-        <a href="pacchetto-base.html" class="package-btn">Scopri</a>
-      </div>
-      <div class="package-card">
-        <img src="FUZ_WEBAPP/standard.jpg" alt="Standard">
-        <h3>Pacchetto Standard</h3>
-        <p>Perfetto per collaborazioni strutturate.</p>
-        <a href="pacchetto-standard.html" class="package-btn">Scopri</a>
-      </div>
-      <div class="package-card">
-        <img src="FUZ_WEBAPP/premium.jpg" alt="Premium">
-        <h3>Pacchetto Premium</h3>
-        <p>Massima visibilità e contenuti dedicati.</p>
-        <a href="pacchetto-premium.html" class="package-btn">Scopri</a>
-      </div>
+      <a href="pacchetto-base.html" class="package glass">
+        <img src="FUZ_WEBAPP/base.png" alt="Base">
+        <h3>Base</h3>
+        <p>Descrizione pacchetto base</p>
+      </a>
+      <a href="pacchetto-standard.html" class="package glass">
+        <img src="FUZ_WEBAPP/standard.png" alt="Standard">
+        <h3>Standard</h3>
+        <p>Descrizione pacchetto standard</p>
+      </a>
+      <a href="pacchetto-premium.html" class="package glass">
+        <img src="FUZ_WEBAPP/premium.png" alt="Premium">
+        <h3>Premium</h3>
+        <p>Descrizione pacchetto premium</p>
+      </a>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer>
+  <footer class="glass">
     <p>© 2026 Jacopo Fusé | jacopo.fuse@gmail.com | 375 627 88 07</p>
   </footer>
 
-  <!-- SCRIPT NAVBAR -->
-  <script>
-    const hamburger = document.getElementById("hamburger");
-    const sidebar = document.getElementById("sidebar");
-    hamburger.addEventListener("click", () => {
-      sidebar.classList.toggle("active");
-      hamburger.classList.toggle("open");
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>
