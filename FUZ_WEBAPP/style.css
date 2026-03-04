@@ -40,14 +40,15 @@ body {
   color: #1b4d9e; /* blu leggermente più acceso */
 }
 
-/* HERO */
 .hero {
   position: relative;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url('FUZ_WEBAPP/SFONDO_HOME.png') center/cover no-repeat;
+  background: url('FUZ_WEBAPP/SFONDO_HOME.png') center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .hero-overlay {
