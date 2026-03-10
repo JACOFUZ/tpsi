@@ -115,7 +115,7 @@ function mostraDati(){
 
 let persona = {};
 
-// recupero dati
+// RECUPERO DEI VALORI INSERITI DALL’UTENTE NEI CAMPI DEL FORM
 
 persona.nome = document.getElementById("nome").value.trim();
 persona.cognome = document.getElementById("cognome").value.trim();
@@ -127,7 +127,7 @@ persona.codiceFiscale = document.getElementById("cf").value.trim().toUpperCase()
 persona.annoNascita = document.getElementById("anno").value.trim();
 
 
-// REGEX
+// DEFINIZIONE DELLE REGEX UTILIZZATE PER VALIDARE I DATI
 
 const controlloNome = /^[A-Za-zÀ-ÖØ-öø-ÿ\s']{2,30}$/;
 const controlloIndirizzo = /^[A-Za-z0-9À-ÖØ-öø-ÿ\s',.-]{5,50}$/;
@@ -140,13 +140,15 @@ const controlloCF = /^[A-Z]{6}[0-9]{2}[A-Z][0-9]{2}[A-Z][0-9]{3}[A-Z]$/;
 const anno = parseInt(persona.annoNascita);
 const annoAttuale = new Date().getFullYear();
 
+// CONTROLLO CHE L’ANNO INSERITO SIA COMPRESO TRA 1900 E L’ANNO CORRENTE
+
 if(anno < 1900 || anno > annoAttuale){
 alert("Anno non valido");
 return;
 }
 
 
-// VALIDAZIONI
+// VALIDAZIONE DEI CAMPI UTILIZZANDO LE ESPRESSIONI REGOLARI
 
 if(!controlloNome.test(persona.nome)){
 alert("Nome non valido");
@@ -189,18 +191,18 @@ return;
 }
 
 
-// sesso
+// RECUPERO DEL SESSO SELEZIONATO TRA I RADIO BUTTON
 
 let sessoSelezionato = document.querySelector('input[name="sesso"]:checked');
 persona.sesso = sessoSelezionato ? sessoSelezionato.value : "Non specificato";
 
 
-// provincia
+// LETTURA DELLA PROVINCIA SELEZIONATA DAL MENU A TENDINA
 
 persona.provincia = document.getElementById("provincia").value || "Non selezionata";
 
 
-// mezzi
+// RACCOLTA DI TUTTI I MEZZI DI TRASPORTO SELEZIONATI
 
 let listaMezzi = document.querySelectorAll('input[name="mezzi"]:checked');
 persona.mezzi = [];
@@ -214,7 +216,7 @@ persona.mezzi = ["Nessuno"];
 }
 
 
-// materie
+// RECUPERO DELLE MATERIE SELEZIONATE NELLA SELECT MULTIPLA
 
 let materieSelezionate = document.getElementById("materie").selectedOptions;
 let listaMaterie = [];
@@ -222,6 +224,8 @@ let listaMaterie = [];
 for(let i=0;i<materieSelezionate.length;i++){
 listaMaterie.push(materieSelezionate[i].value);
 }
+
+// CONTROLLO CHE NON VENGANO SELEZIONATE PIÙ DI TRE MATERIE
 
 if(listaMaterie.length > 3){
 alert("Puoi scegliere massimo 3 materie");
@@ -231,12 +235,12 @@ return;
 persona.materie = listaMaterie.length > 0 ? listaMaterie : ["Nessuna"];
 
 
-// età
+// CALCOLO DELL’ETÀ UTILIZZANDO L’ANNO CORRENTE
 
 const eta = annoAttuale - anno;
 
 
-// output
+// GENERAZIONE DELL’OUTPUT CON I DATI INSERITI
 
 const divOutput = document.getElementById("output");
 divOutput.style.display="block";
