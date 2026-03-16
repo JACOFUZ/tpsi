@@ -130,37 +130,44 @@
           <span class="sec-label">Fotografia</span>
         </div>
         <h2 class="sec-h2 js-reveal-clip">Scatti selezionati</h2>
+
+        <!-- SOLO DUE FILTRI -->
         <div class="filters js-reveal-fade" role="group" aria-label="Filtra per categoria">
           <button class="f-btn active" data-filter="all"      aria-pressed="true">Tutti</button>
-          <button class="f-btn"        data-filter="ritratto" aria-pressed="false">Ritratti</button>
-          <button class="f-btn"        data-filter="urbano"   aria-pressed="false">Urbano</button>
-          <button class="f-btn"        data-filter="evento"   aria-pressed="false">Eventi</button>
-          <button class="f-btn"        data-filter="brand"    aria-pressed="false">Brand</button>
+          <button class="f-btn"        data-filter="clienti"  aria-pressed="false">Clienti</button>
+          <button class="f-btn"        data-filter="urban"    aria-pressed="false">Urban</button>
         </div>
+
         <div class="photo-grid" id="photo-grid" role="list" aria-label="Galleria fotografica">
-          <article class="p-card js-reveal-fade" data-cat="ritratto" role="listitem" tabindex="0" aria-label="Ritratto — Titolo">
-            <div class="p-card-img"><div class="ph-img" aria-label="Ritratto — Titolo"><span>foto.jpg</span></div></div>
-            <div class="p-card-info"><span class="p-tag">Ritratto</span><h3>Ritratto — Titolo</h3><p>Anno · Luogo</p></div>
+          <!-- Aggiungi le tue foto: sostituisci .ph-img con <img src="img/nome.jpg" alt="…" /> -->
+          <article class="p-card js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0" aria-label="Clienti — Titolo 1">
+            <div class="p-card-img"><div class="ph-img" aria-label="Clienti — Titolo"><span>foto.jpg</span></div></div>
+            <div class="p-card-info"><span class="p-tag">Clienti</span><h3>Titolo progetto</h3><p>Anno · Cliente</p></div>
           </article>
-          <article class="p-card p-tall js-reveal-fade" data-cat="urbano" role="listitem" tabindex="0" aria-label="Urbano — Titolo">
-            <div class="p-card-img"><div class="ph-img" aria-label="Urbano — Titolo"><span>foto.jpg</span></div></div>
-            <div class="p-card-info"><span class="p-tag">Urbano</span><h3>Urbano — Titolo</h3><p>Anno · Luogo</p></div>
+
+          <article class="p-card p-tall js-reveal-fade" data-cat="urban" role="listitem" tabindex="0" aria-label="Urban — Titolo 1">
+            <div class="p-card-img"><div class="ph-img" aria-label="Urban — Titolo"><span>foto.jpg</span></div></div>
+            <div class="p-card-info"><span class="p-tag">Urban</span><h3>Titolo scatto</h3><p>Anno · Luogo</p></div>
           </article>
-          <article class="p-card js-reveal-fade" data-cat="evento" role="listitem" tabindex="0" aria-label="Evento — Titolo">
-            <div class="p-card-img"><div class="ph-img" aria-label="Evento — Titolo"><span>foto.jpg</span></div></div>
-            <div class="p-card-info"><span class="p-tag">Evento</span><h3>Evento — Titolo</h3><p>Anno · Luogo</p></div>
+
+          <article class="p-card js-reveal-fade" data-cat="urban" role="listitem" tabindex="0" aria-label="Urban — Titolo 2">
+            <div class="p-card-img"><div class="ph-img" aria-label="Urban — Titolo 2"><span>foto.jpg</span></div></div>
+            <div class="p-card-info"><span class="p-tag">Urban</span><h3>Titolo scatto 2</h3><p>Anno · Luogo</p></div>
           </article>
-          <article class="p-card p-wide js-reveal-fade" data-cat="brand" role="listitem" tabindex="0" aria-label="Brand — Titolo">
-            <div class="p-card-img"><div class="ph-img" aria-label="Brand — Titolo"><span>foto.jpg</span></div></div>
-            <div class="p-card-info"><span class="p-tag">Brand</span><h3>Brand — Titolo</h3><p>Anno · Cliente</p></div>
+
+          <article class="p-card p-wide js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0" aria-label="Clienti — Titolo 2">
+            <div class="p-card-img"><div class="ph-img" aria-label="Clienti — Titolo 2"><span>foto.jpg</span></div></div>
+            <div class="p-card-info"><span class="p-tag">Clienti</span><h3>Titolo progetto 2</h3><p>Anno · Cliente</p></div>
           </article>
-          <article class="p-card js-reveal-fade" data-cat="ritratto" role="listitem" tabindex="0" aria-label="Ritratto — Titolo 2">
-            <div class="p-card-img"><div class="ph-img" aria-label="Ritratto 2"><span>foto.jpg</span></div></div>
-            <div class="p-card-info"><span class="p-tag">Ritratto</span><h3>Ritratto — Titolo 2</h3><p>Anno · Luogo</p></div>
+
+          <article class="p-card js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0" aria-label="Clienti — Titolo 3">
+            <div class="p-card-img"><div class="ph-img" aria-label="Clienti — Titolo 3"><span>foto.jpg</span></div></div>
+            <div class="p-card-info"><span class="p-tag">Clienti</span><h3>Titolo progetto 3</h3><p>Anno · Cliente</p></div>
           </article>
-          <article class="p-card p-tall js-reveal-fade" data-cat="urbano" role="listitem" tabindex="0" aria-label="Urbano — Titolo 2">
-            <div class="p-card-img"><div class="ph-img" aria-label="Urbano 2"><span>foto.jpg</span></div></div>
-            <div class="p-card-info"><span class="p-tag">Urbano</span><h3>Urbano — Titolo 2</h3><p>Anno · Luogo</p></div>
+
+          <article class="p-card p-tall js-reveal-fade" data-cat="urban" role="listitem" tabindex="0" aria-label="Urban — Titolo 3">
+            <div class="p-card-img"><div class="ph-img" aria-label="Urban — Titolo 3"><span>foto.jpg</span></div></div>
+            <div class="p-card-info"><span class="p-tag">Urban</span><h3>Titolo scatto 3</h3><p>Anno · Luogo</p></div>
           </article>
         </div>
       </div>
@@ -212,7 +219,7 @@
         <div class="video-featured js-reveal-fade">
           <div class="video-embed" aria-label="Video in evidenza">
             <!--
-              Sostituisci con il tuo iframe:
+              Sostituisci con:
               <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Titolo" frameborder="0" allowfullscreen loading="lazy"></iframe>
             -->
             <div class="video-ph" role="img" aria-label="Video in evidenza">
@@ -264,60 +271,109 @@
         </div>
         <h2 class="sec-h2 js-reveal-clip">Il mio kit</h2>
         <p class="sec-sub js-reveal-fade">Strumenti con cui lavoro ogni giorno.</p>
+
         <div class="gear-grid" role="list" aria-label="Lista attrezzatura">
+
+          <!-- Nikon Z6 -->
           <div class="gear-group js-reveal-fade" role="listitem">
-            <h3 class="gear-cat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
-              Fotocamere
-            </h3>
-            <ul class="gear-list">
-              <li><span>[Corpo principale]</span><small>[es. Sony A7 IV]</small></li>
-              <li><span>[Secondo corpo]</span><small>[backup]</small></li>
-            </ul>
+            <div class="gear-img-wrap">
+              <!-- Sostituisci con: <img src="img/gear/nikonz6.jpg" alt="Nikon Z6" /> -->
+              <div class="gear-img-ph" aria-label="Nikon Z6">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              </div>
+            </div>
+            <div class="gear-info">
+              <span class="gear-badge">Camera</span>
+              <h3 class="gear-name">Nikon Z6</h3>
+              <p class="gear-desc">Full-frame mirrorless 24.5 MP. Autofocus rapido, video 4K — la colonna portante di ogni shooting.</p>
+              <ul class="gear-specs">
+                <li><span>Sensore</span><span>Full-Frame 24.5 MP</span></li>
+                <li><span>Video</span><span>4K UHD 30fps</span></li>
+                <li><span>ISO</span><span>100 – 51.200</span></li>
+              </ul>
+            </div>
           </div>
+
+          <!-- DJI Osmo Action 5 Pro -->
           <div class="gear-group js-reveal-fade" role="listitem">
-            <h3 class="gear-cat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg>
-              Ottiche
-            </h3>
-            <ul class="gear-list">
-              <li><span>[Ottica principale]</span><small>[es. 35mm f/1.4]</small></li>
-              <li><span>[Ottica portrait]</span><small>[es. 85mm f/1.8]</small></li>
-              <li><span>[Zoom]</span><small>[es. 24–70mm f/2.8]</small></li>
-            </ul>
+            <div class="gear-img-wrap">
+              <!-- Sostituisci con: <img src="img/gear/osmoaction5.jpg" alt="DJI Osmo Action 5 Pro" /> -->
+              <div class="gear-img-ph" aria-label="DJI Osmo Action 5 Pro">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="2" y="6" width="20" height="14" rx="2"/><circle cx="12" cy="13" r="3"/><path d="M8 6V4a1 1 0 011-1h6a1 1 0 011 1v2"/></svg>
+              </div>
+            </div>
+            <div class="gear-info">
+              <span class="gear-badge">Action Cam</span>
+              <h3 class="gear-name">DJI Osmo Action 5 Pro</h3>
+              <p class="gear-desc">Stabilizzazione RockSteady 4.0, resistente all'acqua fino a 20 m. Perfetta per riprese dinamiche e POV.</p>
+              <ul class="gear-specs">
+                <li><span>Video</span><span>4K / 120fps</span></li>
+                <li><span>Stabilizzazione</span><span>RockSteady 4.0</span></li>
+                <li><span>Waterproof</span><span>20 m</span></li>
+              </ul>
+            </div>
           </div>
+
+          <!-- DJI Mic Mini -->
           <div class="gear-group js-reveal-fade" role="listitem">
-            <h3 class="gear-cat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
-              Video
-            </h3>
-            <ul class="gear-list">
-              <li><span>[Gimbal]</span><small>[es. DJI RS 3]</small></li>
-              <li><span>[Drone]</span><small>[es. DJI Mini 3 Pro]</small></li>
-              <li><span>[Microfono]</span><small>[es. Rode VideoMic]</small></li>
-            </ul>
+            <div class="gear-img-wrap">
+              <!-- Sostituisci con: <img src="img/gear/djimicmini.jpg" alt="DJI Mic Mini" /> -->
+              <div class="gear-img-ph" aria-label="DJI Mic Mini">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+              </div>
+            </div>
+            <div class="gear-info">
+              <span class="gear-badge">Audio</span>
+              <h3 class="gear-name">DJI Mic Mini</h3>
+              <p class="gear-desc">Microfono wireless compatto con audio a 48 kHz. Indossabile, latenza zero — audio professionale sempre.</p>
+              <ul class="gear-specs">
+                <li><span>Frequenza</span><span>2.4 GHz</span></li>
+                <li><span>Range</span><span>250 m</span></li>
+                <li><span>Qualità</span><span>48 kHz / 24-bit</span></li>
+              </ul>
+            </div>
           </div>
+
+          <!-- MacBook Pro 2018 -->
           <div class="gear-group js-reveal-fade" role="listitem">
-            <h3 class="gear-cat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
-              Luce
-            </h3>
-            <ul class="gear-list">
-              <li><span>[Flash / Strobe]</span><small>[es. Godox AD200]</small></li>
-              <li><span>[LED Panel]</span><small>[luce continua]</small></li>
-            </ul>
+            <div class="gear-img-wrap">
+              <!-- Sostituisci con: <img src="img/gear/macbookpro.jpg" alt="MacBook Pro 2018" /> -->
+              <div class="gear-img-ph" aria-label="MacBook Pro 2018">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
+              </div>
+            </div>
+            <div class="gear-info">
+              <span class="gear-badge">Laptop</span>
+              <h3 class="gear-name">MacBook Pro 2018</h3>
+              <p class="gear-desc">15" con Intel Core i7 e Radeon Pro 555X. On-the-go editing, preview sul campo e flusso di lavoro mobile.</p>
+              <ul class="gear-specs">
+                <li><span>CPU</span><span>Intel Core i7</span></li>
+                <li><span>RAM</span><span>16 GB</span></li>
+                <li><span>GPU</span><span>Radeon Pro 555X</span></li>
+              </ul>
+            </div>
           </div>
+
+          <!-- Mac Studio -->
           <div class="gear-group js-reveal-fade" role="listitem">
-            <h3 class="gear-cat">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-              Post-produzione
-            </h3>
-            <ul class="gear-list">
-              <li><span>[Software foto]</span><small>[es. Lightroom]</small></li>
-              <li><span>[Software video]</span><small>[es. Premiere Pro]</small></li>
-              <li><span>[Color grading]</span><small>[es. DaVinci Resolve]</small></li>
-            </ul>
+            <div class="gear-img-wrap">
+              <!-- Sostituisci con: <img src="img/gear/macstudio.jpg" alt="Mac Studio" /> -->
+              <div class="gear-img-ph" aria-label="Mac Studio">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="4" y="4" width="16" height="12" rx="2"/><rect x="8" y="18" width="8" height="2" rx="1"/><line x1="12" y1="16" x2="12" y2="18"/></svg>
+              </div>
+            </div>
+            <div class="gear-info">
+              <span class="gear-badge">Workstation</span>
+              <h3 class="gear-name">Mac Mini / Studio</h3>
+              <p class="gear-desc">Postazione fissa per il color grading e montaggio pesante. Rendering rapido, export in tempi minimi.</p>
+              <ul class="gear-specs">
+                <li><span>Chip</span><span>Apple Silicon</span></li>
+                <li><span>Uso</span><span>Color grading</span></li>
+                <li><span>Software</span><span>DaVinci · Premiere</span></li>
+              </ul>
+            </div>
           </div>
+
         </div>
       </div>
     </section>
@@ -331,62 +387,70 @@
           <span class="sec-label">Offerte</span>
         </div>
         <h2 class="sec-h2 js-reveal-clip">Pacchetti disponibili</h2>
-        <p class="sec-sub js-reveal-fade">Fotografia e video professionale su misura per ogni esigenza.</p>
+        <p class="sec-sub js-reveal-fade">Foto e video professionali su misura. Ogni pacchetto è personalizzabile — scrivimi per un preventivo.</p>
+
         <div class="pricing-grid" role="list" aria-label="Confronto pacchetti">
+
           <!-- BASIC -->
           <article class="price-card js-reveal-fade" role="listitem" aria-label="Pacchetto Basic">
             <div class="price-head">
               <span class="price-tier">Basic</span>
-              <div class="price-val"><small>da</small><strong>XXX€</strong></div>
-              <p>Ideale per privati, eventi personali o contenuti social essenziali.</p>
+              <div class="price-val"><small>da</small><strong>199€</strong></div>
+              <p>Ideale per privati, piccoli brand e contenuti social. Shooting rapido, risultato curato.</p>
             </div>
             <ul class="price-feats" aria-label="Caratteristiche Basic">
-              <li class="feat-yes">X ore di shooting fotografico</li>
-              <li class="feat-yes">XX foto selezionate e ritoccate</li>
-              <li class="feat-yes">Consegna entro X giorni</li>
-              <li class="feat-yes">Gallery digitale privata</li>
-              <li class="feat-no">Video incluso</li>
-              <li class="feat-no">Riprese drone</li>
+              <li class="feat-yes">1,5 ore di shooting fotografico</li>
+              <li class="feat-yes">25 foto selezionate e ritoccate</li>
+              <li class="feat-yes">Consegna entro 5 giorni lavorativi</li>
+              <li class="feat-yes">Gallery digitale privata ad alta risoluzione</li>
+              <li class="feat-yes">1 revisione inclusa</li>
+              <li class="feat-no">Video / Reels</li>
+              <li class="feat-no">Riprese con action cam</li>
             </ul>
             <a href="#contatti" class="btn-price" aria-label="Richiedi info pacchetto Basic">Richiedi info</a>
           </article>
+
           <!-- MEDIUM -->
           <article class="price-card price-hot js-reveal-fade" role="listitem" aria-label="Pacchetto Medium — più richiesto">
             <div class="price-badge" aria-label="Più richiesto">Più richiesto</div>
             <div class="price-head">
               <span class="price-tier">Medium</span>
-              <div class="price-val"><small>da</small><strong>XXX€</strong></div>
-              <p>Per eventi, wedding, campagne social e brand content completi.</p>
+              <div class="price-val"><small>da</small><strong>449€</strong></div>
+              <p>Per eventi, shooting brand e creator che vogliono foto e video pronti per i social.</p>
             </div>
             <ul class="price-feats" aria-label="Caratteristiche Medium">
-              <li class="feat-yes">X ore shooting foto + video</li>
-              <li class="feat-yes">XX foto ritoccate</li>
-              <li class="feat-yes">Video montato (X–X min)</li>
-              <li class="feat-yes">Reels / short clip inclusi</li>
+              <li class="feat-yes">Mezza giornata (3–4 ore) foto + video</li>
+              <li class="feat-yes">50 foto selezionate e ritoccate</li>
+              <li class="feat-yes">Video montato 1–2 min (Reels / Promo)</li>
+              <li class="feat-yes">Clip verticali per Instagram / TikTok</li>
               <li class="feat-yes">Color grading professionale</li>
-              <li class="feat-no">Riprese drone</li>
+              <li class="feat-yes">Audio con DJI Mic Mini</li>
+              <li class="feat-no">Riprese action cam POV</li>
             </ul>
             <a href="#contatti" class="btn-price btn-price-inv" aria-label="Richiedi info pacchetto Medium">Richiedi info</a>
           </article>
+
           <!-- PREMIUM -->
           <article class="price-card js-reveal-fade" role="listitem" aria-label="Pacchetto Premium">
             <div class="price-head">
               <span class="price-tier">Premium</span>
-              <div class="price-val"><small>da</small><strong>XXX€</strong></div>
-              <p>Produzione full-service per aziende, campagne ADV e progetti editoriali.</p>
+              <div class="price-val"><small>da</small><strong>849€</strong></div>
+              <p>Produzione full-service per aziende, campagne ADV, eventi e progetti editoriali complessi.</p>
             </div>
             <ul class="price-feats" aria-label="Caratteristiche Premium">
               <li class="feat-yes">Giornata intera foto + video</li>
-              <li class="feat-yes">XX+ foto ritoccate</li>
-              <li class="feat-yes">Video professionale (X–X min)</li>
-              <li class="feat-yes">Riprese drone / aerial</li>
-              <li class="feat-yes">Sound design + color grading</li>
-              <li class="feat-yes">Revisioni illimitate</li>
+              <li class="feat-yes">100+ foto ritoccate ad alta risoluzione</li>
+              <li class="feat-yes">Video professionale 3–5 min</li>
+              <li class="feat-yes">Riprese POV con DJI Osmo Action 5 Pro</li>
+              <li class="feat-yes">Audio professionale DJI Mic Mini</li>
+              <li class="feat-yes">Color grading avanzato + sound design</li>
+              <li class="feat-yes">2 revisioni incluse · consegna prioritaria</li>
             </ul>
             <a href="#contatti" class="btn-price" aria-label="Richiedi info pacchetto Premium">Richiedi info</a>
           </article>
+
         </div>
-        <p class="price-note js-reveal-fade">* Prezzi indicativi. Ogni pacchetto è personalizzabile — scrivimi per un preventivo su misura.</p>
+        <p class="price-note js-reveal-fade">* Prezzi indicativi IVA esclusa. Trasferte fuori Milano valutate separatamente. Ogni pacchetto è personalizzabile.</p>
       </div>
     </section>
 
@@ -411,6 +475,7 @@
           </div>
         </div>
       </div>
+
       <div class="contact-body">
         <div class="container">
           <div class="contact-grid">
@@ -432,6 +497,7 @@
                 </a>
               </div>
             </div>
+
             <form class="contact-form js-reveal-right" id="contact-form" novalidate aria-label="Modulo di contatto">
               <div class="form-row">
                 <div class="f-group">
@@ -492,7 +558,6 @@
   </footer>
 
   <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-
   <script src="script.js"></script>
 </body>
 </html>
