@@ -223,14 +223,10 @@ ul, ol     { list-style: none; }
   background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 25%, rgba(6,8,15,.75) 100%);
 }
 
-/* layout interno hero: testo | collage */
+/* layout interno hero */
 .hero-inner {
-  position: relative;
-  z-index: 2;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  gap: 4rem;
+  position: relative; z-index: 2; width: 100%;
+  display: flex; align-items: center; gap: 4rem;
 }
 
 /* TESTO */
@@ -261,54 +257,99 @@ ul, ol     { list-style: none; }
 .sep { opacity: .4; }
 .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
 
-/* COLLAGE */
+/* ══════════════════════════════════════════════════════════
+   COLLAGE DISORDINATO
+   ══════════════════════════════════════════════════════════ */
 .hero-collage {
-  flex: 0 0 clamp(280px, 38%, 540px);
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto auto;
-  gap: 10px;
+  flex: 0 0 clamp(300px, 42%, 560px);
+  position: relative;
+  height: clamp(380px, 55vw, 580px);
 }
 
-/* Le 4 posizioni del collage */
 .hc-item {
+  position: absolute;
   overflow: hidden;
   border-radius: 6px;
-  position: relative;
+  border: 3px solid rgba(255,255,255,.06);
+  box-shadow: 0 8px 32px rgba(0,0,0,.55);
+  transition: transform .4s var(--easing), box-shadow .4s;
 }
+
 .hc-item img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform .7s var(--easing);
 }
-.hc-item:hover img { transform: scale(1.04); }
 
-/* Foto 1: occupa entrambe le colonne, riga 1 */
-.hc-1 { grid-column: 1 / 3; }
-.hc-1 .hc-ph,
-.hc-1 img { aspect-ratio: 16/9; }
+.hc-item:hover {
+  z-index: 10 !important;
+  box-shadow: 0 20px 60px rgba(0,0,0,.8);
+}
 
-/* Foto 2 e 3: piccole, riga 2 */
-.hc-2 .hc-ph,
-.hc-2 img,
-.hc-3 .hc-ph,
-.hc-3 img { aspect-ratio: 1/1; }
+/* Foto 1 — grande verticale, inclinata a sinistra */
+.hc-1 {
+  width: 58%;
+  aspect-ratio: 3/4;
+  top: 0;
+  left: 5%;
+  transform: rotate(-3deg);
+  z-index: 3;
+}
+.hc-1:hover { transform: rotate(-3deg) scale(1.04); }
 
-/* Foto 4: riga 3 intera, formato orizzontale */
-.hc-4 { grid-column: 1 / 3; }
-.hc-4 .hc-ph,
-.hc-4 img { aspect-ratio: 21/9; }
+/* Foto 2 — verticale sovrapposta a destra, inclinata a destra */
+.hc-2 {
+  width: 48%;
+  aspect-ratio: 3/4;
+  top: 4%;
+  right: 0;
+  transform: rotate(4.5deg);
+  z-index: 4;
+}
+.hc-2:hover { transform: rotate(4.5deg) scale(1.04); }
+
+/* Foto 3 — orizzontale in basso a sinistra */
+.hc-3 {
+  width: 46%;
+  aspect-ratio: 4/3;
+  bottom: 4%;
+  left: 0;
+  transform: rotate(2deg);
+  z-index: 5;
+}
+.hc-3:hover { transform: rotate(2deg) scale(1.04); }
+
+/* Foto 4 — quadrata in basso al centro, inclinata */
+.hc-4 {
+  width: 38%;
+  aspect-ratio: 1/1;
+  bottom: 0;
+  left: 32%;
+  transform: rotate(-5deg);
+  z-index: 6;
+}
+.hc-4:hover { transform: rotate(-5deg) scale(1.04); }
+
+/* Foto 5 — piccola in basso a destra */
+.hc-5 {
+  width: 34%;
+  aspect-ratio: 4/3;
+  bottom: 6%;
+  right: 2%;
+  transform: rotate(3.5deg);
+  z-index: 3;
+}
+.hc-5:hover { transform: rotate(3.5deg) scale(1.04); }
 
 /* Placeholder collage */
 .hc-ph {
   width: 100%;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   background: var(--bg3);
-  border: 1px solid var(--border);
   font-family: var(--font-display);
   font-size: .7rem;
   letter-spacing: .12em;
@@ -316,12 +357,12 @@ ul, ol     { list-style: none; }
   color: var(--text-mute);
 }
 
-/* su mobile: collage sotto il testo */
+/* Mobile: collage sotto il testo */
 @media (max-width: 767px) {
-  .hero-inner     { flex-direction: column; align-items: flex-start; }
-  .hero-collage   { width: 100%; flex: none; }
-  .hero-name      { font-size: clamp(3.8rem,18vw,7rem); }
-  .hc-4           { display: none; } /* su mobile nascondi la 4a per non appesantire */
+  .hero-inner   { flex-direction: column; align-items: flex-start; }
+  .hero-collage { width: 100%; flex: none; height: clamp(260px, 75vw, 380px); }
+  .hero-name    { font-size: clamp(3.8rem, 18vw, 7rem); }
+  .hc-5         { display: none; }
 }
 
 /* SCROLL INDICATOR */
