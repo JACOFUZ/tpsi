@@ -121,8 +121,7 @@ ul, ol     { list-style: none; }
 
 /* ── HAMBURGER ── */
 .hamburger {
-  position: relative; z-index: 900;
-  width: 40px; height: 40px;
+  position: relative; z-index: 900; width: 40px; height: 40px;
   display: flex; flex-direction: column; align-items: flex-end; justify-content: center;
   gap: 7px; padding: 4px;
 }
@@ -182,12 +181,19 @@ ul, ol     { list-style: none; }
 .js-reveal-right { opacity:0; transform:translateX(50px);  transition: opacity .9s var(--easing),transform .9s var(--easing); }
 .js-reveal-fade.in,.js-reveal-clip.in,.js-reveal-left.in,.js-reveal-right.in { opacity:1;transform:none; }
 
-/* ── HERO ── */
+/* ══════════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════════ */
 .s-hero {
-  position: relative; min-height: 100svh;
-  display: flex; align-items: flex-end;
-  padding: clamp(2rem,8vh,5rem) clamp(1.5rem,5vw,4rem); overflow: hidden;
+  position: relative;
+  min-height: 100svh;
+  display: flex;
+  align-items: center;
+  padding: clamp(5rem,10vh,8rem) clamp(1.5rem,5vw,4rem) clamp(2rem,5vh,4rem);
+  overflow: hidden;
 }
+
+/* sfondo */
 .hero-bg { position: absolute; inset: 0; overflow: hidden; }
 .hero-bg video, .hero-bg img { position:absolute;inset:0;width:100%;height:100%;object-fit:cover; }
 .hero-bg-placeholder {
@@ -216,7 +222,19 @@ ul, ol     { list-style: none; }
   position: absolute; inset: 0;
   background: radial-gradient(ellipse 100% 100% at 50% 50%, transparent 25%, rgba(6,8,15,.75) 100%);
 }
-.hero-body { position: relative; z-index: 2; max-width: 900px; }
+
+/* layout interno hero: testo | collage */
+.hero-inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+/* TESTO */
+.hero-body { flex: 1; min-width: 0; }
 .hero-loc {
   display: flex; align-items: center; gap: .7rem; margin-bottom: 1.5rem;
   font-family: var(--font-display); font-size: .8rem;
@@ -230,20 +248,85 @@ ul, ol     { list-style: none; }
 .hero-name {
   display: flex; flex-direction: column;
   font-family: var(--font-display); font-weight: 900;
-  font-size: clamp(4.5rem,16vw,14rem);
+  font-size: clamp(3.5rem,10vw,10rem);
   text-transform: uppercase; line-height: .9; letter-spacing: -.02em; margin-bottom: 1.5rem;
 }
 .hero-line    { color: var(--text); }
 .hero-line-em { color: transparent; -webkit-text-stroke: 1.5px var(--accent); font-style: italic; }
 .hero-tagline {
-  font-size: clamp(.85rem,2vw,1.05rem); color: var(--text-dim);
+  font-size: clamp(.85rem,1.6vw,1.05rem); color: var(--text-dim);
   letter-spacing: .05em; margin-bottom: 2.5rem;
 }
 .hero-tagline em { font-family: var(--font-serif); font-style: italic; color: var(--accent-sat); }
 .sep { opacity: .4; }
-.hero-btns  { display: flex; gap: 1rem; flex-wrap: wrap; }
-.hero-meta  {
-  position: absolute; bottom: 2.5rem; right: clamp(1.5rem,5vw,4rem);
+.hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+/* COLLAGE */
+.hero-collage {
+  flex: 0 0 clamp(280px, 38%, 540px);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 10px;
+}
+
+/* Le 4 posizioni del collage */
+.hc-item {
+  overflow: hidden;
+  border-radius: 6px;
+  position: relative;
+}
+.hc-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .7s var(--easing);
+}
+.hc-item:hover img { transform: scale(1.04); }
+
+/* Foto 1: occupa entrambe le colonne, riga 1 */
+.hc-1 { grid-column: 1 / 3; }
+.hc-1 .hc-ph,
+.hc-1 img { aspect-ratio: 16/9; }
+
+/* Foto 2 e 3: piccole, riga 2 */
+.hc-2 .hc-ph,
+.hc-2 img,
+.hc-3 .hc-ph,
+.hc-3 img { aspect-ratio: 1/1; }
+
+/* Foto 4: riga 3 intera, formato orizzontale */
+.hc-4 { grid-column: 1 / 3; }
+.hc-4 .hc-ph,
+.hc-4 img { aspect-ratio: 21/9; }
+
+/* Placeholder collage */
+.hc-ph {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  font-family: var(--font-display);
+  font-size: .7rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--text-mute);
+}
+
+/* su mobile: collage sotto il testo */
+@media (max-width: 767px) {
+  .hero-inner     { flex-direction: column; align-items: flex-start; }
+  .hero-collage   { width: 100%; flex: none; }
+  .hero-name      { font-size: clamp(3.8rem,18vw,7rem); }
+  .hc-4           { display: none; } /* su mobile nascondi la 4a per non appesantire */
+}
+
+/* SCROLL INDICATOR */
+.hero-meta {
+  position: absolute; bottom: 2rem; right: clamp(1.5rem,5vw,4rem);
   display: flex; flex-direction: column; align-items: center; gap: .8rem; z-index: 2;
 }
 .scroll-hint  { writing-mode: vertical-rl; font-size: .65rem; letter-spacing: .25em; text-transform: uppercase; color: var(--text-mute); }
@@ -416,28 +499,20 @@ ul, ol     { list-style: none; }
   transition:border-color .3s, transform .3s var(--easing), box-shadow .3s;
 }
 .price-card:hover { border-color:var(--accent-dim); transform:translateY(-6px); box-shadow:0 24px 60px rgba(0,0,0,.4); }
-.price-card.price-hot {
-  border-color: var(--accent);
-  background: linear-gradient(160deg, rgba(74,143,255,.07) 0%, var(--bg3) 55%);
-}
+.price-card.price-hot { border-color:var(--accent); background:linear-gradient(160deg,rgba(74,143,255,.07) 0%,var(--bg3) 55%); }
 .price-card.price-hot:hover { box-shadow:0 24px 60px rgba(74,143,255,.15); }
-.price-badge {
-  position:absolute; top:-12px; left:50%; transform:translateX(-50%);
-  background:var(--accent); color:#fff; font-family:var(--font-display); font-weight:700;
-  font-size:.65rem; letter-spacing:.2em; text-transform:uppercase;
-  padding:.3rem 1rem; border-radius:2px; white-space:nowrap;
-}
+.price-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%); background:var(--accent); color:#fff; font-family:var(--font-display); font-weight:700; font-size:.65rem; letter-spacing:.2em; text-transform:uppercase; padding:.3rem 1rem; border-radius:2px; white-space:nowrap; }
 .price-tier  { display:block; font-family:var(--font-display); font-weight:800; font-size:1.5rem; text-transform:uppercase; letter-spacing:.1em; margin-bottom:.5rem; }
 .price-val   { display:flex; align-items:baseline; gap:.4rem; margin-bottom:.7rem; }
-.price-val small    { font-size:.85rem; color:var(--text-dim); }
-.price-val strong   { font-family:var(--font-display); font-weight:900; font-size:2.5rem; color:var(--accent); line-height:1; }
-.price-head p       { font-size:.9rem; color:var(--text-dim); line-height:1.5; }
-.price-feats        { display:flex; flex-direction:column; gap:.7rem; flex:1; }
-.price-feats li     { display:flex; align-items:center; gap:.8rem; font-size:.9rem; color:var(--text-dim); }
+.price-val small  { font-size:.85rem; color:var(--text-dim); }
+.price-val strong { font-family:var(--font-display); font-weight:900; font-size:2.5rem; color:var(--accent); line-height:1; }
+.price-head p     { font-size:.9rem; color:var(--text-dim); line-height:1.5; }
+.price-feats      { display:flex; flex-direction:column; gap:.7rem; flex:1; }
+.price-feats li   { display:flex; align-items:center; gap:.8rem; font-size:.9rem; color:var(--text-dim); }
 .price-feats li::before { content:'✓'; color:var(--accent); font-size:.8rem; flex-shrink:0; font-weight:700; }
-.feat-no            { opacity:.35; }
-.feat-no::before    { content:'–' !important; color:var(--text-mute) !important; }
-.price-note         { margin-top:2rem; font-size:.8rem; color:var(--text-mute); text-align:center; line-height:1.7; }
+.feat-no          { opacity:.35; }
+.feat-no::before  { content:'–' !important; color:var(--text-mute) !important; }
+.price-note       { margin-top:2rem; font-size:.8rem; color:var(--text-mute); text-align:center; line-height:1.7; }
 
 /* ── COLLABORAZIONI / CONTATTI ── */
 .s-contact { background:var(--bg); padding-block:0; }
@@ -486,54 +561,26 @@ select option { background:var(--bg3); color:var(--text); }
 
 /* ── FOOTER ── */
 .site-footer { border-top: 1px solid var(--border); padding-block: 3rem; background: var(--bg); }
-.footer-inner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.8rem;
-  text-align: center;
-}
-.footer-brand {
-  font-family: var(--font-display); font-weight: 900;
-  font-size: 1.3rem; letter-spacing: .25em; color: var(--accent);
-}
-.footer-contacts {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem 2.5rem;
-}
-.footer-contact-link {
-  display: flex;
-  align-items: center;
-  gap: .55rem;
-  font-size: .85rem;
-  letter-spacing: .04em;
-  color: var(--text-dim);
-  transition: color .25s;
-}
-.footer-contact-link svg { width: 15px; height: 15px; flex-shrink: 0; }
-.footer-contact-link:hover { color: var(--accent); }
-.footer-copy { font-size: .75rem; letter-spacing: .1em; color: var(--text-mute); text-transform: uppercase; }
+.footer-inner { display:flex; flex-direction:column; align-items:center; gap:1.8rem; text-align:center; }
+.footer-brand { font-family:var(--font-display); font-weight:900; font-size:1.3rem; letter-spacing:.25em; color:var(--accent); }
+.footer-contacts { display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:1rem 2.5rem; }
+.footer-contact-link { display:flex; align-items:center; gap:.55rem; font-size:.85rem; letter-spacing:.04em; color:var(--text-dim); transition:color .25s; }
+.footer-contact-link svg { width:15px; height:15px; flex-shrink:0; }
+.footer-contact-link:hover { color:var(--accent); }
+.footer-copy { font-size:.75rem; letter-spacing:.1em; color:var(--text-mute); text-transform:uppercase; }
 
 /* ── TOAST ── */
 .toast {
-  position:fixed; bottom:2rem; left:50%;
-  transform:translateX(-50%) translateY(120%);
-  background:var(--accent); color:#fff;
-  font-family:var(--font-display); font-weight:700; font-size:.85rem;
-  letter-spacing:.1em; text-transform:uppercase;
-  padding:.85rem 2rem; border-radius:var(--r);
-  z-index:9500; opacity:0;
-  transition:transform .45s var(--easing), opacity .45s;
-  pointer-events:none; white-space:nowrap;
+  position:fixed; bottom:2rem; left:50%; transform:translateX(-50%) translateY(120%);
+  background:var(--accent); color:#fff; font-family:var(--font-display); font-weight:700;
+  font-size:.85rem; letter-spacing:.1em; text-transform:uppercase;
+  padding:.85rem 2rem; border-radius:var(--r); z-index:9500; opacity:0;
+  transition:transform .45s var(--easing), opacity .45s; pointer-events:none; white-space:nowrap;
 }
 .toast.show { transform:translateX(-50%) translateY(0); opacity:1; }
 
 /* ── RESPONSIVE ── */
 @media (max-width:599px) {
-  .hero-name { font-size:clamp(4rem,22vw,7rem); }
   .p-card.p-wide { grid-column:span 1; }
   .tl-item { grid-template-columns:60px 1fr; gap:1rem; }
   .footer-contacts { gap:.9rem 1.5rem; }
@@ -542,3 +589,40 @@ select option { background:var(--bg3); color:var(--text); }
   *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
   html { scroll-behavior:auto; }
 }
+```
+
+---
+
+## Come aggiungere le foto — guida completa
+
+### Struttura cartelle da creare su GitHub
+```
+jacopo-fuse-portfolio/
+├── index.html
+├── style.css
+├── script.js
+└── img/
+    ├── hero/
+    │   ├── hero-1.jpg   ← foto grande hero (formato 16:9 o orizzontale)
+    │   ├── hero-2.jpg   ← foto quadrata hero
+    │   ├── hero-3.jpg   ← foto quadrata hero
+    │   └── hero-4.jpg   ← foto panoramica hero (formato 21:9 o molto largo)
+    ├── about/
+    │   └── ritratto.jpg ← foto di te nella sezione Chi Sono (formato 4:5, verticale)
+    ├── portfolio/
+    │   ├── foto-01.jpg  ← prima card griglia (4:3)
+    │   ├── foto-02.jpg  ← card tall (3:4, verticale)
+    │   ├── foto-03.jpg  ← card normale (4:3)
+    │   ├── foto-04.jpg  ← card wide (orizzontale, 16:9 va bene)
+    │   ├── foto-05.jpg  ← card normale (4:3)
+    │   └── foto-06.jpg  ← card tall (3:4, verticale)
+    ├── video/
+    │   ├── thumb-01.jpg ← miniatura video 1 (16:9)
+    │   ├── thumb-02.jpg ← miniatura video 2 (16:9)
+    │   └── thumb-03.jpg ← miniatura video 3 (16:9)
+    └── gear/
+        ├── nikon-z6.jpg      ← foto prodotto (4:3)
+        ├── osmo-action-5.jpg ← foto prodotto (4:3)
+        ├── dji-mic-mini.jpg  ← foto prodotto (4:3)
+        ├── macbook-pro.jpg   ← foto prodotto (4:3)
+        └── mac-studio.jpg    ← foto prodotto (4:3)
