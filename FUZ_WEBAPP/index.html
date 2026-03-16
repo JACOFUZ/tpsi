@@ -1,101 +1,157 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JACOFUZ | Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jacopo Fusé — Fotografo, Videomaker e Studente di Informatica. Portfolio, pacchetti professionali e collaborazioni brand." />
+  <title>Jacopo Fusé</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,200;0,400;0,700;0,800;0,900;1,200;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,600;1,300;1,600&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <div class="nav-container">
-      <div class="menu-toggle" id="mobile-menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <ul class="nav-links">
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#timeline">Timeline</a></li>
-        <li><a href="#photos">Photos</a></li>
-        <li><a href="#packages">Offerte</a></li>
-      </ul>
-    </div>
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-progress"><div class="loader-bar" id="loader-bar"></div></div>
+    <p class="loader-name">JACOPO FUSÉ</p>
+  </div>
+
+  <header class="site-header" id="site-header" role="banner">
+    <a href="#hero" class="brand-mark" aria-label="Jacopo Fusé – torna all'inizio">JF</a>
+    <button class="hamburger" id="hamburger" aria-label="Apri il menu di navigazione" aria-expanded="false" aria-controls="nav-overlay">
+      <span class="ham-bar"></span>
+      <span class="ham-bar"></span>
+    </button>
   </header>
 
-  <!-- HERO -->
-  <section id="hero" class="hero">
-    <div class="hero-overlay"></div>
-    <a href="#packages" class="btn hero-btn">Scopri di più</a>
-  </section>
+  <div class="nav-overlay" id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigazione" hidden>
+    <nav aria-label="Sezioni del sito">
+      <ol class="nav-list" role="list">
+        <li><a href="#hero"         class="nav-link" data-num="00">Home</a></li>
+        <li><a href="#chi-sono"     class="nav-link" data-num="01">Chi Sono</a></li>
+        <li><a href="#foto"         class="nav-link" data-num="02">Fotografia</a></li>
+        <li><a href="#esperienze"   class="nav-link" data-num="03">Esperienze</a></li>
+        <li><a href="#video"        class="nav-link" data-num="04">Video</a></li>
+        <li><a href="#attrezzatura" class="nav-link" data-num="05">Attrezzatura</a></li>
+        <li><a href="#offerte"      class="nav-link" data-num="06">Offerte</a></li>
+        <li><a href="#contatti"     class="nav-link" data-num="07">Contatti</a></li>
+      </ol>
+    </nav>
+    <div class="nav-overlay-foot">Milano, Italia · <span class="year-span"></span></div>
+  </div>
 
-  <!-- TIMELINE -->
-  <section id="timeline" class="timeline-section">
-    <h2>La mia storia</h2>
-    <div class="timeline">
-      <div class="timeline-item left">
-        <div class="content">
-          <h3>2015</h3>
-          <p>Inizio la mia passione per la tecnologia.</p>
+  <main id="main">
+
+    <!-- HERO -->
+    <section class="s-hero" id="hero" aria-label="Presentazione">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-grain"></div>
+        <div class="hero-bg-placeholder">
+          <div class="bg-lines" aria-hidden="true"></div>
+        </div>
+        <div class="hero-vignette"></div>
+      </div>
+      <div class="hero-body">
+        <p class="hero-loc js-reveal-fade">
+          <span class="live-dot" aria-hidden="true"></span>
+          Milano — Italia
+        </p>
+        <h1 class="hero-name">
+          <span class="hero-line js-reveal-clip">JACOPO</span>
+          <span class="hero-line hero-line-em js-reveal-clip">FUSÉ</span>
+        </h1>
+        <p class="hero-tagline js-reveal-fade">
+          Fotografo &amp; Videomaker
+          <span class="sep" aria-hidden="true"> · </span>
+          <em>Studente di Informatica</em>
+        </p>
+        <div class="hero-btns js-reveal-fade">
+          <a href="#foto"    class="btn-fill" aria-label="Vai al portfolio fotografico">Portfolio</a>
+          <a href="#offerte" class="btn-line" aria-label="Scopri i pacchetti disponibili">Pacchetti</a>
         </div>
       </div>
-      <div class="timeline-item right">
-        <div class="content">
-          <h3>2018</h3>
-          <p>Primi video editing e progetti web.</p>
+      <div class="hero-meta" aria-hidden="true">
+        <span class="scroll-hint">scroll</span>
+        <div class="scroll-track"><div class="scroll-thumb"></div></div>
+      </div>
+    </section>
+
+    <!-- CHI SONO -->
+    <section class="s-about section" id="chi-sono" aria-label="Biografia">
+      <div class="container">
+        <div class="sec-tag js-reveal-fade">
+          <span class="sec-num">01</span>
+          <span class="sec-line" aria-hidden="true"></span>
+          <span class="sec-label">Chi Sono</span>
+        </div>
+        <div class="about-grid">
+          <div class="about-visual js-reveal-left">
+            <!-- Sostituisci con: <img src="img/ritratto.jpg" alt="Jacopo Fusé" /> -->
+            <div class="photo-ph" role="img" aria-label="Foto di Jacopo Fusé">
+              <span>La tua foto</span>
+            </div>
+            <div class="photo-frame" aria-hidden="true"></div>
+          </div>
+          <div class="about-copy js-reveal-right">
+            <h2 class="about-h2">Racconto storie.<br /><em>Un frame alla volta.</em></h2>
+            <p>Ciao, sono Jacopo. Fotografo e videomaker con base a Milano, cresciuto con la macchina fotografica in mano e la costante voglia di fermare momenti che altrimenti scivolerebbero via in silenzio.</p>
+            <p>Ogni scatto è una scelta — di luce, di distanza, di istante. Ogni video è un racconto che trova il suo ritmo nel montaggio. Lavoro su ritratti, eventi, campagne brand e contenuti digitali, portando sempre una visione personale.</p>
+            <p>Parallelamente studio Informatica: la logica del codice ha affinato il mio pensiero visivo, insegnandomi a costruire esperienze che funzionano davvero.</p>
+            <p class="ph-text">[Aggiungi: università, anno di corso, esperienze, interessi personali…]</p>
+            <div class="about-stats" aria-label="Numeri chiave">
+              <div class="stat">
+                <b class="stat-n" data-target="60">0</b><sup>+</sup>
+                <span>Progetti</span>
+              </div>
+              <div class="stat">
+                <b class="stat-n" data-target="3">0</b>
+                <span>Anni attivo</span>
+              </div>
+              <div class="stat">
+                <b class="stat-n" data-target="25">0</b><sup>+</sup>
+                <span>Clienti</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="timeline-item left">
-        <div class="content">
-          <h3>2020</h3>
-          <p>Collaborazioni e contenuti automotive.</p>
+    </section>
+
+    <!-- FOTOGRAFIA -->
+    <section class="s-photo section" id="foto" aria-label="Portfolio fotografico">
+      <div class="container-wide">
+        <div class="sec-tag js-reveal-fade">
+          <span class="sec-num">02</span>
+          <span class="sec-line" aria-hidden="true"></span>
+          <span class="sec-label">Fotografia</span>
         </div>
-      </div>
-      <div class="timeline-item right">
-        <div class="content">
-          <h3>2023</h3>
-          <p>Avvio del canale e nuovi progetti professionali.</p>
+        <h2 class="sec-h2 js-reveal-clip">Scatti selezionati</h2>
+        <div class="filters js-reveal-fade" role="group" aria-label="Filtra per categoria">
+          <button class="f-btn active" data-filter="all"      aria-pressed="true">Tutti</button>
+          <button class="f-btn"        data-filter="ritratto" aria-pressed="false">Ritratti</button>
+          <button class="f-btn"        data-filter="urbano"   aria-pressed="false">Urbano</button>
+          <button class="f-btn"        data-filter="evento"   aria-pressed="false">Eventi</button>
+          <button class="f-btn"        data-filter="brand"    aria-pressed="false">Brand</button>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- FOTO SEZIONE -->
-  <section id="photos" class="photos-section">
-    <div class="photo-row">
-      <img src="FUZ_WEBAPP/photo1.jpg" alt="Foto 1">
-      <img src="FUZ_WEBAPP/photo2.jpg" alt="Foto 2">
-      <img src="FUZ_WEBAPP/photo3.jpg" alt="Foto 3">
-      <img src="FUZ_WEBAPP/photo4.jpg" alt="Foto 4">
-    </div>
-  </section>
-
-  <!-- PACCHETTI / OFFERS -->
-  <section id="packages" class="packages-section">
-    <h2>Offerte</h2>
-    <div class="packages-container">
-      <a href="pacchetto-base.html" class="package btn">
-        <img src="FUZ_WEBAPP/base.jpg" alt="Pacchetto Base">
-        <h3>Pacchetto Base</h3>
-      </a>
-      <a href="pacchetto-standard.html" class="package btn">
-        <img src="FUZ_WEBAPP/standard.jpg" alt="Pacchetto Standard">
-        <h3>Pacchetto Standard</h3>
-      </a>
-      <a href="pacchetto-premium.html" class="package btn">
-        <img src="FUZ_WEBAPP/premium.jpg" alt="Pacchetto Premium">
-        <h3>Pacchetto Premium</h3>
-      </a>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>© 2026 Jacopo Fusé | jacopo.fuse@gmail.com | 375 627 88 07</p>
-  </footer>
-
-  <script src="script.js"></script>
-</body>
-</html>
+        <div class="photo-grid" id="photo-grid" role="list" aria-label="Galleria fotografica">
+          <article class="p-card js-reveal-fade" data-cat="ritratto" role="listitem" tabindex="0" aria-label="Ritratto — Titolo">
+            <div class="p-card-img"><div class="ph-img" aria-label="Ritratto — Titolo"><span>foto.jpg</span></div></div>
+            <div class="p-card-info"><span class="p-tag">Ritratto</span><h3>Ritratto — Titolo</h3><p>Anno · Luogo</p></div>
+          </article>
+          <article class="p-card p-tall js-reveal-fade" data-cat="urbano" role="listitem" tabindex="0" aria-label="Urbano — Titolo">
+            <div class="p-card-img"><div class="ph-img" aria-label="Urbano — Titolo"><span>foto.jpg</span></div></div>
+            <div class="p-card-info"><span class="p-tag">Urbano</span><h3>Urbano — Titolo</h3><p>Anno · Luogo</p></div>
+          </article>
+          <article class="p-card js-reveal-fade" data-cat="evento" role="listitem" tabindex="0" aria-label="Evento — Titolo">
+            <div class="p-card-img"><div class="ph-img" aria-label="Evento — Titolo"><span>foto.jpg</span></div></div>
+            <div class="p-card-info"><span class="p-tag">Evento</span><h3>Evento — Titolo</h3><p>Anno · Luogo</p></div>
+          </article>
+          <article class="p-card p-wide js-reveal-fade" data-cat="brand" role="listitem" tabindex="0" aria-label="Brand — Titolo">
+            <div class="p-card-img"><div class="ph-img" aria-label="Brand — Titolo"><span>foto.jpg</span></div></div>
+            <div class="p-card-info"><span class="p-tag">Brand</span><h3>Brand — Titolo</h3><p>Anno · Cliente</p></div>
+          </article>
+          <article class="p-card js-reveal-fade" data-cat="ritratto" role="listitem" tabindex="0" aria-label="Ritratto — Titolo 2
