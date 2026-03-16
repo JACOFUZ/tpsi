@@ -48,8 +48,6 @@
 
     <!-- ═══════════════════════════ HERO ═══════════════════════════ -->
     <section class="s-hero" id="hero" aria-label="Presentazione">
-
-      <!-- Sfondo scuro con grain -->
       <div class="hero-bg" aria-hidden="true">
         <div class="hero-grain"></div>
         <div class="hero-bg-placeholder">
@@ -58,10 +56,8 @@
         <div class="hero-vignette"></div>
       </div>
 
-      <!-- Layout a due colonne: testo sinistra, collage destra -->
       <div class="hero-inner">
 
-        <!-- COLONNA SINISTRA: testo -->
         <div class="hero-body">
           <p class="hero-loc js-reveal-fade">
             <span class="live-dot" aria-hidden="true"></span>
@@ -82,41 +78,42 @@
           </div>
         </div>
 
-       <!-- COLONNA DESTRA: collage disordinato -->
-<div class="hero-collage js-reveal-fade" aria-label="Foto di Jacopo Fusé">
+        <!-- COLLAGE DISORDINATO -->
+        <div class="hero-collage js-reveal-fade" aria-label="Foto di Jacopo Fusé">
 
-  <div class="hc-item hc-1">
-    <!-- <img src="img/hero/hero-1.jpg" alt="Jacopo Fusé" /> -->
-    <div class="hc-ph"><span>hero-1.jpg</span></div>
-  </div>
+          <!-- hc-1: grande verticale, in alto a sinistra, ruotata -3° -->
+          <div class="hc-item hc-1">
+            <img src="img/hero/hero-1.jpg" alt="Jacopo Fusé in sella alla Yamaha R125 di notte" />
+          </div>
 
-  <div class="hc-item hc-2">
-    <!-- <img src="img/hero/hero-2.jpg" alt="Jacopo Fusé" /> -->
-    <div class="hc-ph"><span>hero-2.jpg</span></div>
-  </div>
+          <!-- hc-2: verticale, sovrapposta a destra, ruotata +4.5° -->
+          <div class="hc-item hc-2">
+            <img src="img/hero/hero-2.jpg" alt="Casco da moto visto dal basso con cielo sullo sfondo" />
+          </div>
 
-  <div class="hc-item hc-3">
-    <!-- <img src="img/hero/hero-3.jpg" alt="Jacopo Fusé" /> -->
-    <div class="hc-ph"><span>hero-3.jpg</span></div>
-  </div>
+          <!-- hc-3: orizzontale, in basso a sinistra, ruotata +2° -->
+          <div class="hc-item hc-3">
+            <img src="img/hero/hero-3.jpg" alt="POV in moto in bianco e nero" />
+          </div>
 
-  <div class="hc-item hc-4">
-    <!-- <img src="img/hero/hero-4.jpg" alt="Jacopo Fusé" /> -->
-    <div class="hc-ph"><span>hero-4.jpg</span></div>
-  </div>
+          <!-- hc-4: quadrata, in basso al centro, ruotata -5° -->
+          <div class="hc-item hc-4">
+            <img src="img/hero/hero-4.jpg" alt="Yamaha R125 in campo al crepuscolo" />
+          </div>
 
-  <div class="hc-item hc-5">
-    <!-- <img src="img/hero/hero-5.jpg" alt="Jacopo Fusé" /> -->
-    <div class="hc-ph"><span>hero-5.jpg</span></div>
-  </div>
+          <!-- hc-5: orizzontale piccola, in basso a destra, ruotata +3.5° -->
+          <div class="hc-item hc-5">
+            <img src="img/hero/hero-5.jpg" alt="Moto su strada di campagna al tramonto" />
+          </div>
 
-</div>
+        </div>
+
+      </div>
 
       <div class="hero-meta" aria-hidden="true">
         <span class="scroll-hint">scroll</span>
         <div class="scroll-track"><div class="scroll-thumb"></div></div>
       </div>
-
     </section>
 
     <!-- ═══════════════════════════ CHI SONO ═══════════════════════════ -->
@@ -130,7 +127,8 @@
         <div class="about-grid">
           <div class="about-visual js-reveal-left">
             <!--
-              SOSTITUISCI CON:
+              Foto ritratto non ancora ricevuta.
+              Quando l'hai, sostituisci con:
               <img src="img/about/ritratto.jpg" alt="Jacopo Fusé — ritratto" />
             -->
             <div class="photo-ph" role="img" aria-label="Foto di Jacopo Fusé">
@@ -152,69 +150,132 @@
     <!-- ═══════════════════════════ FOTOGRAFIA ═══════════════════════════ -->
     <section class="s-photo section" id="foto" aria-label="Portfolio fotografico">
       <div class="container-wide">
+
         <div class="sec-tag js-reveal-fade">
           <span class="sec-num">02</span>
           <span class="sec-line" aria-hidden="true"></span>
           <span class="sec-label">Fotografia</span>
         </div>
         <h2 class="sec-h2 js-reveal-clip">Scatti selezionati</h2>
+
         <div class="filters js-reveal-fade" role="group" aria-label="Filtra per categoria">
           <button class="f-btn active" data-filter="all"     aria-pressed="true">Tutti</button>
           <button class="f-btn"        data-filter="clienti" aria-pressed="false">Clienti</button>
           <button class="f-btn"        data-filter="urban"   aria-pressed="false">Urban</button>
         </div>
+
+        <!-- GRIGLIA PORTFOLIO -->
         <div class="photo-grid" id="photo-grid" role="list" aria-label="Galleria fotografica">
 
-          <!--
-            PER OGNI CARD:
-            1. Rimuovi il <div class="hc-ph">
-            2. Aggiungi: <img src="img/portfolio/foto-01.jpg" alt="descrizione" />
-            3. Aggiorna h3 e p con titolo e anno reali
-          -->
-
-          <article class="p-card js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0">
+          <!-- Card 1 — normale, clienti -->
+          <article class="p-card js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0" aria-label="Aprilia RS660 — Cliente">
             <div class="p-card-img">
-              <div class="ph-img" aria-label="foto-01.jpg"><span>foto-01.jpg</span></div>
+              <img src="img/portfolio/foto-01.jpg" alt="Aprilia RS660 in un parcheggio, vista dal basso" />
             </div>
-            <div class="p-card-info"><span class="p-tag">Clienti</span><h3>Titolo progetto</h3><p>Anno · Cliente</p></div>
+            <div class="p-card-info">
+              <span class="p-tag">Clienti</span>
+              <h3>Aprilia RS660</h3>
+              <p>2025 · Cliente</p>
+            </div>
           </article>
 
-          <article class="p-card p-tall js-reveal-fade" data-cat="urban" role="listitem" tabindex="0">
+          <!-- Card 2 — tall, clienti -->
+          <article class="p-card p-tall js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0" aria-label="SM 125 Build — Cliente">
             <div class="p-card-img">
-              <div class="ph-img" aria-label="foto-02.jpg"><span>foto-02.jpg</span></div>
+              <img src="img/portfolio/foto-02-clienti.jpg" alt="SM 125 al distributore di notte, angolo basso" />
             </div>
-            <div class="p-card-info"><span class="p-tag">Urban</span><h3>Titolo scatto</h3><p>Anno · Luogo</p></div>
+            <div class="p-card-info">
+              <span class="p-tag">Clienti</span>
+              <h3>SM 125 Build</h3>
+              <p>2024 · Cliente</p>
+            </div>
           </article>
 
-          <article class="p-card js-reveal-fade" data-cat="urban" role="listitem" tabindex="0">
+          <!-- Card 3 — normale, urban -->
+          <article class="p-card js-reveal-fade" data-cat="urban" role="listitem" tabindex="0" aria-label="Cattedrale — Urban">
             <div class="p-card-img">
-              <div class="ph-img" aria-label="foto-03.jpg"><span>foto-03.jpg</span></div>
+              <img src="img/portfolio/foto-03-urban.jpg" alt="Cattedrale gotica con cielo blu, prospettiva dal basso" />
             </div>
-            <div class="p-card-info"><span class="p-tag">Urban</span><h3>Titolo scatto 2</h3><p>Anno · Luogo</p></div>
+            <div class="p-card-info">
+              <span class="p-tag">Urban</span>
+              <h3>Cattedrale</h3>
+              <p>2024 · Colmar</p>
+            </div>
           </article>
 
-          <article class="p-card p-wide js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0">
+          <!-- Card 4 — wide, clienti -->
+          <article class="p-card p-wide js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0" aria-label="Fantic in cima alla montagna — Cliente">
             <div class="p-card-img">
-              <div class="ph-img" aria-label="foto-04.jpg"><span>foto-04.jpg</span></div>
+              <img src="img/portfolio/foto-04-clienti.jpg" alt="Moto enduro bianca e blu sulla neve in cima alla montagna con lago sullo sfondo" />
             </div>
-            <div class="p-card-info"><span class="p-tag">Clienti</span><h3>Titolo progetto 2</h3><p>Anno · Cliente</p></div>
+            <div class="p-card-info">
+              <span class="p-tag">Clienti</span>
+              <h3>Enduro — Cima</h3>
+              <p>2024 · Cliente</p>
+            </div>
           </article>
 
-          <article class="p-card js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0">
+          <!-- Card 5 — normale, clienti -->
+          <article class="p-card js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0" aria-label="SM 125 Detail — Cliente">
             <div class="p-card-img">
-              <div class="ph-img" aria-label="foto-05.jpg"><span>foto-05.jpg</span></div>
+              <img src="img/portfolio/foto-04.jpg" alt="Dettaglio scarico SM 125 con wrap olografico viola" />
             </div>
-            <div class="p-card-info"><span class="p-tag">Clienti</span><h3>Titolo progetto 3</h3><p>Anno · Cliente</p></div>
+            <div class="p-card-info">
+              <span class="p-tag">Clienti</span>
+              <h3>SM 125 — Detail</h3>
+              <p>2024 · Cliente</p>
+            </div>
           </article>
 
-          <article class="p-card p-tall js-reveal-fade" data-cat="urban" role="listitem" tabindex="0">
+          <!-- Card 6 — tall, urban -->
+          <article class="p-card p-tall js-reveal-fade" data-cat="urban" role="listitem" tabindex="0" aria-label="Angolo — Urban">
             <div class="p-card-img">
-              <div class="ph-img" aria-label="foto-06.jpg"><span>foto-06.jpg</span></div>
+              <img src="img/portfolio/foto-05-urban.jpg" alt="Edificio art nouveau colorato su angolo di strada con cielo azzurro" />
             </div>
-            <div class="p-card-info"><span class="p-tag">Urban</span><h3>Titolo scatto 3</h3><p>Anno · Luogo</p></div>
+            <div class="p-card-info">
+              <span class="p-tag">Urban</span>
+              <h3>Angolo — Colmar</h3>
+              <p>2024 · Francia</p>
+            </div>
           </article>
 
         </div>
+        <!-- /photo-grid -->
+
+        <!-- ═══ POSTER EDIT — prodotto offerto ai clienti ═══ -->
+        <div class="poster-section js-reveal-fade" aria-label="Esempi poster edit">
+          <div class="poster-section-head">
+            <span class="poster-eyebrow">Servizio incluso</span>
+            <h3 class="poster-heading">Poster Edit</h3>
+            <p class="poster-sub">Ogni shooting può includere un poster grafico personalizzato con le specifiche del soggetto — pronto per la stampa o i social.</p>
+          </div>
+          <div class="poster-grid" role="list" aria-label="Esempi di poster edit realizzati">
+
+            <article class="poster-card js-reveal-fade" role="listitem" aria-label="Poster Aprilia RS660">
+              <div class="poster-img-wrap">
+                <img src="img/posters/poster-01.png" alt="Poster grafico Aprilia RS660 2025 con specifiche tecniche" />
+              </div>
+              <p class="poster-cap">Aprilia RS660 · 2025</p>
+            </article>
+
+            <article class="poster-card js-reveal-fade" role="listitem" aria-label="Poster SM 125">
+              <div class="poster-img-wrap">
+                <img src="img/posters/poster-02.png" alt="Poster grafico SM 125 2017 con specifiche tecniche" />
+              </div>
+              <p class="poster-cap">SM 125 · 2017</p>
+            </article>
+
+            <article class="poster-card js-reveal-fade" role="listitem" aria-label="Poster Yamaha R125">
+              <div class="poster-img-wrap">
+                <img src="img/posters/poster-03.png" alt="Poster grafico Yamaha R125 2023 con specifiche tecniche" />
+              </div>
+              <p class="poster-cap">Yamaha R125 · 2023</p>
+            </article>
+
+          </div>
+        </div>
+        <!-- /poster-section -->
+
       </div>
     </section>
 
@@ -264,8 +325,8 @@
         <div class="video-featured js-reveal-fade">
           <div class="video-embed" aria-label="Video in evidenza">
             <!--
-              SOSTITUISCI CON:
-              <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Titolo video" frameborder="0" allowfullscreen loading="lazy"></iframe>
+              Sostituisci con:
+              <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Titolo" frameborder="0" allowfullscreen loading="lazy"></iframe>
             -->
             <div class="video-ph" role="img" aria-label="Video in evidenza">
               <button class="play-big" aria-label="Riproduci video principale">
@@ -277,31 +338,27 @@
           <div class="video-feat-info">
             <span class="tl-cat">Featured</span>
             <h3>Titolo video principale</h3>
-            <p>Descrizione. Anno · Tipo. [Personalizza]</p>
+            <p>Descrizione del progetto. Anno · Tipo di produzione. [Personalizza]</p>
           </div>
         </div>
         <div class="video-grid" role="list" aria-label="Altri video">
           <article class="v-card js-reveal-fade" role="listitem">
             <div class="v-thumb">
-              <!--
-                SOSTITUISCI CON:
-                <img src="img/video/thumb-01.jpg" alt="Titolo video 01" />
-              -->
-              <div class="ph-img" aria-label="thumb-01.jpg"><span>thumb-01.jpg</span></div>
+              <div class="ph-img" aria-label="Miniatura video 1"><span>thumb-01.jpg</span></div>
               <button class="play-sm" aria-label="Riproduci video 1"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
             </div>
             <h3 class="v-title">Titolo Video 01</h3><p class="v-meta">Anno · Tipo</p>
           </article>
           <article class="v-card js-reveal-fade" role="listitem">
             <div class="v-thumb">
-              <div class="ph-img" aria-label="thumb-02.jpg"><span>thumb-02.jpg</span></div>
+              <div class="ph-img" aria-label="Miniatura video 2"><span>thumb-02.jpg</span></div>
               <button class="play-sm" aria-label="Riproduci video 2"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
             </div>
             <h3 class="v-title">Titolo Video 02</h3><p class="v-meta">Anno · Tipo</p>
           </article>
           <article class="v-card js-reveal-fade" role="listitem">
             <div class="v-thumb">
-              <div class="ph-img" aria-label="thumb-03.jpg"><span>thumb-03.jpg</span></div>
+              <div class="ph-img" aria-label="Miniatura video 3"><span>thumb-03.jpg</span></div>
               <button class="play-sm" aria-label="Riproduci video 3"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
             </div>
             <h3 class="v-title">Titolo Video 03</h3><p class="v-meta">Anno · Tipo</p>
@@ -322,15 +379,10 @@
         <p class="sec-sub js-reveal-fade">Strumenti con cui lavoro ogni giorno.</p>
         <div class="gear-grid" role="list" aria-label="Lista attrezzatura">
 
+          <!-- Nikon Z6 -->
           <div class="gear-group js-reveal-fade" role="listitem">
             <div class="gear-img-wrap">
-              <!--
-                SOSTITUISCI CON:
-                <img src="img/gear/nikon-z6.jpg" alt="Nikon Z6" />
-              -->
-              <div class="gear-img-ph" aria-label="Nikon Z6">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M23 19a2 2 0 01-2 2H3a2 2 0 01-2-2V8a2 2 0 012-2h4l2-3h6l2 3h4a2 2 0 012 2z"/><circle cx="12" cy="13" r="4"/></svg>
-              </div>
+              <img src="img/gear/nikon-z6.jpg" alt="Nikon Z6 II con obiettivo Nikkor 24-70mm" />
             </div>
             <div class="gear-info">
               <span class="gear-badge">Camera</span>
@@ -344,15 +396,10 @@
             </div>
           </div>
 
+          <!-- DJI Osmo Action 5 Pro -->
           <div class="gear-group js-reveal-fade" role="listitem">
             <div class="gear-img-wrap">
-              <!--
-                SOSTITUISCI CON:
-                <img src="img/gear/osmo-action-5.jpg" alt="DJI Osmo Action 5 Pro" />
-              -->
-              <div class="gear-img-ph" aria-label="DJI Osmo Action 5 Pro">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="2" y="6" width="20" height="14" rx="2"/><circle cx="12" cy="13" r="3"/><path d="M8 6V4a1 1 0 011-1h6a1 1 0 011 1v2"/></svg>
-              </div>
+              <img src="img/gear/osmo-action-5.jpg" alt="DJI Osmo Action 5 Pro montata su casco da moto HJC" />
             </div>
             <div class="gear-info">
               <span class="gear-badge">Action Cam</span>
@@ -366,15 +413,10 @@
             </div>
           </div>
 
+          <!-- DJI Mic Mini -->
           <div class="gear-group js-reveal-fade" role="listitem">
             <div class="gear-img-wrap">
-              <!--
-                SOSTITUISCI CON:
-                <img src="img/gear/dji-mic-mini.jpg" alt="DJI Mic Mini" />
-              -->
-              <div class="gear-img-ph" aria-label="DJI Mic Mini">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-              </div>
+              <img src="img/gear/dji-mic-mini.jpg" alt="DJI Mic Mini — trasmettitori wireless e ricevitore su superficie in legno" />
             </div>
             <div class="gear-info">
               <span class="gear-badge">Audio</span>
@@ -388,15 +430,10 @@
             </div>
           </div>
 
+          <!-- MacBook Pro 2018 -->
           <div class="gear-group js-reveal-fade" role="listitem">
             <div class="gear-img-wrap">
-              <!--
-                SOSTITUISCI CON:
-                <img src="img/gear/macbook-pro.jpg" alt="MacBook Pro 2018" />
-              -->
-              <div class="gear-img-ph" aria-label="MacBook Pro 2018">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="2" y1="20" x2="22" y2="20"/></svg>
-              </div>
+              <img src="img/gear/macbook-pro.jpg" alt="MacBook Pro grigio siderale appoggiato su davanzale di finestra" />
             </div>
             <div class="gear-info">
               <span class="gear-badge">Laptop</span>
@@ -410,15 +447,10 @@
             </div>
           </div>
 
+          <!-- Mac Mini -->
           <div class="gear-group js-reveal-fade" role="listitem">
             <div class="gear-img-wrap">
-              <!--
-                SOSTITUISCI CON:
-                <img src="img/gear/mac-studio.jpg" alt="Mac Studio" />
-              -->
-              <div class="gear-img-ph" aria-label="Mac Studio">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" aria-hidden="true"><rect x="4" y="4" width="16" height="12" rx="2"/><rect x="8" y="18" width="8" height="2" rx="1"/><line x1="12" y1="16" x2="12" y2="18"/></svg>
-              </div>
+              <img src="img/gear/mac-mini.jpg" alt="Mac Mini con logo Apple visto dall'alto sulla scrivania" />
             </div>
             <div class="gear-info">
               <span class="gear-badge">Workstation</span>
@@ -599,7 +631,6 @@
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-inner">
