@@ -630,3 +630,7 @@ select option { background:var(--bg3); color:var(--text); }
   *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
   html { scroll-behavior:auto; }
 }
+@media (prefers-reduced-motion:reduce) {
+  *, *::before, *::after { animation-duration:.01ms !important; transition-duration:.01ms !important; }
+  html { scroll-behavior:auto; }
+}
