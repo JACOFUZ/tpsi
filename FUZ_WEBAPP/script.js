@@ -125,25 +125,6 @@ function triggerInitialReveals() {
   });
 }
 
-/* ── CONTATORI ── */
-(function() {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const el = entry.target;
-      const target = parseInt(el.dataset.target, 10);
-      const start  = performance.now();
-      (function tick(now) {
-        const p = Math.min((now - start) / 1400, 1);
-        el.textContent = Math.round((1 - Math.pow(1-p, 3)) * target);
-        if (p < 1) requestAnimationFrame(tick);
-      })(performance.now());
-      obs.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  $$('.stat-n[data-target]').forEach(c => obs.observe(c));
-})();
-
 /* ── FILTRI GALLERIA ── */
 (function initFilters() {
   const btns  = $$('.f-btn');
