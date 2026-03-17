@@ -52,52 +52,34 @@
 
   <main id="main">
 
-    <!-- ═══════════════════ HERO ═══════════════════ -->
     <section class="s-hero" id="hero" aria-label="Presentazione">
-
-      <!-- Sfondo base -->
       <div class="hero-bg-base" aria-hidden="true">
         <img id="hero-img-base" src="hero-bg-1.jpg" alt="" />
         <div class="hero-grain"></div>
         <div class="hero-vignette"></div>
       </div>
-
-      <!-- Sfondo rivelato dal blob — stesso strato, nascosto via canvas -->
       <img id="hero-img-reveal" src="hero-bg-2.jpg" alt="" aria-hidden="true" />
-
-      <!-- Canvas blob — copre tutta la hero -->
       <canvas id="hero-canvas" aria-hidden="true"></canvas>
-
-      <!-- Contenuto testo — in basso a sinistra -->
       <div class="hero-inner">
         <div class="hero-body">
-          <p class="hero-loc js-reveal-fade">
-            <span class="live-dot" aria-hidden="true"></span>
-            Milano — Italia
-          </p>
+          <p class="hero-loc js-reveal-fade"><span class="live-dot" aria-hidden="true"></span>Milano — Italia</p>
           <h1 class="hero-name">
             <span class="hero-line js-reveal-clip">JACOPO</span>
             <span class="hero-line hero-line-em js-reveal-clip">FUSÉ</span>
           </h1>
-          <p class="hero-tagline js-reveal-fade">
-            Fotografo &amp; Videomaker
-            <span class="sep"> · </span>
-            <em>Studente di Informatica</em>
-          </p>
+          <p class="hero-tagline js-reveal-fade">Fotografo &amp; Videomaker<span class="sep"> · </span><em>Studente di Informatica</em></p>
           <div class="hero-btns js-reveal-fade">
             <a href="#foto"    class="btn-fill">Portfolio</a>
             <a href="#offerte" class="btn-line">Pacchetti</a>
           </div>
         </div>
       </div>
-
       <div class="hero-meta" aria-hidden="true">
         <span class="scroll-hint">scroll</span>
         <div class="scroll-track"><div class="scroll-thumb"></div></div>
       </div>
     </section>
 
-    <!-- CHI SONO -->
     <section class="s-about section" id="chi-sono" aria-label="Biografia">
       <div class="container">
         <div class="sec-tag js-reveal-fade"><span class="sec-num">01</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Chi Sono</span></div>
@@ -117,7 +99,6 @@
       </div>
     </section>
 
-    <!-- FOTOGRAFIA -->
     <section class="s-photo section" id="foto" aria-label="Portfolio fotografico">
       <div class="container-wide">
         <div class="sec-tag js-reveal-fade"><span class="sec-num">02</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Fotografia</span></div>
@@ -132,105 +113,60 @@
 
           <div class="carousel-block js-reveal-fade" data-cat="clienti">
             <div class="carousel-header">
-              <div class="carousel-meta">
-                <span class="carousel-tag">Clienti</span>
-                <h3 class="carousel-title">SM 125 Build</h3>
-                <p class="carousel-subtitle">Shooting completo moto custom</p>
-                <p class="carousel-year">2024</p>
-              </div>
-              <div class="carousel-controls">
-                <button class="carousel-btn carousel-prev" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
-                <span class="carousel-counter"></span>
-                <button class="carousel-btn carousel-next" aria-label="Successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
-              </div>
+              <div class="carousel-meta"><span class="carousel-tag">Clienti</span><h3 class="carousel-title">SM 125 Build</h3><p class="carousel-subtitle">Shooting completo moto custom</p><p class="carousel-year">2024</p></div>
+              <div class="carousel-controls"><button class="carousel-btn carousel-prev" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button><span class="carousel-counter"></span><button class="carousel-btn carousel-next" aria-label="Successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg></button></div>
             </div>
-            <div class="carousel-track-wrap">
-              <div class="carousel-track">
-                <div class="carousel-slide"><img src="foto-02-clienti.jpg" alt="SM 125 al distributore di notte" /></div>
-                <div class="carousel-slide"><img src="foto-04.jpg" alt="Dettaglio scarico SM 125" /></div>
-                <div class="carousel-slide"><div class="carousel-ph"><span>sm125-3.jpg</span></div></div>
-                <div class="carousel-slide"><div class="carousel-ph"><span>sm125-4.jpg</span></div></div>
-              </div>
-            </div>
+            <div class="carousel-track-wrap"><div class="carousel-track">
+              <div class="carousel-slide"><img src="foto-02-clienti.jpg" alt="SM 125 al distributore" /></div>
+              <div class="carousel-slide"><img src="foto-04.jpg" alt="Dettaglio scarico SM 125" /></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>sm125-3.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>sm125-4.jpg</span></div></div>
+            </div></div>
             <div class="carousel-dots"></div>
           </div>
 
           <div class="carousel-block js-reveal-fade" data-cat="clienti">
             <div class="carousel-header">
-              <div class="carousel-meta">
-                <span class="carousel-tag">Clienti</span>
-                <h3 class="carousel-title">Aprilia RS660</h3>
-                <p class="carousel-subtitle">Ritratto sportivo su strada</p>
-                <p class="carousel-year">2025</p>
-              </div>
-              <div class="carousel-controls">
-                <button class="carousel-btn carousel-prev" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
-                <span class="carousel-counter"></span>
-                <button class="carousel-btn carousel-next" aria-label="Successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
-              </div>
+              <div class="carousel-meta"><span class="carousel-tag">Clienti</span><h3 class="carousel-title">Aprilia RS660</h3><p class="carousel-subtitle">Ritratto sportivo su strada</p><p class="carousel-year">2025</p></div>
+              <div class="carousel-controls"><button class="carousel-btn carousel-prev" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button><span class="carousel-counter"></span><button class="carousel-btn carousel-next" aria-label="Successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg></button></div>
             </div>
-            <div class="carousel-track-wrap">
-              <div class="carousel-track">
-                <div class="carousel-slide"><img src="foto-01.jpg" alt="Aprilia RS660" /></div>
-                <div class="carousel-slide"><div class="carousel-ph"><span>rs660-2.jpg</span></div></div>
-                <div class="carousel-slide"><div class="carousel-ph"><span>rs660-3.jpg</span></div></div>
-              </div>
-            </div>
+            <div class="carousel-track-wrap"><div class="carousel-track">
+              <div class="carousel-slide"><img src="foto-01.jpg" alt="Aprilia RS660" /></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>rs660-2.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>rs660-3.jpg</span></div></div>
+            </div></div>
             <div class="carousel-dots"></div>
           </div>
 
           <div class="carousel-block js-reveal-fade" data-cat="urban">
             <div class="carousel-header">
-              <div class="carousel-meta">
-                <span class="carousel-tag">Urban</span>
-                <h3 class="carousel-title">Urban Photography</h3>
-                <p class="carousel-subtitle">Architettura e vita di strada</p>
-                <p class="carousel-year">2024</p>
-              </div>
-              <div class="carousel-controls">
-                <button class="carousel-btn carousel-prev" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
-                <span class="carousel-counter"></span>
-                <button class="carousel-btn carousel-next" aria-label="Successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
-              </div>
+              <div class="carousel-meta"><span class="carousel-tag">Urban</span><h3 class="carousel-title">Urban Photography</h3><p class="carousel-subtitle">Architettura e vita di strada</p><p class="carousel-year">2024</p></div>
+              <div class="carousel-controls"><button class="carousel-btn carousel-prev" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button><span class="carousel-counter"></span><button class="carousel-btn carousel-next" aria-label="Successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg></button></div>
             </div>
-            <div class="carousel-track-wrap">
-              <div class="carousel-track">
-                <div class="carousel-slide"><img src="foto-03-urban.jpg" alt="Cattedrale gotica Colmar" /></div>
-                <div class="carousel-slide"><img src="foto-05-urban.jpg" alt="Edificio art nouveau Colmar" /></div>
-                <div class="carousel-slide"><div class="carousel-ph"><span>urban-3.jpg</span></div></div>
-              </div>
-            </div>
+            <div class="carousel-track-wrap"><div class="carousel-track">
+              <div class="carousel-slide"><img src="foto-03-urban.jpg" alt="Cattedrale Colmar" /></div>
+              <div class="carousel-slide"><img src="foto-05-urban.jpg" alt="Edificio art nouveau Colmar" /></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>urban-3.jpg</span></div></div>
+            </div></div>
             <div class="carousel-dots"></div>
           </div>
 
           <div class="carousel-block js-reveal-fade" data-cat="eventi">
             <div class="carousel-header">
-              <div class="carousel-meta">
-                <span class="carousel-tag">Eventi</span>
-                <h3 class="carousel-title">EICMA 2024</h3>
-                <p class="carousel-subtitle">Salone internazionale del motociclo</p>
-                <p class="carousel-year">Milano · 2024</p>
-              </div>
-              <div class="carousel-controls">
-                <button class="carousel-btn carousel-prev" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg></button>
-                <span class="carousel-counter"></span>
-                <button class="carousel-btn carousel-next" aria-label="Successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg></button>
-              </div>
+              <div class="carousel-meta"><span class="carousel-tag">Eventi</span><h3 class="carousel-title">EICMA 2024</h3><p class="carousel-subtitle">Salone internazionale del motociclo</p><p class="carousel-year">Milano · 2024</p></div>
+              <div class="carousel-controls"><button class="carousel-btn carousel-prev" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button><span class="carousel-counter"></span><button class="carousel-btn carousel-next" aria-label="Successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg></button></div>
             </div>
-            <div class="carousel-track-wrap">
-              <div class="carousel-track">
-                <div class="carousel-slide"><div class="carousel-ph"><span>eicma-1.jpg</span></div></div>
-                <div class="carousel-slide"><div class="carousel-ph"><span>eicma-2.jpg</span></div></div>
-                <div class="carousel-slide"><div class="carousel-ph"><span>eicma-3.jpg</span></div></div>
-                <div class="carousel-slide"><div class="carousel-ph"><span>eicma-4.jpg</span></div></div>
-              </div>
-            </div>
+            <div class="carousel-track-wrap"><div class="carousel-track">
+              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-1.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-2.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-3.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-4.jpg</span></div></div>
+            </div></div>
             <div class="carousel-dots"></div>
           </div>
 
         </div>
 
-        <!-- POSTER EDIT -->
         <div class="poster-section js-reveal-fade">
           <div class="poster-section-head">
             <span class="poster-eyebrow">Servizio incluso</span>
@@ -244,17 +180,10 @@
           </div>
         </div>
 
-        <!-- RECENSIONI -->
         <div class="reviews-section js-reveal-fade">
           <div class="reviews-head">
-            <div>
-              <span class="poster-eyebrow">Cosa dicono di me</span>
-              <h3 class="reviews-title">Recensioni</h3>
-            </div>
-            <a href="recensioni.html" class="btn-recensione">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-              Lascia una recensione
-            </a>
+            <div><span class="poster-eyebrow">Cosa dicono di me</span><h3 class="reviews-title">Recensioni</h3></div>
+            <a href="recensioni.html" class="btn-recensione"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Lascia una recensione</a>
           </div>
           <div class="reviews-list" id="reviews-list" role="list" aria-live="polite"></div>
           <p class="reviews-empty" id="reviews-empty">Nessuna recensione ancora. Sii il primo!</p>
@@ -263,42 +192,39 @@
       </div>
     </section>
 
-    <!-- ESPERIENZE -->
     <section class="s-exp section" id="esperienze" aria-label="Esperienze professionali">
       <div class="container">
         <div class="sec-tag js-reveal-fade"><span class="sec-num">03</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Esperienze</span></div>
         <h2 class="sec-h2 js-reveal-clip">Il percorso fin qui</h2>
         <div class="timeline" role="list">
-          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div><div class="tl-body"><span class="tl-cat">Fotografia</span><h3>Ruolo — Nome brand / cliente</h3><p>[Personalizza]</p></div></div>
-          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div><div class="tl-body"><span class="tl-cat">Video</span><h3>Ruolo — Nome brand / produzione</h3><p>[Personalizza]</p></div></div>
-          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div><div class="tl-body"><span class="tl-cat">Formazione</span><h3>Università — Laurea in Informatica</h3><p>[Anno] – in corso.</p></div></div>
-          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div><div class="tl-body"><span class="tl-cat">Collaborazione</span><h3>Collaborazione — Agenzia / Brand</h3><p>[Personalizza]</p></div></div>
-          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div><div class="tl-body"><span class="tl-cat">Inizio</span><h3>Primo progetto — Come è iniziato tutto</h3><p>[La tua storia]</p></div></div>
+          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot"></span></div><div class="tl-body"><span class="tl-cat">Fotografia</span><h3>Ruolo — Nome brand / cliente</h3><p>[Personalizza]</p></div></div>
+          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot"></span></div><div class="tl-body"><span class="tl-cat">Video</span><h3>Ruolo — Nome brand / produzione</h3><p>[Personalizza]</p></div></div>
+          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot"></span></div><div class="tl-body"><span class="tl-cat">Formazione</span><h3>Università — Laurea in Informatica</h3><p>[Anno] – in corso.</p></div></div>
+          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot"></span></div><div class="tl-body"><span class="tl-cat">Collaborazione</span><h3>Collaborazione — Agenzia / Brand</h3><p>[Personalizza]</p></div></div>
+          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot"></span></div><div class="tl-body"><span class="tl-cat">Inizio</span><h3>Primo progetto — Come è iniziato tutto</h3><p>[La tua storia]</p></div></div>
         </div>
       </div>
     </section>
 
-    <!-- VIDEO -->
     <section class="s-video section" id="video" aria-label="Portfolio video">
       <div class="container">
-        <div class="sec-tag js-reveal-fade"><span class="sec-num">04</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Video</span></div>
+        <div class="sec-tag js-reveal-fade"><span class="sec-num">04</span><span class="sec-line"></span><span class="sec-label">Video</span></div>
         <h2 class="sec-h2 js-reveal-clip">Produzioni video</h2>
         <div class="video-featured js-reveal-fade">
-          <div class="video-embed"><div class="video-ph"><button class="play-big" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button><p class="video-ph-label">Incolla qui il tuo iframe YouTube / Vimeo</p></div></div>
+          <div class="video-embed"><div class="video-ph"><button class="play-big" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button><p class="video-ph-label">Incolla qui il tuo iframe YouTube / Vimeo</p></div></div>
           <div class="video-feat-info"><span class="tl-cat">Featured</span><h3>Titolo video principale</h3><p>Descrizione. Anno · Tipo.</p></div>
         </div>
         <div class="video-grid" role="list">
-          <article class="v-card js-reveal-fade" role="listitem"><div class="v-thumb"><div class="ph-img"><span>thumb-01.jpg</span></div><button class="play-sm" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></div><h3 class="v-title">Titolo Video 01</h3><p class="v-meta">Anno · Tipo</p></article>
-          <article class="v-card js-reveal-fade" role="listitem"><div class="v-thumb"><div class="ph-img"><span>thumb-02.jpg</span></div><button class="play-sm" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></div><h3 class="v-title">Titolo Video 02</h3><p class="v-meta">Anno · Tipo</p></article>
-          <article class="v-card js-reveal-fade" role="listitem"><div class="v-thumb"><div class="ph-img"><span>thumb-03.jpg</span></div><button class="play-sm" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></div><h3 class="v-title">Titolo Video 03</h3><p class="v-meta">Anno · Tipo</p></article>
+          <article class="v-card js-reveal-fade" role="listitem"><div class="v-thumb"><div class="ph-img"><span>thumb-01.jpg</span></div><button class="play-sm" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></div><h3 class="v-title">Titolo Video 01</h3><p class="v-meta">Anno · Tipo</p></article>
+          <article class="v-card js-reveal-fade" role="listitem"><div class="v-thumb"><div class="ph-img"><span>thumb-02.jpg</span></div><button class="play-sm" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></div><h3 class="v-title">Titolo Video 02</h3><p class="v-meta">Anno · Tipo</p></article>
+          <article class="v-card js-reveal-fade" role="listitem"><div class="v-thumb"><div class="ph-img"><span>thumb-03.jpg</span></div><button class="play-sm" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></div><h3 class="v-title">Titolo Video 03</h3><p class="v-meta">Anno · Tipo</p></article>
         </div>
       </div>
     </section>
 
-    <!-- ATTREZZATURA -->
     <section class="s-gear section" id="attrezzatura" aria-label="Attrezzatura">
       <div class="container">
-        <div class="sec-tag js-reveal-fade"><span class="sec-num">05</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Attrezzatura</span></div>
+        <div class="sec-tag js-reveal-fade"><span class="sec-num">05</span><span class="sec-line"></span><span class="sec-label">Attrezzatura</span></div>
         <h2 class="sec-h2 js-reveal-clip">Il mio kit</h2>
         <p class="sec-sub js-reveal-fade">Strumenti con cui lavoro ogni giorno.</p>
         <div class="gear-grid" role="list">
@@ -311,10 +237,9 @@
       </div>
     </section>
 
-    <!-- OFFERTE -->
     <section class="s-pricing section" id="offerte" aria-label="Pacchetti e prezzi">
       <div class="container">
-        <div class="sec-tag js-reveal-fade"><span class="sec-num">06</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Offerte</span></div>
+        <div class="sec-tag js-reveal-fade"><span class="sec-num">06</span><span class="sec-line"></span><span class="sec-label">Offerte</span></div>
         <h2 class="sec-h2 js-reveal-clip">Pacchetti disponibili</h2>
         <p class="sec-sub js-reveal-fade">Foto e video professionali su misura. Scrivimi per un preventivo.</p>
         <div class="pricing-grid" role="list">
@@ -326,11 +251,10 @@
       </div>
     </section>
 
-    <!-- CONTATTI -->
     <section class="s-contact section" id="contatti" aria-label="Collaborazioni e contatti">
       <div class="collab-intro">
         <div class="container">
-          <div class="sec-tag js-reveal-fade"><span class="sec-num">07</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Collaborazioni</span></div>
+          <div class="sec-tag js-reveal-fade"><span class="sec-num">07</span><span class="sec-line"></span><span class="sec-label">Collaborazioni</span></div>
           <h2 class="collab-h js-reveal-clip">Costruiamo qualcosa<br /><em>che rimanga.</em></h2>
           <div class="collab-body js-reveal-fade"><p>Se rappresenti un brand o un'agenzia e cerchi un partner creativo — sei nel posto giusto.</p><p>Non vendo spazio: offro visione creativa.</p></div>
           <div class="collab-vals js-reveal-fade">
@@ -347,10 +271,10 @@
               <h3>Parliamoci.</h3>
               <p>Hai un progetto? Vuoi un preventivo? Scrivimi.</p>
               <div class="c-links">
-                <a href="mailto:jacopo.fuse@gmail.com" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jacopo.fuse@gmail.com</a>
-                <a href="https://instagram.com/JACOFUZ" target="_blank" rel="noopener noreferrer" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@JACOFUZ</a>
-                <a href="tel:+393756278807" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>+39 375.627.88.07</a>
-                <a href="recensioni.html" class="btn-recensione"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Lascia una recensione</a>
+                <a href="mailto:jacopo.fuse@gmail.com" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jacopo.fuse@gmail.com</a>
+                <a href="https://instagram.com/JACOFUZ" target="_blank" rel="noopener noreferrer" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@JACOFUZ</a>
+                <a href="tel:+393756278807" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>+39 375.627.88.07</a>
+                <a href="recensioni.html" class="btn-recensione"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Lascia una recensione</a>
               </div>
             </div>
             <form class="contact-form js-reveal-right" id="contact-form" novalidate>
@@ -359,20 +283,9 @@
                 <div class="f-group"><label for="f-email">Email *</label><input type="email" id="f-email" name="email" autocomplete="email" required aria-required="true" placeholder="mario@email.it" /><span class="f-err" id="err-email" role="alert" aria-live="polite"></span></div>
               </div>
               <div class="f-group"><label for="f-company">Azienda / Brand (opzionale)</label><input type="text" id="f-company" name="company" autocomplete="organization" placeholder="Nome azienda" /></div>
-              <div class="f-group">
-                <label for="f-type">Tipo di richiesta *</label>
-                <select id="f-type" name="type" required aria-required="true">
-                  <option value="" disabled selected>Seleziona...</option>
-                  <option value="foto">Servizio fotografico</option>
-                  <option value="video">Produzione video</option>
-                  <option value="pacchetto">Pacchetto completo</option>
-                  <option value="collab">Collaborazione / Sponsorship</option>
-                  <option value="altro">Altro</option>
-                </select>
-                <span class="f-err" id="err-type" role="alert" aria-live="polite"></span>
-              </div>
+              <div class="f-group"><label for="f-type">Tipo di richiesta *</label><select id="f-type" name="type" required aria-required="true"><option value="" disabled selected>Seleziona...</option><option value="foto">Servizio fotografico</option><option value="video">Produzione video</option><option value="pacchetto">Pacchetto completo</option><option value="collab">Collaborazione / Sponsorship</option><option value="altro">Altro</option></select><span class="f-err" id="err-type" role="alert" aria-live="polite"></span></div>
               <div class="f-group"><label for="f-msg">Messaggio *</label><textarea id="f-msg" name="message" rows="5" required aria-required="true" placeholder="Raccontami del tuo progetto..."></textarea><span class="f-err" id="err-msg" role="alert" aria-live="polite"></span></div>
-              <button type="submit" class="btn-send"><span>Invia messaggio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+              <button type="submit" class="btn-send"><span>Invia messaggio</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
               <div class="form-ok" id="form-ok" role="alert" aria-live="polite" hidden>✓ Messaggio ricevuto! Ti rispondo al più presto.</div>
             </form>
           </div>
@@ -387,9 +300,9 @@
       <div class="footer-inner">
         <span class="footer-brand">JACOPO FUSÉ</span>
         <div class="footer-contacts">
-          <a href="mailto:jacopo.fuse@gmail.com" class="footer-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jacopo.fuse@gmail.com</a>
-          <a href="https://instagram.com/JACOFUZ" target="_blank" rel="noopener noreferrer" class="footer-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@JACOFUZ</a>
-          <a href="tel:+393756278807" class="footer-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>+39 375.627.88.07</a>
+          <a href="mailto:jacopo.fuse@gmail.com" class="footer-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jacopo.fuse@gmail.com</a>
+          <a href="https://instagram.com/JACOFUZ" target="_blank" rel="noopener noreferrer" class="footer-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@JACOFUZ</a>
+          <a href="tel:+393756278807" class="footer-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>+39 375.627.88.07</a>
         </div>
         <span class="footer-copy">&copy; <span class="year-span"></span> — Tutti i diritti riservati</span>
       </div>
