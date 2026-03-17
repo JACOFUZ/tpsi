@@ -11,7 +11,6 @@ function sanitize(str) {
   return d.textContent;
 }
 
-/* Anno dinamico */
 $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); });
 
 /* ── LOADER ── */
@@ -53,7 +52,7 @@ $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); });
     ring.style.transform = `translate(calc(${rx}px - 50%), calc(${ry}px - 50%))`;
     requestAnimationFrame(loop);
   })();
-  const hov = 'a,button,.p-card,.f-btn,.price-card,.gear-group,input,textarea,select';
+  const hov = 'a,button,.carousel-slide,.poster-card,.gear-group,input,textarea,select';
   document.addEventListener('mouseover',  e => { if (e.target.closest(hov)) ring.classList.add('hovered'); });
   document.addEventListener('mouseout',   e => { if (e.target.closest(hov)) ring.classList.remove('hovered'); });
   document.addEventListener('mouseleave', () => { dot.style.opacity='0'; ring.style.opacity='0'; });
@@ -104,11 +103,12 @@ function initReveal() {
   if (!els.length) return;
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
   $$('.pricing-grid .js-reveal-fade,.gear-grid .js-reveal-fade,.video-grid .js-reveal-fade').forEach((el,i) => {
     el.style.transitionDelay = `${i * 0.12}s`;
   });
   $$('.tl-item.js-reveal-fade').forEach((el,i) => { el.style.transitionDelay = `${i * 0.1}s`; });
+  $$('.poster-card.js-reveal-fade').forEach((el,i) => { el.style.transitionDelay = `${i * 0.1}s`; });
   els.forEach(el => obs.observe(el));
 }
 function triggerInitialReveals() {
@@ -118,32 +118,125 @@ function triggerInitialReveals() {
   });
 }
 
-/* ── FILTRI GALLERIA ── */
+/* ── FILTRI CAROSELLI ── */
 (function initFilters() {
-  const btns  = $$('.f-btn');
-  const cards = $$('.p-card');
-  if (!btns.length || !cards.length) return;
+  const btns   = $$('.f-btn');
+  const blocks = $$('.carousel-block');
+  if (!btns.length || !blocks.length) return;
+
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter;
-      btns.forEach(b => { b.classList.toggle('active', b===btn); b.setAttribute('aria-pressed', String(b===btn)); });
-      cards.forEach(card => {
-        const visible = filter === 'all' || card.dataset.cat === filter;
+
+      btns.forEach(b => {
+        b.classList.toggle('active', b === btn);
+        b.setAttribute('aria-pressed', String(b === btn));
+      });
+
+      blocks.forEach((block, i) => {
+        const visible = filter === 'all' || block.dataset.cat === filter;
         if (visible) {
-          card.classList.remove('hidden');
-          card.style.opacity = '0';
-          card.style.transform = 'scale(.95) translateY(10px)';
-          requestAnimationFrame(() => requestAnimationFrame(() => {
-            card.style.transition = 'opacity .4s ease, transform .4s ease';
-            card.style.opacity = '1'; card.style.transform = 'none';
-          }));
+          block.classList.remove('hidden');
+          block.style.opacity = '0';
+          block.style.transform = 'translateY(20px)';
+          setTimeout(() => {
+            block.style.transition = 'opacity .5s var(--easing), transform .5s var(--easing)';
+            block.style.opacity    = '1';
+            block.style.transform  = 'none';
+          }, i * 60);
         } else {
-          card.style.transition = 'opacity .25s ease, transform .25s ease';
-          card.style.opacity = '0'; card.style.transform = 'scale(.95)';
-          setTimeout(() => card.classList.add('hidden'), 280);
+          block.style.transition = 'opacity .3s ease, transform .3s ease';
+          block.style.opacity    = '0';
+          block.style.transform  = 'translateY(10px)';
+          setTimeout(() => block.classList.add('hidden'), 300);
         }
       });
     });
+  });
+})();
+
+/* ── CAROSELLI ── */
+(function initCarousels() {
+  $$('.carousel-block').forEach(block => {
+    const track    = block.querySelector('.carousel-track');
+    const slides   = $$('.carousel-slide', block);
+    const prevBtn  = block.querySelector('.carousel-prev');
+    const nextBtn  = block.querySelector('.carousel-next');
+    const dotsWrap = block.querySelector('.carousel-dots');
+    const counter  = block.querySelector('.carousel-counter');
+    if (!track || !slides.length) return;
+
+    let current = 0;
+
+    /* Quante slide visibili */
+    function visibleCount() {
+      const w = block.offsetWidth;
+      if (w < 600)  return 1;
+      if (w < 1024) return 2;
+      return 3;
+    }
+
+    /* Costruisci i dots */
+    slides.forEach((_, i) => {
+      if (!dotsWrap) return;
+      const dot = document.createElement('button');
+      dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Vai alla foto ${i + 1}`);
+      dot.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    function getDots() {
+      return dotsWrap ? $$('.carousel-dot', dotsWrap) : [];
+    }
+
+    function goTo(index) {
+      const total   = slides.length;
+      const visible = visibleCount();
+      const max     = Math.max(0, total - visible);
+      current = Math.max(0, Math.min(index, max));
+
+      /* Calcola offset: larghezza slide + gap (14px) */
+      const slideW  = slides[0].offsetWidth + 14;
+      track.style.transform = `translateX(-${current * slideW}px)`;
+
+      /* Dots */
+      getDots().forEach((d, i) => d.classList.toggle('active', i === current));
+
+      /* Counter es. "2 / 5" */
+      if (counter) counter.textContent = `${current + 1} / ${total}`;
+
+      /* Bottoni */
+      if (prevBtn) prevBtn.disabled = current === 0;
+      if (nextBtn) nextBtn.disabled = current >= max;
+    }
+
+    if (prevBtn) prevBtn.addEventListener('click', () => goTo(current - 1));
+    if (nextBtn) nextBtn.addEventListener('click', () => goTo(current + 1));
+
+    /* Swipe touch */
+    let touchStartX = 0;
+    track.addEventListener('touchstart', e => { touchStartX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+    });
+
+    /* Keyboard */
+    block.addEventListener('keydown', e => {
+      if (e.key === 'ArrowLeft')  goTo(current - 1);
+      if (e.key === 'ArrowRight') goTo(current + 1);
+    });
+
+    /* Resize */
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => goTo(current), 150);
+    }, { passive: true });
+
+    /* Init */
+    goTo(0);
   });
 })();
 
