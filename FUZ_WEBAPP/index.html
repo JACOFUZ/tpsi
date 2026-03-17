@@ -120,7 +120,6 @@
           <button class="f-btn"        data-filter="eventi"  aria-pressed="false">Eventi</button>
         </div>
 
-        <!-- GRIGLIA CAROSELLI 2 PER RIGA -->
         <div class="carousels-grid">
 
           <!-- SM 125 -->
@@ -230,7 +229,6 @@
           </div>
 
         </div>
-        <!-- /carousels-grid -->
 
         <!-- POSTER EDIT -->
         <div class="poster-section js-reveal-fade">
@@ -255,70 +253,21 @@
           </div>
         </div>
 
-        <!-- ══════════════ RECENSIONI ══════════════ -->
-        <div class="reviews-section js-reveal-fade" id="recensioni" aria-label="Recensioni clienti">
-
+        <!-- RECENSIONI — lista lettura -->
+        <div class="reviews-section js-reveal-fade" aria-label="Recensioni clienti">
           <div class="reviews-head">
             <div>
               <span class="poster-eyebrow">Cosa dicono di me</span>
               <h3 class="reviews-title">Recensioni</h3>
-              <p class="reviews-sub">Lascia una recensione — sarà visibile a tutti i visitatori.</p>
             </div>
-            <button class="btn-review-open" id="btn-review-open" aria-label="Scrivi una recensione">
+            <a href="recensioni.html" class="btn-recensione" aria-label="Lascia una recensione">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-              Scrivi una recensione
-            </button>
+              Lascia una recensione
+            </a>
           </div>
-
-          <!-- Form recensione -->
-          <div class="review-form-wrap" id="review-form-wrap" hidden>
-            <form class="review-form" id="review-form" novalidate aria-label="Modulo recensione">
-              <div class="review-form-row">
-                <div class="f-group">
-                  <label for="r-name">Nome *</label>
-                  <input type="text" id="r-name" name="name" placeholder="Mario Rossi" required aria-required="true" autocomplete="name" />
-                  <span class="f-err" id="r-err-name" role="alert" aria-live="polite"></span>
-                </div>
-                <div class="f-group">
-                  <label for="r-role">Ruolo / Contesto (opzionale)</label>
-                  <input type="text" id="r-role" name="role" placeholder="es. Cliente privato, Brand manager…" />
-                </div>
-              </div>
-              <div class="f-group">
-                <label>Valutazione *</label>
-                <div class="star-picker" id="star-picker" role="group" aria-label="Scegli valutazione da 1 a 5 stelle">
-                  <button type="button" class="star-btn" data-v="1" aria-label="1 stella">★</button>
-                  <button type="button" class="star-btn" data-v="2" aria-label="2 stelle">★</button>
-                  <button type="button" class="star-btn" data-v="3" aria-label="3 stelle">★</button>
-                  <button type="button" class="star-btn" data-v="4" aria-label="4 stelle">★</button>
-                  <button type="button" class="star-btn" data-v="5" aria-label="5 stelle">★</button>
-                </div>
-                <span class="f-err" id="r-err-stars" role="alert" aria-live="polite"></span>
-              </div>
-              <div class="f-group">
-                <label for="r-text">Recensione *</label>
-                <textarea id="r-text" name="text" rows="4" placeholder="Racconta la tua esperienza…" required aria-required="true"></textarea>
-                <span class="f-err" id="r-err-text" role="alert" aria-live="polite"></span>
-              </div>
-              <div class="review-form-actions">
-                <button type="button" class="btn-review-cancel" id="btn-review-cancel">Annulla</button>
-                <button type="submit" class="btn-review-submit">
-                  <span>Pubblica</span>
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </button>
-              </div>
-            </form>
-          </div>
-
-          <!-- Lista recensioni -->
-          <div class="reviews-list" id="reviews-list" role="list" aria-label="Lista recensioni" aria-live="polite">
-            <!-- Le recensioni vengono inserite via JS -->
-          </div>
-
+          <div class="reviews-list" id="reviews-list" role="list" aria-live="polite"></div>
           <p class="reviews-empty" id="reviews-empty">Nessuna recensione ancora. Sii il primo!</p>
-
         </div>
-        <!-- /reviews-section -->
 
       </div>
     </section>
@@ -361,7 +310,7 @@
         <div class="video-featured js-reveal-fade">
           <div class="video-embed" aria-label="Video in evidenza">
             <div class="video-ph" role="img" aria-label="Video in evidenza">
-              <button class="play-big" aria-label="Riproduci video"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
+              <button class="play-big" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
               <p class="video-ph-label">Incolla qui il tuo iframe YouTube / Vimeo</p>
             </div>
           </div>
@@ -509,6 +458,10 @@
                 <a href="mailto:jacopo.fuse@gmail.com" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jacopo.fuse@gmail.com</a>
                 <a href="https://instagram.com/JACOFUZ" target="_blank" rel="noopener noreferrer" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@JACOFUZ</a>
                 <a href="tel:+393756278807" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>+39 375.627.88.07</a>
+                <a href="recensioni.html" class="btn-recensione" aria-label="Lascia una recensione">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                  Lascia una recensione
+                </a>
               </div>
             </div>
             <form class="contact-form js-reveal-right" id="contact-form" novalidate>
@@ -546,15 +499,4 @@
         <span class="footer-brand">JACOPO FUSÉ</span>
         <div class="footer-contacts">
           <a href="mailto:jacopo.fuse@gmail.com" class="footer-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jacopo.fuse@gmail.com</a>
-          <a href="https://instagram.com/JACOFUZ" target="_blank" rel="noopener noreferrer" class="footer-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@JACOFUZ</a>
-          <a href="tel:+393756278807" class="footer-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>+39 375.627.88.07</a>
-        </div>
-        <span class="footer-copy">&copy; <span class="year-span"></span> — Tutti i diritti riservati</span>
-      </div>
-    </div>
-  </footer>
-
-  <div class="toast" id="toast" role="status" aria-live="polite" aria-atomic="true"></div>
-  <script src="script.js"></script>
-</body>
-</html>
+          <a href="https://instagram.com/JACOFUZ" target="_blank" rel="noopener noreferrer" class="footer-contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y
