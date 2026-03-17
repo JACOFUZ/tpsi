@@ -160,20 +160,20 @@ function triggerInitialReveals() {
   });
 })();
 
-/* ══════════════════════════════════════════════════════
-   HERO BLOB REVEAL — effetto olio su sfondo full screen
-   Come Lando Norris: due foto, blob organico segue mouse
-   ══════════════════════════════════════════════════════ */
+/* ══════════════════════════════════════════════════════════════
+   HERO — OIL BUBBLE REVEAL
+   Blob principale + bolle satellite che si staccano e vagano
+   Riflessi iridescenti + forma casuale ad ogni ingresso
+   ══════════════════════════════════════════════════════════════ */
 (function initHeroBlobReveal() {
-  const hero     = document.getElementById('hero');
-  const canvas   = document.getElementById('hero-canvas');
-  const imgReveal= document.getElementById('hero-img-reveal');
+  const hero      = document.getElementById('hero');
+  const canvas    = document.getElementById('hero-canvas');
+  const imgReveal = document.getElementById('hero-img-reveal');
   if (!hero || !canvas || !imgReveal) return;
 
   const ctx = canvas.getContext('2d');
   let W = 0, H = 0;
 
-  /* Ridimensiona canvas al 100% della hero */
   function resize() {
     W = canvas.width  = hero.offsetWidth;
     H = canvas.height = hero.offsetHeight;
@@ -181,56 +181,47 @@ function triggerInitialReveals() {
   resize();
   new ResizeObserver(resize).observe(hero);
 
-  /* Stato */
-  let mx = 0, my = 0;   /* posizione interpolata (lerp) */
-  let tx = -500, ty = -500; /* target mouse */
+  /* ─── Stato principale ─── */
+  let mx = 0, my = 0;
+  let tx = -9999, ty = -9999;
   let radius = 0, targetR = 0;
   let time = 0;
   let heroActive = false;
+  let lastTx = 0, lastTy = 0;
+  let spawnTick = 0;
 
-  /* ── Parametri blob: 16 punti, oscillazioni asimmetriche ──
-     Combinare più sinusoidi con fasi casuali → nessuna simmetria
-     → effetto macchia d'olio organica e imprevedibile          */
-  const N = 16;
-  const pts = Array.from({ length: N }, () => ({
-    s1: 0.3  + Math.random() * 1.1,
-    s2: 0.15 + Math.random() * 0.75,
-    s3: 0.08 + Math.random() * 0.5,
-    s4: 0.4  + Math.random() * 0.9,
-    p1: Math.random() * Math.PI * 2,
-    p2: Math.random() * Math.PI * 2,
-    p3: Math.random() * Math.PI * 2,
-    p4: Math.random() * Math.PI * 2,
-    a1: 0.14 + Math.random() * 0.18,
-    a2: 0.07 + Math.random() * 0.10,
-    a3: 0.04 + Math.random() * 0.06,
-    a4: 0.03 + Math.random() * 0.05,
-  }));
+  /* ─── Forma blob principale: 18 punti
+         Randomizzata ad ogni mouseenter → mai uguale ─── */
+  const N_MAIN = 18;
+  let mainPts = [];
 
-  function blobPoint(i, cx, cy, r, t) {
-    const angle = (i / N) * Math.PI * 2 - Math.PI / 2;
-    const p = pts[i];
-    /* Quattro oscillazioni sovrapposte → forma irregolare, mai uguale */
-    const noise = 1
-      + p.a1 * Math.sin(t * p.s1 + p.p1)
-      + p.a2 * Math.cos(t * p.s2 + p.p2)
-      + p.a3 * Math.sin(t * p.s3 + p.p3)
-      + p.a4 * Math.cos(t * p.s4 + p.p4);
-    return {
-      x: cx + r * noise * Math.cos(angle),
-      y: cy + r * noise * Math.sin(angle),
-    };
+  function randomMainPts() {
+    mainPts = Array.from({ length: N_MAIN }, () => ({
+      s1: 0.28 + Math.random() * 1.3,
+      s2: 0.14 + Math.random() * 0.85,
+      s3: 0.07 + Math.random() * 0.55,
+      s4: 0.35 + Math.random() * 1.1,
+      p1: Math.random() * Math.PI * 2,
+      p2: Math.random() * Math.PI * 2,
+      p3: Math.random() * Math.PI * 2,
+      p4: Math.random() * Math.PI * 2,
+      a1: 0.16 + Math.random() * 0.22,
+      a2: 0.08 + Math.random() * 0.12,
+      a3: 0.04 + Math.random() * 0.07,
+      a4: 0.025 + Math.random() * 0.055,
+    }));
   }
+  randomMainPts();
 
-  /* Catmull-Rom spline → curve morbide e organiche */
-  function drawBlob(cx, cy, r, t) {
-    const bp = Array.from({ length: N }, (_, i) => blobPoint(i, cx, cy, r, t));
+  /* ─── Costruisce path Catmull-Rom da array di punti ─── */
+  function buildPath(bpArr) {
+    const n = bpArr.length;
     ctx.beginPath();
-    for (let i = 0; i < N; i++) {
-      const p0 = bp[(i-1+N)%N];
-      const p1 = bp[i];
-      const p2 = bp[(i+1)%N];
-      const p3 = bp[(i+2)%N];
+    for (let i = 0; i < n; i++) {
+      const p0 = bpArr[(i-1+n)%n];
+      const p1 = bpArr[i];
+      const p2 = bpArr[(i+1)%n];
+      const p3 = bpArr[(i+2)%n];
       if (i === 0) ctx.moveTo(p1.x, p1.y);
       const cp1x = p1.x + (p2.x - p0.x) / 6;
       const cp1y = p1.y + (p2.y - p0.y) / 6;
@@ -241,91 +232,315 @@ function triggerInitialReveals() {
     ctx.closePath();
   }
 
-  /* Disegna immagine con object-fit: cover */
-  function drawCover(img) {
+  /* Calcola punti blob principale */
+  function mainBlobPoints(cx, cy, r, t) {
+    return mainPts.map((p, i) => {
+      const angle = (i / N_MAIN) * Math.PI * 2 - Math.PI / 2;
+      const noise = 1
+        + p.a1 * Math.sin(t * p.s1 + p.p1)
+        + p.a2 * Math.cos(t * p.s2 + p.p2)
+        + p.a3 * Math.sin(t * p.s3 + p.p3)
+        + p.a4 * Math.cos(t * p.s4 + p.p4);
+      return { x: cx + r * noise * Math.cos(angle), y: cy + r * noise * Math.sin(angle) };
+    });
+  }
+
+  /* ─── Cover-fit immagine sul canvas ─── */
+  function drawCover(img, alpha) {
     const iW = img.naturalWidth  || W;
     const iH = img.naturalHeight || H;
     const scale = Math.max(W / iW, H / iH);
     const dw = iW * scale, dh = iH * scale;
+    ctx.globalAlpha = alpha;
     ctx.drawImage(img, (W - dw) / 2, (H - dh) / 2, dw, dh);
+    ctx.globalAlpha = 1;
   }
 
-  /* Effetto bordo iridescente — il dettaglio che fa la differenza */
-  function drawEdgeGlow(cx, cy, r, t) {
+  /* ─── Riflessi iridescenti sull'olio ─── */
+  function drawIridescence(cx, cy, r, t, alpha) {
     ctx.save();
-    drawBlob(cx, cy, r * 1.04, t);
-    const g = ctx.createRadialGradient(cx, cy, r * 0.85, cx, cy, r * 1.05);
-    g.addColorStop(0,   'rgba(74,143,255,0.00)');
-    g.addColorStop(0.5, 'rgba(111,174,255,0.12)');
-    g.addColorStop(1,   'rgba(74,143,255,0.00)');
-    ctx.fillStyle = g;
-    ctx.fill();
+    buildPath(mainBlobPoints(cx, cy, r, t));
+    ctx.clip();
+
+    /* Striscia di colore che ruota nel tempo */
+    const hue = (t * 18) % 360;
+    const sheen = ctx.createLinearGradient(
+      cx + Math.cos(t * 0.4) * r, cy + Math.sin(t * 0.4) * r,
+      cx - Math.cos(t * 0.4) * r, cy - Math.sin(t * 0.4) * r
+    );
+    sheen.addColorStop(0,    `hsla(${hue},        100%, 70%, 0)`);
+    sheen.addColorStop(0.25, `hsla(${hue + 45},   100%, 75%, ${alpha * 0.13})`);
+    sheen.addColorStop(0.5,  `hsla(${hue + 120},  100%, 70%, ${alpha * 0.09})`);
+    sheen.addColorStop(0.75, `hsla(${hue + 200},  100%, 75%, ${alpha * 0.13})`);
+    sheen.addColorStop(1,    `hsla(${hue + 270},  100%, 70%, 0)`);
+    ctx.fillStyle = sheen;
+    ctx.fillRect(0, 0, W, H);
+
     ctx.restore();
   }
 
-  /* ── Loop ── */
+  /* Highlight speculare (punto luce bianco in alto-sinistra) */
+  function drawSpecular(cx, cy, r, alpha) {
+    const hx = cx - r * 0.28;
+    const hy = cy - r * 0.32;
+    const g = ctx.createRadialGradient(hx, hy, 0, hx, hy, r * 0.22);
+    g.addColorStop(0,   `rgba(255,255,255,${alpha * 0.5})`);
+    g.addColorStop(0.4, `rgba(255,255,255,${alpha * 0.12})`);
+    g.addColorStop(1,   'rgba(255,255,255,0)');
+    ctx.fillStyle = g;
+    ctx.beginPath();
+    ctx.ellipse(hx, hy, r * 0.22, r * 0.13, -Math.PI / 5, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  /* ─── Sistema bolle satellite ───
+     Ogni bolla è una piccola macchia d'olio indipendente
+     che si stacca dalla chiazza principale e vaga           */
+  const bubbles = [];
+  const MAX_BUBBLES = 28;
+
+  function makeBubblePts(n) {
+    return Array.from({ length: n }, () => ({
+      s1: 0.5  + Math.random() * 2.2,
+      s2: 0.25 + Math.random() * 1.0,
+      p1: Math.random() * Math.PI * 2,
+      p2: Math.random() * Math.PI * 2,
+      a1: 0.14 + Math.random() * 0.28,
+      a2: 0.07 + Math.random() * 0.13,
+    }));
+  }
+
+  function spawnBubble(x, y, vx, vy, fromSplash) {
+    if (bubbles.length >= MAX_BUBBLES) return;
+    const r = fromSplash
+      ? 8  + Math.random() * 28
+      : 14 + Math.random() * 38;
+    const life = 1.2 + Math.random() * 2.0;
+    const n = 5 + Math.floor(Math.random() * 6);
+    bubbles.push({
+      x, y,
+      vx: vx + (Math.random() - 0.5) * (fromSplash ? 5 : 1.5),
+      vy: vy + (Math.random() - 0.5) * (fromSplash ? 5 : 1.5),
+      r,
+      drawR: 0,
+      life,
+      maxLife: life,
+      pts: makeBubblePts(n),
+      hue: Math.random() * 360,
+      t: Math.random() * 20,
+      fromSplash,
+    });
+  }
+
+  function bubblePoints(b) {
+    const n = b.pts.length;
+    return b.pts.map((p, i) => {
+      const angle = (i / n) * Math.PI * 2;
+      const noise = 1
+        + p.a1 * Math.sin(b.t * p.s1 + p.p1)
+        + p.a2 * Math.cos(b.t * p.s2 + p.p2);
+      return {
+        x: b.x + b.drawR * noise * Math.cos(angle),
+        y: b.y + b.drawR * noise * Math.sin(angle),
+      };
+    });
+  }
+
+  function updateBubbles() {
+    for (let i = bubbles.length - 1; i >= 0; i--) {
+      const b = bubbles[i];
+      b.life -= 0.016;
+      if (b.life <= 0) { bubbles.splice(i, 1); continue; }
+
+      b.x  += b.vx;
+      b.y  += b.vy;
+      b.vx *= 0.96;
+      b.vy *= 0.96;
+      b.vy -= 0.025; /* olio sale — flottazione */
+
+      /* Raggio: cresce veloce, poi si sgonfia verso la fine */
+      const lr = b.life / b.maxLife;
+      const targetDR = lr > 0.6 ? b.r : b.r * (lr / 0.6);
+      b.drawR += (targetDR - b.drawR) * 0.18;
+      b.t += 0.022;
+    }
+  }
+
+  function drawBubbles() {
+    bubbles.forEach(b => {
+      if (b.drawR < 1 || !imgReveal.complete) return;
+      const lr = b.life / b.maxLife;
+      const alpha = Math.min(1, lr * 1.8) * 0.9;
+      const bp = bubblePoints(b);
+
+      /* Rivela immagine dentro la bolla */
+      ctx.save();
+      buildPath(bp);
+      ctx.clip();
+      drawCover(imgReveal, alpha * 0.88);
+      ctx.restore();
+
+      /* Iridescenza bolla */
+      ctx.save();
+      buildPath(bp);
+      ctx.clip();
+      const hue = (b.hue + time * 22) % 360;
+      const sg = ctx.createLinearGradient(b.x - b.drawR, b.y - b.drawR, b.x + b.drawR, b.y + b.drawR);
+      sg.addColorStop(0,   `hsla(${hue},       100%, 75%, 0)`);
+      sg.addColorStop(0.4, `hsla(${hue + 60},  100%, 75%, ${alpha * 0.18})`);
+      sg.addColorStop(0.7, `hsla(${hue + 150}, 100%, 75%, ${alpha * 0.12})`);
+      sg.addColorStop(1,   `hsla(${hue + 240}, 100%, 75%, 0)`);
+      ctx.fillStyle = sg;
+      ctx.fillRect(b.x - b.drawR - 2, b.y - b.drawR - 2, b.drawR * 2 + 4, b.drawR * 2 + 4);
+      ctx.restore();
+
+      /* Bordo bolla */
+      ctx.save();
+      buildPath(bp);
+      const hue2 = (b.hue + time * 30 + 90) % 360;
+      ctx.strokeStyle = `hsla(${hue2}, 90%, 80%, ${alpha * 0.55})`;
+      ctx.lineWidth = 1.2;
+      ctx.stroke();
+      ctx.restore();
+
+      /* Specular highlight piccola */
+      ctx.save();
+      const hsx = b.x - b.drawR * 0.25;
+      const hsy = b.y - b.drawR * 0.28;
+      const hsg = ctx.createRadialGradient(hsx, hsy, 0, hsx, hsy, b.drawR * 0.28);
+      hsg.addColorStop(0, `rgba(255,255,255,${alpha * 0.5})`);
+      hsg.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.fillStyle = hsg;
+      ctx.beginPath();
+      ctx.ellipse(hsx, hsy, b.drawR * 0.22, b.drawR * 0.13, -Math.PI/5, 0, Math.PI*2);
+      ctx.fill();
+      ctx.restore();
+    });
+  }
+
+  /* ─── Loop principale ─── */
   (function frame() {
     requestAnimationFrame(frame);
     time += 0.014;
+    spawnTick++;
 
-    /* Lerp morbido — il blob "insegue" il cursore con inertia */
-    mx += (tx - mx) * 0.085;
-    my += (ty - my) * 0.085;
+    /* Lerp inerziale */
+    mx += (tx - mx) * 0.09;
+    my += (ty - my) * 0.09;
     radius += (targetR - radius) * 0.055;
 
+    updateBubbles();
     ctx.clearRect(0, 0, W, H);
-    if (radius < 1) return;
 
-    /* 1. Glow bordo */
-    drawEdgeGlow(mx, my, radius, time);
+    /* 1. Bolle satellite (sotto il blob principale) */
+    drawBubbles();
 
-    /* 2. Clip → immagine rivelata dentro il blob */
-    ctx.save();
-    drawBlob(mx, my, radius, time);
-    ctx.clip();
-    if (imgReveal.complete && imgReveal.naturalWidth > 0) {
-      drawCover(imgReveal);
+    if (radius > 1 && imgReveal.complete && imgReveal.naturalWidth > 0) {
+      const mainBP = mainBlobPoints(mx, my, radius, time);
+
+      /* 2. Alone / glow esterno */
+      ctx.save();
+      buildPath(mainBlobPoints(mx, my, radius * 1.1, time));
+      const glow = ctx.createRadialGradient(mx, my, radius * 0.6, mx, my, radius * 1.12);
+      glow.addColorStop(0,   'rgba(74,143,255,0)');
+      glow.addColorStop(0.55,'rgba(74,143,255,0.07)');
+      glow.addColorStop(1,   'rgba(74,143,255,0)');
+      ctx.fillStyle = glow;
+      ctx.fill();
+      ctx.restore();
+
+      /* 3. Clip + immagine rivelata */
+      ctx.save();
+      buildPath(mainBP);
+      ctx.clip();
+      drawCover(imgReveal, 1);
+      ctx.restore();
+
+      /* 4. Iridescenza olio */
+      drawIridescence(mx, my, radius, time, 1);
+
+      /* 5. Specular highlight */
+      drawSpecular(mx, my, radius, 1);
+
+      /* 6. Bordo bolla principale */
+      ctx.save();
+      buildPath(mainBP);
+      const hue = (time * 18) % 360;
+      ctx.strokeStyle = `hsla(${hue}, 80%, 78%, 0.18)`;
+      ctx.lineWidth = 1.8;
+      ctx.stroke();
+      ctx.restore();
     }
-    ctx.restore();
-
-    /* 3. Bordo sottile */
-    ctx.save();
-    drawBlob(mx, my, radius, time);
-    ctx.strokeStyle = 'rgba(255,255,255,0.07)';
-    ctx.lineWidth   = 1.5;
-    ctx.stroke();
-    ctx.restore();
   })();
 
-  /* ── Ascolta il mouse sull'intera hero ── */
+  /* ─── Gestione mouse ─── */
   hero.addEventListener('mouseenter', e => {
+    /* Nuova forma casuale ad ogni ingresso */
+    randomMainPts();
     heroActive = true;
-    targetR = Math.min(W, H) * 0.30; /* ~30% della dimensione minore */
+    targetR = Math.min(W, H) * 0.18; /* più piccolo */
     const rect = hero.getBoundingClientRect();
     tx = mx = e.clientX - rect.left;
     ty = my = e.clientY - rect.top;
+    lastTx = tx; lastTy = ty;
   });
 
   hero.addEventListener('mouseleave', () => {
     heroActive = false;
     targetR = 0;
+    /* Quando il mouse esce, le bolle esistenti continuano a galleggiare */
   });
 
   hero.addEventListener('mousemove', e => {
     const rect = hero.getBoundingClientRect();
-    tx = e.clientX - rect.left;
-    ty = e.clientY - rect.top;
+    const nx = e.clientX - rect.left;
+    const ny = e.clientY - rect.top;
+
+    const dvx = nx - lastTx;
+    const dvy = ny - lastTy;
+    const speed = Math.sqrt(dvx * dvx + dvy * dvy);
+
+    lastTx = tx; lastTy = ty;
+    tx = nx; ty = ny;
+
+    /* Splash: bolle che schizzano via quando il cursore va veloce */
+    if (speed > 10 && spawnTick % 2 === 0) {
+      const count = Math.floor(Math.min(speed / 12, 4));
+      for (let i = 0; i < count; i++) {
+        spawnBubble(
+          mx + (Math.random() - 0.5) * radius * 1.0,
+          my + (Math.random() - 0.5) * radius * 1.0,
+          dvx * (0.25 + Math.random() * 0.35),
+          dvy * (0.25 + Math.random() * 0.35),
+          true
+        );
+      }
+    }
+
+    /* Bolle spontanee che si staccano dal bordo e vagano */
+    if (heroActive && spawnTick % 40 === 0) {
+      const angle = Math.random() * Math.PI * 2;
+      spawnBubble(
+        mx + Math.cos(angle) * radius * (0.7 + Math.random() * 0.4),
+        my + Math.sin(angle) * radius * (0.7 + Math.random() * 0.4),
+        (Math.random() - 0.5) * 1.2,
+        -(Math.random() * 1.5 + 0.3), /* salgono verso l'alto */
+        false
+      );
+    }
   });
 
-  /* ── Touch ── */
+  /* ─── Touch ─── */
   hero.addEventListener('touchmove', e => {
     const rect  = hero.getBoundingClientRect();
     const touch = e.touches[0];
-    tx = touch.clientX - rect.left;
-    ty = touch.clientY - rect.top;
+    const nx = touch.clientX - rect.left;
+    const ny = touch.clientY - rect.top;
+    tx = nx; ty = ny;
     if (!heroActive) {
+      randomMainPts();
       heroActive = true;
-      targetR = Math.min(W, H) * 0.30;
+      targetR = Math.min(W, H) * 0.18;
       mx = tx; my = ty;
     }
   }, { passive: true });
