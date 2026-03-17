@@ -384,4 +384,24 @@ $$('a[href^="#"]').forEach(a => {
   if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   const bg = $('.hero-bg'); if (!bg) return;
   let t = false;
-  window.addEventListener('scroll', () => { if(!t){ requestAnimationFrame(()=>{ bg.style.transform=`t
+  window.addEventListener('scroll', () => { if(!t){ requestAnimationFrame(()=>{ bg.style.transform=`translateY(${window.scrollY*.35}px)`; t=false; }); t=true; } }, {passive:true});
+})();
+
+/* ── HOVER MAGNETICO ── */
+(function() {
+  if (window.matchMedia('(pointer:coarse)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+  $$('.btn-fill,.btn-line').forEach(btn => {
+    btn.addEventListener('mousemove', e => { const r=btn.getBoundingClientRect(); btn.style.transform=`translate(${(e.clientX-(r.left+r.width/2))*.25}px,${(e.clientY-(r.top+r.height/2))*.25}px)`; });
+    btn.addEventListener('mouseleave', () => { btn.style.transform=''; });
+  });
+})();
+
+/* ── THEME TOGGLE ── */
+(function initTheme() {
+  const btn = $('#theme-toggle'), body = document.body; if (!btn) return;
+  if (localStorage.getItem('jf-theme')==='light') body.classList.add('light');
+  btn.addEventListener('click', () => { body.classList.toggle('light'); localStorage.setItem('jf-theme', body.classList.contains('light')?'light':'dark'); });
+})();
+
+window.addEventListener('error', e => console.warn('[JF]', e.message));
