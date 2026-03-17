@@ -23,11 +23,7 @@
   <header class="site-header" id="site-header" role="banner">
     <a href="#hero" class="brand-mark" aria-label="Jacopo Fusé – torna all'inizio">JF</a>
     <div class="header-actions">
-      <button
-        class="theme-toggle"
-        id="theme-toggle"
-        aria-label="Cambia tema chiaro/scuro"
-        title="Cambia tema">
+      <button class="theme-toggle" id="theme-toggle" aria-label="Cambia tema chiaro/scuro" title="Cambia tema">
         <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1"  x2="12" y2="3"/>
@@ -72,12 +68,9 @@
     <section class="s-hero" id="hero" aria-label="Presentazione">
       <div class="hero-bg" aria-hidden="true">
         <div class="hero-grain"></div>
-        <div class="hero-bg-placeholder">
-          <div class="bg-lines" aria-hidden="true"></div>
-        </div>
+        <div class="hero-bg-placeholder"><div class="bg-lines" aria-hidden="true"></div></div>
         <div class="hero-vignette"></div>
       </div>
-
       <div class="hero-inner">
         <div class="hero-body">
           <p class="hero-loc js-reveal-fade">
@@ -94,30 +87,18 @@
             <em>Studente di Informatica</em>
           </p>
           <div class="hero-btns js-reveal-fade">
-            <a href="#foto"    class="btn-fill" aria-label="Vai al portfolio fotografico">Portfolio</a>
-            <a href="#offerte" class="btn-line" aria-label="Scopri i pacchetti disponibili">Pacchetti</a>
+            <a href="#foto"    class="btn-fill">Portfolio</a>
+            <a href="#offerte" class="btn-line">Pacchetti</a>
           </div>
         </div>
-
         <div class="hero-collage js-reveal-fade" aria-label="Foto di Jacopo Fusé">
-          <div class="hc-item hc-1">
-            <img src="hero-1.jpg" alt="Jacopo Fusé in sella alla Yamaha R125 di notte" />
-          </div>
-          <div class="hc-item hc-2">
-            <img src="hero-2.jpg" alt="Casco da moto visto dal basso con cielo sullo sfondo" />
-          </div>
-          <div class="hc-item hc-3">
-            <img src="hero-3.jpg" alt="POV in moto in bianco e nero" />
-          </div>
-          <div class="hc-item hc-4">
-            <img src="hero-4.jpg" alt="Yamaha R125 in campo al crepuscolo" />
-          </div>
-          <div class="hc-item hc-5">
-            <img src="hero-5.jpg" alt="Moto su strada di campagna al tramonto" />
-          </div>
+          <div class="hc-item hc-1"><img src="hero-1.jpg" alt="Jacopo Fusé in sella alla Yamaha R125 di notte" /></div>
+          <div class="hc-item hc-2"><img src="hero-2.jpg" alt="Casco da moto visto dal basso con cielo" /></div>
+          <div class="hc-item hc-3"><img src="hero-3.jpg" alt="POV in moto in bianco e nero" /></div>
+          <div class="hc-item hc-4"><img src="hero-4.jpg" alt="Yamaha R125 in campo al crepuscolo" /></div>
+          <div class="hc-item hc-5"><img src="hero-5.jpg" alt="Moto su strada di campagna al tramonto" /></div>
         </div>
       </div>
-
       <div class="hero-meta" aria-hidden="true">
         <span class="scroll-hint">scroll</span>
         <div class="scroll-track"><div class="scroll-thumb"></div></div>
@@ -134,10 +115,7 @@
         </div>
         <div class="about-grid">
           <div class="about-visual js-reveal-left">
-            <!-- Quando hai la foto: <img src="ritratto.jpg" alt="Jacopo Fusé — ritratto" /> -->
-            <div class="photo-ph" role="img" aria-label="Foto di Jacopo Fusé">
-              <span>ritratto.jpg</span>
-            </div>
+            <div class="photo-ph" role="img" aria-label="Foto di Jacopo Fusé"><span>ritratto.jpg</span></div>
             <div class="photo-frame" aria-hidden="true"></div>
           </div>
           <div class="about-copy js-reveal-right">
@@ -166,76 +144,129 @@
           <button class="f-btn active" data-filter="all"     aria-pressed="true">Tutti</button>
           <button class="f-btn"        data-filter="clienti" aria-pressed="false">Clienti</button>
           <button class="f-btn"        data-filter="urban"   aria-pressed="false">Urban</button>
+          <button class="f-btn"        data-filter="eventi"  aria-pressed="false">Eventi</button>
         </div>
 
-        <div class="photo-grid" id="photo-grid" role="list" aria-label="Galleria fotografica">
+        <!-- CAROSELLO SM 125 -->
+        <div class="carousel-block js-reveal-fade" data-cat="clienti" aria-label="Carosello SM 125">
+          <div class="carousel-header">
+            <div class="carousel-meta">
+              <span class="carousel-tag">Clienti</span>
+              <h3 class="carousel-title">SM 125 Build</h3>
+              <p class="carousel-year">2024</p>
+            </div>
+            <div class="carousel-controls">
+              <button class="carousel-btn carousel-prev" aria-label="Foto precedente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <span class="carousel-counter"></span>
+              <button class="carousel-btn carousel-next" aria-label="Foto successiva">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
+            </div>
+          </div>
+          <div class="carousel-track-wrap">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="foto-02-clienti.jpg" alt="SM 125 al distributore di notte" /></div>
+              <div class="carousel-slide"><img src="foto-04.jpg" alt="Dettaglio scarico SM 125 wrap olografico viola" /></div>
+              <!-- Aggiungi altre foto SM125: <div class="carousel-slide"><img src="sm125-3.jpg" alt="..." /></div> -->
+              <div class="carousel-slide"><div class="carousel-ph"><span>sm125-3.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>sm125-4.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>sm125-5.jpg</span></div></div>
+            </div>
+          </div>
+          <div class="carousel-dots"></div>
+        </div>
 
-          <article class="p-card js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0" aria-label="Aprilia RS660 — Cliente">
-            <div class="p-card-img">
-              <img src="foto-01.jpg" alt="Aprilia RS660 in un parcheggio, vista dal basso" />
+        <!-- CAROSELLO RS660 -->
+        <div class="carousel-block js-reveal-fade" data-cat="clienti" aria-label="Carosello Aprilia RS660">
+          <div class="carousel-header">
+            <div class="carousel-meta">
+              <span class="carousel-tag">Clienti</span>
+              <h3 class="carousel-title">Aprilia RS660</h3>
+              <p class="carousel-year">2025</p>
             </div>
-            <div class="p-card-info">
-              <span class="p-tag">Clienti</span>
-              <h3>Aprilia RS660</h3>
-              <p>2025 · Cliente</p>
+            <div class="carousel-controls">
+              <button class="carousel-btn carousel-prev" aria-label="Foto precedente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <span class="carousel-counter"></span>
+              <button class="carousel-btn carousel-next" aria-label="Foto successiva">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
-          </article>
+          </div>
+          <div class="carousel-track-wrap">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="foto-01.jpg" alt="Aprilia RS660 parcheggio vista dal basso" /></div>
+              <!-- Aggiungi altre foto RS660 -->
+              <div class="carousel-slide"><div class="carousel-ph"><span>rs660-2.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>rs660-3.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>rs660-4.jpg</span></div></div>
+            </div>
+          </div>
+          <div class="carousel-dots"></div>
+        </div>
 
-          <article class="p-card p-tall js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0" aria-label="SM 125 Build — Cliente">
-            <div class="p-card-img">
-              <img src="foto-02-clienti.jpg" alt="SM 125 al distributore di notte, angolo basso" />
+        <!-- CAROSELLO URBAN -->
+        <div class="carousel-block js-reveal-fade" data-cat="urban" aria-label="Carosello Urban">
+          <div class="carousel-header">
+            <div class="carousel-meta">
+              <span class="carousel-tag">Urban</span>
+              <h3 class="carousel-title">Urban Photography</h3>
+              <p class="carousel-year">2024</p>
             </div>
-            <div class="p-card-info">
-              <span class="p-tag">Clienti</span>
-              <h3>SM 125 Build</h3>
-              <p>2024 · Cliente</p>
+            <div class="carousel-controls">
+              <button class="carousel-btn carousel-prev" aria-label="Foto precedente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <span class="carousel-counter"></span>
+              <button class="carousel-btn carousel-next" aria-label="Foto successiva">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
-          </article>
+          </div>
+          <div class="carousel-track-wrap">
+            <div class="carousel-track">
+              <div class="carousel-slide"><img src="foto-03-urban.jpg" alt="Cattedrale gotica cielo blu Colmar" /></div>
+              <div class="carousel-slide"><img src="foto-05-urban.jpg" alt="Edificio art nouveau angolo di strada Colmar" /></div>
+              <!-- Aggiungi altre foto Urban -->
+              <div class="carousel-slide"><div class="carousel-ph"><span>urban-3.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>urban-4.jpg</span></div></div>
+            </div>
+          </div>
+          <div class="carousel-dots"></div>
+        </div>
 
-          <article class="p-card js-reveal-fade" data-cat="urban" role="listitem" tabindex="0" aria-label="Cattedrale — Urban">
-            <div class="p-card-img">
-              <img src="foto-03-urban.jpg" alt="Cattedrale gotica con cielo blu, prospettiva dal basso" />
+        <!-- CAROSELLO EICMA -->
+        <div class="carousel-block js-reveal-fade" data-cat="eventi" aria-label="Carosello EICMA 2024">
+          <div class="carousel-header">
+            <div class="carousel-meta">
+              <span class="carousel-tag">Eventi</span>
+              <h3 class="carousel-title">EICMA 2024</h3>
+              <p class="carousel-year">Milano · 2024</p>
             </div>
-            <div class="p-card-info">
-              <span class="p-tag">Urban</span>
-              <h3>Cattedrale</h3>
-              <p>2024 · Colmar</p>
+            <div class="carousel-controls">
+              <button class="carousel-btn carousel-prev" aria-label="Foto precedente">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+              </button>
+              <span class="carousel-counter"></span>
+              <button class="carousel-btn carousel-next" aria-label="Foto successiva">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+              </button>
             </div>
-          </article>
-
-          <article class="p-card p-wide js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0" aria-label="Enduro in cima alla montagna — Cliente">
-            <div class="p-card-img">
-              <img src="foto-04-clienti.jpg" alt="Moto enduro bianca e blu sulla neve con lago sullo sfondo" />
+          </div>
+          <div class="carousel-track-wrap">
+            <div class="carousel-track">
+              <!-- Aggiungi le tue foto EICMA: <div class="carousel-slide"><img src="eicma-1.jpg" alt="EICMA 2024 ..." /></div> -->
+              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-1.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-2.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-3.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-4.jpg</span></div></div>
+              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-5.jpg</span></div></div>
             </div>
-            <div class="p-card-info">
-              <span class="p-tag">Clienti</span>
-              <h3>Enduro — Cima</h3>
-              <p>2024 · Cliente</p>
-            </div>
-          </article>
-
-          <article class="p-card js-reveal-fade" data-cat="clienti" role="listitem" tabindex="0" aria-label="SM 125 Detail — Cliente">
-            <div class="p-card-img">
-              <img src="foto-04.jpg" alt="Dettaglio scarico SM 125 con wrap olografico viola" />
-            </div>
-            <div class="p-card-info">
-              <span class="p-tag">Clienti</span>
-              <h3>SM 125 — Detail</h3>
-              <p>2024 · Cliente</p>
-            </div>
-          </article>
-
-          <article class="p-card p-tall js-reveal-fade" data-cat="urban" role="listitem" tabindex="0" aria-label="Angolo — Urban">
-            <div class="p-card-img">
-              <img src="foto-05-urban.jpg" alt="Edificio art nouveau colorato su angolo di strada con cielo azzurro" />
-            </div>
-            <div class="p-card-info">
-              <span class="p-tag">Urban</span>
-              <h3>Angolo — Colmar</h3>
-              <p>2024 · Francia</p>
-            </div>
-          </article>
-
+          </div>
+          <div class="carousel-dots"></div>
         </div>
 
         <!-- POSTER EDIT -->
@@ -246,22 +277,16 @@
             <p class="poster-sub">Ogni shooting può includere un poster grafico personalizzato con le specifiche del soggetto — pronto per la stampa o i social.</p>
           </div>
           <div class="poster-grid" role="list" aria-label="Esempi di poster edit realizzati">
-            <article class="poster-card js-reveal-fade" role="listitem" aria-label="Poster Aprilia RS660">
-              <div class="poster-img-wrap">
-                <img src="poster-01.png" alt="Poster grafico Aprilia RS660 2025 con specifiche tecniche" />
-              </div>
+            <article class="poster-card js-reveal-fade" role="listitem">
+              <div class="poster-img-wrap"><img src="poster-01.png" alt="Poster grafico Aprilia RS660 2025" /></div>
               <p class="poster-cap">Aprilia RS660 · 2025</p>
             </article>
-            <article class="poster-card js-reveal-fade" role="listitem" aria-label="Poster SM 125">
-              <div class="poster-img-wrap">
-                <img src="poster-02.png" alt="Poster grafico SM 125 2017 con specifiche tecniche" />
-              </div>
+            <article class="poster-card js-reveal-fade" role="listitem">
+              <div class="poster-img-wrap"><img src="poster-02.png" alt="Poster grafico SM 125 2017" /></div>
               <p class="poster-cap">SM 125 · 2017</p>
             </article>
-            <article class="poster-card js-reveal-fade" role="listitem" aria-label="Poster Yamaha R125">
-              <div class="poster-img-wrap">
-                <img src="poster-03.png" alt="Poster grafico Yamaha R125 2023 con specifiche tecniche" />
-              </div>
+            <article class="poster-card js-reveal-fade" role="listitem">
+              <div class="poster-img-wrap"><img src="poster-03.png" alt="Poster grafico Yamaha R125 2023" /></div>
               <p class="poster-cap">Yamaha R125 · 2023</p>
             </article>
           </div>
@@ -365,11 +390,8 @@
         <h2 class="sec-h2 js-reveal-clip">Il mio kit</h2>
         <p class="sec-sub js-reveal-fade">Strumenti con cui lavoro ogni giorno.</p>
         <div class="gear-grid" role="list" aria-label="Lista attrezzatura">
-
           <div class="gear-group js-reveal-fade" role="listitem">
-            <div class="gear-img-wrap">
-              <img src="nikon-z6.jpg" alt="Nikon Z6 II con obiettivo Nikkor 24-70mm" />
-            </div>
+            <div class="gear-img-wrap"><img src="nikon-z6.jpg" alt="Nikon Z6 II con obiettivo Nikkor 24-70mm" /></div>
             <div class="gear-info">
               <span class="gear-badge">Camera</span>
               <h3 class="gear-name">Nikon Z6</h3>
@@ -381,11 +403,8 @@
               </ul>
             </div>
           </div>
-
           <div class="gear-group js-reveal-fade" role="listitem">
-            <div class="gear-img-wrap">
-              <img src="osmo-action-5.jpg" alt="DJI Osmo Action 5 Pro montata su casco da moto" />
-            </div>
+            <div class="gear-img-wrap"><img src="osmo-action-5.jpg" alt="DJI Osmo Action 5 Pro montata su casco" /></div>
             <div class="gear-info">
               <span class="gear-badge">Action Cam</span>
               <h3 class="gear-name">DJI Osmo Action 5 Pro</h3>
@@ -397,11 +416,8 @@
               </ul>
             </div>
           </div>
-
           <div class="gear-group js-reveal-fade" role="listitem">
-            <div class="gear-img-wrap">
-              <img src="dji-mic-mini.jpg" alt="DJI Mic Mini — trasmettitori wireless e ricevitore" />
-            </div>
+            <div class="gear-img-wrap"><img src="dji-mic-mini.jpg" alt="DJI Mic Mini — trasmettitori wireless e ricevitore" /></div>
             <div class="gear-info">
               <span class="gear-badge">Audio</span>
               <h3 class="gear-name">DJI Mic Mini</h3>
@@ -413,11 +429,8 @@
               </ul>
             </div>
           </div>
-
           <div class="gear-group js-reveal-fade" role="listitem">
-            <div class="gear-img-wrap">
-              <img src="macbook-pro.jpg" alt="MacBook Pro grigio siderale appoggiato su davanzale" />
-            </div>
+            <div class="gear-img-wrap"><img src="macbook-pro.jpg" alt="MacBook Pro grigio siderale su davanzale" /></div>
             <div class="gear-info">
               <span class="gear-badge">Laptop</span>
               <h3 class="gear-name">MacBook Pro 2018</h3>
@@ -429,11 +442,8 @@
               </ul>
             </div>
           </div>
-
           <div class="gear-group js-reveal-fade" role="listitem">
-            <div class="gear-img-wrap">
-              <img src="mac-mini.jpg" alt="Mac Mini con logo Apple visto dall'alto sulla scrivania" />
-            </div>
+            <div class="gear-img-wrap"><img src="mac-mini.jpg" alt="Mac Mini con logo Apple dall'alto" /></div>
             <div class="gear-info">
               <span class="gear-badge">Workstation</span>
               <h3 class="gear-name">Mac Mini / Studio</h3>
@@ -445,7 +455,6 @@
               </ul>
             </div>
           </div>
-
         </div>
       </div>
     </section>
@@ -461,7 +470,6 @@
         <h2 class="sec-h2 js-reveal-clip">Pacchetti disponibili</h2>
         <p class="sec-sub js-reveal-fade">Foto e video professionali su misura. Ogni pacchetto è personalizzabile — scrivimi per un preventivo.</p>
         <div class="pricing-grid" role="list" aria-label="Confronto pacchetti">
-
           <article class="price-card js-reveal-fade" role="listitem" aria-label="Pacchetto Basic">
             <div class="price-head">
               <span class="price-tier">Basic</span>
@@ -479,8 +487,7 @@
             </ul>
             <a href="#contatti" class="btn-price">Richiedi info</a>
           </article>
-
-          <article class="price-card price-hot js-reveal-fade" role="listitem" aria-label="Pacchetto Medium — più richiesto">
+          <article class="price-card price-hot js-reveal-fade" role="listitem" aria-label="Pacchetto Medium">
             <div class="price-badge">Più richiesto</div>
             <div class="price-head">
               <span class="price-tier">Medium</span>
@@ -498,7 +505,6 @@
             </ul>
             <a href="#contatti" class="btn-price btn-price-inv">Richiedi info</a>
           </article>
-
           <article class="price-card js-reveal-fade" role="listitem" aria-label="Pacchetto Premium">
             <div class="price-head">
               <span class="price-tier">Premium</span>
@@ -516,7 +522,6 @@
             </ul>
             <a href="#contatti" class="btn-price">Richiedi info</a>
           </article>
-
         </div>
         <p class="price-note js-reveal-fade">* Prezzi indicativi IVA esclusa. Trasferte fuori Milano valutate separatamente.</p>
       </div>
@@ -554,7 +559,7 @@
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
                   jacopo.fuse@gmail.com
                 </a>
-                <a href="https://instagram.com/JACOFUZ" target="_blank" rel="noopener noreferrer" class="c-link" aria-label="Instagram @JACOFUZ">
+                <a href="https://instagram.com/JACOFUZ" target="_blank" rel="noopener noreferrer" class="c-link" aria-label="Instagram">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
                   @JACOFUZ
                 </a>
@@ -602,9 +607,7 @@
                 <span>Invia messaggio</span>
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
               </button>
-              <div class="form-ok" id="form-ok" role="alert" aria-live="polite" hidden>
-                ✓ Messaggio ricevuto! Ti rispondo al più presto.
-              </div>
+              <div class="form-ok" id="form-ok" role="alert" aria-live="polite" hidden>✓ Messaggio ricevuto! Ti rispondo al più presto.</div>
             </form>
           </div>
         </div>
@@ -622,7 +625,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
             jacopo.fuse@gmail.com
           </a>
-          <a href="https://instagram.com/JACOFUZ" target="_blank" rel="noopener noreferrer" class="footer-contact-link" aria-label="Instagram @JACOFUZ">
+          <a href="https://instagram.com/JACOFUZ" target="_blank" rel="noopener noreferrer" class="footer-contact-link" aria-label="Instagram">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             @JACOFUZ
           </a>
