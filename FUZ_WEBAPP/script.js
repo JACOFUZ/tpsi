@@ -23,7 +23,11 @@ $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); });
     p += Math.random() * 18 + 5;
     if (p >= 100) {
       p = 100; clearInterval(iv); bar.style.width = '100%';
-      setTimeout(() => { loader.classList.add('gone'); document.body.style.overflow = ''; triggerInitialReveals(); }, 500);
+      setTimeout(() => {
+        loader.classList.add('gone');
+        document.body.style.overflow = '';
+        triggerInitialReveals();
+      }, 500);
     } else { bar.style.width = p + '%'; }
   }, 80);
 })();
@@ -37,8 +41,12 @@ $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); });
     mx=e.clientX; my=e.clientY;
     dot.style.transform=`translate(calc(${mx}px - 50%),calc(${my}px - 50%))`;
   });
-  (function loop() { rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.transform=`translate(calc(${rx}px - 50%),calc(${ry}px - 50%))`; requestAnimationFrame(loop); })();
-  const hov = 'a,button,.carousel-slide,.poster-card,.gear-group,.review-card,input,textarea,select,.reveal-wrap';
+  (function loop() {
+    rx+=(mx-rx)*.12; ry+=(my-ry)*.12;
+    ring.style.transform=`translate(calc(${rx}px - 50%),calc(${ry}px - 50%))`;
+    requestAnimationFrame(loop);
+  })();
+  const hov='a,button,.carousel-slide,.poster-card,.gear-group,.review-card,input,textarea,select';
   document.addEventListener('mouseover', e=>{ if(e.target.closest(hov)) ring.classList.add('hovered'); });
   document.addEventListener('mouseout',  e=>{ if(e.target.closest(hov)) ring.classList.remove('hovered'); });
   document.addEventListener('mouseleave',()=>{ dot.style.opacity='0'; ring.style.opacity='0'; });
@@ -82,7 +90,9 @@ function initReveal() {
 }
 function triggerInitialReveals() {
   initReveal();
-  $$('.s-hero .js-reveal-fade,.s-hero .js-reveal-clip').forEach((el,i) => { setTimeout(()=>el.classList.add('in'), i*150+100); });
+  $$('.s-hero .js-reveal-fade,.s-hero .js-reveal-clip').forEach((el,i) => {
+    setTimeout(()=>el.classList.add('in'), i*150+100);
+  });
 }
 
 /* ── FILTRI CAROSELLI ── */
@@ -150,156 +160,179 @@ function triggerInitialReveals() {
   });
 })();
 
-/* ── BLOB REVEAL EFFECT ── */
-(function initRevealEffect() {
-  const wrap      = document.getElementById('reveal-wrap');
-  const canvas    = document.getElementById('reveal-canvas');
-  const hiddenImg = document.getElementById('reveal-hidden-img');
-  const hint      = document.getElementById('reveal-hint');
-  const cursorEl  = document.getElementById('reveal-cursor-el');
-  if (!wrap || !canvas || !hiddenImg) return;
+/* ══════════════════════════════════════════════════════
+   HERO BLOB REVEAL — effetto olio su sfondo full screen
+   Come Lando Norris: due foto, blob organico segue mouse
+   ══════════════════════════════════════════════════════ */
+(function initHeroBlobReveal() {
+  const hero     = document.getElementById('hero');
+  const canvas   = document.getElementById('hero-canvas');
+  const imgReveal= document.getElementById('hero-img-reveal');
+  if (!hero || !canvas || !imgReveal) return;
 
   const ctx = canvas.getContext('2d');
   let W = 0, H = 0;
 
-  function resize() { W = canvas.width = wrap.offsetWidth; H = canvas.height = wrap.offsetHeight; }
+  /* Ridimensiona canvas al 100% della hero */
+  function resize() {
+    W = canvas.width  = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
   resize();
-  new ResizeObserver(resize).observe(wrap);
+  new ResizeObserver(resize).observe(hero);
 
-  let mx=0, my=0, tx=0, ty=0, radius=0, targetR=0, time=0;
+  /* Stato */
+  let mx = 0, my = 0;   /* posizione interpolata (lerp) */
+  let tx = -500, ty = -500; /* target mouse */
+  let radius = 0, targetR = 0;
+  let time = 0;
+  let heroActive = false;
 
-  /* 14 punti con oscillazioni multiple → forma macchia d'olio */
-  const N = 14;
+  /* ── Parametri blob: 16 punti, oscillazioni asimmetriche ──
+     Combinare più sinusoidi con fasi casuali → nessuna simmetria
+     → effetto macchia d'olio organica e imprevedibile          */
+  const N = 16;
   const pts = Array.from({ length: N }, () => ({
-    s1: 0.35 + Math.random() * 1.0,
-    s2: 0.18 + Math.random() * 0.7,
-    s3: 0.12 + Math.random() * 0.45,
+    s1: 0.3  + Math.random() * 1.1,
+    s2: 0.15 + Math.random() * 0.75,
+    s3: 0.08 + Math.random() * 0.5,
+    s4: 0.4  + Math.random() * 0.9,
     p1: Math.random() * Math.PI * 2,
     p2: Math.random() * Math.PI * 2,
     p3: Math.random() * Math.PI * 2,
-    a1: 0.18 + Math.random() * 0.16,
-    a2: 0.09 + Math.random() * 0.09,
-    a3: 0.05 + Math.random() * 0.06,
+    p4: Math.random() * Math.PI * 2,
+    a1: 0.14 + Math.random() * 0.18,
+    a2: 0.07 + Math.random() * 0.10,
+    a3: 0.04 + Math.random() * 0.06,
+    a4: 0.03 + Math.random() * 0.05,
   }));
 
   function blobPoint(i, cx, cy, r, t) {
     const angle = (i / N) * Math.PI * 2 - Math.PI / 2;
     const p = pts[i];
+    /* Quattro oscillazioni sovrapposte → forma irregolare, mai uguale */
     const noise = 1
       + p.a1 * Math.sin(t * p.s1 + p.p1)
       + p.a2 * Math.cos(t * p.s2 + p.p2)
-      + p.a3 * Math.sin(t * p.s3 + p.p3);
-    return { x: cx + r * noise * Math.cos(angle), y: cy + r * noise * Math.sin(angle) };
+      + p.a3 * Math.sin(t * p.s3 + p.p3)
+      + p.a4 * Math.cos(t * p.s4 + p.p4);
+    return {
+      x: cx + r * noise * Math.cos(angle),
+      y: cy + r * noise * Math.sin(angle),
+    };
   }
 
-  /* Catmull-Rom → Bezier per bordi morbidi organici */
+  /* Catmull-Rom spline → curve morbide e organiche */
   function drawBlob(cx, cy, r, t) {
     const bp = Array.from({ length: N }, (_, i) => blobPoint(i, cx, cy, r, t));
     ctx.beginPath();
     for (let i = 0; i < N; i++) {
-      const p0 = bp[(i-1+N)%N], p1 = bp[i], p2 = bp[(i+1)%N], p3 = bp[(i+2)%N];
-      if (i===0) ctx.moveTo(p1.x, p1.y);
-      const cp1x = p1.x + (p2.x - p0.x) / 6, cp1y = p1.y + (p2.y - p0.y) / 6;
-      const cp2x = p2.x - (p3.x - p1.x) / 6, cp2y = p2.y - (p3.y - p1.y) / 6;
+      const p0 = bp[(i-1+N)%N];
+      const p1 = bp[i];
+      const p2 = bp[(i+1)%N];
+      const p3 = bp[(i+2)%N];
+      if (i === 0) ctx.moveTo(p1.x, p1.y);
+      const cp1x = p1.x + (p2.x - p0.x) / 6;
+      const cp1y = p1.y + (p2.y - p0.y) / 6;
+      const cp2x = p2.x - (p3.x - p1.x) / 6;
+      const cp2y = p2.y - (p3.y - p1.y) / 6;
       ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2.x, p2.y);
     }
     ctx.closePath();
   }
 
+  /* Disegna immagine con object-fit: cover */
   function drawCover(img) {
-    const iW = img.naturalWidth || W, iH = img.naturalHeight || H;
-    const scale = Math.max(W/iW, H/iH);
-    const dw = iW*scale, dh = iH*scale;
-    ctx.drawImage(img, (W-dw)/2, (H-dh)/2, dw, dh);
+    const iW = img.naturalWidth  || W;
+    const iH = img.naturalHeight || H;
+    const scale = Math.max(W / iW, H / iH);
+    const dw = iW * scale, dh = iH * scale;
+    ctx.drawImage(img, (W - dw) / 2, (H - dh) / 2, dw, dh);
   }
 
-  /* Glow esterno alla macchia per effetto olio iridescente */
-  function drawGlow(cx, cy, r, t) {
+  /* Effetto bordo iridescente — il dettaglio che fa la differenza */
+  function drawEdgeGlow(cx, cy, r, t) {
     ctx.save();
-    drawBlob(cx, cy, r * 1.06, t);
-    const grad = ctx.createRadialGradient(cx, cy, r * 0.7, cx, cy, r * 1.1);
-    grad.addColorStop(0, 'rgba(74,143,255,0.0)');
-    grad.addColorStop(0.6, 'rgba(74,143,255,0.08)');
-    grad.addColorStop(1, 'rgba(74,143,255,0.0)');
-    ctx.fillStyle = grad;
+    drawBlob(cx, cy, r * 1.04, t);
+    const g = ctx.createRadialGradient(cx, cy, r * 0.85, cx, cy, r * 1.05);
+    g.addColorStop(0,   'rgba(74,143,255,0.00)');
+    g.addColorStop(0.5, 'rgba(111,174,255,0.12)');
+    g.addColorStop(1,   'rgba(74,143,255,0.00)');
+    ctx.fillStyle = g;
     ctx.fill();
     ctx.restore();
   }
 
+  /* ── Loop ── */
   (function frame() {
     requestAnimationFrame(frame);
-    time += 0.016;
-    mx += (tx - mx) * 0.10;
-    my += (ty - my) * 0.10;
-    radius += (targetR - radius) * 0.06;
+    time += 0.014;
+
+    /* Lerp morbido — il blob "insegue" il cursore con inertia */
+    mx += (tx - mx) * 0.085;
+    my += (ty - my) * 0.085;
+    radius += (targetR - radius) * 0.055;
+
     ctx.clearRect(0, 0, W, H);
     if (radius < 1) return;
 
-    /* Glow esterno */
-    drawGlow(mx, my, radius, time);
+    /* 1. Glow bordo */
+    drawEdgeGlow(mx, my, radius, time);
 
-    /* Clip → disegna immagine casco dentro il blob */
+    /* 2. Clip → immagine rivelata dentro il blob */
     ctx.save();
     drawBlob(mx, my, radius, time);
     ctx.clip();
-    if (hiddenImg.complete && hiddenImg.naturalWidth > 0) drawCover(hiddenImg);
+    if (imgReveal.complete && imgReveal.naturalWidth > 0) {
+      drawCover(imgReveal);
+    }
     ctx.restore();
 
-    /* Bordo blob */
+    /* 3. Bordo sottile */
     ctx.save();
     drawBlob(mx, my, radius, time);
-    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
-    ctx.lineWidth   = 2;
+    ctx.strokeStyle = 'rgba(255,255,255,0.07)';
+    ctx.lineWidth   = 1.5;
     ctx.stroke();
     ctx.restore();
   })();
 
-  wrap.addEventListener('mouseenter', e => {
-    targetR = Math.min(W, H) * 0.42;
-    wrap.classList.add('active');
-    if (hint) hint.classList.add('hidden');
-    const rect = wrap.getBoundingClientRect();
+  /* ── Ascolta il mouse sull'intera hero ── */
+  hero.addEventListener('mouseenter', e => {
+    heroActive = true;
+    targetR = Math.min(W, H) * 0.30; /* ~30% della dimensione minore */
+    const rect = hero.getBoundingClientRect();
     tx = mx = e.clientX - rect.left;
     ty = my = e.clientY - rect.top;
   });
 
-  wrap.addEventListener('mouseleave', () => {
+  hero.addEventListener('mouseleave', () => {
+    heroActive = false;
     targetR = 0;
-    wrap.classList.remove('active');
-    if (hint) hint.classList.remove('hidden');
-    if (cursorEl) cursorEl.style.opacity = '0';
   });
 
-  wrap.addEventListener('mousemove', e => {
-    const rect = wrap.getBoundingClientRect();
+  hero.addEventListener('mousemove', e => {
+    const rect = hero.getBoundingClientRect();
     tx = e.clientX - rect.left;
     ty = e.clientY - rect.top;
-    if (cursorEl) {
-      cursorEl.style.left    = tx + 'px';
-      cursorEl.style.top     = ty + 'px';
-      cursorEl.style.opacity = '1';
-    }
   });
 
-  /* Touch */
-  wrap.addEventListener('touchmove', e => {
-    e.preventDefault();
-    const rect = wrap.getBoundingClientRect();
-    const t = e.touches[0];
-    tx = t.clientX - rect.left;
-    ty = t.clientY - rect.top;
-    if (!wrap.classList.contains('active')) {
-      targetR = Math.min(W, H) * 0.42;
+  /* ── Touch ── */
+  hero.addEventListener('touchmove', e => {
+    const rect  = hero.getBoundingClientRect();
+    const touch = e.touches[0];
+    tx = touch.clientX - rect.left;
+    ty = touch.clientY - rect.top;
+    if (!heroActive) {
+      heroActive = true;
+      targetR = Math.min(W, H) * 0.30;
       mx = tx; my = ty;
-      wrap.classList.add('active');
-      if (hint) hint.classList.add('hidden');
     }
-  }, { passive: false });
+  }, { passive: true });
 
-  wrap.addEventListener('touchend', () => {
+  hero.addEventListener('touchend', () => {
+    heroActive = false;
     targetR = 0;
-    wrap.classList.remove('active');
-    if (hint) hint.classList.remove('hidden');
   });
 })();
 
@@ -343,8 +376,16 @@ function triggerInitialReveals() {
     type:   {el:$('#f-type'), err:$('#err-type'), validate:v=>v!==''?'':'Seleziona un tipo di richiesta.'},
     message:{el:$('#f-msg'),  err:$('#err-msg'),  validate:v=>v.trim().length>=10?'':'Almeno 10 caratteri.'},
   };
-  const vf = key => { const{el,err,validate}=fields[key]; if(!el||!err) return true; const msg=validate(el.value); err.textContent=sanitize(msg); el.classList.toggle('invalid',msg!==''); return msg===''; };
-  Object.keys(fields).forEach(k => { const{el}=fields[k]; if(!el) return; el.addEventListener('blur',()=>vf(k)); el.addEventListener('input',()=>{ if(el.classList.contains('invalid'))vf(k); }); });
+  const vf = key => {
+    const{el,err,validate}=fields[key]; if(!el||!err) return true;
+    const msg=validate(el.value); err.textContent=sanitize(msg);
+    el.classList.toggle('invalid',msg!==''); return msg==='';
+  };
+  Object.keys(fields).forEach(k => {
+    const{el}=fields[k]; if(!el) return;
+    el.addEventListener('blur',()=>vf(k));
+    el.addEventListener('input',()=>{ if(el.classList.contains('invalid'))vf(k); });
+  });
   form.addEventListener('submit', e => {
     e.preventDefault();
     let valid = true; Object.keys(fields).forEach(k=>{ if(!vf(k))valid=false; });
@@ -379,29 +420,14 @@ $$('a[href^="#"]').forEach(a => {
   });
 });
 
-/* ── PARALLAX ── */
-(function() {
-  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  const bg = $('.hero-bg'); if (!bg) return;
-  let t = false;
-  window.addEventListener('scroll', () => { if(!t){ requestAnimationFrame(()=>{ bg.style.transform=`translateY(${window.scrollY*.35}px)`; t=false; }); t=true; } }, {passive:true});
-})();
-
-/* ── HOVER MAGNETICO ── */
-(function() {
-  if (window.matchMedia('(pointer:coarse)').matches) return;
-  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  $$('.btn-fill,.btn-line').forEach(btn => {
-    btn.addEventListener('mousemove', e => { const r=btn.getBoundingClientRect(); btn.style.transform=`translate(${(e.clientX-(r.left+r.width/2))*.25}px,${(e.clientY-(r.top+r.height/2))*.25}px)`; });
-    btn.addEventListener('mouseleave', () => { btn.style.transform=''; });
-  });
-})();
-
 /* ── THEME TOGGLE ── */
 (function initTheme() {
   const btn = $('#theme-toggle'), body = document.body; if (!btn) return;
   if (localStorage.getItem('jf-theme')==='light') body.classList.add('light');
-  btn.addEventListener('click', () => { body.classList.toggle('light'); localStorage.setItem('jf-theme', body.classList.contains('light')?'light':'dark'); });
+  btn.addEventListener('click', () => {
+    body.classList.toggle('light');
+    localStorage.setItem('jf-theme', body.classList.contains('light')?'light':'dark');
+  });
 })();
 
 window.addEventListener('error', e => console.warn('[JF]', e.message));
