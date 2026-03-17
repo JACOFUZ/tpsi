@@ -44,7 +44,6 @@ $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); });
   const ring = $('#cursor-ring');
   if (!dot || !ring || window.matchMedia('(pointer:coarse)').matches) return;
   let mx = -100, my = -100, rx = -100, ry = -100;
-
   document.addEventListener('mousemove', e => {
     mx = e.clientX; my = e.clientY;
     dot.style.transform = `translate(calc(${mx}px - 50%), calc(${my}px - 50%))`;
@@ -54,7 +53,6 @@ $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); });
     ring.style.transform = `translate(calc(${rx}px - 50%), calc(${ry}px - 50%))`;
     requestAnimationFrame(loop);
   })();
-
   const hov = 'a,button,.p-card,.f-btn,.price-card,.gear-group,input,textarea,select';
   document.addEventListener('mouseover',  e => { if (e.target.closest(hov)) ring.classList.add('hovered'); });
   document.addEventListener('mouseout',   e => { if (e.target.closest(hov)) ring.classList.remove('hovered'); });
@@ -74,7 +72,6 @@ $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); });
   const btn     = $('#hamburger');
   const overlay = $('#nav-overlay');
   if (!btn || !overlay) return;
-
   const open = () => {
     btn.classList.add('open');
     btn.setAttribute('aria-expanded','true');
@@ -89,11 +86,9 @@ $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); });
     document.body.style.overflow = '';
     btn.focus();
   };
-
   btn.addEventListener('click', () => btn.classList.contains('open') ? close() : open());
   $$('.nav-link', overlay).forEach(l => l.addEventListener('click', close));
   document.addEventListener('keydown', e => { if (e.key === 'Escape' && btn.classList.contains('open')) close(); });
-
   overlay.addEventListener('keydown', e => {
     if (e.key !== 'Tab') return;
     const els = $$('a,button', overlay);
@@ -110,14 +105,12 @@ function initReveal() {
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
   $$('.pricing-grid .js-reveal-fade,.gear-grid .js-reveal-fade,.video-grid .js-reveal-fade').forEach((el,i) => {
     el.style.transitionDelay = `${i * 0.12}s`;
   });
   $$('.tl-item.js-reveal-fade').forEach((el,i) => { el.style.transitionDelay = `${i * 0.1}s`; });
   els.forEach(el => obs.observe(el));
 }
-
 function triggerInitialReveals() {
   initReveal();
   $$('.s-hero .js-reveal-fade,.s-hero .js-reveal-clip').forEach((el,i) => {
@@ -130,7 +123,6 @@ function triggerInitialReveals() {
   const btns  = $$('.f-btn');
   const cards = $$('.p-card');
   if (!btns.length || !cards.length) return;
-
   btns.forEach(btn => {
     btn.addEventListener('click', () => {
       const filter = btn.dataset.filter;
@@ -165,7 +157,6 @@ function triggerInitialReveals() {
     type:    { el: $('#f-type'),  err: $('#err-type'),  validate: v => v !== '' ? '' : 'Seleziona un tipo di richiesta.' },
     message: { el: $('#f-msg'),   err: $('#err-msg'),   validate: v => v.trim().length >= 10 ? '' : 'Il messaggio deve avere almeno 10 caratteri.' },
   };
-
   const validateField = key => {
     const { el, err, validate } = fields[key];
     if (!el || !err) return true;
@@ -174,14 +165,12 @@ function triggerInitialReveals() {
     el.classList.toggle('invalid', msg !== '');
     return msg === '';
   };
-
   Object.keys(fields).forEach(key => {
     const { el } = fields[key];
     if (!el) return;
     el.addEventListener('blur',  () => validateField(key));
     el.addEventListener('input', () => { if (el.classList.contains('invalid')) validateField(key); });
   });
-
   form.addEventListener('submit', e => {
     e.preventDefault();
     let valid = true;
@@ -247,6 +236,19 @@ $$('a[href^="#"]').forEach(a => {
       btn.style.transform = `translate(${(e.clientX-(r.left+r.width/2))*.25}px,${(e.clientY-(r.top+r.height/2))*.25}px)`;
     });
     btn.addEventListener('mouseleave', () => { btn.style.transform = ''; });
+  });
+})();
+
+/* ── THEME TOGGLE ── */
+(function initTheme() {
+  const btn  = $('#theme-toggle');
+  const body = document.body;
+  if (!btn) return;
+  const saved = localStorage.getItem('jf-theme');
+  if (saved === 'light') body.classList.add('light');
+  btn.addEventListener('click', () => {
+    body.classList.toggle('light');
+    localStorage.setItem('jf-theme', body.classList.contains('light') ? 'light' : 'dark');
   });
 })();
 
