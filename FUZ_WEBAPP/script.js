@@ -38,7 +38,7 @@ $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); });
     dot.style.transform=`translate(calc(${mx}px - 50%),calc(${my}px - 50%))`;
   });
   (function loop() { rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.transform=`translate(calc(${rx}px - 50%),calc(${ry}px - 50%))`; requestAnimationFrame(loop); })();
-  const hov = 'a,button,.carousel-slide,.poster-card,.gear-group,.review-card,input,textarea,select';
+  const hov = 'a,button,.carousel-slide,.poster-card,.gear-group,.review-card,input,textarea,select,.reveal-wrap';
   document.addEventListener('mouseover', e=>{ if(e.target.closest(hov)) ring.classList.add('hovered'); });
   document.addEventListener('mouseout',  e=>{ if(e.target.closest(hov)) ring.classList.remove('hovered'); });
   document.addEventListener('mouseleave',()=>{ dot.style.opacity='0'; ring.style.opacity='0'; });
@@ -119,11 +119,8 @@ function triggerInitialReveals() {
     const dotsWrap = block.querySelector('.carousel-dots');
     const counter  = block.querySelector('.carousel-counter');
     if (!track || !slides.length) return;
-
     let current = 0;
-
     function visibleCount() { return block.offsetWidth < 400 ? 1 : 2; }
-
     slides.forEach((_, i) => {
       if (!dotsWrap) return;
       const dot = document.createElement('button');
@@ -132,9 +129,7 @@ function triggerInitialReveals() {
       dot.addEventListener('click', () => goTo(i));
       dotsWrap.appendChild(dot);
     });
-
     function getDots() { return dotsWrap ? $$('.carousel-dot', dotsWrap) : []; }
-
     function goTo(index) {
       const total = slides.length, visible = visibleCount(), max = Math.max(0, total-visible);
       current = Math.max(0, Math.min(index, max));
@@ -144,29 +139,176 @@ function triggerInitialReveals() {
       if (prevBtn) prevBtn.disabled = current===0;
       if (nextBtn) nextBtn.disabled = current>=max;
     }
-
     if (prevBtn) prevBtn.addEventListener('click', () => goTo(current-1));
     if (nextBtn) nextBtn.addEventListener('click', () => goTo(current+1));
-
     let tx = 0;
     track.addEventListener('touchstart', e => { tx=e.touches[0].clientX; }, {passive:true});
     track.addEventListener('touchend',   e => { const d=tx-e.changedTouches[0].clientX; if(Math.abs(d)>40) goTo(d>0?current+1:current-1); });
     block.addEventListener('keydown', e => { if(e.key==='ArrowLeft') goTo(current-1); if(e.key==='ArrowRight') goTo(current+1); });
-
-    let rt;
-    window.addEventListener('resize', () => { clearTimeout(rt); rt=setTimeout(()=>goTo(current),150); }, {passive:true});
+    let rt; window.addEventListener('resize', () => { clearTimeout(rt); rt=setTimeout(()=>goTo(current),150); }, {passive:true});
     goTo(0);
   });
 })();
 
-/* ── RECENSIONI (lettura) ── */
+/* ── BLOB REVEAL EFFECT ── */
+(function initRevealEffect() {
+  const wrap      = document.getElementById('reveal-wrap');
+  const canvas    = document.getElementById('reveal-canvas');
+  const hiddenImg = document.getElementById('reveal-hidden-img');
+  const hint      = document.getElementById('reveal-hint');
+  const cursorEl  = document.getElementById('reveal-cursor-el');
+  if (!wrap || !canvas || !hiddenImg) return;
+
+  const ctx = canvas.getContext('2d');
+  let W = 0, H = 0;
+
+  function resize() { W = canvas.width = wrap.offsetWidth; H = canvas.height = wrap.offsetHeight; }
+  resize();
+  new ResizeObserver(resize).observe(wrap);
+
+  let mx=0, my=0, tx=0, ty=0, radius=0, targetR=0, time=0;
+
+  /* 14 punti con oscillazioni multiple → forma macchia d'olio */
+  const N = 14;
+  const pts = Array.from({ length: N }, () => ({
+    s1: 0.35 + Math.random() * 1.0,
+    s2: 0.18 + Math.random() * 0.7,
+    s3: 0.12 + Math.random() * 0.45,
+    p1: Math.random() * Math.PI * 2,
+    p2: Math.random() * Math.PI * 2,
+    p3: Math.random() * Math.PI * 2,
+    a1: 0.18 + Math.random() * 0.16,
+    a2: 0.09 + Math.random() * 0.09,
+    a3: 0.05 + Math.random() * 0.06,
+  }));
+
+  function blobPoint(i, cx, cy, r, t) {
+    const angle = (i / N) * Math.PI * 2 - Math.PI / 2;
+    const p = pts[i];
+    const noise = 1
+      + p.a1 * Math.sin(t * p.s1 + p.p1)
+      + p.a2 * Math.cos(t * p.s2 + p.p2)
+      + p.a3 * Math.sin(t * p.s3 + p.p3);
+    return { x: cx + r * noise * Math.cos(angle), y: cy + r * noise * Math.sin(angle) };
+  }
+
+  /* Catmull-Rom → Bezier per bordi morbidi organici */
+  function drawBlob(cx, cy, r, t) {
+    const bp = Array.from({ length: N }, (_, i) => blobPoint(i, cx, cy, r, t));
+    ctx.beginPath();
+    for (let i = 0; i < N; i++) {
+      const p0 = bp[(i-1+N)%N], p1 = bp[i], p2 = bp[(i+1)%N], p3 = bp[(i+2)%N];
+      if (i===0) ctx.moveTo(p1.x, p1.y);
+      const cp1x = p1.x + (p2.x - p0.x) / 6, cp1y = p1.y + (p2.y - p0.y) / 6;
+      const cp2x = p2.x - (p3.x - p1.x) / 6, cp2y = p2.y - (p3.y - p1.y) / 6;
+      ctx.bezierCurveTo(cp1x, cp1y, cp2x, cp2y, p2.x, p2.y);
+    }
+    ctx.closePath();
+  }
+
+  function drawCover(img) {
+    const iW = img.naturalWidth || W, iH = img.naturalHeight || H;
+    const scale = Math.max(W/iW, H/iH);
+    const dw = iW*scale, dh = iH*scale;
+    ctx.drawImage(img, (W-dw)/2, (H-dh)/2, dw, dh);
+  }
+
+  /* Glow esterno alla macchia per effetto olio iridescente */
+  function drawGlow(cx, cy, r, t) {
+    ctx.save();
+    drawBlob(cx, cy, r * 1.06, t);
+    const grad = ctx.createRadialGradient(cx, cy, r * 0.7, cx, cy, r * 1.1);
+    grad.addColorStop(0, 'rgba(74,143,255,0.0)');
+    grad.addColorStop(0.6, 'rgba(74,143,255,0.08)');
+    grad.addColorStop(1, 'rgba(74,143,255,0.0)');
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.restore();
+  }
+
+  (function frame() {
+    requestAnimationFrame(frame);
+    time += 0.016;
+    mx += (tx - mx) * 0.10;
+    my += (ty - my) * 0.10;
+    radius += (targetR - radius) * 0.06;
+    ctx.clearRect(0, 0, W, H);
+    if (radius < 1) return;
+
+    /* Glow esterno */
+    drawGlow(mx, my, radius, time);
+
+    /* Clip → disegna immagine casco dentro il blob */
+    ctx.save();
+    drawBlob(mx, my, radius, time);
+    ctx.clip();
+    if (hiddenImg.complete && hiddenImg.naturalWidth > 0) drawCover(hiddenImg);
+    ctx.restore();
+
+    /* Bordo blob */
+    ctx.save();
+    drawBlob(mx, my, radius, time);
+    ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+    ctx.lineWidth   = 2;
+    ctx.stroke();
+    ctx.restore();
+  })();
+
+  wrap.addEventListener('mouseenter', e => {
+    targetR = Math.min(W, H) * 0.42;
+    wrap.classList.add('active');
+    if (hint) hint.classList.add('hidden');
+    const rect = wrap.getBoundingClientRect();
+    tx = mx = e.clientX - rect.left;
+    ty = my = e.clientY - rect.top;
+  });
+
+  wrap.addEventListener('mouseleave', () => {
+    targetR = 0;
+    wrap.classList.remove('active');
+    if (hint) hint.classList.remove('hidden');
+    if (cursorEl) cursorEl.style.opacity = '0';
+  });
+
+  wrap.addEventListener('mousemove', e => {
+    const rect = wrap.getBoundingClientRect();
+    tx = e.clientX - rect.left;
+    ty = e.clientY - rect.top;
+    if (cursorEl) {
+      cursorEl.style.left    = tx + 'px';
+      cursorEl.style.top     = ty + 'px';
+      cursorEl.style.opacity = '1';
+    }
+  });
+
+  /* Touch */
+  wrap.addEventListener('touchmove', e => {
+    e.preventDefault();
+    const rect = wrap.getBoundingClientRect();
+    const t = e.touches[0];
+    tx = t.clientX - rect.left;
+    ty = t.clientY - rect.top;
+    if (!wrap.classList.contains('active')) {
+      targetR = Math.min(W, H) * 0.42;
+      mx = tx; my = ty;
+      wrap.classList.add('active');
+      if (hint) hint.classList.add('hidden');
+    }
+  }, { passive: false });
+
+  wrap.addEventListener('touchend', () => {
+    targetR = 0;
+    wrap.classList.remove('active');
+    if (hint) hint.classList.remove('hidden');
+  });
+})();
+
+/* ── RECENSIONI ── */
 (function initReviews() {
   const list  = document.getElementById('reviews-list');
   const empty = document.getElementById('reviews-empty');
   if (!list) return;
-
   const STORAGE_KEY = 'jf-reviews';
-
   function buildCard(r) {
     const card = document.createElement('article');
     card.className = 'review-card';
@@ -174,10 +316,7 @@ function triggerInitialReveals() {
     const stars = '★'.repeat(r.stars) + '☆'.repeat(5-r.stars);
     card.innerHTML = `
       <div class="review-card-top">
-        <div>
-          <p class="review-author">${sanitize(r.name)}</p>
-          ${r.role ? `<p class="review-role">${sanitize(r.role)}</p>` : ''}
-        </div>
+        <div><p class="review-author">${sanitize(r.name)}</p>${r.role?`<p class="review-role">${sanitize(r.role)}</p>`:''}</div>
         <span class="review-stars" aria-label="${r.stars} stelle">${stars}</span>
       </div>
       <p class="review-text">${sanitize(r.text)}</p>
@@ -185,19 +324,13 @@ function triggerInitialReveals() {
     `;
     return card;
   }
-
   function loadReviews() {
     let reviews = [];
     try { reviews = JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } catch(e) {}
     list.innerHTML = '';
-    if (reviews.length === 0) {
-      if (empty) empty.hidden = false;
-    } else {
-      if (empty) empty.hidden = true;
-      reviews.slice().reverse().forEach(r => list.appendChild(buildCard(r)));
-    }
+    if (reviews.length === 0) { if (empty) empty.hidden = false; }
+    else { if (empty) empty.hidden = true; reviews.slice().reverse().forEach(r => list.appendChild(buildCard(r))); }
   }
-
   loadReviews();
 })();
 
@@ -251,24 +384,4 @@ $$('a[href^="#"]').forEach(a => {
   if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
   const bg = $('.hero-bg'); if (!bg) return;
   let t = false;
-  window.addEventListener('scroll', () => { if(!t){ requestAnimationFrame(()=>{ bg.style.transform=`translateY(${window.scrollY*.35}px)`; t=false; }); t=true; } }, {passive:true});
-})();
-
-/* ── HOVER MAGNETICO ── */
-(function() {
-  if (window.matchMedia('(pointer:coarse)').matches) return;
-  if (window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
-  $$('.btn-fill,.btn-line').forEach(btn => {
-    btn.addEventListener('mousemove', e => { const r=btn.getBoundingClientRect(); btn.style.transform=`translate(${(e.clientX-(r.left+r.width/2))*.25}px,${(e.clientY-(r.top+r.height/2))*.25}px)`; });
-    btn.addEventListener('mouseleave', () => { btn.style.transform=''; });
-  });
-})();
-
-/* ── THEME TOGGLE ── */
-(function initTheme() {
-  const btn = $('#theme-toggle'), body = document.body; if (!btn) return;
-  if (localStorage.getItem('jf-theme')==='light') body.classList.add('light');
-  btn.addEventListener('click', () => { body.classList.toggle('light'); localStorage.setItem('jf-theme', body.classList.contains('light')?'light':'dark'); });
-})();
-
-window.addEventListener('error', e => console.warn('[JF]', e.message));
+  window.addEventListener('scroll', () => { if(!t){ requestAnimationFrame(()=>{ bg.style.transform=`t
