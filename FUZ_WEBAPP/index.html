@@ -22,10 +22,32 @@
 
   <header class="site-header" id="site-header" role="banner">
     <a href="#hero" class="brand-mark" aria-label="Jacopo Fusé – torna all'inizio">JF</a>
-    <button class="hamburger" id="hamburger" aria-label="Apri il menu di navigazione" aria-expanded="false" aria-controls="nav-overlay">
-      <span class="ham-bar"></span>
-      <span class="ham-bar"></span>
-    </button>
+    <div class="header-actions">
+      <button
+        class="theme-toggle"
+        id="theme-toggle"
+        aria-label="Cambia tema chiaro/scuro"
+        title="Cambia tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <circle cx="12" cy="12" r="5"/>
+          <line x1="12" y1="1"  x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+          <line x1="4.22" y1="4.22"   x2="5.64"  y2="5.64"/>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+          <line x1="1"  y1="12" x2="3"  y2="12"/>
+          <line x1="21" y1="12" x2="23" y2="12"/>
+          <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"/>
+          <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
+        </svg>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Apri il menu di navigazione" aria-expanded="false" aria-controls="nav-overlay">
+        <span class="ham-bar"></span>
+        <span class="ham-bar"></span>
+      </button>
+    </div>
   </header>
 
   <div class="nav-overlay" id="nav-overlay" role="dialog" aria-modal="true" aria-label="Navigazione" hidden>
@@ -120,10 +142,10 @@
           </div>
           <div class="about-copy js-reveal-right">
             <h2 class="about-h2">Racconto storie.<br /><em>Un frame alla volta.</em></h2>
-            <p>Ciao, sono Jacopo. Fotografo e videomaker con base in provincia di Milano, cresciuto con la passione per il modno motori e la fotografia, la costante voglia di documentare momenti che altrimenti scivolerebbero via in silenzio.</p>
+            <p>Ciao, sono Jacopo. Fotografo e videomaker con base a Milano, cresciuto con la macchina fotografica in mano e la costante voglia di fermare momenti che altrimenti scivolerebbero via in silenzio.</p>
             <p>Ogni scatto è una scelta — di luce, di distanza, di istante. Ogni video è un racconto che trova il suo ritmo nel montaggio. Lavoro su ritratti, eventi, campagne brand e contenuti digitali, portando sempre una visione personale.</p>
             <p>Parallelamente studio Informatica: la logica del codice ha affinato il mio pensiero visivo, insegnandomi a costruire esperienze che funzionano davvero.</p>
-            <p class="ph-text">[Aggiungi: ITIS Cannizzaro RHO 2022-2026 (ancora in corso...)</p>
+            <p class="ph-text">[Aggiungi: università, anno di corso, esperienze, interessi personali…]</p>
           </div>
         </div>
       </div>
@@ -165,7 +187,7 @@
             </div>
             <div class="p-card-info">
               <span class="p-tag">Clienti</span>
-              <h3>KTM SX125 Build</h3>
+              <h3>SM 125 Build</h3>
               <p>2024 · Cliente</p>
             </div>
           </article>
@@ -187,7 +209,7 @@
             </div>
             <div class="p-card-info">
               <span class="p-tag">Clienti</span>
-              <h3>TM 125</h3>
+              <h3>Enduro — Cima</h3>
               <p>2024 · Cliente</p>
             </div>
           </article>
@@ -198,7 +220,7 @@
             </div>
             <div class="p-card-info">
               <span class="p-tag">Clienti</span>
-              <h3>KTM SX125 — Detail</h3>
+              <h3>SM 125 — Detail</h3>
               <p>2024 · Cliente</p>
             </div>
           </article>
@@ -209,7 +231,7 @@
             </div>
             <div class="p-card-info">
               <span class="p-tag">Urban</span>
-              <h3>Architettura — Colmar</h3>
+              <h3>Angolo — Colmar</h3>
               <p>2024 · Francia</p>
             </div>
           </article>
@@ -219,9 +241,9 @@
         <!-- POSTER EDIT -->
         <div class="poster-section js-reveal-fade" aria-label="Esempi poster edit">
           <div class="poster-section-head">
-            <span class="poster-eyebrow">Servizio custom</span>
+            <span class="poster-eyebrow">Servizio incluso</span>
             <h3 class="poster-heading">Poster Edit</h3>
-            <p class="poster-sub">Oltre a shooting offro anche la possibilità di farsi realizzare il proprio poster personalizzato con le specifiche del proprio mezzo. Regalo perfetto per un amico o un parente appassionato di motori. perfetto da stampare e condividere sui social</p>
+            <p class="poster-sub">Ogni shooting può includere un poster grafico personalizzato con le specifiche del soggetto — pronto per la stampa o i social.</p>
           </div>
           <div class="poster-grid" role="list" aria-label="Esempi di poster edit realizzati">
             <article class="poster-card js-reveal-fade" role="listitem" aria-label="Poster Aprilia RS660">
@@ -234,13 +256,13 @@
               <div class="poster-img-wrap">
                 <img src="poster-02.png" alt="Poster grafico SM 125 2017 con specifiche tecniche" />
               </div>
-              <p class="poster-cap">KTM SX125 · 2017</p>
+              <p class="poster-cap">SM 125 · 2017</p>
             </article>
             <article class="poster-card js-reveal-fade" role="listitem" aria-label="Poster Yamaha R125">
               <div class="poster-img-wrap">
                 <img src="poster-03.png" alt="Poster grafico Yamaha R125 2023 con specifiche tecniche" />
               </div>
-              <p class="poster-cap">Yamaha YZF-R125 · 2023</p>
+              <p class="poster-cap">Yamaha R125 · 2023</p>
             </article>
           </div>
         </div>
@@ -293,10 +315,6 @@
         <h2 class="sec-h2 js-reveal-clip">Produzioni video</h2>
         <div class="video-featured js-reveal-fade">
           <div class="video-embed" aria-label="Video in evidenza">
-            <!--
-              Sostituisci con:
-              <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Titolo" frameborder="0" allowfullscreen loading="lazy"></iframe>
-            -->
             <div class="video-ph" role="img" aria-label="Video in evidenza">
               <button class="play-big" aria-label="Riproduci video principale">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
