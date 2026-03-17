@@ -52,15 +52,15 @@
 
   <main id="main">
 
-    <!-- HERO -->
+    <!-- HERO — full width senza collage -->
     <section class="s-hero" id="hero" aria-label="Presentazione">
       <div class="hero-bg" aria-hidden="true">
         <div class="hero-grain"></div>
         <div class="hero-bg-placeholder"><div class="bg-lines" aria-hidden="true"></div></div>
         <div class="hero-vignette"></div>
       </div>
-      <div class="hero-inner">
-        <div class="hero-body">
+      <div class="hero-inner hero-inner--center">
+        <div class="hero-body hero-body--wide">
           <p class="hero-loc js-reveal-fade"><span class="live-dot" aria-hidden="true"></span>Milano — Italia</p>
           <h1 class="hero-name">
             <span class="hero-line js-reveal-clip">JACOPO</span>
@@ -70,14 +70,15 @@
           <div class="hero-btns js-reveal-fade">
             <a href="#foto" class="btn-fill">Portfolio</a>
             <a href="#offerte" class="btn-line">Pacchetti</a>
+            <a href="#chi-sono" class="btn-line btn-line--ghost">Chi sono</a>
           </div>
-        </div>
-        <div class="hero-collage js-reveal-fade" aria-label="Foto di Jacopo Fusé">
-          <div class="hc-item hc-1"><img src="hero-1.jpg" alt="Jacopo Fusé in sella alla Yamaha R125" /></div>
-          <div class="hc-item hc-2"><img src="hero-2.jpg" alt="Casco da moto con cielo" /></div>
-          <div class="hc-item hc-3"><img src="hero-3.jpg" alt="POV in moto" /></div>
-          <div class="hc-item hc-4"><img src="hero-4.jpg" alt="Yamaha R125 al crepuscolo" /></div>
-          <div class="hc-item hc-5"><img src="hero-5.jpg" alt="Moto su strada al tramonto" /></div>
+          <div class="hero-stats js-reveal-fade" aria-label="Statistiche">
+            <div class="hero-stat"><strong>3+</strong><span>Anni di esperienza</span></div>
+            <div class="hero-stat-sep" aria-hidden="true"></div>
+            <div class="hero-stat"><strong>50+</strong><span>Progetti completati</span></div>
+            <div class="hero-stat-sep" aria-hidden="true"></div>
+            <div class="hero-stat"><strong>Milano</strong><span>Base operativa</span></div>
+          </div>
         </div>
       </div>
       <div class="hero-meta" aria-hidden="true">
@@ -91,10 +92,25 @@
       <div class="container">
         <div class="sec-tag js-reveal-fade"><span class="sec-num">01</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Chi Sono</span></div>
         <div class="about-grid">
+
+          <!-- BLOB REVEAL -->
           <div class="about-visual js-reveal-left">
-            <div class="photo-ph" role="img" aria-label="Foto di Jacopo Fusé"><span>ritratto.jpg</span></div>
+            <div class="reveal-wrap" id="reveal-wrap">
+              <img class="reveal-base"   src="about-camera.jpg" alt="Jacopo Fusé con macchina fotografica" />
+              <img class="reveal-hidden" src="about-casco.jpg"  alt="Jacopo Fusé con casco" id="reveal-hidden-img" />
+              <canvas id="reveal-canvas" class="reveal-canvas" aria-hidden="true"></canvas>
+              <div class="reveal-hint" id="reveal-hint" aria-hidden="true">
+                <span class="reveal-hint-dot"></span>
+                <span class="reveal-hint-text">Scopri</span>
+              </div>
+              <div class="reveal-cursor-el" id="reveal-cursor-el" aria-hidden="true">
+                <div class="reveal-cursor-ring"></div>
+                <span class="reveal-cursor-label">SCOPRI</span>
+              </div>
+            </div>
             <div class="photo-frame" aria-hidden="true"></div>
           </div>
+
           <div class="about-copy js-reveal-right">
             <h2 class="about-h2">Racconto storie.<br /><em>Un frame alla volta.</em></h2>
             <p>Ciao, sono Jacopo. Fotografo e videomaker con base a Milano, cresciuto con la macchina fotografica in mano e la costante voglia di fermare momenti che altrimenti scivolerebbero via in silenzio.</p>
@@ -109,20 +125,16 @@
     <!-- FOTOGRAFIA -->
     <section class="s-photo section" id="foto" aria-label="Portfolio fotografico">
       <div class="container-wide">
-
         <div class="sec-tag js-reveal-fade"><span class="sec-num">02</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Fotografia</span></div>
         <h2 class="sec-h2 js-reveal-clip">Scatti selezionati</h2>
-
         <div class="filters js-reveal-fade" role="group" aria-label="Filtra per categoria">
           <button class="f-btn active" data-filter="all"     aria-pressed="true">Tutti</button>
           <button class="f-btn"        data-filter="clienti" aria-pressed="false">Clienti</button>
           <button class="f-btn"        data-filter="urban"   aria-pressed="false">Urban</button>
           <button class="f-btn"        data-filter="eventi"  aria-pressed="false">Eventi</button>
         </div>
-
         <div class="carousels-grid">
 
-          <!-- SM 125 -->
           <div class="carousel-block js-reveal-fade" data-cat="clienti">
             <div class="carousel-header">
               <div class="carousel-meta">
@@ -140,7 +152,7 @@
             <div class="carousel-track-wrap">
               <div class="carousel-track">
                 <div class="carousel-slide"><img src="foto-02-clienti.jpg" alt="SM 125 al distributore di notte" /></div>
-                <div class="carousel-slide"><img src="foto-04.jpg" alt="Dettaglio scarico SM 125 olografico" /></div>
+                <div class="carousel-slide"><img src="foto-04.jpg" alt="Dettaglio scarico SM 125" /></div>
                 <div class="carousel-slide"><div class="carousel-ph"><span>sm125-3.jpg</span></div></div>
                 <div class="carousel-slide"><div class="carousel-ph"><span>sm125-4.jpg</span></div></div>
                 <div class="carousel-slide"><div class="carousel-ph"><span>sm125-5.jpg</span></div></div>
@@ -149,7 +161,6 @@
             <div class="carousel-dots"></div>
           </div>
 
-          <!-- RS660 -->
           <div class="carousel-block js-reveal-fade" data-cat="clienti">
             <div class="carousel-header">
               <div class="carousel-meta">
@@ -175,7 +186,6 @@
             <div class="carousel-dots"></div>
           </div>
 
-          <!-- URBAN -->
           <div class="carousel-block js-reveal-fade" data-cat="urban">
             <div class="carousel-header">
               <div class="carousel-meta">
@@ -201,7 +211,6 @@
             <div class="carousel-dots"></div>
           </div>
 
-          <!-- EICMA -->
           <div class="carousel-block js-reveal-fade" data-cat="eventi">
             <div class="carousel-header">
               <div class="carousel-meta">
@@ -235,32 +244,23 @@
           <div class="poster-section-head">
             <span class="poster-eyebrow">Servizio incluso</span>
             <h3 class="poster-heading">Poster Edit</h3>
-            <p class="poster-sub">Ogni shooting può includere un poster grafico personalizzato con le specifiche del soggetto — pronto per la stampa o i social.</p>
+            <p class="poster-sub">Ogni shooting può includere un poster grafico personalizzato — pronto per la stampa o i social.</p>
           </div>
           <div class="poster-grid">
-            <article class="poster-card js-reveal-fade">
-              <div class="poster-img-wrap"><img src="poster-01.png" alt="Poster Aprilia RS660 2025" /></div>
-              <p class="poster-cap">Aprilia RS660 · 2025</p>
-            </article>
-            <article class="poster-card js-reveal-fade">
-              <div class="poster-img-wrap"><img src="poster-02.png" alt="Poster SM 125 2017" /></div>
-              <p class="poster-cap">SM 125 · 2017</p>
-            </article>
-            <article class="poster-card js-reveal-fade">
-              <div class="poster-img-wrap"><img src="poster-03.png" alt="Poster Yamaha R125 2023" /></div>
-              <p class="poster-cap">Yamaha R125 · 2023</p>
-            </article>
+            <article class="poster-card js-reveal-fade"><div class="poster-img-wrap"><img src="poster-01.png" alt="Poster Aprilia RS660 2025" /></div><p class="poster-cap">Aprilia RS660 · 2025</p></article>
+            <article class="poster-card js-reveal-fade"><div class="poster-img-wrap"><img src="poster-02.png" alt="Poster SM 125 2017" /></div><p class="poster-cap">SM 125 · 2017</p></article>
+            <article class="poster-card js-reveal-fade"><div class="poster-img-wrap"><img src="poster-03.png" alt="Poster Yamaha R125 2023" /></div><p class="poster-cap">Yamaha R125 · 2023</p></article>
           </div>
         </div>
 
-        <!-- RECENSIONI — lista lettura -->
-        <div class="reviews-section js-reveal-fade" aria-label="Recensioni clienti">
+        <!-- RECENSIONI -->
+        <div class="reviews-section js-reveal-fade">
           <div class="reviews-head">
             <div>
               <span class="poster-eyebrow">Cosa dicono di me</span>
               <h3 class="reviews-title">Recensioni</h3>
             </div>
-            <a href="recensioni.html" class="btn-recensione" aria-label="Lascia una recensione">
+            <a href="recensioni.html" class="btn-recensione">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
               Lascia una recensione
             </a>
@@ -278,26 +278,11 @@
         <div class="sec-tag js-reveal-fade"><span class="sec-num">03</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Esperienze</span></div>
         <h2 class="sec-h2 js-reveal-clip">Il percorso fin qui</h2>
         <div class="timeline" role="list">
-          <div class="tl-item js-reveal-fade" role="listitem">
-            <div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div>
-            <div class="tl-body"><span class="tl-cat">Fotografia</span><h3>Ruolo — Nome brand / cliente</h3><p>[Personalizza]</p></div>
-          </div>
-          <div class="tl-item js-reveal-fade" role="listitem">
-            <div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div>
-            <div class="tl-body"><span class="tl-cat">Video</span><h3>Ruolo — Nome brand / produzione</h3><p>[Personalizza]</p></div>
-          </div>
-          <div class="tl-item js-reveal-fade" role="listitem">
-            <div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div>
-            <div class="tl-body"><span class="tl-cat">Formazione</span><h3>Università — Laurea in Informatica</h3><p>[Anno] – in corso.</p></div>
-          </div>
-          <div class="tl-item js-reveal-fade" role="listitem">
-            <div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div>
-            <div class="tl-body"><span class="tl-cat">Collaborazione</span><h3>Collaborazione — Agenzia / Brand</h3><p>[Personalizza]</p></div>
-          </div>
-          <div class="tl-item js-reveal-fade" role="listitem">
-            <div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div>
-            <div class="tl-body"><span class="tl-cat">Inizio</span><h3>Primo progetto — Come è iniziato tutto</h3><p>[La tua storia]</p></div>
-          </div>
+          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div><div class="tl-body"><span class="tl-cat">Fotografia</span><h3>Ruolo — Nome brand / cliente</h3><p>[Personalizza]</p></div></div>
+          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div><div class="tl-body"><span class="tl-cat">Video</span><h3>Ruolo — Nome brand / produzione</h3><p>[Personalizza]</p></div></div>
+          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div><div class="tl-body"><span class="tl-cat">Formazione</span><h3>Università — Laurea in Informatica</h3><p>[Anno] – in corso.</p></div></div>
+          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div><div class="tl-body"><span class="tl-cat">Collaborazione</span><h3>Collaborazione — Agenzia / Brand</h3><p>[Personalizza]</p></div></div>
+          <div class="tl-item js-reveal-fade" role="listitem"><div class="tl-year"><span>20XX</span><span class="tl-dot" aria-hidden="true"></span></div><div class="tl-body"><span class="tl-cat">Inizio</span><h3>Primo progetto — Come è iniziato tutto</h3><p>[La tua storia]</p></div></div>
         </div>
       </div>
     </section>
@@ -308,91 +293,29 @@
         <div class="sec-tag js-reveal-fade"><span class="sec-num">04</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Video</span></div>
         <h2 class="sec-h2 js-reveal-clip">Produzioni video</h2>
         <div class="video-featured js-reveal-fade">
-          <div class="video-embed" aria-label="Video in evidenza">
-            <div class="video-ph" role="img" aria-label="Video in evidenza">
-              <button class="play-big" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
-              <p class="video-ph-label">Incolla qui il tuo iframe YouTube / Vimeo</p>
-            </div>
-          </div>
-          <div class="video-feat-info">
-            <span class="tl-cat">Featured</span>
-            <h3>Titolo video principale</h3>
-            <p>Descrizione. Anno · Tipo. [Personalizza]</p>
-          </div>
+          <div class="video-embed"><div class="video-ph" role="img" aria-label="Video in evidenza"><button class="play-big" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button><p class="video-ph-label">Incolla qui il tuo iframe YouTube / Vimeo</p></div></div>
+          <div class="video-feat-info"><span class="tl-cat">Featured</span><h3>Titolo video principale</h3><p>Descrizione. Anno · Tipo. [Personalizza]</p></div>
         </div>
         <div class="video-grid" role="list">
-          <article class="v-card js-reveal-fade" role="listitem">
-            <div class="v-thumb">
-              <div class="ph-img" aria-label="thumb-01.jpg"><span>thumb-01.jpg</span></div>
-              <button class="play-sm" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
-            </div>
-            <h3 class="v-title">Titolo Video 01</h3><p class="v-meta">Anno · Tipo</p>
-          </article>
-          <article class="v-card js-reveal-fade" role="listitem">
-            <div class="v-thumb">
-              <div class="ph-img" aria-label="thumb-02.jpg"><span>thumb-02.jpg</span></div>
-              <button class="play-sm" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
-            </div>
-            <h3 class="v-title">Titolo Video 02</h3><p class="v-meta">Anno · Tipo</p>
-          </article>
-          <article class="v-card js-reveal-fade" role="listitem">
-            <div class="v-thumb">
-              <div class="ph-img" aria-label="thumb-03.jpg"><span>thumb-03.jpg</span></div>
-              <button class="play-sm" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button>
-            </div>
-            <h3 class="v-title">Titolo Video 03</h3><p class="v-meta">Anno · Tipo</p>
-          </article>
+          <article class="v-card js-reveal-fade" role="listitem"><div class="v-thumb"><div class="ph-img"><span>thumb-01.jpg</span></div><button class="play-sm" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></div><h3 class="v-title">Titolo Video 01</h3><p class="v-meta">Anno · Tipo</p></article>
+          <article class="v-card js-reveal-fade" role="listitem"><div class="v-thumb"><div class="ph-img"><span>thumb-02.jpg</span></div><button class="play-sm" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></div><h3 class="v-title">Titolo Video 02</h3><p class="v-meta">Anno · Tipo</p></article>
+          <article class="v-card js-reveal-fade" role="listitem"><div class="v-thumb"><div class="ph-img"><span>thumb-03.jpg</span></div><button class="play-sm" aria-label="Riproduci"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg></button></div><h3 class="v-title">Titolo Video 03</h3><p class="v-meta">Anno · Tipo</p></article>
         </div>
       </div>
     </section>
 
     <!-- ATTREZZATURA -->
-    <section class="s-gear section" id="attrezzatura" aria-label="Attrezzatura utilizzata">
+    <section class="s-gear section" id="attrezzatura" aria-label="Attrezzatura">
       <div class="container">
         <div class="sec-tag js-reveal-fade"><span class="sec-num">05</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Attrezzatura</span></div>
         <h2 class="sec-h2 js-reveal-clip">Il mio kit</h2>
         <p class="sec-sub js-reveal-fade">Strumenti con cui lavoro ogni giorno.</p>
         <div class="gear-grid" role="list">
-          <div class="gear-group js-reveal-fade" role="listitem">
-            <div class="gear-img-wrap"><img src="nikon-z6.jpg" alt="Nikon Z6 II" /></div>
-            <div class="gear-info">
-              <span class="gear-badge">Camera</span><h3 class="gear-name">Nikon Z6</h3>
-              <p class="gear-desc">Full-frame mirrorless 24.5 MP. Autofocus rapido, video 4K.</p>
-              <ul class="gear-specs"><li><span>Sensore</span><span>Full-Frame 24.5 MP</span></li><li><span>Video</span><span>4K UHD 30fps</span></li><li><span>ISO</span><span>100 – 51.200</span></li></ul>
-            </div>
-          </div>
-          <div class="gear-group js-reveal-fade" role="listitem">
-            <div class="gear-img-wrap"><img src="osmo-action-5.jpg" alt="DJI Osmo Action 5 Pro" /></div>
-            <div class="gear-info">
-              <span class="gear-badge">Action Cam</span><h3 class="gear-name">DJI Osmo Action 5 Pro</h3>
-              <p class="gear-desc">Stabilizzazione RockSteady 4.0, waterproof 20 m.</p>
-              <ul class="gear-specs"><li><span>Video</span><span>4K / 120fps</span></li><li><span>Stabilizzazione</span><span>RockSteady 4.0</span></li><li><span>Waterproof</span><span>20 m</span></li></ul>
-            </div>
-          </div>
-          <div class="gear-group js-reveal-fade" role="listitem">
-            <div class="gear-img-wrap"><img src="dji-mic-mini.jpg" alt="DJI Mic Mini" /></div>
-            <div class="gear-info">
-              <span class="gear-badge">Audio</span><h3 class="gear-name">DJI Mic Mini</h3>
-              <p class="gear-desc">Wireless compatto 48 kHz, latenza zero.</p>
-              <ul class="gear-specs"><li><span>Frequenza</span><span>2.4 GHz</span></li><li><span>Range</span><span>250 m</span></li><li><span>Qualità</span><span>48 kHz / 24-bit</span></li></ul>
-            </div>
-          </div>
-          <div class="gear-group js-reveal-fade" role="listitem">
-            <div class="gear-img-wrap"><img src="macbook-pro.jpg" alt="MacBook Pro 2018" /></div>
-            <div class="gear-info">
-              <span class="gear-badge">Laptop</span><h3 class="gear-name">MacBook Pro 2018</h3>
-              <p class="gear-desc">15" Intel Core i7. Editing mobile e preview sul campo.</p>
-              <ul class="gear-specs"><li><span>CPU</span><span>Intel Core i7</span></li><li><span>RAM</span><span>16 GB</span></li><li><span>GPU</span><span>Radeon Pro 555X</span></li></ul>
-            </div>
-          </div>
-          <div class="gear-group js-reveal-fade" role="listitem">
-            <div class="gear-img-wrap"><img src="mac-mini.jpg" alt="Mac Mini" /></div>
-            <div class="gear-info">
-              <span class="gear-badge">Workstation</span><h3 class="gear-name">Mac Mini / Studio</h3>
-              <p class="gear-desc">Postazione fissa per color grading e montaggio.</p>
-              <ul class="gear-specs"><li><span>Chip</span><span>Apple Silicon</span></li><li><span>Uso</span><span>Color grading</span></li><li><span>Software</span><span>DaVinci · Premiere</span></li></ul>
-            </div>
-          </div>
+          <div class="gear-group js-reveal-fade" role="listitem"><div class="gear-img-wrap"><img src="nikon-z6.jpg" alt="Nikon Z6 II" /></div><div class="gear-info"><span class="gear-badge">Camera</span><h3 class="gear-name">Nikon Z6</h3><p class="gear-desc">Full-frame mirrorless 24.5 MP. Autofocus rapido, video 4K.</p><ul class="gear-specs"><li><span>Sensore</span><span>Full-Frame 24.5 MP</span></li><li><span>Video</span><span>4K UHD 30fps</span></li><li><span>ISO</span><span>100 – 51.200</span></li></ul></div></div>
+          <div class="gear-group js-reveal-fade" role="listitem"><div class="gear-img-wrap"><img src="osmo-action-5.jpg" alt="DJI Osmo Action 5 Pro" /></div><div class="gear-info"><span class="gear-badge">Action Cam</span><h3 class="gear-name">DJI Osmo Action 5 Pro</h3><p class="gear-desc">Stabilizzazione RockSteady 4.0, waterproof 20 m.</p><ul class="gear-specs"><li><span>Video</span><span>4K / 120fps</span></li><li><span>Stabilizzazione</span><span>RockSteady 4.0</span></li><li><span>Waterproof</span><span>20 m</span></li></ul></div></div>
+          <div class="gear-group js-reveal-fade" role="listitem"><div class="gear-img-wrap"><img src="dji-mic-mini.jpg" alt="DJI Mic Mini" /></div><div class="gear-info"><span class="gear-badge">Audio</span><h3 class="gear-name">DJI Mic Mini</h3><p class="gear-desc">Wireless compatto 48 kHz, latenza zero.</p><ul class="gear-specs"><li><span>Frequenza</span><span>2.4 GHz</span></li><li><span>Range</span><span>250 m</span></li><li><span>Qualità</span><span>48 kHz / 24-bit</span></li></ul></div></div>
+          <div class="gear-group js-reveal-fade" role="listitem"><div class="gear-img-wrap"><img src="macbook-pro.jpg" alt="MacBook Pro 2018" /></div><div class="gear-info"><span class="gear-badge">Laptop</span><h3 class="gear-name">MacBook Pro 2018</h3><p class="gear-desc">15" Intel Core i7. Editing mobile e preview sul campo.</p><ul class="gear-specs"><li><span>CPU</span><span>Intel Core i7</span></li><li><span>RAM</span><span>16 GB</span></li><li><span>GPU</span><span>Radeon Pro 555X</span></li></ul></div></div>
+          <div class="gear-group js-reveal-fade" role="listitem"><div class="gear-img-wrap"><img src="mac-mini.jpg" alt="Mac Mini" /></div><div class="gear-info"><span class="gear-badge">Workstation</span><h3 class="gear-name">Mac Mini / Studio</h3><p class="gear-desc">Postazione fissa per color grading e montaggio.</p><ul class="gear-specs"><li><span>Chip</span><span>Apple Silicon</span></li><li><span>Uso</span><span>Color grading</span></li><li><span>Software</span><span>DaVinci · Premiere</span></li></ul></div></div>
         </div>
       </div>
     </section>
@@ -404,28 +327,9 @@
         <h2 class="sec-h2 js-reveal-clip">Pacchetti disponibili</h2>
         <p class="sec-sub js-reveal-fade">Foto e video professionali su misura. Scrivimi per un preventivo.</p>
         <div class="pricing-grid" role="list">
-          <article class="price-card js-reveal-fade" role="listitem">
-            <div class="price-head"><span class="price-tier">Basic</span><div class="price-val"><small>da</small><strong>199€</strong></div><p>Ideale per privati, piccoli brand e contenuti social.</p></div>
-            <ul class="price-feats">
-              <li class="feat-yes">1,5 ore shooting fotografico</li><li class="feat-yes">25 foto ritoccate</li><li class="feat-yes">Consegna entro 5 giorni</li><li class="feat-yes">Gallery digitale privata</li><li class="feat-yes">1 revisione inclusa</li><li class="feat-no">Video / Reels</li><li class="feat-no">Action cam</li>
-            </ul>
-            <a href="#contatti" class="btn-price">Richiedi info</a>
-          </article>
-          <article class="price-card price-hot js-reveal-fade" role="listitem">
-            <div class="price-badge">Più richiesto</div>
-            <div class="price-head"><span class="price-tier">Medium</span><div class="price-val"><small>da</small><strong>449€</strong></div><p>Per eventi, shooting brand, foto e video social.</p></div>
-            <ul class="price-feats">
-              <li class="feat-yes">Mezza giornata foto + video</li><li class="feat-yes">50 foto ritoccate</li><li class="feat-yes">Video 1–2 min (Reels / Promo)</li><li class="feat-yes">Clip verticali social</li><li class="feat-yes">Color grading</li><li class="feat-yes">Audio DJI Mic Mini</li><li class="feat-no">Action cam POV</li>
-            </ul>
-            <a href="#contatti" class="btn-price btn-price-inv">Richiedi info</a>
-          </article>
-          <article class="price-card js-reveal-fade" role="listitem">
-            <div class="price-head"><span class="price-tier">Premium</span><div class="price-val"><small>da</small><strong>849€</strong></div><p>Full-service per aziende, campagne ADV e progetti editoriali.</p></div>
-            <ul class="price-feats">
-              <li class="feat-yes">Giornata intera foto + video</li><li class="feat-yes">100+ foto ritoccate</li><li class="feat-yes">Video 3–5 min</li><li class="feat-yes">Riprese POV Osmo Action 5 Pro</li><li class="feat-yes">Sound design + color grading</li><li class="feat-yes">Audio DJI Mic Mini</li><li class="feat-yes">2 revisioni · consegna prioritaria</li>
-            </ul>
-            <a href="#contatti" class="btn-price">Richiedi info</a>
-          </article>
+          <article class="price-card js-reveal-fade" role="listitem"><div class="price-head"><span class="price-tier">Basic</span><div class="price-val"><small>da</small><strong>199€</strong></div><p>Ideale per privati, piccoli brand e contenuti social.</p></div><ul class="price-feats"><li class="feat-yes">1,5 ore shooting fotografico</li><li class="feat-yes">25 foto ritoccate</li><li class="feat-yes">Consegna entro 5 giorni</li><li class="feat-yes">Gallery digitale privata</li><li class="feat-yes">1 revisione inclusa</li><li class="feat-no">Video / Reels</li><li class="feat-no">Action cam</li></ul><a href="#contatti" class="btn-price">Richiedi info</a></article>
+          <article class="price-card price-hot js-reveal-fade" role="listitem"><div class="price-badge">Più richiesto</div><div class="price-head"><span class="price-tier">Medium</span><div class="price-val"><small>da</small><strong>449€</strong></div><p>Per eventi, shooting brand, foto e video social.</p></div><ul class="price-feats"><li class="feat-yes">Mezza giornata foto + video</li><li class="feat-yes">50 foto ritoccate</li><li class="feat-yes">Video 1–2 min (Reels / Promo)</li><li class="feat-yes">Clip verticali social</li><li class="feat-yes">Color grading</li><li class="feat-yes">Audio DJI Mic Mini</li><li class="feat-no">Action cam POV</li></ul><a href="#contatti" class="btn-price btn-price-inv">Richiedi info</a></article>
+          <article class="price-card js-reveal-fade" role="listitem"><div class="price-head"><span class="price-tier">Premium</span><div class="price-val"><small>da</small><strong>849€</strong></div><p>Full-service per aziende, campagne ADV e progetti editoriali.</p></div><ul class="price-feats"><li class="feat-yes">Giornata intera foto + video</li><li class="feat-yes">100+ foto ritoccate</li><li class="feat-yes">Video 3–5 min</li><li class="feat-yes">Riprese POV Osmo Action 5 Pro</li><li class="feat-yes">Sound design + color grading</li><li class="feat-yes">Audio DJI Mic Mini</li><li class="feat-yes">2 revisioni · consegna prioritaria</li></ul><a href="#contatti" class="btn-price">Richiedi info</a></article>
         </div>
         <p class="price-note js-reveal-fade">* Prezzi indicativi IVA esclusa. Trasferte fuori Milano valutate separatamente.</p>
       </div>
@@ -437,10 +341,7 @@
         <div class="container">
           <div class="sec-tag js-reveal-fade"><span class="sec-num">07</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Collaborazioni</span></div>
           <h2 class="collab-h js-reveal-clip">Costruiamo qualcosa<br /><em>che rimanga.</em></h2>
-          <div class="collab-body js-reveal-fade">
-            <p>Se rappresenti un brand o un'agenzia e cerchi un partner creativo per campagne visive, contenuti social o produzioni video — sei nel posto giusto.</p>
-            <p>Non vendo spazio: offro visione creativa.</p>
-          </div>
+          <div class="collab-body js-reveal-fade"><p>Se rappresenti un brand o un'agenzia e cerchi un partner creativo — sei nel posto giusto.</p><p>Non vendo spazio: offro visione creativa.</p></div>
           <div class="collab-vals js-reveal-fade">
             <div class="c-val"><span>01</span><p>Contenuti su misura, non template generici.</p></div>
             <div class="c-val"><span>02</span><p>Visione coerente con i tuoi valori di marca.</p></div>
@@ -458,7 +359,7 @@
                 <a href="mailto:jacopo.fuse@gmail.com" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>jacopo.fuse@gmail.com</a>
                 <a href="https://instagram.com/JACOFUZ" target="_blank" rel="noopener noreferrer" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>@JACOFUZ</a>
                 <a href="tel:+393756278807" class="c-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.22 1.18 2 2 0 012.22 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.66-.66a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>+39 375.627.88.07</a>
-                <a href="recensioni.html" class="btn-recensione" aria-label="Lascia una recensione">
+                <a href="recensioni.html" class="btn-recensione">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
                   Lascia una recensione
                 </a>
