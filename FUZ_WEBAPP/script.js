@@ -13,7 +13,6 @@ function sanitize(str) {
 
 try { $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); }); } catch(e) {}
 
-/* ── LOADER ── */
 (function initLoader() {
   const loader = $('#loader'), bar = $('#loader-bar');
 
@@ -39,7 +38,6 @@ try { $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear()
     dismiss();
   }
 
-  /* Animazione barra */
   const iv = setInterval(() => {
     try {
       p += Math.random() * 18 + 5;
@@ -53,18 +51,15 @@ try { $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear()
     } catch(e) { clearInterval(iv); safeDismiss(); }
   }, 80);
 
-  /* Fallback 1 — window load */
   if (document.readyState === 'complete') {
     setTimeout(safeDismiss, 400);
   } else {
     window.addEventListener('load', () => setTimeout(safeDismiss, 300));
   }
 
-  /* Fallback 2 — timeout duro 3s */
   setTimeout(safeDismiss, 3000);
 })();
 
-/* ── CURSOR ── */
 try {
   (function initCursor() {
     const dot = $('#cursor'), ring = $('#cursor-ring');
@@ -83,7 +78,6 @@ try {
   })();
 } catch(e) { console.warn('[JF] cursor', e); }
 
-/* ── HEADER SCROLL ── */
 try {
   (function() {
     const h = $('#site-header'); if (!h) return;
@@ -91,7 +85,6 @@ try {
   })();
 } catch(e) {}
 
-/* ── HAMBURGER ── */
 try {
   (function initNav() {
     const btn = $('#hamburger'), overlay = $('#nav-overlay');
@@ -110,7 +103,6 @@ try {
   })();
 } catch(e) { console.warn('[JF] nav', e); }
 
-/* ── SCROLL REVEAL ── */
 function initReveal() {
   try {
     const els = $$('.js-reveal-fade,.js-reveal-clip,.js-reveal-left,.js-reveal-right');
@@ -123,7 +115,6 @@ function initReveal() {
     $$('.poster-card.js-reveal-fade').forEach((el,i) => { el.style.transitionDelay=`${i*.1}s`; });
     els.forEach(el => obs.observe(el));
   } catch(e) {
-    /* fallback: mostra tutto senza animazione */
     try { $$('.js-reveal-fade,.js-reveal-clip,.js-reveal-left,.js-reveal-right').forEach(el => el.classList.add('in')); } catch(e2) {}
   }
 }
@@ -139,7 +130,6 @@ function triggerInitialReveals() {
   }
 }
 
-/* ── FILTRI ── */
 try {
   (function initFilters() {
     const btns = $$('.f-btn'), blocks = $$('.carousel-block');
@@ -164,7 +154,6 @@ try {
   })();
 } catch(e) { console.warn('[JF] filters', e); }
 
-/* ── CAROSELLI ── */
 try {
   (function initCarousels() {
     $$('.carousel-block').forEach(block => {
@@ -209,7 +198,6 @@ try {
   })();
 } catch(e) { console.warn('[JF] carousels', e); }
 
-/* ── HERO OIL EFFECT ── */
 try {
   (function initHeroOil() {
     const hero      = document.getElementById('hero');
@@ -271,7 +259,6 @@ try {
       ctx.closePath();
     }
 
-    /* CURSOR BLOB */
     const N_CURSOR=14;
     const cursorPts=Array.from({length:N_CURSOR},()=>({
       f1:2.5+Math.random()*5.0, f2:1.8+Math.random()*4.2,
@@ -292,7 +279,6 @@ try {
       });
     }
 
-    /* STRIPES */
     const stripes=[],MAX_STRIPES=12;
     function makeStripePts(cx,cy,len,thk,angle) {
       return Array.from({length:20},(_,i)=>{
@@ -310,7 +296,6 @@ try {
       stripes.push({cx,cy,len,thk,angle,pts:makeStripePts(cx,cy,len,thk,angle),life,maxLife:life,hue:Math.random()*360,alpha:0});
     }
 
-    /* BUBBLES */
     const bubbles=[],MAX_BUBBLES=22;
     function makeBubblePts(n){return Array.from({length:n},()=>({s1:0.6+Math.random()*2.0,s2:0.3+Math.random()*1.0,p1:Math.random()*Math.PI*2,p2:Math.random()*Math.PI*2,a1:0.10+Math.random()*0.22,a2:0.05+Math.random()*0.10}));}
     function bubblePts(b){
@@ -327,7 +312,6 @@ try {
       bubbles.push({x,y,vx,vy,r:r||(12+Math.random()*45),life,maxLife:life,bpts:makeBubblePts(7+Math.floor(Math.random()*5)),hue:Math.random()*360,t:Math.random()*20});
     }
 
-    /* PARTICLES */
     const particles=[],MAX_PARTICLES=80;
     function spawnParticle(x,y,vx,vy){
       if(particles.length>=MAX_PARTICLES)return;
@@ -449,7 +433,6 @@ try {
   })();
 } catch(e) { console.warn('[JF] oil effect', e); }
 
-/* ── RECENSIONI ── */
 try {
   (function initReviews() {
     const list=document.getElementById('reviews-list'),empty=document.getElementById('reviews-empty');
@@ -468,7 +451,6 @@ try {
   })();
 } catch(e) { console.warn('[JF] reviews', e); }
 
-/* ── FORM CONTATTI ── */
 try {
   (function initForm() {
     const form=$('#contact-form');if(!form)return;
@@ -497,12 +479,10 @@ try {
   })();
 } catch(e) { console.warn('[JF] form', e); }
 
-/* ── TOAST ── */
 function showToast(msg,dur=3000){
   try{const t=$('#toast');if(!t)return;t.textContent=sanitize(msg);t.classList.add('show');setTimeout(()=>t.classList.remove('show'),dur);}catch(e){}
 }
 
-/* ── SMOOTH SCROLL ── */
 try {
   $$('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{
@@ -515,7 +495,6 @@ try {
   });
 } catch(e) {}
 
-/* ── THEME TOGGLE ── */
 try {
   (function initTheme(){
     const btn=$('#theme-toggle'),body=document.body;if(!btn)return;
