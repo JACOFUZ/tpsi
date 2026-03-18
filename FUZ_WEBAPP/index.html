@@ -52,15 +52,24 @@
 
   <main id="main">
 
-    <!-- HERO -->
+    <!-- ═══════════ HERO con collage ═══════════ -->
     <section class="s-hero" id="hero" aria-label="Presentazione">
-      <div class="hero-bg-base" aria-hidden="true">
-        <img id="hero-img-base" src="hero-bg-1.jpg" alt="" />
+
+      <div class="hero-bg" aria-hidden="true">
         <div class="hero-grain"></div>
+        <div class="hero-grid-lines"></div>
         <div class="hero-vignette"></div>
       </div>
-      <img id="hero-img-reveal" src="hero-bg-2.jpg" alt="" aria-hidden="true" />
-      <canvas id="hero-canvas" aria-hidden="true"></canvas>
+
+      <!-- Collage foto -->
+      <div class="hero-collage" aria-hidden="true">
+        <figure class="hc-item hc-1"><img src="foto-02-clienti.jpg" alt="" /></figure>
+        <figure class="hc-item hc-2"><img src="foto-01.jpg" alt="" /></figure>
+        <figure class="hc-item hc-3"><img src="foto-04.jpg" alt="" /></figure>
+        <figure class="hc-item hc-4"><img src="foto-03-urban.jpg" alt="" /></figure>
+        <figure class="hc-item hc-5"><img src="foto-05-urban.jpg" alt="" /></figure>
+      </div>
+
       <div class="hero-inner">
         <div class="hero-body">
           <p class="hero-loc js-reveal-fade"><span class="live-dot" aria-hidden="true"></span>Milano — Italia</p>
@@ -75,6 +84,7 @@
           </div>
         </div>
       </div>
+
       <div class="hero-meta" aria-hidden="true">
         <span class="scroll-hint">scroll</span>
         <div class="scroll-track"><div class="scroll-thumb"></div></div>
@@ -101,7 +111,7 @@
       </div>
     </section>
 
-    <!-- FOTOGRAFIA -->
+    <!-- ═══════════ FOTOGRAFIA — Photo Stacks ═══════════ -->
     <section class="s-photo section" id="foto" aria-label="Portfolio fotografico">
       <div class="container-wide">
         <div class="sec-tag js-reveal-fade"><span class="sec-num">02</span><span class="sec-line" aria-hidden="true"></span><span class="sec-label">Fotografia</span></div>
@@ -112,64 +122,90 @@
           <button class="f-btn"        data-filter="urban"   aria-pressed="false">Urban</button>
           <button class="f-btn"        data-filter="eventi"  aria-pressed="false">Eventi</button>
         </div>
-        <div class="carousels-grid">
 
-          <div class="carousel-block js-reveal-fade" data-cat="clienti">
-            <div class="carousel-header">
-              <div class="carousel-meta"><span class="carousel-tag">Clienti</span><h3 class="carousel-title">SM 125 Build</h3><p class="carousel-subtitle">Shooting completo moto custom</p><p class="carousel-year">2024</p></div>
-              <div class="carousel-controls"><button class="carousel-btn carousel-prev" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button><span class="carousel-counter"></span><button class="carousel-btn carousel-next" aria-label="Successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+        <div class="stacks-grid">
+
+          <!-- Stack 1 — SM 125 -->
+          <div class="photo-stack js-reveal-fade" data-cat="clienti">
+            <div class="stack-info">
+              <div class="stack-meta">
+                <span class="stack-tag">Clienti</span>
+                <h3 class="stack-title">SM 125 Build</h3>
+                <p class="stack-subtitle">Shooting completo moto custom</p>
+                <p class="stack-year">2024</p>
+              </div>
+              <span class="stack-counter" aria-live="polite"><span class="stack-cur">1</span><span class="stack-sep"> / </span><span class="stack-tot">4</span></span>
             </div>
-            <div class="carousel-track-wrap"><div class="carousel-track">
-              <div class="carousel-slide"><img src="foto-02-clienti.jpg" alt="SM 125 al distributore" /></div>
-              <div class="carousel-slide"><img src="foto-04.jpg" alt="Dettaglio scarico SM 125" /></div>
-              <div class="carousel-slide"><div class="carousel-ph"><span>sm125-3.jpg</span></div></div>
-              <div class="carousel-slide"><div class="carousel-ph"><span>sm125-4.jpg</span></div></div>
-            </div></div>
-            <div class="carousel-dots"></div>
+            <div class="stack-pile" role="button" tabindex="0" aria-label="Clicca per sfogliare le foto">
+              <div class="stack-card"><div class="stack-ph"><span>sm125-4.jpg</span></div></div>
+              <div class="stack-card"><div class="stack-ph"><span>sm125-3.jpg</span></div></div>
+              <div class="stack-card"><img src="foto-04.jpg" alt="Dettaglio SM 125" /></div>
+              <div class="stack-card"><img src="foto-02-clienti.jpg" alt="SM 125 al distributore" /></div>
+            </div>
+            <p class="stack-hint">clicca per sfogliare</p>
           </div>
 
-          <div class="carousel-block js-reveal-fade" data-cat="clienti">
-            <div class="carousel-header">
-              <div class="carousel-meta"><span class="carousel-tag">Clienti</span><h3 class="carousel-title">Aprilia RS660</h3><p class="carousel-subtitle">Ritratto sportivo su strada</p><p class="carousel-year">2025</p></div>
-              <div class="carousel-controls"><button class="carousel-btn carousel-prev" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button><span class="carousel-counter"></span><button class="carousel-btn carousel-next" aria-label="Successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+          <!-- Stack 2 — Aprilia RS660 -->
+          <div class="photo-stack js-reveal-fade" data-cat="clienti">
+            <div class="stack-info">
+              <div class="stack-meta">
+                <span class="stack-tag">Clienti</span>
+                <h3 class="stack-title">Aprilia RS660</h3>
+                <p class="stack-subtitle">Ritratto sportivo su strada</p>
+                <p class="stack-year">2025</p>
+              </div>
+              <span class="stack-counter" aria-live="polite"><span class="stack-cur">1</span><span class="stack-sep"> / </span><span class="stack-tot">3</span></span>
             </div>
-            <div class="carousel-track-wrap"><div class="carousel-track">
-              <div class="carousel-slide"><img src="foto-01.jpg" alt="Aprilia RS660" /></div>
-              <div class="carousel-slide"><div class="carousel-ph"><span>rs660-2.jpg</span></div></div>
-              <div class="carousel-slide"><div class="carousel-ph"><span>rs660-3.jpg</span></div></div>
-            </div></div>
-            <div class="carousel-dots"></div>
+            <div class="stack-pile" role="button" tabindex="0" aria-label="Clicca per sfogliare le foto">
+              <div class="stack-card"><div class="stack-ph"><span>rs660-3.jpg</span></div></div>
+              <div class="stack-card"><div class="stack-ph"><span>rs660-2.jpg</span></div></div>
+              <div class="stack-card"><img src="foto-01.jpg" alt="Aprilia RS660" /></div>
+            </div>
+            <p class="stack-hint">clicca per sfogliare</p>
           </div>
 
-          <div class="carousel-block js-reveal-fade" data-cat="urban">
-            <div class="carousel-header">
-              <div class="carousel-meta"><span class="carousel-tag">Urban</span><h3 class="carousel-title">Urban Photography</h3><p class="carousel-subtitle">Architettura e vita di strada</p><p class="carousel-year">2024</p></div>
-              <div class="carousel-controls"><button class="carousel-btn carousel-prev" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button><span class="carousel-counter"></span><button class="carousel-btn carousel-next" aria-label="Successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+          <!-- Stack 3 — Urban -->
+          <div class="photo-stack js-reveal-fade" data-cat="urban">
+            <div class="stack-info">
+              <div class="stack-meta">
+                <span class="stack-tag">Urban</span>
+                <h3 class="stack-title">Urban Photography</h3>
+                <p class="stack-subtitle">Architettura e vita di strada</p>
+                <p class="stack-year">2024</p>
+              </div>
+              <span class="stack-counter" aria-live="polite"><span class="stack-cur">1</span><span class="stack-sep"> / </span><span class="stack-tot">3</span></span>
             </div>
-            <div class="carousel-track-wrap"><div class="carousel-track">
-              <div class="carousel-slide"><img src="foto-03-urban.jpg" alt="Cattedrale Colmar" /></div>
-              <div class="carousel-slide"><img src="foto-05-urban.jpg" alt="Edificio art nouveau Colmar" /></div>
-              <div class="carousel-slide"><div class="carousel-ph"><span>urban-3.jpg</span></div></div>
-            </div></div>
-            <div class="carousel-dots"></div>
+            <div class="stack-pile" role="button" tabindex="0" aria-label="Clicca per sfogliare le foto">
+              <div class="stack-card"><div class="stack-ph"><span>urban-3.jpg</span></div></div>
+              <div class="stack-card"><img src="foto-05-urban.jpg" alt="Edificio Colmar" /></div>
+              <div class="stack-card"><img src="foto-03-urban.jpg" alt="Cattedrale Colmar" /></div>
+            </div>
+            <p class="stack-hint">clicca per sfogliare</p>
           </div>
 
-          <div class="carousel-block js-reveal-fade" data-cat="eventi">
-            <div class="carousel-header">
-              <div class="carousel-meta"><span class="carousel-tag">Eventi</span><h3 class="carousel-title">EICMA 2024</h3><p class="carousel-subtitle">Salone internazionale del motociclo</p><p class="carousel-year">Milano · 2024</p></div>
-              <div class="carousel-controls"><button class="carousel-btn carousel-prev" aria-label="Precedente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg></button><span class="carousel-counter"></span><button class="carousel-btn carousel-next" aria-label="Successiva"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg></button></div>
+          <!-- Stack 4 — EICMA -->
+          <div class="photo-stack js-reveal-fade" data-cat="eventi">
+            <div class="stack-info">
+              <div class="stack-meta">
+                <span class="stack-tag">Eventi</span>
+                <h3 class="stack-title">EICMA 2024</h3>
+                <p class="stack-subtitle">Salone internazionale del motociclo</p>
+                <p class="stack-year">Milano · 2024</p>
+              </div>
+              <span class="stack-counter" aria-live="polite"><span class="stack-cur">1</span><span class="stack-sep"> / </span><span class="stack-tot">4</span></span>
             </div>
-            <div class="carousel-track-wrap"><div class="carousel-track">
-              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-1.jpg</span></div></div>
-              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-2.jpg</span></div></div>
-              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-3.jpg</span></div></div>
-              <div class="carousel-slide"><div class="carousel-ph"><span>eicma-4.jpg</span></div></div>
-            </div></div>
-            <div class="carousel-dots"></div>
+            <div class="stack-pile" role="button" tabindex="0" aria-label="Clicca per sfogliare le foto">
+              <div class="stack-card"><div class="stack-ph"><span>eicma-4.jpg</span></div></div>
+              <div class="stack-card"><div class="stack-ph"><span>eicma-3.jpg</span></div></div>
+              <div class="stack-card"><div class="stack-ph"><span>eicma-2.jpg</span></div></div>
+              <div class="stack-card"><div class="stack-ph"><span>eicma-1.jpg</span></div></div>
+            </div>
+            <p class="stack-hint">clicca per sfogliare</p>
           </div>
 
         </div>
 
+        <!-- POSTER EDIT -->
         <div class="poster-section js-reveal-fade">
           <div class="poster-section-head">
             <span class="poster-eyebrow">Servizio incluso</span>
@@ -183,6 +219,7 @@
           </div>
         </div>
 
+        <!-- RECENSIONI -->
         <div class="reviews-section js-reveal-fade">
           <div class="reviews-head">
             <div><span class="poster-eyebrow">Cosa dicono di me</span><h3 class="reviews-title">Recensioni</h3></div>
