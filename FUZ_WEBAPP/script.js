@@ -176,16 +176,14 @@ try {
 } catch(e) {}
 
 /* ══════════════════════════════════════════════════════════════
-   ANIMATED BACKGROUND LINES
-   Linee sinuose animate su hero e sezioni scure.
-   Tre livelli di profondità per effetto 3D.
-   Nessuna sovrapposizione garantita da spaziatura controllata.
+   ORGANIC CONTOUR LINES — stile Lando Norris
+   Forme chiuse organiche (non onde), grandi, lente, solo stroke.
+   Ogni forma è un blob closed path che si deforma lentamente.
    ══════════════════════════════════════════════════════════════ */
 try {
   (function initBgLines() {
 
-    /* Sezioni che ricevono le linee */
-    const heroBgBase  = document.querySelector('.hero-bg-base');
+    const heroBgBase   = document.querySelector('.hero-bg-base');
     const darkSections = [
       document.getElementById('esperienze'),
       document.getElementById('video'),
@@ -196,17 +194,16 @@ try {
     const canvases = [];
 
     function addCanvas(parent, zIndex) {
-      if (!parent) return;
+      if (!parent) return null;
       const c = document.createElement('canvas');
       c.className = 'bg-lines-canvas';
       c.style.zIndex = zIndex;
       parent.insertBefore(c, parent.firstChild);
       canvases.push({ canvas: c, parent });
+      return c;
     }
 
-    /* Hero: dentro hero-bg-base (z:1, sopra il gradiente) */
     addCanvas(heroBgBase, '1');
-    /* Altre sezioni scure */
     darkSections.forEach(s => addCanvas(s, '0'));
 
     function resizeAll() {
@@ -219,62 +216,115 @@ try {
     let _rt;
     window.addEventListener('resize', () => { clearTimeout(_rt); _rt = setTimeout(resizeAll, 120); }, { passive: true });
 
-    /* ── Config linee: N=20, tre layer di profondità ──
-       Spaziatura = H/19 ≈ 5.3% H
-       Max ampiezza = 1.6% H
-       Minimo gap tra estremi adiacenti = 5.3% - 2×1.6% = 2.1% H  → mai si toccano */
-    const N = 20;
-    const lines = Array.from({ length: N }, (_, i) => {
-      const t = i / (N - 1);  /* 0 = lontano, 1 = vicino */
-      return {
-        yFrac:      0.02 + t * 0.96,               /* y normalizzato 2%–98% */
-        phase:      Math.random() * Math.PI * 2,
-        /* Profondità: lontano = lento, vicino = veloce */
-        speed:      0.08 + t * 0.14 + Math.random() * 0.06,
-        /* Ampiezza: massimo 1.6% altezza */
-        ampFrac:    0.005 + t * 0.006 + Math.random() * 0.005,
-        /* Lunghezza d'onda: variata per dare naturalezza */
-        wlFrac:     0.22 + Math.random() * 0.32,
-        /* Opacità: layer lontani più labili */
-        opacity:    0.03 + t * 0.055 + Math.random() * 0.025,
-        /* Spessore: vicini leggermente più spessi */
-        thickness:  0.2 + t * 0.5 + Math.random() * 0.15,
-      };
-    });
+    /* ── Genera un set di forme organiche per una canvas ──
+       Ogni forma ha:
+       - centro (cx, cy) in coordinate normalizzate 0-1
+       - raggio base normalizzato
+       - N punti sul perimetro con fase/freq/amp individuali
+       - velocità di drift del centro
+       - fase temporale indipendente
+    */
+    function makeShapes(count) {
+      return Array.from({ length: count }, () => {
+        const nPts = 6 + Math.floor(Math.random() * 5); // 6-10 punti
+        return {
+          cx:      0.1 + Math.random() * 0.8,
+          cy:      0.1 + Math.random() * 0.8,
+          /* Drift lentissimo — si spostano impercettibilmente */
+          dcx:     (Math.random() - 0.5) * 0.00008,
+          dcy:     (Math.random() - 0.5) * 0.00008,
+          /* Raggio grande, tra 15% e 45% del min(W,H) */
+          rFrac:   0.15 + Math.random() * 0.30,
+          /* Asimmetria — ellisse leggermente schiacciata */
+          scaleX:  0.65 + Math.random() * 0.70,
+          scaleY:  0.65 + Math.random() * 0.70,
+          /* Rotazione che cambia lentamente */
+          rot:     Math.random() * Math.PI * 2,
+          dRot:    (Math.random() - 0.5) * 0.0003,
+          /* Punti perimetrali con deformazione indipendente */
+          pts: Array.from({ length: nPts }, () => ({
+            phase:   Math.random() * Math.PI * 2,
+            freq:    0.05 + Math.random() * 0.12,
+            amp:     0.06 + Math.random() * 0.18,  // ampiezza relativa al raggio
+          })),
+          /* Opacità sottile, variabile */
+          opacity: 0.045 + Math.random() * 0.055,
+          /* Spessore linea */
+          lw:      0.4  + Math.random() * 0.7,
+          /* Fase temporale indipendente */
+          tOffset: Math.random() * 100,
+        };
+      });
+    }
 
-    let time = 0;
+    /* Ogni canvas ha il suo set di forme */
+    const shapeSets = canvases.map(({ canvas }) => ({
+      canvas,
+      shapes: makeShapes(4 + Math.floor(Math.random() * 3)), // 4-6 forme per sezione
+    }));
+
+    /* Catmull-Rom closed spline per i punti del blob */
+    function drawShape(ctx, W, H, shape, time) {
+      const t  = time + shape.tOffset;
+      const cx = shape.cx * W;
+      const cy = shape.cy * H;
+      const R  = shape.rFrac * Math.min(W, H);
+      const n  = shape.pts.length;
+
+      /* Aggiorna posizione centro (drift) */
+      shape.cx = ((shape.cx + shape.dcx) + 1) % 1;
+      shape.cy = ((shape.cy + shape.dcy) + 1) % 1;
+      shape.rot += shape.dRot;
+
+      /* Calcola posizioni dei punti */
+      const points = shape.pts.map((p, i) => {
+        const baseAngle = (i / n) * Math.PI * 2;
+        const deform    = 1 + p.amp * Math.sin(t * p.freq + p.phase);
+        const r         = R * deform;
+        /* Applica rotazione e scala ellittica */
+        const ax = r * shape.scaleX * Math.cos(baseAngle + shape.rot);
+        const ay = r * shape.scaleY * Math.sin(baseAngle + shape.rot);
+        return { x: cx + ax, y: cy + ay };
+      });
+
+      /* Catmull-Rom → Bezier closed */
+      ctx.beginPath();
+      for (let i = 0; i < n; i++) {
+        const p0 = points[(i - 1 + n) % n];
+        const p1 = points[i];
+        const p2 = points[(i + 1) % n];
+        const p3 = points[(i + 2) % n];
+        if (i === 0) ctx.moveTo(p1.x, p1.y);
+        ctx.bezierCurveTo(
+          p1.x + (p2.x - p0.x) / 6, p1.y + (p2.y - p0.y) / 6,
+          p2.x - (p3.x - p1.x) / 6, p2.y - (p3.y - p1.y) / 6,
+          p2.x, p2.y
+        );
+      }
+      ctx.closePath();
+    }
 
     function isLight() { return document.body.classList.contains('light'); }
 
-    function drawLines(ctx, W, H) {
-      ctx.clearRect(0, 0, W, H);
-      const rgb = isLight() ? '0,0,0' : '255,255,255';
-      const step = Math.max(1, Math.floor(W / 320));
-
-      lines.forEach(ln => {
-        const y0  = ln.yFrac * H;
-        const amp = ln.ampFrac * H;
-        const wl  = ln.wlFrac * W;
-
-        ctx.beginPath();
-        for (let x = 0; x <= W; x += step) {
-          const y = y0 + amp * Math.sin((x / wl) * Math.PI * 2 + ln.phase + time * ln.speed);
-          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
-        }
-        ctx.strokeStyle = `rgba(${rgb},${ln.opacity})`;
-        ctx.lineWidth   = ln.thickness;
-        ctx.stroke();
-      });
-    }
+    let time = 0;
 
     (function animate() {
       requestAnimationFrame(animate);
       try {
         time += 0.016;
-        canvases.forEach(({ canvas }) => {
+        const rgb = isLight() ? '0,0,0' : '255,255,255';
+
+        shapeSets.forEach(({ canvas, shapes }) => {
           if (!canvas.width || !canvas.height) return;
           const ctx = canvas.getContext('2d');
-          drawLines(ctx, canvas.width, canvas.height);
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+          shapes.forEach(shape => {
+            drawShape(ctx, canvas.width, canvas.height, shape, time);
+            ctx.strokeStyle = `rgba(${rgb},${shape.opacity})`;
+            ctx.lineWidth   = shape.lw;
+            ctx.stroke();
+          });
         });
       } catch(e) {}
     })();
@@ -283,12 +333,8 @@ try {
 } catch(e) { console.warn('[JF] lines', e); }
 
 /* ══════════════════════════════════════════════════════════════
-   HERO LIQUID BLOB
-   Fisica liquida realistica:
-   – velocity stretch: si allunga nella direzione del moto
-   – acceleration sloshing: risponde ai cambi di direzione
-   – gravity sag: si appesantisce verso il basso quando scende
-   – spring + damping: oscillazione organica a riposo
+   HERO LIQUID BLOB — fisica liquida intensa
+   Deformazioni amplificate per distorsione visibile.
    ══════════════════════════════════════════════════════════════ */
 try {
   (function initHeroBlob() {
@@ -303,36 +349,33 @@ try {
     resize();
     try { new ResizeObserver(resize).observe(hero); } catch(e) { window.addEventListener('resize', resize); }
 
-    /* Colore blob — grigio chiaramente visibile su entrambi i temi */
+    /* Colore più scuro */
     function blobColor() {
       return document.body.classList.contains('light')
-        ? 'rgba(110, 115, 130, 0.62)'
-        : 'rgba(72, 78, 92, 0.65)';
+        ? 'rgba(90, 95, 110, 0.68)'
+        : 'rgba(52, 57, 70, 0.72)';
     }
 
-    /* ── N punti sul perimetro con spring physics ── */
-    const N      = 20;
-    const BASE_R = 125;
+    const N      = 22;
+    const BASE_R = 128;
 
     const pts = Array.from({ length: N }, (_, i) => ({
       angle:     (i / N) * Math.PI * 2,
       r:         BASE_R,
       rVel:      0,
       idlePhase: Math.random() * Math.PI * 2,
-      idleFreq:  0.12 + Math.random() * 0.18,
-      idleAmp:   4    + Math.random() * 8,
+      idleFreq:  0.10 + Math.random() * 0.15,
+      idleAmp:   6    + Math.random() * 10,
     }));
 
-    /* Stato cursore e blob */
     let targetX = -999, targetY = -999;
     let blobX   = -999, blobY   = -999;
-    let prevBX  = -999, prevBY  = -999;
-    let velX    = 0, velY = 0;
-    let prevVX  = 0, prevVY = 0;
+    let velX = 0, velY = 0;
+    let prevVX = 0, prevVY = 0;
     let heroActive = false;
     let time = 0;
 
-    /* Catmull-Rom spline */
+    /* Catmull-Rom closed */
     function drawBlob(ptArr) {
       const n = ptArr.length;
       ctx.beginPath();
@@ -353,16 +396,13 @@ try {
       try {
         time += 0.016;
 
-        /* 1. Lerp morbido del centro blob verso il cursore */
-        const prevBXt = blobX, prevBYt = blobY;
+        const prevBX = blobX, prevBY = blobY;
         blobX += (targetX - blobX) * 0.09;
         blobY += (targetY - blobY) * 0.09;
 
-        /* 2. Velocità istantanea del centro blob */
-        velX = blobX - prevBXt;
-        velY = blobY - prevBYt;
+        velX = blobX - prevBX;
+        velY = blobY - prevBY;
 
-        /* 3. Accelerazione = variazione di velocità */
         const accX = velX - prevVX;
         const accY = velY - prevVY;
         prevVX = velX; prevVY = velY;
@@ -372,29 +412,35 @@ try {
         const accMag  = Math.sqrt(accX * accX + accY * accY);
         const accDir  = Math.atan2(accY, accX);
 
-        /* 4. Aggiorna ogni punto del perimetro */
         pts.forEach(p => {
-          /* Velocity stretch: si allunga nella direzione di moto */
-          const velComp = Math.cos(p.angle - moveDir);
-          const velStretch = velComp * speed * 1.1;
+          /* ── Velocity stretch molto più aggressivo ── */
+          const velComp    = Math.cos(p.angle - moveDir);
+          const velStretch = velComp * speed * 3.2;
 
-          /* Acceleration sloshing: reagisce ai cambi di direzione */
-          const accComp = Math.cos(p.angle - accDir);
-          const accDeform = accComp * accMag * 7.0;
+          /* ── Acceleration sloshing — distorce fortemente ai cambi ── */
+          const accComp   = Math.cos(p.angle - accDir);
+          const accDeform = accComp * accMag * 18.0;
 
-          /* Gravity sag: downward velocity (velY > 0) appesantisce il basso */
-          /* sin(angle) = +1 in basso, -1 in alto */
-          const gravitySag = Math.sin(p.angle) * velY * 0.55;
+          /* ── Shear laterale — punti perpendicolari al moto si spostano ── */
+          const perpComp  = Math.sin(p.angle - moveDir);
+          const shear     = perpComp * speed * 1.4;
 
-          /* Idle organic wobble */
+          /* ── Gravity sag — la parte bassa si trascina quando sale ── */
+          const gravitySag = Math.sin(p.angle) * velY * 1.8;
+
+          /* ── Squeeze: si stringe lateralmente quando va veloce ── */
+          const squeeze = Math.abs(Math.sin(p.angle - moveDir)) * speed * -0.5;
+
+          /* ── Idle organico ── */
           const idle = p.idleAmp * Math.sin(time * p.idleFreq + p.idlePhase);
 
-          const targetR = BASE_R + velStretch + accDeform + gravitySag + idle;
+          const targetR = BASE_R + velStretch + accDeform + shear + gravitySag + squeeze + idle;
 
-          /* Spring con damping */
-          p.rVel = (p.rVel + (targetR - p.r) * 0.13) * 0.72;
+          /* Spring con damping bilanciato per oscillazione vivida */
+          p.rVel = (p.rVel + (targetR - p.r) * 0.16) * 0.68;
           p.r   += p.rVel;
-          p.r    = Math.max(BASE_R * 0.28, Math.min(BASE_R * 2.2, p.r));
+          /* Range più ampio per deformazioni estreme */
+          p.r    = Math.max(BASE_R * 0.18, Math.min(BASE_R * 2.8, p.r));
         });
 
         ctx.clearRect(0, 0, W, H);
@@ -414,7 +460,6 @@ try {
       } catch(e) {}
     })();
 
-    /* ── Event listeners ── */
     hero.addEventListener('mouseenter', e => {
       const rect = hero.getBoundingClientRect();
       blobX = targetX = e.clientX - rect.left;
@@ -422,15 +467,12 @@ try {
       prevVX = 0; prevVY = 0;
       heroActive = true;
     });
-
     hero.addEventListener('mouseleave', () => { heroActive = false; });
-
     hero.addEventListener('mousemove', e => {
       const rect = hero.getBoundingClientRect();
       targetX = e.clientX - rect.left;
       targetY = e.clientY - rect.top;
     });
-
     hero.addEventListener('touchmove', e => {
       const rect = hero.getBoundingClientRect();
       const t = e.touches[0];
@@ -444,7 +486,6 @@ try {
         targetY = t.clientY - rect.top;
       }
     }, { passive: true });
-
     hero.addEventListener('touchend', () => { heroActive = false; });
 
   })();
