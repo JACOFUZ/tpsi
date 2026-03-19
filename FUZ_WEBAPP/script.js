@@ -16,47 +16,23 @@ try { $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear()
 /* ── LOADER ── */
 (function initLoader() {
   const loader = $('#loader'), bar = $('#loader-bar');
-
   function dismiss() {
-    try {
-      if (loader) loader.classList.add('gone');
-      document.body.style.overflow = '';
-      triggerInitialReveals();
-    } catch(e) {
-      if (loader) loader.style.display = 'none';
-      document.body.style.overflow = '';
-    }
+    try { if (loader) loader.classList.add('gone'); document.body.style.overflow = ''; triggerInitialReveals(); }
+    catch(e) { if (loader) loader.style.display = 'none'; document.body.style.overflow = ''; }
   }
-
   if (!loader || !bar) { dismiss(); return; }
-
   let p = 0, done = false;
   document.body.style.overflow = 'hidden';
-
-  function safeDismiss() {
-    if (done) return;
-    done = true;
-    dismiss();
-  }
-
+  function safeDismiss() { if (done) return; done = true; dismiss(); }
   const iv = setInterval(() => {
     try {
       p += Math.random() * 18 + 5;
-      if (p >= 100) {
-        clearInterval(iv);
-        bar.style.width = '100%';
-        setTimeout(safeDismiss, 350);
-      } else {
-        bar.style.width = p + '%';
-      }
+      if (p >= 100) { clearInterval(iv); bar.style.width = '100%'; setTimeout(safeDismiss, 350); }
+      else { bar.style.width = p + '%'; }
     } catch(e) { clearInterval(iv); safeDismiss(); }
   }, 80);
-
-  if (document.readyState === 'complete') {
-    setTimeout(safeDismiss, 400);
-  } else {
-    window.addEventListener('load', () => setTimeout(safeDismiss, 300));
-  }
+  if (document.readyState === 'complete') { setTimeout(safeDismiss, 400); }
+  else { window.addEventListener('load', () => setTimeout(safeDismiss, 300)); }
   setTimeout(safeDismiss, 3000);
 })();
 
@@ -66,10 +42,7 @@ try {
     const dot = $('#cursor'), ring = $('#cursor-ring');
     if (!dot || !ring || window.matchMedia('(pointer:coarse)').matches) return;
     let mx=-100,my=-100,rx=-100,ry=-100;
-    document.addEventListener('mousemove', e => {
-      mx=e.clientX; my=e.clientY;
-      dot.style.transform=`translate(calc(${mx}px - 50%),calc(${my}px - 50%))`;
-    });
+    document.addEventListener('mousemove', e => { mx=e.clientX; my=e.clientY; dot.style.transform=`translate(calc(${mx}px - 50%),calc(${my}px - 50%))`; });
     (function loop() { rx+=(mx-rx)*.12; ry+=(my-ry)*.12; ring.style.transform=`translate(calc(${rx}px - 50%),calc(${ry}px - 50%))`; requestAnimationFrame(loop); })();
     const hov='a,button,.carousel-slide,.poster-card,.gear-group,.review-card,input,textarea,select';
     document.addEventListener('mouseover', e=>{ if(e.target.closest(hov)) ring.classList.add('hovered'); });
@@ -145,8 +118,7 @@ try {
         blocks.forEach((block, i) => {
           const visible = filter==='all' || block.dataset.cat===filter;
           if (visible) {
-            block.classList.remove('hidden');
-            block.style.opacity='0'; block.style.transform='translateY(14px)';
+            block.classList.remove('hidden'); block.style.opacity='0'; block.style.transform='translateY(14px)';
             setTimeout(() => { block.style.transition='opacity .45s ease,transform .45s ease'; block.style.opacity='1'; block.style.transform='none'; }, i*50);
           } else {
             block.style.transition='opacity .25s ease'; block.style.opacity='0';
@@ -204,10 +176,119 @@ try {
 } catch(e) {}
 
 /* ══════════════════════════════════════════════════════════════
+   ANIMATED BACKGROUND LINES
+   Linee sinuose animate su hero e sezioni scure.
+   Tre livelli di profondità per effetto 3D.
+   Nessuna sovrapposizione garantita da spaziatura controllata.
+   ══════════════════════════════════════════════════════════════ */
+try {
+  (function initBgLines() {
+
+    /* Sezioni che ricevono le linee */
+    const heroBgBase  = document.querySelector('.hero-bg-base');
+    const darkSections = [
+      document.getElementById('esperienze'),
+      document.getElementById('video'),
+      document.getElementById('offerte'),
+      document.querySelector('.contact-body'),
+    ];
+
+    const canvases = [];
+
+    function addCanvas(parent, zIndex) {
+      if (!parent) return;
+      const c = document.createElement('canvas');
+      c.className = 'bg-lines-canvas';
+      c.style.zIndex = zIndex;
+      parent.insertBefore(c, parent.firstChild);
+      canvases.push({ canvas: c, parent });
+    }
+
+    /* Hero: dentro hero-bg-base (z:1, sopra il gradiente) */
+    addCanvas(heroBgBase, '1');
+    /* Altre sezioni scure */
+    darkSections.forEach(s => addCanvas(s, '0'));
+
+    function resizeAll() {
+      canvases.forEach(({ canvas, parent }) => {
+        canvas.width  = parent.offsetWidth  || 1;
+        canvas.height = parent.offsetHeight || 1;
+      });
+    }
+    resizeAll();
+    let _rt;
+    window.addEventListener('resize', () => { clearTimeout(_rt); _rt = setTimeout(resizeAll, 120); }, { passive: true });
+
+    /* ── Config linee: N=20, tre layer di profondità ──
+       Spaziatura = H/19 ≈ 5.3% H
+       Max ampiezza = 1.6% H
+       Minimo gap tra estremi adiacenti = 5.3% - 2×1.6% = 2.1% H  → mai si toccano */
+    const N = 20;
+    const lines = Array.from({ length: N }, (_, i) => {
+      const t = i / (N - 1);  /* 0 = lontano, 1 = vicino */
+      return {
+        yFrac:      0.02 + t * 0.96,               /* y normalizzato 2%–98% */
+        phase:      Math.random() * Math.PI * 2,
+        /* Profondità: lontano = lento, vicino = veloce */
+        speed:      0.08 + t * 0.14 + Math.random() * 0.06,
+        /* Ampiezza: massimo 1.6% altezza */
+        ampFrac:    0.005 + t * 0.006 + Math.random() * 0.005,
+        /* Lunghezza d'onda: variata per dare naturalezza */
+        wlFrac:     0.22 + Math.random() * 0.32,
+        /* Opacità: layer lontani più labili */
+        opacity:    0.03 + t * 0.055 + Math.random() * 0.025,
+        /* Spessore: vicini leggermente più spessi */
+        thickness:  0.2 + t * 0.5 + Math.random() * 0.15,
+      };
+    });
+
+    let time = 0;
+
+    function isLight() { return document.body.classList.contains('light'); }
+
+    function drawLines(ctx, W, H) {
+      ctx.clearRect(0, 0, W, H);
+      const rgb = isLight() ? '0,0,0' : '255,255,255';
+      const step = Math.max(1, Math.floor(W / 320));
+
+      lines.forEach(ln => {
+        const y0  = ln.yFrac * H;
+        const amp = ln.ampFrac * H;
+        const wl  = ln.wlFrac * W;
+
+        ctx.beginPath();
+        for (let x = 0; x <= W; x += step) {
+          const y = y0 + amp * Math.sin((x / wl) * Math.PI * 2 + ln.phase + time * ln.speed);
+          x === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = `rgba(${rgb},${ln.opacity})`;
+        ctx.lineWidth   = ln.thickness;
+        ctx.stroke();
+      });
+    }
+
+    (function animate() {
+      requestAnimationFrame(animate);
+      try {
+        time += 0.016;
+        canvases.forEach(({ canvas }) => {
+          if (!canvas.width || !canvas.height) return;
+          const ctx = canvas.getContext('2d');
+          drawLines(ctx, canvas.width, canvas.height);
+        });
+      } catch(e) {}
+    })();
+
+  })();
+} catch(e) { console.warn('[JF] lines', e); }
+
+/* ══════════════════════════════════════════════════════════════
    HERO LIQUID BLOB
-   Una macchia liquida che segue il cursore con fisica spring.
-   Nessun bordo, nessuna texture — solo forma pura.
-   Colore: grigio scuro (dark) / grigio medio (light), 65% opacità.
+   Fisica liquida realistica:
+   – velocity stretch: si allunga nella direzione del moto
+   – acceleration sloshing: risponde ai cambi di direzione
+   – gravity sag: si appesantisce verso il basso quando scende
+   – spring + damping: oscillazione organica a riposo
    ══════════════════════════════════════════════════════════════ */
 try {
   (function initHeroBlob() {
@@ -218,121 +299,112 @@ try {
     const ctx = canvas.getContext('2d');
     let W = 0, H = 0;
 
-    function resize() {
-      W = canvas.width  = hero.offsetWidth;
-      H = canvas.height = hero.offsetHeight;
-    }
+    function resize() { W = canvas.width = hero.offsetWidth; H = canvas.height = hero.offsetHeight; }
     resize();
     try { new ResizeObserver(resize).observe(hero); } catch(e) { window.addEventListener('resize', resize); }
 
-    /* ── Colore blob in base al tema attivo ── */
+    /* Colore blob — grigio chiaramente visibile su entrambi i temi */
     function blobColor() {
       return document.body.classList.contains('light')
-        ? 'rgba(148, 152, 161, 0.65)'   /* grigio medio su sfondo chiaro */
-        : 'rgba(34, 36, 42, 0.65)';     /* grigio scuro su sfondo nero  */
+        ? 'rgba(110, 115, 130, 0.62)'
+        : 'rgba(72, 78, 92, 0.65)';
     }
 
-    /* ── Posizione blob (lerp) ── */
-    let targetX = -999, targetY = -999;
-    let blobX   = -999, blobY   = -999;
-    let prevX   = -999, prevY   = -999;
-    let velX    = 0,    velY    = 0;
-    let heroActive = false;
-
-    /* ── N punti sul perimetro con spring physics ──
-       Ogni punto ha:
-       - angle fisso
-       - raggio corrente (r) e velocità radiale (rVel)
-       - parametri idle per respiro organico anche a riposo   */
-    const N = 16;
-    const BASE_R = 140; /* raggio base in px */
+    /* ── N punti sul perimetro con spring physics ── */
+    const N      = 20;
+    const BASE_R = 125;
 
     const pts = Array.from({ length: N }, (_, i) => ({
       angle:     (i / N) * Math.PI * 2,
       r:         BASE_R,
       rVel:      0,
       idlePhase: Math.random() * Math.PI * 2,
-      idleFreq:  0.18 + Math.random() * 0.22,   /* lento — respiro */
-      idleAmp:   4    + Math.random() * 8,       /* piccolo — quasi impercettibile a riposo */
+      idleFreq:  0.12 + Math.random() * 0.18,
+      idleAmp:   4    + Math.random() * 8,
     }));
 
+    /* Stato cursore e blob */
+    let targetX = -999, targetY = -999;
+    let blobX   = -999, blobY   = -999;
+    let prevBX  = -999, prevBY  = -999;
+    let velX    = 0, velY = 0;
+    let prevVX  = 0, prevVY = 0;
+    let heroActive = false;
     let time = 0;
 
-    /* ── Catmull-Rom → Bezier per curva morbida ── */
+    /* Catmull-Rom spline */
     function drawBlob(ptArr) {
       const n = ptArr.length;
       ctx.beginPath();
       for (let i = 0; i < n; i++) {
-        const p0 = ptArr[(i-1+n)%n];
-        const p1 = ptArr[i];
-        const p2 = ptArr[(i+1)%n];
-        const p3 = ptArr[(i+2)%n];
+        const p0=ptArr[(i-1+n)%n], p1=ptArr[i], p2=ptArr[(i+1)%n], p3=ptArr[(i+2)%n];
         if (i === 0) ctx.moveTo(p1.x, p1.y);
         ctx.bezierCurveTo(
-          p1.x + (p2.x - p0.x) / 6,
-          p1.y + (p2.y - p0.y) / 6,
-          p2.x - (p3.x - p1.x) / 6,
-          p2.y - (p3.y - p1.y) / 6,
+          p1.x + (p2.x - p0.x) / 6, p1.y + (p2.y - p0.y) / 6,
+          p2.x - (p3.x - p1.x) / 6, p2.y - (p3.y - p1.y) / 6,
           p2.x, p2.y
         );
       }
       ctx.closePath();
     }
 
-    /* ── Loop ── */
     (function frame() {
       requestAnimationFrame(frame);
       try {
         time += 0.016;
 
-        /* Lerp morbido verso mouse — inertia liquida */
+        /* 1. Lerp morbido del centro blob verso il cursore */
+        const prevBXt = blobX, prevBYt = blobY;
         blobX += (targetX - blobX) * 0.09;
         blobY += (targetY - blobY) * 0.09;
 
-        /* Velocità istantanea per calcolare deformazione */
-        velX = blobX - prevX;
-        velY = blobY - prevY;
-        prevX = blobX;
-        prevY = blobY;
+        /* 2. Velocità istantanea del centro blob */
+        velX = blobX - prevBXt;
+        velY = blobY - prevBYt;
+
+        /* 3. Accelerazione = variazione di velocità */
+        const accX = velX - prevVX;
+        const accY = velY - prevVY;
+        prevVX = velX; prevVY = velY;
 
         const speed   = Math.sqrt(velX * velX + velY * velY);
         const moveDir = Math.atan2(velY, velX);
+        const accMag  = Math.sqrt(accX * accX + accY * accY);
+        const accDir  = Math.atan2(accY, accX);
 
-        /* Aggiorna ogni punto */
+        /* 4. Aggiorna ogni punto del perimetro */
         pts.forEach(p => {
-          /* Quanto questo punto è allineato con la direzione di movimento?
-             1 = in avanti (si allunga), -1 = indietro (si comprime) */
-          const alignment = Math.cos(p.angle - moveDir);
+          /* Velocity stretch: si allunga nella direzione di moto */
+          const velComp = Math.cos(p.angle - moveDir);
+          const velStretch = velComp * speed * 1.1;
 
-          /* Deformazione proporzionale alla velocità
-             — più si muove, più si allunga nella direzione del moto */
-          const stretch = alignment * speed * 0.55;
+          /* Acceleration sloshing: reagisce ai cambi di direzione */
+          const accComp = Math.cos(p.angle - accDir);
+          const accDeform = accComp * accMag * 7.0;
 
-          /* Respiro idle — sempre attivo, indipendente dal movimento */
+          /* Gravity sag: downward velocity (velY > 0) appesantisce il basso */
+          /* sin(angle) = +1 in basso, -1 in alto */
+          const gravitySag = Math.sin(p.angle) * velY * 0.55;
+
+          /* Idle organic wobble */
           const idle = p.idleAmp * Math.sin(time * p.idleFreq + p.idlePhase);
 
-          /* Raggio target */
-          const targetR = BASE_R + stretch + idle;
+          const targetR = BASE_R + velStretch + accDeform + gravitySag + idle;
 
-          /* Spring: forza proporzionale alla distanza dal target, smorzamento */
-          p.rVel = (p.rVel + (targetR - p.r) * 0.13) * 0.74;
+          /* Spring con damping */
+          p.rVel = (p.rVel + (targetR - p.r) * 0.13) * 0.72;
           p.r   += p.rVel;
-
-          /* Clamp di sicurezza */
-          p.r = Math.max(BASE_R * 0.45, Math.min(BASE_R * 1.85, p.r));
+          p.r    = Math.max(BASE_R * 0.28, Math.min(BASE_R * 2.2, p.r));
         });
 
         ctx.clearRect(0, 0, W, H);
-
         if (!heroActive) return;
 
-        /* Calcola posizioni assolute dei punti */
         const shapePts = pts.map(p => ({
           x: blobX + p.r * Math.cos(p.angle),
           y: blobY + p.r * Math.sin(p.angle),
         }));
 
-        /* Disegna — nessun bordo, solo fill */
         ctx.save();
         drawBlob(shapePts);
         ctx.fillStyle = blobColor();
@@ -345,16 +417,13 @@ try {
     /* ── Event listeners ── */
     hero.addEventListener('mouseenter', e => {
       const rect = hero.getBoundingClientRect();
-      /* Teletrasporta al punto di ingresso senza lerp iniziale */
       blobX = targetX = e.clientX - rect.left;
       blobY = targetY = e.clientY - rect.top;
-      prevX = blobX; prevY = blobY;
+      prevVX = 0; prevVY = 0;
       heroActive = true;
     });
 
-    hero.addEventListener('mouseleave', () => {
-      heroActive = false;
-    });
+    hero.addEventListener('mouseleave', () => { heroActive = false; });
 
     hero.addEventListener('mousemove', e => {
       const rect = hero.getBoundingClientRect();
@@ -362,14 +431,13 @@ try {
       targetY = e.clientY - rect.top;
     });
 
-    /* Touch */
     hero.addEventListener('touchmove', e => {
       const rect = hero.getBoundingClientRect();
-      const t    = e.touches[0];
+      const t = e.touches[0];
       if (!heroActive) {
         blobX = targetX = t.clientX - rect.left;
         blobY = targetY = t.clientY - rect.top;
-        prevX = blobX; prevY = blobY;
+        prevVX = 0; prevVY = 0;
         heroActive = true;
       } else {
         targetX = t.clientX - rect.left;
@@ -378,10 +446,6 @@ try {
     }, { passive: true });
 
     hero.addEventListener('touchend', () => { heroActive = false; });
-
-    /* Aggiorna colore quando cambia il tema */
-    const themeBtn = document.getElementById('theme-toggle');
-    if (themeBtn) themeBtn.addEventListener('click', () => { /* blobColor() legge live */ });
 
   })();
 } catch(e) { console.warn('[JF] blob', e); }
@@ -422,11 +486,11 @@ try {
       let valid=true;Object.keys(fields).forEach(k=>{if(!vf(k))valid=false;});
       if(!valid){const f=Object.values(fields).find(f=>f.el?.classList.contains('invalid'));if(f)f.el.focus();return;}
       const btn=form.querySelector('.btn-send');
-      if(btn){btn.disabled=true;btn.querySelector('span').textContent='Invio in corso…';}
+      if(btn){btn.disabled=true;btn.querySelector('span').textContent='Invio…';}
       setTimeout(()=>{
         form.reset();Object.values(fields).forEach(({el})=>el?.classList.remove('invalid'));
         const ok=$('#form-ok');if(ok)ok.removeAttribute('hidden');
-        if(btn){btn.disabled=false;btn.querySelector('span').textContent='Invia messaggio';}
+        if(btn){btn.disabled=false;btn.querySelector('span').textContent='Invia';}
         showToast('Messaggio inviato!');
         setTimeout(()=>{if(ok)ok.setAttribute('hidden','');},5000);
       },1200);
