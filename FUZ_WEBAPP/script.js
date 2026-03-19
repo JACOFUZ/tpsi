@@ -13,6 +13,7 @@ function sanitize(str) {
 
 try { $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); }); } catch(e) {}
 
+/* ── LOADER ── */
 (function initLoader() {
   const loader = $('#loader'), bar = $('#loader-bar');
 
@@ -56,10 +57,10 @@ try { $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear()
   } else {
     window.addEventListener('load', () => setTimeout(safeDismiss, 300));
   }
-
   setTimeout(safeDismiss, 3000);
 })();
 
+/* ── CURSOR ── */
 try {
   (function initCursor() {
     const dot = $('#cursor'), ring = $('#cursor-ring');
@@ -76,8 +77,9 @@ try {
     document.addEventListener('mouseleave',()=>{ dot.style.opacity='0'; ring.style.opacity='0'; });
     document.addEventListener('mouseenter',()=>{ dot.style.opacity='1'; ring.style.opacity='1'; });
   })();
-} catch(e) { console.warn('[JF] cursor', e); }
+} catch(e) {}
 
+/* ── HEADER SCROLL ── */
 try {
   (function() {
     const h = $('#site-header'); if (!h) return;
@@ -85,6 +87,7 @@ try {
   })();
 } catch(e) {}
 
+/* ── NAV ── */
 try {
   (function initNav() {
     const btn = $('#hamburger'), overlay = $('#nav-overlay');
@@ -101,8 +104,9 @@ try {
       else if (!e.shiftKey && document.activeElement===els[els.length-1]) { e.preventDefault(); els[0].focus(); }
     });
   })();
-} catch(e) { console.warn('[JF] nav', e); }
+} catch(e) {}
 
+/* ── SCROLL REVEAL ── */
 function initReveal() {
   try {
     const els = $$('.js-reveal-fade,.js-reveal-clip,.js-reveal-left,.js-reveal-right');
@@ -118,7 +122,6 @@ function initReveal() {
     try { $$('.js-reveal-fade,.js-reveal-clip,.js-reveal-left,.js-reveal-right').forEach(el => el.classList.add('in')); } catch(e2) {}
   }
 }
-
 function triggerInitialReveals() {
   try {
     initReveal();
@@ -130,6 +133,7 @@ function triggerInitialReveals() {
   }
 }
 
+/* ── FILTRI ── */
 try {
   (function initFilters() {
     const btns = $$('.f-btn'), blocks = $$('.carousel-block');
@@ -152,8 +156,9 @@ try {
       });
     });
   })();
-} catch(e) { console.warn('[JF] filters', e); }
+} catch(e) {}
 
+/* ── CAROSELLI ── */
 try {
   (function initCarousels() {
     $$('.carousel-block').forEach(block => {
@@ -193,246 +198,195 @@ try {
         block.addEventListener('keydown', e=>{if(e.key==='ArrowLeft')goTo(current-1);if(e.key==='ArrowRight')goTo(current+1);});
         let rt; window.addEventListener('resize',()=>{clearTimeout(rt);rt=setTimeout(()=>goTo(current),150);},{passive:true});
         goTo(0);
-      } catch(e) { console.warn('[JF] carousel', e); }
+      } catch(e) {}
     });
   })();
-} catch(e) { console.warn('[JF] carousels', e); }
+} catch(e) {}
 
+/* ══════════════════════════════════════════════════════════════
+   HERO LIQUID BLOB
+   Una macchia liquida che segue il cursore con fisica spring.
+   Nessun bordo, nessuna texture — solo forma pura.
+   Colore: grigio scuro (dark) / grigio medio (light), 65% opacità.
+   ══════════════════════════════════════════════════════════════ */
 try {
-  (function initHeroOil() {
-    const hero      = document.getElementById('hero');
-    const canvas    = document.getElementById('hero-canvas');
-    const imgReveal = document.getElementById('hero-img-reveal');
-    if (!hero || !canvas || !imgReveal) return;
+  (function initHeroBlob() {
+    const hero   = document.getElementById('hero');
+    const canvas = document.getElementById('hero-canvas');
+    if (!hero || !canvas) return;
 
     const ctx = canvas.getContext('2d');
     let W = 0, H = 0;
 
-    function resize() { W = canvas.width = hero.offsetWidth; H = canvas.height = hero.offsetHeight; }
+    function resize() {
+      W = canvas.width  = hero.offsetWidth;
+      H = canvas.height = hero.offsetHeight;
+    }
     resize();
     try { new ResizeObserver(resize).observe(hero); } catch(e) { window.addEventListener('resize', resize); }
 
-    function coverImg(img, alpha) {
-      if (!img.complete || !img.naturalWidth) return;
-      const iW=img.naturalWidth, iH=img.naturalHeight;
-      const s=Math.max(W/iW,H/iH);
-      const dw=iW*s, dh=iH*s;
-      ctx.globalAlpha=alpha;
-      ctx.drawImage(img,(W-dw)/2,(H-dh)/2,dw,dh);
-      ctx.globalAlpha=1;
+    /* ── Colore blob in base al tema attivo ── */
+    function blobColor() {
+      return document.body.classList.contains('light')
+        ? 'rgba(148, 152, 161, 0.65)'   /* grigio medio su sfondo chiaro */
+        : 'rgba(34, 36, 42, 0.65)';     /* grigio scuro su sfondo nero  */
     }
 
-    function iridescentFill(cx,cy,rw,rh,hueBase,alpha) {
-      const h=hueBase%360;
-      const g=ctx.createLinearGradient(cx-rw,cy-rh,cx+rw,cy+rh);
-      g.addColorStop(0,    `hsla(${h},100%,72%,0)`);
-      g.addColorStop(0.2,  `hsla(${(h+50)%360},100%,78%,${alpha*0.20})`);
-      g.addColorStop(0.5,  `hsla(${(h+130)%360},100%,74%,${alpha*0.14})`);
-      g.addColorStop(0.75, `hsla(${(h+210)%360},100%,78%,${alpha*0.18})`);
-      g.addColorStop(1,    `hsla(${(h+290)%360},100%,72%,0)`);
-      ctx.fillStyle=g;
-      ctx.fillRect(cx-rw-4,cy-rh-4,rw*2+8,rh*2+8);
-    }
+    /* ── Posizione blob (lerp) ── */
+    let targetX = -999, targetY = -999;
+    let blobX   = -999, blobY   = -999;
+    let prevX   = -999, prevY   = -999;
+    let velX    = 0,    velY    = 0;
+    let heroActive = false;
 
-    function specular(cx,cy,rw,rh,alpha) {
-      const hx=cx-rw*0.22, hy=cy-rh*0.30;
-      const g=ctx.createRadialGradient(hx,hy,0,hx,hy,Math.max(rw,rh)*0.34);
-      g.addColorStop(0,  `rgba(255,255,255,${alpha*0.65})`);
-      g.addColorStop(0.5,`rgba(255,255,255,${alpha*0.15})`);
-      g.addColorStop(1,  'rgba(255,255,255,0)');
-      ctx.fillStyle=g;
+    /* ── N punti sul perimetro con spring physics ──
+       Ogni punto ha:
+       - angle fisso
+       - raggio corrente (r) e velocità radiale (rVel)
+       - parametri idle per respiro organico anche a riposo   */
+    const N = 16;
+    const BASE_R = 140; /* raggio base in px */
+
+    const pts = Array.from({ length: N }, (_, i) => ({
+      angle:     (i / N) * Math.PI * 2,
+      r:         BASE_R,
+      rVel:      0,
+      idlePhase: Math.random() * Math.PI * 2,
+      idleFreq:  0.18 + Math.random() * 0.22,   /* lento — respiro */
+      idleAmp:   4    + Math.random() * 8,       /* piccolo — quasi impercettibile a riposo */
+    }));
+
+    let time = 0;
+
+    /* ── Catmull-Rom → Bezier per curva morbida ── */
+    function drawBlob(ptArr) {
+      const n = ptArr.length;
       ctx.beginPath();
-      ctx.ellipse(hx,hy,rw*0.28,rh*0.15,-Math.PI/5,0,Math.PI*2);
-      ctx.fill();
-    }
-
-    function catmullPath(pts) {
-      const n=pts.length;
-      ctx.beginPath();
-      for (let i=0;i<n;i++) {
-        const p0=pts[(i-1+n)%n],p1=pts[i],p2=pts[(i+1)%n],p3=pts[(i+2)%n];
-        if (i===0) ctx.moveTo(p1.x,p1.y);
-        const cp1x=p1.x+(p2.x-p0.x)/6, cp1y=p1.y+(p2.y-p0.y)/6;
-        const cp2x=p2.x-(p3.x-p1.x)/6, cp2y=p2.y-(p3.y-p1.y)/6;
-        ctx.bezierCurveTo(cp1x,cp1y,cp2x,cp2y,p2.x,p2.y);
+      for (let i = 0; i < n; i++) {
+        const p0 = ptArr[(i-1+n)%n];
+        const p1 = ptArr[i];
+        const p2 = ptArr[(i+1)%n];
+        const p3 = ptArr[(i+2)%n];
+        if (i === 0) ctx.moveTo(p1.x, p1.y);
+        ctx.bezierCurveTo(
+          p1.x + (p2.x - p0.x) / 6,
+          p1.y + (p2.y - p0.y) / 6,
+          p2.x - (p3.x - p1.x) / 6,
+          p2.y - (p3.y - p1.y) / 6,
+          p2.x, p2.y
+        );
       }
       ctx.closePath();
     }
 
-    const N_CURSOR=14;
-    const cursorPts=Array.from({length:N_CURSOR},()=>({
-      f1:2.5+Math.random()*5.0, f2:1.8+Math.random()*4.2,
-      f3:3.0+Math.random()*6.0, f4:4.5+Math.random()*8.0,
-      p1:Math.random()*Math.PI*2, p2:Math.random()*Math.PI*2,
-      p3:Math.random()*Math.PI*2, p4:Math.random()*Math.PI*2,
-      a1:0.22+Math.random()*0.32, a2:0.10+Math.random()*0.18,
-      a3:0.08+Math.random()*0.14, a4:0.05+Math.random()*0.10,
-      rb:0.70+Math.random()*0.60,
-    }));
-    let cbx=-500,cby=-500,cbTx=-500,cbTy=-500,cbRadius=0,cbTargetR=0;
-
-    function cursorBlobPoints(t) {
-      return cursorPts.map((p,i)=>{
-        const angle=(i/N_CURSOR)*Math.PI*2-Math.PI/2;
-        const noise=p.rb*(1+p.a1*Math.sin(t*p.f1+p.p1)+p.a2*Math.cos(t*p.f2+p.p2)+p.a3*Math.sin(t*p.f3+p.p3)+p.a4*Math.cos(t*p.f4+p.p4));
-        return {x:cbx+cbRadius*noise*Math.cos(angle),y:cby+cbRadius*noise*Math.sin(angle)};
-      });
-    }
-
-    const stripes=[],MAX_STRIPES=12;
-    function makeStripePts(cx,cy,len,thk,angle) {
-      return Array.from({length:20},(_,i)=>{
-        const t=(i/20)*Math.PI*2;
-        const w=1+0.20*Math.sin(t*3.1+Math.random()*6)+0.10*Math.cos(t*5.7+Math.random()*6);
-        const rx=Math.cos(t)*len*0.5*w, ry=Math.sin(t)*thk*0.5*w;
-        return {x:cx+rx*Math.cos(angle)-ry*Math.sin(angle),y:cy+rx*Math.sin(angle)+ry*Math.cos(angle)};
-      });
-    }
-    function spawnStripe() {
-      if (stripes.length>=MAX_STRIPES) return;
-      const cx=Math.random()*W,cy=Math.random()*H;
-      const len=80+Math.random()*320,thk=18+Math.random()*55;
-      const angle=Math.random()*Math.PI,life=3.5+Math.random()*4.0;
-      stripes.push({cx,cy,len,thk,angle,pts:makeStripePts(cx,cy,len,thk,angle),life,maxLife:life,hue:Math.random()*360,alpha:0});
-    }
-
-    const bubbles=[],MAX_BUBBLES=22;
-    function makeBubblePts(n){return Array.from({length:n},()=>({s1:0.6+Math.random()*2.0,s2:0.3+Math.random()*1.0,p1:Math.random()*Math.PI*2,p2:Math.random()*Math.PI*2,a1:0.10+Math.random()*0.22,a2:0.05+Math.random()*0.10}));}
-    function bubblePts(b){
-      const n=b.bpts.length;
-      return b.bpts.map((p,i)=>{
-        const angle=(i/n)*Math.PI*2;
-        const noise=1+p.a1*Math.sin(b.t*p.s1+p.p1)+p.a2*Math.cos(b.t*p.s2+p.p2);
-        return {x:b.x+b.r*noise*Math.cos(angle),y:b.y+b.r*noise*Math.sin(angle)};
-      });
-    }
-    function spawnBubble(x,y,vx,vy,r){
-      if(bubbles.length>=MAX_BUBBLES)return;
-      const life=2.5+Math.random()*3.5;
-      bubbles.push({x,y,vx,vy,r:r||(12+Math.random()*45),life,maxLife:life,bpts:makeBubblePts(7+Math.floor(Math.random()*5)),hue:Math.random()*360,t:Math.random()*20});
-    }
-
-    const particles=[],MAX_PARTICLES=80;
-    function spawnParticle(x,y,vx,vy){
-      if(particles.length>=MAX_PARTICLES)return;
-      const life=1.2+Math.random()*1.8;
-      particles.push({x,y,vx:vx+(Math.random()-.5)*2.5,vy:vy+(Math.random()-.5)*2.5-.5,r:3+Math.random()*9,life,maxLife:life,hue:Math.random()*360,t:Math.random()*10});
-    }
-
-    let time=0,lastMx=0,lastMy=0,autoSpawnTick=0,spawnTick=0;
-
-    function updateStripes(){for(let i=stripes.length-1;i>=0;i--){const s=stripes[i];s.life-=0.016;if(s.life<=0){stripes.splice(i,1);continue;}const lr=s.life/s.maxLife;if(lr>0.85)s.alpha=Math.min(s.alpha+0.025,1);else if(lr<0.25)s.alpha=Math.max(s.alpha-0.018,0);}}
-    function updateBubbles(){for(let i=bubbles.length-1;i>=0;i--){const b=bubbles[i];b.life-=0.016;if(b.life<=0){bubbles.splice(i,1);continue;}b.x+=b.vx;b.y+=b.vy;b.vx*=0.98;b.vy=b.vy*0.98-0.06;b.t+=0.018;}}
-    function updateParticles(){for(let i=particles.length-1;i>=0;i--){const p=particles[i];p.life-=0.016;if(p.life<=0){particles.splice(i,1);continue;}p.x+=p.vx;p.y+=p.vy;p.vx*=0.95;p.vy=p.vy*0.95-0.04;p.t+=0.03;}}
-
-    function drawCursorBlob(t){
-      if(cbRadius<1||!imgReveal.complete||!imgReveal.naturalWidth)return;
-      const bp=cursorBlobPoints(t);
-      ctx.save();catmullPath(bp);ctx.clip();coverImg(imgReveal,0.92);
-      ctx.save();iridescentFill(cbx,cby,cbRadius*1.2,cbRadius*1.0,time*18,0.9);ctx.restore();
-      ctx.restore();
-      ctx.save();catmullPath(bp);ctx.strokeStyle=`hsla(${(time*28)%360},95%,82%,0.55)`;ctx.lineWidth=1.4;ctx.stroke();ctx.restore();
-      ctx.save();
-      catmullPath(cursorBlobPoints(t-0.05).map(p=>({x:cbx+(p.x-cbx)*1.18,y:cby+(p.y-cby)*1.18})));
-      const gout=ctx.createRadialGradient(cbx,cby,cbRadius*0.5,cbx,cby,cbRadius*1.3);
-      gout.addColorStop(0,'rgba(0,0,0,0)');gout.addColorStop(0.6,`hsla(${(time*18+60)%360},80%,70%,0.07)`);gout.addColorStop(1,'rgba(0,0,0,0)');
-      ctx.fillStyle=gout;ctx.fill();ctx.restore();
-      ctx.save();specular(cbx,cby,cbRadius*0.9,cbRadius*0.7,0.75);ctx.restore();
-    }
-
-    function drawStripes(){
-      stripes.forEach(s=>{
-        if(s.alpha<0.01)return;
-        ctx.save();catmullPath(s.pts);ctx.clip();coverImg(imgReveal,s.alpha*0.92);
-        ctx.save();ctx.translate(s.cx,s.cy);ctx.rotate(s.angle);iridescentFill(0,0,s.len*0.5,s.thk*0.5,s.hue+time*15,s.alpha);ctx.restore();
-        ctx.restore();
-        ctx.save();catmullPath(s.pts);ctx.strokeStyle=`hsla(${(s.hue+time*25+90)%360},90%,80%,${s.alpha*0.45})`;ctx.lineWidth=1.5;ctx.stroke();ctx.restore();
-        ctx.save();specular(s.cx,s.cy,s.len*0.25,s.thk*0.25,s.alpha*0.7);ctx.restore();
-      });
-    }
-
-    function drawBubbles(){
-      bubbles.forEach(b=>{
-        const lr=b.life/b.maxLife,alpha=Math.min(lr*2.5,1)*0.88;
-        if(alpha<0.01)return;
-        const bp=bubblePts(b);
-        ctx.save();catmullPath(bp);ctx.clip();coverImg(imgReveal,alpha);
-        ctx.save();iridescentFill(b.x,b.y,b.r,b.r,b.hue+time*20,alpha);ctx.restore();
-        ctx.restore();
-        ctx.save();catmullPath(bp);ctx.strokeStyle=`hsla(${(b.hue+time*35)%360},95%,82%,${alpha*0.6})`;ctx.lineWidth=1.8;ctx.stroke();ctx.restore();
-        ctx.save();
-        catmullPath(bubblePts({...b,r:b.r*1.15}));
-        const gout=ctx.createRadialGradient(b.x,b.y,b.r*0.5,b.x,b.y,b.r*1.2);
-        gout.addColorStop(0,'rgba(0,0,0,0)');gout.addColorStop(0.6,`hsla(${(b.hue+time*20)%360},80%,70%,${alpha*0.08})`);gout.addColorStop(1,'rgba(0,0,0,0)');
-        ctx.fillStyle=gout;ctx.fill();ctx.restore();
-        ctx.save();specular(b.x,b.y,b.r,b.r,alpha*0.85);ctx.restore();
-      });
-    }
-
-    function drawParticles(){
-      particles.forEach(p=>{
-        const lr=p.life/p.maxLife,alpha=Math.min(lr*3,1)*0.82;
-        if(alpha<0.01)return;
-        const wobble=1+0.12*Math.sin(p.t*4.5);
-        const pts=Array.from({length:8},(_,i)=>{const a=(i/8)*Math.PI*2;return{x:p.x+p.r*wobble*Math.cos(a),y:p.y+p.r*(1/wobble)*Math.sin(a)};});
-        ctx.save();catmullPath(pts);ctx.clip();coverImg(imgReveal,alpha*0.9);
-        ctx.save();iridescentFill(p.x,p.y,p.r,p.r,p.hue+time*30,alpha*0.8);ctx.restore();
-        ctx.restore();
-        ctx.save();catmullPath(pts);ctx.strokeStyle=`hsla(${(p.hue+60)%360},95%,85%,${alpha*0.55})`;ctx.lineWidth=0.8;ctx.stroke();ctx.restore();
-        ctx.save();specular(p.x,p.y,p.r,p.r,alpha*0.6);ctx.restore();
-      });
-    }
-
-    function autoSpawn(){
-      autoSpawnTick++;
-      if(autoSpawnTick%240===0)spawnStripe();
-      if(autoSpawnTick%90===0)spawnBubble(Math.random()*W,H*0.3+Math.random()*H*0.6,(Math.random()-.5)*.8,-(0.3+Math.random()*.6));
-      if(autoSpawnTick%48===0)spawnParticle(Math.random()*W,H*0.2+Math.random()*H*0.7,(Math.random()-.5)*.5,-(0.2+Math.random()*.5));
-    }
-
-    (function frame(){
+    /* ── Loop ── */
+    (function frame() {
       requestAnimationFrame(frame);
       try {
-        time+=0.016;
-        cbx+=(cbTx-cbx)*0.14; cby+=(cbTy-cby)*0.14; cbRadius+=(cbTargetR-cbRadius)*0.10;
-        autoSpawn();updateStripes();updateBubbles();updateParticles();
-        ctx.clearRect(0,0,W,H);
-        drawStripes();drawBubbles();drawParticles();drawCursorBlob(time);
+        time += 0.016;
+
+        /* Lerp morbido verso mouse — inertia liquida */
+        blobX += (targetX - blobX) * 0.09;
+        blobY += (targetY - blobY) * 0.09;
+
+        /* Velocità istantanea per calcolare deformazione */
+        velX = blobX - prevX;
+        velY = blobY - prevY;
+        prevX = blobX;
+        prevY = blobY;
+
+        const speed   = Math.sqrt(velX * velX + velY * velY);
+        const moveDir = Math.atan2(velY, velX);
+
+        /* Aggiorna ogni punto */
+        pts.forEach(p => {
+          /* Quanto questo punto è allineato con la direzione di movimento?
+             1 = in avanti (si allunga), -1 = indietro (si comprime) */
+          const alignment = Math.cos(p.angle - moveDir);
+
+          /* Deformazione proporzionale alla velocità
+             — più si muove, più si allunga nella direzione del moto */
+          const stretch = alignment * speed * 0.55;
+
+          /* Respiro idle — sempre attivo, indipendente dal movimento */
+          const idle = p.idleAmp * Math.sin(time * p.idleFreq + p.idlePhase);
+
+          /* Raggio target */
+          const targetR = BASE_R + stretch + idle;
+
+          /* Spring: forza proporzionale alla distanza dal target, smorzamento */
+          p.rVel = (p.rVel + (targetR - p.r) * 0.13) * 0.74;
+          p.r   += p.rVel;
+
+          /* Clamp di sicurezza */
+          p.r = Math.max(BASE_R * 0.45, Math.min(BASE_R * 1.85, p.r));
+        });
+
+        ctx.clearRect(0, 0, W, H);
+
+        if (!heroActive) return;
+
+        /* Calcola posizioni assolute dei punti */
+        const shapePts = pts.map(p => ({
+          x: blobX + p.r * Math.cos(p.angle),
+          y: blobY + p.r * Math.sin(p.angle),
+        }));
+
+        /* Disegna — nessun bordo, solo fill */
+        ctx.save();
+        drawBlob(shapePts);
+        ctx.fillStyle = blobColor();
+        ctx.fill();
+        ctx.restore();
+
       } catch(e) {}
     })();
 
-    for(let i=0;i<4;i++)spawnStripe();
-    for(let i=0;i<8;i++)spawnBubble(Math.random()*W,H*.2+Math.random()*H*.7,(Math.random()-.5)*.5,-(0.2+Math.random()*.4));
-    for(let i=0;i<18;i++)spawnParticle(Math.random()*W,H*.1+Math.random()*H*.85,(Math.random()-.5)*1.0,-Math.random()*.6);
+    /* ── Event listeners ── */
+    hero.addEventListener('mouseenter', e => {
+      const rect = hero.getBoundingClientRect();
+      /* Teletrasporta al punto di ingresso senza lerp iniziale */
+      blobX = targetX = e.clientX - rect.left;
+      blobY = targetY = e.clientY - rect.top;
+      prevX = blobX; prevY = blobY;
+      heroActive = true;
+    });
 
-    hero.addEventListener('mouseenter',e=>{
-      cbTargetR=28+Math.random()*20;
-      const rect=hero.getBoundingClientRect();
-      cbTx=cbx=e.clientX-rect.left; cbTy=cby=e.clientY-rect.top;
-      lastMx=cbTx; lastMy=cbTy;
+    hero.addEventListener('mouseleave', () => {
+      heroActive = false;
     });
-    hero.addEventListener('mouseleave',()=>{cbTargetR=0;});
-    hero.addEventListener('mousemove',e=>{
-      const rect=hero.getBoundingClientRect();
-      const nx=e.clientX-rect.left,ny=e.clientY-rect.top;
-      const dvx=nx-lastMx,dvy=ny-lastMy,speed=Math.sqrt(dvx*dvx+dvy*dvy);
-      lastMx=nx;lastMy=ny;cbTx=nx;cbTy=ny;
-      cbTargetR=28+Math.min(speed*0.6,22);
-      spawnTick++;
-      if(spawnTick%3===0)spawnParticle(nx+(Math.random()-.5)*14,ny+(Math.random()-.5)*14,dvx*.18,dvy*.18);
-      if(speed>8&&spawnTick%8===0)spawnBubble(nx+(Math.random()-.5)*22,ny+(Math.random()-.5)*22,dvx*.12,dvy*.12-.4,10+Math.random()*25);
-      if(speed>18&&spawnTick%60===0)spawnStripe();
+
+    hero.addEventListener('mousemove', e => {
+      const rect = hero.getBoundingClientRect();
+      targetX = e.clientX - rect.left;
+      targetY = e.clientY - rect.top;
     });
-    hero.addEventListener('touchmove',e=>{
-      const rect=hero.getBoundingClientRect(),t=e.touches[0];
-      const nx=t.clientX-rect.left,ny=t.clientY-rect.top;
-      cbTx=nx;cbTy=ny;cbTargetR=35;
-      for(let i=0;i<3;i++)spawnParticle(nx+(Math.random()-.5)*20,ny+(Math.random()-.5)*20,(Math.random()-.5)*1.5,-Math.random()*.8);
-    },{passive:true});
-    hero.addEventListener('touchend',()=>{cbTargetR=0;});
+
+    /* Touch */
+    hero.addEventListener('touchmove', e => {
+      const rect = hero.getBoundingClientRect();
+      const t    = e.touches[0];
+      if (!heroActive) {
+        blobX = targetX = t.clientX - rect.left;
+        blobY = targetY = t.clientY - rect.top;
+        prevX = blobX; prevY = blobY;
+        heroActive = true;
+      } else {
+        targetX = t.clientX - rect.left;
+        targetY = t.clientY - rect.top;
+      }
+    }, { passive: true });
+
+    hero.addEventListener('touchend', () => { heroActive = false; });
+
+    /* Aggiorna colore quando cambia il tema */
+    const themeBtn = document.getElementById('theme-toggle');
+    if (themeBtn) themeBtn.addEventListener('click', () => { /* blobColor() legge live */ });
+
   })();
-} catch(e) { console.warn('[JF] oil effect', e); }
+} catch(e) { console.warn('[JF] blob', e); }
 
+/* ── RECENSIONI ── */
 try {
   (function initReviews() {
     const list=document.getElementById('reviews-list'),empty=document.getElementById('reviews-empty');
@@ -449,15 +403,16 @@ try {
     if(reviews.length===0){if(empty)empty.hidden=false;}
     else{if(empty)empty.hidden=true;reviews.slice().reverse().forEach(r=>list.appendChild(buildCard(r)));}
   })();
-} catch(e) { console.warn('[JF] reviews', e); }
+} catch(e) {}
 
+/* ── FORM ── */
 try {
   (function initForm() {
     const form=$('#contact-form');if(!form)return;
     const fields={
-      name:  {el:$('#f-name'),err:$('#err-name'),validate:v=>v.trim().length>=2?'':'Inserisci il tuo nome.'},
-      email: {el:$('#f-email'),err:$('#err-email'),validate:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())?'':"Inserisci un'email valida."},
-      type:  {el:$('#f-type'),err:$('#err-type'),validate:v=>v!==''?'':'Seleziona un tipo di richiesta.'},
+      name:   {el:$('#f-name'),err:$('#err-name'),validate:v=>v.trim().length>=2?'':'Inserisci il tuo nome.'},
+      email:  {el:$('#f-email'),err:$('#err-email'),validate:v=>/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim())?'':"Inserisci un'email valida."},
+      type:   {el:$('#f-type'),err:$('#err-type'),validate:v=>v!==''?'':'Seleziona un tipo di richiesta.'},
       message:{el:$('#f-msg'),err:$('#err-msg'),validate:v=>v.trim().length>=10?'':'Almeno 10 caratteri.'},
     };
     const vf=key=>{const{el,err,validate}=fields[key];if(!el||!err)return true;const msg=validate(el.value);err.textContent=sanitize(msg);el.classList.toggle('invalid',msg!=='');return msg==='';};
@@ -477,12 +432,14 @@ try {
       },1200);
     });
   })();
-} catch(e) { console.warn('[JF] form', e); }
+} catch(e) {}
 
+/* ── TOAST ── */
 function showToast(msg,dur=3000){
   try{const t=$('#toast');if(!t)return;t.textContent=sanitize(msg);t.classList.add('show');setTimeout(()=>t.classList.remove('show'),dur);}catch(e){}
 }
 
+/* ── SMOOTH SCROLL ── */
 try {
   $$('a[href^="#"]').forEach(a=>{
     a.addEventListener('click',e=>{
@@ -495,6 +452,7 @@ try {
   });
 } catch(e) {}
 
+/* ── THEME ── */
 try {
   (function initTheme(){
     const btn=$('#theme-toggle'),body=document.body;if(!btn)return;
