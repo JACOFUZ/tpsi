@@ -117,7 +117,6 @@ body.light .icon-moon { opacity:1; position:relative; }
   90%{transform:translate(-2%,4%)}100%{transform:translate(0,0)}
 }
 .hero-vignette { position:absolute; inset:0; background:linear-gradient(to top,rgba(6,8,15,.85) 0%,rgba(6,8,15,.1) 45%,transparent 100%),linear-gradient(to right,rgba(6,8,15,.5) 0%,transparent 60%); }
-#hero-img-reveal { position:absolute; inset:0; z-index:0; width:100%; height:100%; object-fit:cover; opacity:0; pointer-events:none; }
 #hero-canvas { position:absolute; inset:0; z-index:2; pointer-events:none; display:block; }
 .hero-inner { position:relative; z-index:5; width:100%; }
 .hero-body { max-width:750px; }
