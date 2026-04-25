@@ -22,7 +22,7 @@
         <a href="#" class="brand-mark">JF</a>
         <div class="header-actions">
             <a href="#hero" class="nav-home-btn">HOME</a>
-            <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
+            <button id="theme-toggle" class="theme-toggle">
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
@@ -33,8 +33,9 @@
                 <li><a href="#esperienze" class="nav-link" data-num="01">Chi Sono</a></li>
                 <li><a href="#servizi" class="nav-link" data-num="02">Servizi</a></li>
                 <li><a href="#portfolio" class="nav-link" data-num="03">Portfolio</a></li>
-                <li><a href="#offerte" class="nav-link" data-num="04">Pacchetti</a></li>
-                <li><a href="#contatti" class="nav-link" data-num="05">Contatti</a></li>
+                <li><a href="#processo" class="nav-link" data-num="04">Come Funziona</a></li>
+                <li><a href="#offerte" class="nav-link" data-num="05">Pacchetti</a></li>
+                <li><a href="#contatti" class="nav-link" data-num="06">Contatti</a></li>
             </ul>
         </nav>
     </header>
@@ -46,19 +47,9 @@
             <div class="container hero-inner">
                 <div class="hero-body">
                     <div class="hero-loc js-reveal-fade"><span class="live-dot"></span> Milano — Italia</div>
-                    <h1 class="hero-name">
-                        <span class="hero-line js-reveal-clip">JACOPO</span>
-                        <span class="hero-line-em js-reveal-clip">FUSÉ</span>
-                    </h1>
+                    <h1 class="hero-name"><span class="hero-line js-reveal-clip">JACOPO</span><span class="hero-line-em js-reveal-clip">FUSÉ</span></h1>
                     <p class="hero-tagline js-reveal-fade">Fotografia automotive & content creation. · <em>Risultati che vendono.</em></p>
-                    <div class="hero-btns js-reveal-fade">
-                        <a href="#contatti" class="btn-fill">Prenota shooting</a>
-                        <a href="#portfolio" class="btn-line">Vedi il portfolio</a>
-                    </div>
-                </div>
-                <div class="hero-meta js-reveal-fade">
-                    <span class="scroll-hint">scroll</span>
-                    <div class="scroll-track"><div class="scroll-thumb"></div></div>
+                    <div class="hero-btns js-reveal-fade"><a href="#contatti" class="btn-fill">Prenota shooting</a><a href="#portfolio" class="btn-line">Vedi portfolio</a></div>
                 </div>
             </div>
         </section>
@@ -67,13 +58,10 @@
             <div class="container">
                 <div class="sec-tag js-reveal-fade"><span class="sec-num">01</span><span class="sec-line"></span><span>Chi Sono</span></div>
                 <div class="about-grid">
-                    <div class="about-visual js-reveal-left">
-                        <div class="photo-ph"><img src="./foto-profilo.jpg" onerror="this.style.display='none'"></div>
-                        <div class="photo-frame"></div>
-                    </div>
+                    <div class="about-visual js-reveal-left"><div class="photo-ph"><img src="./foto-profilo.jpg" onerror="this.style.display='none'"></div><div class="photo-frame"></div></div>
                     <div class="about-content js-reveal-right">
                         <h2 class="about-h2">Racconto ogni veicolo. <br><em>Un frame alla volta.</em></h2>
-                        <p>Sono Jacopo, fotografo automotive a Milano. Trasformo shooting in contenuti che attirano attenzione e portano risultati concreti.</p>
+                        <div class="about-copy"><p>Sono Jacopo, fotografo automotive a Milano. Trasformo shooting in contenuti che attirano attenzione e portano risultati concreti.</p></div>
                     </div>
                 </div>
             </div>
@@ -82,23 +70,11 @@
         <section id="servizi" class="section s-target s-gradient">
             <div class="container">
                 <div class="sec-tag js-reveal-fade"><span class="sec-num">02</span><span class="sec-line"></span><span>Servizi</span></div>
-                <h2 class="sec-h2">A chi è rivolto</h2>
+                <h2 class="sec-h2 js-reveal-fade">A chi è rivolto</h2>
                 <div class="target-grid">
-                    <article class="target-card js-reveal-fade">
-                        <div class="target-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
-                        <h3>Privati</h3>
-                        <p>Shooting su misura per valorizzare il tuo veicolo.</p>
-                    </article>
-                    <article class="target-card js-reveal-fade">
-                        <div class="target-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 21 17 13 7 13 7 21"/></svg></div>
-                        <h3>Venditori</h3>
-                        <p>Contenuti studiati per accelerare la vendita.</p>
-                    </article>
-                    <article class="target-card js-reveal-fade">
-                        <div class="target-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
-                        <h3>Brand</h3>
-                        <p>Produzione premium per social e campagne.</p>
-                    </article>
+                    <article class="target-card js-reveal-fade"><h3>Privati</h3><p>Shooting su misura per valorizzare il tuo veicolo.</p></article>
+                    <article class="target-card js-reveal-fade"><h3>Venditori</h3><p>Contenuti studiati per accelerare la vendita.</p></article>
+                    <article class="target-card js-reveal-fade"><h3>Brand</h3><p>Produzione premium per social e campagne.</p></article>
                 </div>
             </div>
         </section>
@@ -106,83 +82,179 @@
         <section id="portfolio" class="section s-photo">
             <div class="container">
                 <div class="sec-tag js-reveal-fade"><span class="sec-num">03</span><span class="sec-line"></span><span>Portfolio</span></div>
-                <h2 class="sec-h2">Scatti selezionati</h2>
+                <h2 class="sec-h2 js-reveal-fade">Scatti selezionati</h2>
                 <div class="collage-grid js-reveal-fade">
-                    <div class="collage-item span-h2"><img src="./portfolio-1.jpg" onerror="this.style.display='none'"><div class="collage-label"><span>Clienti</span></div></div>
-                    <div class="collage-item"><img src="./portfolio-2.jpg" onerror="this.style.display='none'"><div class="collage-label"><span>Urban</span></div></div>
+                    <div class="collage-item span-h2 visible"><img src="./portfolio-1.jpg" onerror="this.style.display='none'"></div>
+                    <div class="collage-item visible"><img src="./portfolio-2.jpg" onerror="this.style.display='none'"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="video" class="section s-video s-gradient">
+            <div class="container">
+                <div class="sec-tag js-reveal-fade"><span class="sec-num">04</span><span class="sec-line"></span><span>Video</span></div>
+                <h2 class="sec-h2 js-reveal-fade">Produzione Video</h2>
+                <div class="video-featured js-reveal-fade">
+                    <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./video-copertina.jpg') center/cover;">
+                        <div class="play-big"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="processo" class="section s-how">
+            <div class="container">
+                <div class="sec-tag js-reveal-fade"><span class="sec-num">05</span><span class="sec-line"></span><span>Processo</span></div>
+                <div class="how-grid">
+                    <div class="how-step js-reveal-fade"><h3>Contatto</h3><p>Rispondo entro 24h con disponibilità.</p></div>
+                    <div class="how-step js-reveal-fade"><h3>Shooting</h3><p>Pianificazione e scatto in location.</p></div>
+                    <div class="how-step js-reveal-fade"><h3>Consegna</h3><p>Gallery digitale pronta in tempi brevi.</p></div>
                 </div>
             </div>
         </section>
 
         <section id="offerte" class="section s-pricing s-gradient">
             <div class="container">
-                <div class="sec-tag js-reveal-fade"><span class="sec-num">04</span><span class="sec-line"></span><span>Pacchetti</span></div>
-                <h2 class="sec-h2">Pacchetti e Soluzioni</h2>
-                <div class="pricing-grid">
-                    <div class="price-card js-reveal-fade">
-                        <span class="price-tier">Personal Drive</span>
-                        <div class="price-val"><small>da</small><strong>69€</strong></div>
-                        <ul class="price-feats"><li>15 foto HQ ritoccate</li><li>Shooting 1h</li><li>Poster digitale</li></ul>
-                        <a href="#contatti" class="btn-price">Scegli Personal</a>
-                    </div>
-                    <div class="price-card price-hot js-reveal-fade">
-                        <span class="price-badge">Popolare</span>
-                        <span class="price-tier">Social Starter</span>
-                        <div class="price-val"><small>da</small><strong>119€</strong></div>
-                        <ul class="price-feats"><li>30 foto HQ</li><li>2 Reels montati</li><li>Ottimizzato IG/TikTok</li></ul>
-                        <a href="#contatti" class="btn-price-inv">Scegli Social</a>
-                    </div>
-                    <div class="price-card js-reveal-fade">
-                        <span class="price-tier">Seller Boost</span>
-                        <div class="price-val"><small>da</small><strong>149€</strong></div>
-                        <ul class="price-feats"><li>Shooting per vendita</li><li>Video Walkaround</li><li>30 scatti annuncio</li></ul>
-                        <a href="#contatti" class="btn-price">Scegli Seller</a>
-                    </div>
+                <div class="sec-tag js-reveal-fade">
+                    <span class="sec-num">06</span>
+                    <span class="sec-line"></span>
+                    <span>Pacchetti</span>
                 </div>
-
-                <div class="help-decide-row js-reveal-fade">
-                    <div class="help-decide-box">
-                        <span class="help-icon">?</span>
-                        <div class="help-content">
-                            <h4>Problemi a decidere il pacchetto?</h4>
-                            <p>Ogni mezzo è unico. Contattami per una consulenza gratuita e troveremo la soluzione perfetta.</p>
+                <h2 class="sec-h2 js-reveal-fade">Pacchetti e Soluzioni</h2>
+                <p class="sec-sub js-reveal-fade">Dal singolo shooting all'affiancamento mensile. Scegli il percorso strategico più adatto ai tuoi obiettivi.</p>
+                
+                <div class="pricing-grid">
+                    
+                    <div class="price-card js-reveal-fade">
+                        <button class="info-btn" aria-label="Info" data-title="Personal Drive" data-desc="Questo pacchetto fa per te se hai un'auto o una moto a cui tieni moltissimo e vuoi finalmente delle foto di altissima qualità da tenere per te, stampare come poster o mostrare agli amici. Non ti interessa fare l'influencer, vuoi solo scatti epici del tuo mezzo per passione.">i</button>
+                        <div class="price-head">
+                            <span class="price-tier">Personal Drive</span>
+                            <span class="price-tagline">Target: Privati e Appassionati</span>
+                            <div class="price-val"><small>da</small><strong>69€</strong></div>
+                            <p>Lo shooting essenziale per valorizzare te e il tuo veicolo con scatti professionali e curati in ogni singolo dettaglio.</p>
                         </div>
-                        <a href="#contatti" class="btn-line help-btn">Aiutami a scegliere</a>
+                        <ul class="price-feats">
+                            <li>1 ora di shooting in location</li>
+                            <li>15 foto HQ post-prodotte</li>
+                            <li>1 Poster grafico digitale</li>
+                            <li>Consegna rapida in 48h</li>
+                        </ul>
+                        <a href="#contatti" class="btn-price">Richiedi disponibilità</a>
                     </div>
+
+                    <div class="price-card price-hot js-reveal-fade">
+                        <span class="price-badge">Più richiesto</span>
+                        <button class="info-btn" aria-label="Info" data-title="Social Starter" data-desc="L'opzione perfetta se stai iniziando a fare sul serio su Instagram o TikTok. Hai bisogno di contenuti freschi, dinamici e in formato verticale per attirare follower. Ideale per chi vuole smettere di postare foto fatte male col telefono e vuole iniziare a farsi notare davvero.">i</button>
+                        <div class="price-head">
+                            <span class="price-tier">Social Starter</span>
+                            <span class="price-tagline">Target: Aspiranti Creator</span>
+                            <div class="price-val"><small>da</small><strong>119€</strong></div>
+                            <p>Il trampolino di lancio per i tuoi social. Un mix dinamico di foto e video pronti per esplodere su Instagram e TikTok.</p>
+                        </div>
+                        <ul class="price-feats">
+                            <li>Shooting foto + video dedicato</li>
+                            <li>30 foto ottimizzate per i social</li>
+                            <li>2 Reels/TikTok montati in trend</li>
+                            <li>Formati verticali nativi</li>
+                        </ul>
+                        <a href="#contatti" class="btn-price-inv">Inizia a crescere</a>
+                    </div>
+
+                    <div class="price-card js-reveal-fade">
+                        <button class="info-btn" aria-label="Info" data-title="Seller Boost" data-desc="Pensato per concessionarie o privati che devono vendere un veicolo. Delle foto professionali e un video emozionale aumentano drasticamente il valore percepito del mezzo, fanno cliccare di più sul tuo annuncio (es. Autoscout, Subito) e ti aiutano a vendere molto più in fretta e a un prezzo migliore.">i</button>
+                        <div class="price-head">
+                            <span class="price-tier">Seller Boost</span>
+                            <span class="price-tagline">Target: Concessionarie e Venditori</span>
+                            <div class="price-val"><small>da</small><strong>149€</strong></div>
+                            <p>Contenuti visivi studiati appositamente per catturare l'attenzione, valorizzare il mezzo e accelerare la decisione d'acquisto.</p>
+                        </div>
+                        <ul class="price-feats">
+                            <li>Shooting esterni, interni e dettagli</li>
+                            <li>30 foto per annunci web</li>
+                            <li>1 Video "Walkaround" emozionale</li>
+                            <li>Ottimizzazione formati portali</li>
+                        </ul>
+                        <a href="#contatti" class="btn-price">Migliora le vendite</a>
+                    </div>
+
+                    <div class="price-card js-reveal-fade">
+                        <button class="info-btn" aria-label="Info" data-title="Creator Pro" data-desc="Sei già un content creator, hai una tua community attiva e magari collabori già con qualche azienda. Ti serve un volume alto di foto e video di qualità altissima per mantenere il tuo feed impeccabile, attirare nuovi follower e giustificare le tue tariffe con i futuri sponsor.">i</button>
+                        <div class="price-head">
+                            <span class="price-tier">Creator Pro</span>
+                            <span class="price-tagline">Target: Content Creator Attivi</span>
+                            <div class="price-val"><small>da</small><strong>249€</strong></div>
+                            <p>Un arsenale di contenuti di alto livello per mantenere la community sempre attiva e presentarsi in modo impeccabile ai brand.</p>
+                        </div>
+                        <ul class="price-feats">
+                            <li>Mezza giornata di produzione</li>
+                            <li>60+ foto ritoccate (lifestyle & action)</li>
+                            <li>4 Reels professionali avanzati</li>
+                            <li>Copertine YouTube e formati misti</li>
+                        </ul>
+                        <a href="#contatti" class="btn-price">Eleva i tuoi contenuti</a>
+                    </div>
+
+                    <div class="price-card js-reveal-fade">
+                        <button class="info-btn" aria-label="Info" data-title="Brand Identity" data-desc="Dedicato ad aziende, officine o brand del settore. Se il tuo sito web o le tue pagine social hanno bisogno di un restyling visivo completo per trasmettere estrema professionalità, pulizia e fiducia ai clienti finali, questo è il pacchetto definitivo per fare il salto di qualità.">i</button>
+                        <div class="price-head">
+                            <span class="price-tier">Brand Identity</span>
+                            <span class="price-tagline">Target: Aziende e Brand Locali</span>
+                            <div class="price-val"><small>da</small><strong>399€</strong></div>
+                            <p>Produzione completa per rinnovare l'immagine aziendale, dal sito web istituzionale alle campagne pubblicitarie digitali.</p>
+                        </div>
+                        <ul class="price-feats">
+                            <li>Direzione artistica e location scouting</li>
+                            <li>Foto corporate, veicoli e lifestyle</li>
+                            <li>1 Video Hero cinematografico (1-2 min)</li>
+                            <li>Cessione totale diritti commerciali</li>
+                        </ul>
+                        <a href="#contatti" class="btn-price">Rinnova il tuo brand</a>
+                    </div>
+
+                    <div class="price-card price-hot js-reveal-fade">
+                        <span class="price-badge">Abbonamento Mensile</span>
+                        <button class="info-btn" aria-label="Info" data-title="Continuity Plan" data-desc="Sei un'attività commerciale o un creator che deve postare ogni giorno per battere l'algoritmo, ma non hai il tempo né le capacità per creare i contenuti? Con questo abbonamento, divento il tuo fotografo di fiducia: ci vediamo una volta al mese e ti preparo tutto il materiale per i successivi 30 giorni. Zero stress.">i</button>
+                        <div class="price-head">
+                            <span class="price-tier">Continuity Plan</span>
+                            <span class="price-tagline">Target: Brand e Creator Strutturati</span>
+                            <div class="price-val"><small>da</small><strong>199€</strong><small>/mese</small></div>
+                            <p>Il tuo content team personale. Una fornitura costante di materiali freschi ogni singolo mese, senza doverti preoccupare di nulla.</p>
+                        </div>
+                        <ul class="price-feats">
+                            <li>1 Shooting al mese dedicato</li>
+                            <li>25 foto + 3 Reels inediti mensili</li>
+                            <li>Pianificazione editoriale inclusa</li>
+                            <li>Consegna prioritaria garantita</li>
+                        </ul>
+                        <a href="#contatti" class="btn-price-inv">Richiedi abbonamento</a>
+                    </div>
+
                 </div>
             </div>
         </section>
 
-        <section id="contatti" class="section s-contact">
-            <div class="container">
-                <div class="sec-tag js-reveal-fade"><span class="sec-num">05</span><span class="sec-line"></span><span>Contatti</span></div>
-                <div class="contact-grid">
-                    <div class="contact-info js-reveal-left">
-                        <h3>Lavoriamo insieme.</h3>
-                        <p>Scrivimi per fissare la tua prossima sessione fotografica.</p>
-                        <div class="c-links">
-                            <a href="mailto:jacopo.fuse@gmail.com" class="c-link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                jacopo.fuse@gmail.com
-                            </a>
-                            <a href="https://instagram.com/jacofuz" class="c-link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                                @jacofuz
-                            </a>
-                            <a href="tel:+393756278807" class="c-link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                +39 375 627 8807
-                            </a>
-                        </div>
+        <div id="pricing-modal" class="modal-overlay" hidden>
+            <div class="modal-box">
+                <button class="modal-close" aria-label="Chiudi">×</button>
+                <div class="modal-badge">A chi è rivolto?</div>
+                <h4 id="modal-title">Nome Pacchetto</h4>
+                <p id="modal-desc">Descrizione del cliente ideale...</p>
+                <a href="#contatti" class="btn-fill modal-cta" onclick="document.getElementById('pricing-modal').setAttribute('hidden', '')">Mi interessa, parliamone</a>
+            </div>
+        </div>
+
+        <section id="contatti" class="s-contact">
+            <div class="contact-body section">
+                <div class="container">
+                    <div class="contact-grid">
+                        <div class="contact-info js-reveal-left"><h3>Lavoriamo insieme.</h3><p>jacopo.fuse@gmail.com</p></div>
+                        <form id="contact-form" class="contact-form js-reveal-right">
+                            <input type="text" placeholder="Nome" required>
+                            <input type="email" placeholder="Email" required>
+                            <textarea placeholder="Messaggio" required></textarea>
+                            <button type="submit" class="btn-fill">Invia</button>
+                        </form>
                     </div>
-                    <form id="contact-form" class="contact-form js-reveal-right">
-                        <div class="form-row">
-                            <div class="f-group"><label>Nome</label><input type="text" placeholder="Nome" required></div>
-                            <div class="f-group"><label>Email</label><input type="email" placeholder="Email" required></div>
-                        </div>
-                        <div class="f-group"><label>Messaggio</label><textarea placeholder="Parlami del tuo progetto..."></textarea></div>
-                        <button type="submit" class="btn-send">Invia richiesta</button>
-                    </form>
                 </div>
             </div>
         </section>
@@ -191,9 +263,10 @@
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-brand">JACOPO FUSÉ</div>
-            <p class="footer-copy">© 2026 — Tutti i diritti riservati</p>
+            <div class="footer-copy">© 2026 — Tutti i diritti riservati</div>
         </div>
     </footer>
+    
     <div id="toast" class="toast">Messaggio inviato!</div>
 </body>
 </html>
