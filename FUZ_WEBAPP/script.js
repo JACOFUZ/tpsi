@@ -106,29 +106,45 @@ function triggerInitialReveals() {
   }
 }
 
-/* ── FILTRI ── */
+/* ── COLLAGE FILTER ── */
 try {
-  (function initFilters() {
-    const btns = $$('.f-btn'), blocks = $$('.carousel-block');
-    if (!btns.length || !blocks.length) return;
+  (function initCollageFilter() {
+    const btns  = $$('.f-btn');
+    const items = $$('.collage-item');
+    if (!btns.length || !items.length) return;
+
+    function applyFilter(filter) {
+      items.forEach(item => {
+        const cat = item.dataset.cat;
+        const show = filter === 'all' || cat === filter;
+        if (show) {
+          item.style.display = '';
+          /* piccolo stagger */
+          requestAnimationFrame(() => { item.style.opacity = '1'; item.style.transform = 'scale(1)'; });
+        } else {
+          item.style.opacity = '0';
+          item.style.transform = 'scale(.96)';
+          setTimeout(() => { item.style.display = 'none'; }, 300);
+        }
+      });
+    }
+
+    /* Inizializza stile transizione */
+    items.forEach(item => {
+      item.style.transition = 'opacity .3s ease, transform .3s ease';
+    });
+
     btns.forEach(btn => {
       btn.addEventListener('click', () => {
         const filter = btn.dataset.filter;
-        btns.forEach(b => { b.classList.toggle('active', b===btn); b.setAttribute('aria-pressed', String(b===btn)); });
-        blocks.forEach((block, i) => {
-          const visible = filter==='all' || block.dataset.cat===filter;
-          if (visible) {
-            block.classList.remove('hidden'); block.style.opacity='0'; block.style.transform='translateY(14px)';
-            setTimeout(() => { block.style.transition='opacity .45s ease,transform .45s ease'; block.style.opacity='1'; block.style.transform='none'; }, i*50);
-          } else {
-            block.style.transition='opacity .25s ease'; block.style.opacity='0';
-            setTimeout(() => block.classList.add('hidden'), 260);
-          }
-        });
+        btns.forEach(b => { b.classList.toggle('active', b === btn); b.setAttribute('aria-pressed', String(b === btn)); });
+        applyFilter(filter);
       });
     });
+
+    applyFilter('all');
   })();
-} catch(e) {}
+} catch(e) { console.warn('[JF] collage filter', e); }
 
 /* ── CAROSELLI ── */
 try {
