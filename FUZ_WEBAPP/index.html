@@ -24,30 +24,32 @@
 
     <header id="site-header" class="site-header">
         <a href="#" class="brand-mark">JF</a>
+        
         <div class="header-actions">
+            <a href="#hero" class="nav-home-btn">HOME</a>
+            
             <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
+            
             <button id="hamburger" class="hamburger" aria-label="Menu" aria-expanded="false">
                 <span class="ham-bar"></span>
                 <span class="ham-bar"></span>
             </button>
         </div>
-    </header>
 
-    <nav id="nav-overlay" class="nav-overlay" hidden>
-        <ul class="nav-list">
-            <li><a href="#hero" class="nav-link" data-num="01">Home</a></li>
-            <li><a href="#esperienze" class="nav-link" data-num="02">Chi Sono</a></li>
-            <li><a href="#servizi" class="nav-link" data-num="03">Servizi</a></li>
-            <li><a href="#portfolio" class="nav-link" data-num="04">Portfolio</a></li>
-            <li><a href="#processo" class="nav-link" data-num="05">Come Funziona</a></li>
-            <li><a href="#offerte" class="nav-link" data-num="06">Pacchetti</a></li>
-            <li><a href="#contatti" class="nav-link" data-num="07">Contatti</a></li>
-        </ul>
-        <div class="nav-overlay-foot">Milano, Italia · 2026</div>
-    </nav>
+        <nav id="nav-dropdown" class="nav-dropdown" hidden>
+            <ul class="nav-list">
+                <li><a href="#esperienze" class="nav-link" data-num="01">Chi Sono</a></li>
+                <li><a href="#servizi" class="nav-link" data-num="02">Servizi</a></li>
+                <li><a href="#portfolio" class="nav-link" data-num="03">Portfolio</a></li>
+                <li><a href="#processo" class="nav-link" data-num="04">Come Funziona</a></li>
+                <li><a href="#offerte" class="nav-link" data-num="05">Pacchetti</a></li>
+                <li><a href="#contatti" class="nav-link" data-num="06">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <main>
         <section id="hero" class="s-hero">
@@ -182,19 +184,19 @@
 
                 <div class="collage-grid js-reveal-fade">
                     <div class="collage-item span-h2 visible" data-cat="clienti">
-                        <img src="./portfolio-1.jpg" alt="Shooting Cliente" onerror="this.style.display='none'">
+                        <img src="./portfolio-1.jpg" onerror="this.style.display='none'">
                         <div class="collage-label"><span>Clienti</span></div>
                     </div>
                     <div class="collage-item visible" data-cat="urban">
-                        <img src="./portfolio-2.jpg" alt="Urban style" onerror="this.style.display='none'">
+                        <img src="./portfolio-2.jpg" onerror="this.style.display='none'">
                         <div class="collage-label"><span>Urban</span></div>
                     </div>
                     <div class="collage-item visible" data-cat="eicma">
-                        <img src="./portfolio-3.jpg" alt="EICMA Event" onerror="this.style.display='none'">
+                        <img src="./portfolio-3.jpg" onerror="this.style.display='none'">
                         <div class="collage-label"><span>EICMA</span></div>
                     </div>
                     <div class="collage-item visible" data-cat="clienti">
-                        <img src="./portfolio-4.jpg" alt="Dettaglio Cliente" onerror="this.style.display='none'">
+                        <img src="./portfolio-4.jpg" onerror="this.style.display='none'">
                         <div class="collage-label"><span>Clienti</span></div>
                     </div>
                 </div>
@@ -207,15 +209,15 @@
                     </div>
                     <div class="poster-grid">
                         <div class="poster-card js-reveal-fade">
-                            <div class="poster-img-wrap"><img src="./poster-1.jpg" alt="Poster Aprilia" onerror="this.style.display='none'"></div>
+                            <div class="poster-img-wrap"><img src="./poster-1.jpg" onerror="this.style.display='none'"></div>
                             <span class="poster-cap">Aprilia RS660 · 2025</span>
                         </div>
                         <div class="poster-card js-reveal-fade">
-                            <div class="poster-img-wrap"><img src="./poster-2.jpg" alt="Poster SM 125" onerror="this.style.display='none'"></div>
+                            <div class="poster-img-wrap"><img src="./poster-2.jpg" onerror="this.style.display='none'"></div>
                             <span class="poster-cap">SM 125 · 2017</span>
                         </div>
                         <div class="poster-card js-reveal-fade">
-                            <div class="poster-img-wrap"><img src="./poster-3.jpg" alt="Poster Yamaha" onerror="this.style.display='none'"></div>
+                            <div class="poster-img-wrap"><img src="./poster-3.jpg" onerror="this.style.display='none'"></div>
                             <span class="poster-cap">Yamaha R125 · 2023</span>
                         </div>
                     </div>
