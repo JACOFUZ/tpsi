@@ -38,8 +38,8 @@
 
     <nav id="nav-overlay" class="nav-overlay" hidden>
         <ul class="nav-list">
-            <li><a href="#home" class="nav-link" data-num="01">Home</a></li>
-            <li><a href="#chi-sono" class="nav-link" data-num="02">Chi Sono</a></li>
+            <li><a href="#hero" class="nav-link" data-num="01">Home</a></li>
+            <li><a href="#esperienze" class="nav-link" data-num="02">Chi Sono</a></li>
             <li><a href="#servizi" class="nav-link" data-num="03">Servizi</a></li>
             <li><a href="#portfolio" class="nav-link" data-num="04">Portfolio</a></li>
             <li><a href="#processo" class="nav-link" data-num="05">Come Funziona</a></li>
@@ -50,7 +50,7 @@
     </nav>
 
     <main>
-        <section id="home" class="s-hero">
+        <section id="hero" class="s-hero">
             <div class="hero-bg-base">
                 <div class="hero-grain"></div>
                 <div class="hero-vignette"></div>
@@ -83,7 +83,7 @@
             </div>
         </section>
 
-        <section id="chi-sono" class="section s-about">
+        <section id="esperienze" class="section s-about s-exp">
             <div class="container">
                 <div class="sec-tag js-reveal-fade">
                     <span class="sec-num">01</span>
@@ -93,7 +93,7 @@
                 <div class="about-grid">
                     <div class="about-visual js-reveal-left">
                         <div class="photo-ph">
-                            <img src="./ritratto.jpg" alt="Jacopo Fusé">
+                            <img src="./ritratto.jpg" alt="Jacopo Fusé" onerror="this.style.display='none'">
                         </div>
                         <div class="photo-frame"></div>
                     </div>
@@ -102,7 +102,6 @@
                         <div class="about-copy">
                             <p>Sono Jacopo, fotografo automotive e content creator con base a Milano. Trasformo shooting in contenuti che attirano attenzione, generano interesse e portano risultati concreti — che tu sia un privato, un rivenditore o un brand.</p>
                             <p>Ogni scatto è studiato per comunicare: composizione, luce, dettaglio. Ogni video è costruito per convertire. Parallelamente studio Informatica, e la logica del codice mi ha insegnato che ogni elemento deve avere uno scopo.</p>
-                            <p class="ph-text">[Studente di Informatica, appassionato di motori e tecnologia.]</p>
                         </div>
                     </div>
                 </div>
@@ -127,9 +126,9 @@
                         <h3>Privati</h3>
                         <p>Hai un veicolo di cui vai fiero e vuoi un servizio fotografico che lo valorizzi davvero.</p>
                         <ul class="target-bullets">
-                            <li>Shooting su misura in location</li>
+                            <li>Shooting su misura</li>
                             <li>Foto pronte in 48h</li>
-                            <li>Poster incluso</li>
+                            <li>Poster personalizzato</li>
                         </ul>
                         <a href="#contatti" class="target-cta">Richiedi shooting →</a>
                     </article>
@@ -156,7 +155,7 @@
                         <p>Hai un brand e cerchi contenuti visivi coerenti, premium e pronti alla pubblicazione.</p>
                         <ul class="target-bullets">
                             <li>Piano contenuti su misura</li>
-                            <li>Shooting + montaggio campagne</li>
+                            <li>Shooting campagne</li>
                             <li>Collaborazione continuativa</li>
                         </ul>
                         <a href="#contatti" class="target-cta">Parliamo del brand →</a>
@@ -183,18 +182,18 @@
 
                 <div class="collage-grid js-reveal-fade">
                     <div class="collage-item span-h2 visible" data-cat="clienti">
-                        <img src="./sm125-3.jpg" alt="Shooting Cliente">
+                        <img src="./sm125-3.jpg" onerror="this.style.display='none'">
                         <div class="collage-label"><span>Clienti</span></div>
                     </div>
                     <div class="collage-item visible" data-cat="urban">
-                        <img src="./urban-1.jpg" alt="Urban style">
+                        <img src="./urban-1.jpg" onerror="this.style.display='none'">
                         <div class="collage-label"><span>Urban</span></div>
                     </div>
                     <div class="collage-item visible" data-cat="eicma">
-                        <img src="./eicma-1.jpg" alt="EICMA Event">
+                        <img src="./eicma-1.jpg" onerror="this.style.display='none'">
                         <div class="collage-label"><span>EICMA</span></div>
                     </div>
-                    </div>
+                </div>
 
                 <div class="poster-section">
                     <div class="poster-section-head js-reveal-fade">
@@ -204,30 +203,36 @@
                     </div>
                     <div class="poster-grid">
                         <div class="poster-card js-reveal-fade">
-                            <div class="poster-img-wrap"><img src="./poster-aprilia.jpg" alt="Poster Aprilia"></div>
+                            <div class="poster-img-wrap"><img src="./poster-aprilia.jpg" onerror="this.style.display='none'"></div>
                             <span class="poster-cap">Aprilia RS660 · 2025</span>
                         </div>
                         <div class="poster-card js-reveal-fade">
-                            <div class="poster-img-wrap"><img src="./poster-sm125.jpg" alt="Poster SM 125"></div>
+                            <div class="poster-img-wrap"><img src="./poster-sm125.jpg" onerror="this.style.display='none'"></div>
                             <span class="poster-cap">SM 125 · 2017</span>
                         </div>
                         <div class="poster-card js-reveal-fade">
-                            <div class="poster-img-wrap"><img src="./poster-r125.jpg" alt="Poster Yamaha"></div>
+                            <div class="poster-img-wrap"><img src="./poster-r125.jpg" onerror="this.style.display='none'"></div>
                             <span class="poster-cap">Yamaha R125 · 2023</span>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <div class="reviews-section">
-                    <div class="reviews-head js-reveal-fade">
-                        <div>
-                            <span class="poster-eyebrow">Cosa dicono di me</span>
-                            <h3 class="reviews-title">Recensioni</h3>
+        <section id="video" class="section s-video">
+            <div class="container">
+                <div class="sec-tag js-reveal-fade">
+                    <span class="sec-num">04</span>
+                    <span class="sec-line"></span>
+                    <span>Video</span>
+                </div>
+                <h2 class="sec-h2 js-reveal-fade">Produzione Video</h2>
+                <div class="video-featured js-reveal-fade">
+                    <div class="video-embed">
+                        <div class="video-ph">
+                            <div class="play-big"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+                            <div class="video-ph-label">Video placeholder</div>
                         </div>
-                        <a href="#contatti" class="btn-recensione">Lascia una recensione</a>
-                    </div>
-                    <div id="reviews-list" class="reviews-list js-reveal-fade">
-                        <p id="reviews-empty" class="reviews-empty">Nessuna recensione ancora. Sii il primo!</p>
                     </div>
                 </div>
             </div>
@@ -236,7 +241,7 @@
         <section id="processo" class="section s-how">
             <div class="container">
                 <div class="sec-tag js-reveal-fade">
-                    <span class="sec-num">04</span>
+                    <span class="sec-num">05</span>
                     <span class="sec-line"></span>
                     <span>Processo</span>
                 </div>
@@ -265,16 +270,13 @@
                         <p>Gallery digitale privata entro i tempi concordati. File ottimizzati per ogni uso.</p>
                     </div>
                 </div>
-                <div class="how-cta js-reveal-fade">
-                    <a href="#contatti" class="btn-fill">Inizia adesso — è gratis chiedere</a>
-                </div>
             </div>
         </section>
 
         <section id="offerte" class="section s-pricing">
             <div class="container">
                 <div class="sec-tag js-reveal-fade">
-                    <span class="sec-num">05</span>
+                    <span class="sec-num">06</span>
                     <span class="sec-line"></span>
                     <span>Pacchetti</span>
                 </div>
@@ -284,16 +286,13 @@
                     <div class="price-card js-reveal-fade">
                         <div class="price-head">
                             <span class="price-tier">Basic</span>
-                            <div class="price-val">
-                                <small>da</small><strong>99€</strong>
-                            </div>
+                            <div class="price-val"><small>da</small><strong>99€</strong></div>
                             <p>Ideale per il primo shooting o per chi vuole contenuti social di qualità.</p>
                         </div>
                         <ul class="price-feats">
                             <li>1,5 ore di shooting</li>
                             <li>25 foto ritoccate</li>
                             <li>Gallery digitale privata</li>
-                            <li>Consegna entro 5 giorni</li>
                             <li class="feat-no">Video / Reels</li>
                         </ul>
                         <a href="#contatti" class="btn-price">Prenota Basic</a>
@@ -303,16 +302,13 @@
                         <span class="price-badge">Più richiesto</span>
                         <div class="price-head">
                             <span class="price-tier">Medium</span>
-                            <div class="price-val">
-                                <small>da</small><strong>219€</strong>
-                            </div>
+                            <div class="price-val"><small>da</small><strong>219€</strong></div>
                             <p>Il pacchetto completo per chi vuole dominare i social con foto e video.</p>
                         </div>
                         <ul class="price-feats">
                             <li>Mezza giornata foto + video</li>
                             <li>50 foto ritoccate</li>
                             <li>1–2 Reels professionali</li>
-                            <li>Clip verticali per storie</li>
                             <li>Poster personalizzato incluso</li>
                         </ul>
                         <a href="#contatti" class="btn-price-inv">Prenota Medium</a>
@@ -321,45 +317,22 @@
                     <div class="price-card js-reveal-fade">
                         <div class="price-head">
                             <span class="price-tier">Premium</span>
-                            <div class="price-val">
-                                <small>da</small><strong>449€</strong>
-                            </div>
+                            <div class="price-val"><small>da</small><strong>449€</strong></div>
                             <p>Full-service per aziende e brand. Dal concept alla consegna finale.</p>
                         </div>
                         <ul class="price-feats">
                             <li>Giornata intera foto + video</li>
                             <li>100+ foto ritoccate</li>
                             <li>Video 3-5 min cinematografico</li>
-                            <li>Riprese POV Action cam</li>
                             <li>Consegna prioritaria</li>
                         </ul>
                         <a href="#contatti" class="btn-price">Prenota Premium</a>
                     </div>
                 </div>
-                <p class="price-note">* Prezzi indicativi IVA esclusa. Trasferte fuori Milano da concordare.</p>
             </div>
         </section>
 
         <section id="contatti" class="s-contact">
-            <div class="collab-intro section">
-                <div class="container">
-                    <div class="sec-tag js-reveal-fade">
-                        <span class="sec-num">06</span>
-                        <span class="sec-line"></span>
-                        <span>Collaborazioni</span>
-                    </div>
-                    <h2 class="collab-h js-reveal-fade">Costruiamo qualcosa <br><em>che rimanga.</em></h2>
-                    <div class="collab-body js-reveal-fade">
-                        <p>Se rappresenti un brand o un'azienda e hai bisogno di un partner creativo con visione — sei nel posto giusto.</p>
-                        <div class="collab-vals">
-                            <div class="c-val"><span>01</span><p>Contenuti su misura, non template generici.</p></div>
-                            <div class="c-val"><span>02</span><p>Visione coerente con i tuoi valori di marca.</p></div>
-                            <div class="c-val"><span>03</span><p>Comunicazione diretta, tempi certi.</p></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
             <div class="contact-body section">
                 <div class="container">
                     <div class="contact-grid">
@@ -376,32 +349,16 @@
                             <div class="form-row">
                                 <div class="f-group">
                                     <label for="f-name">Nome e cognome *</label>
-                                    <input type="text" id="f-name" placeholder="Tuonome" required>
-                                    <span id="err-name" class="f-err"></span>
+                                    <input type="text" id="f-name" required>
                                 </div>
                                 <div class="f-group">
                                     <label for="f-email">Email *</label>
-                                    <input type="email" id="f-email" placeholder="email@esempio.com" required>
-                                    <span id="err-email" class="f-err"></span>
+                                    <input type="email" id="f-email" required>
                                 </div>
                             </div>
                             <div class="f-group">
-                                <label for="f-type">Tipo di richiesta *</label>
-                                <select id="f-type" required>
-                                    <option value="" disabled selected>Seleziona...</option>
-                                    <option value="shooting">Shooting fotografico</option>
-                                    <option value="video">Produzione video</option>
-                                    <option value="pacchetto">Pacchetto completo</option>
-                                    <option value="brand">Collaborazione / Brand</option>
-                                    <option value="poster">Poster personalizzato</option>
-                                    <option value="altro">Altro</option>
-                                </select>
-                                <span id="err-type" class="f-err"></span>
-                            </div>
-                            <div class="f-group">
                                 <label for="f-msg">Raccontami il tuo progetto *</label>
-                                <textarea id="f-msg" placeholder="Descrivi il veicolo o il servizio che desideri..." required></textarea>
-                                <span id="err-msg" class="f-err"></span>
+                                <textarea id="f-msg" required></textarea>
                             </div>
                             <div class="form-send-row">
                                 <button type="submit" class="btn-send"><span>Invia richiesta</span></button>
@@ -417,16 +374,9 @@
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-brand">JACOPO FUSÉ</div>
-            <div class="footer-contacts">
-                <a href="mailto:jacopo.fuse@gmail.com" class="footer-contact-link">jacopo.fuse@gmail.com</a>
-                <a href="https://instagram.com/jacofuz" class="footer-contact-link">@JACOFUZ</a>
-                <a href="tel:+393756278807" class="footer-contact-link">+39 375.627.88.07</a>
-            </div>
             <div class="footer-copy">© <span class="year-span">2025</span> — Tutti i diritti riservati</div>
         </div>
     </footer>
-
     <div id="toast" class="toast">Messaggio inviato!</div>
-
 </body>
 </html>
