@@ -3,285 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jacopo Fusé — Filmmaker & Editor</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,800&family=Barlow:wght@300;400;600;700&family=Cormorant+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>JACOPO FUSÉ | Automotive Photography & Content Creation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&family=Barlow+Condensed:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+    <script src="./script.js" defer></script>
 </head>
-<body>
+<body class="dark">
 
-    <div class="loader">
-        <div class="loader-name">Jacopo Fusé</div>
-        <div class="loader-progress"><div class="loader-bar"></div></div>
+    <div id="loader" class="loader">
+        <div class="loader-name">JACOPO FUSÉ</div>
+        <div class="loader-progress"><div id="loader-bar" class="loader-bar"></div></div>
     </div>
 
-    <div class="cursor"></div>
-    <div class="cursor-ring"></div>
+    <div id="cursor" class="cursor"></div>
+    <div id="cursor-ring" class="cursor-ring"></div>
 
-    <header class="site-header">
+    <header id="site-header" class="site-header">
         <a href="#" class="brand-mark">JF</a>
         <div class="header-actions">
-            <a href="#contact" class="nav-home-btn">Lavoriamo Insieme</a>
-            <button class="theme-toggle" aria-label="Cambia tema">
+            <a href="#hero" class="nav-home-btn">HOME</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
                 <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
                 <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </button>
-            <button class="hamburger" aria-label="Menu">
-                <span class="ham-bar"></span>
-                <span class="ham-bar"></span>
-            </button>
+            <button id="hamburger" class="hamburger"><span class="ham-bar"></span><span class="ham-bar"></span></button>
         </div>
-        <nav class="nav-dropdown" hidden>
+        <nav id="nav-dropdown" class="nav-dropdown" hidden>
             <ul class="nav-list">
-                <li><a href="#about" class="nav-link" data-num="01">Chi Sono</a></li>
-                <li><a href="#services" class="nav-link" data-num="02">Servizi</a></li>
+                <li><a href="#esperienze" class="nav-link" data-num="01">Chi Sono</a></li>
+                <li><a href="#servizi" class="nav-link" data-num="02">Servizi</a></li>
                 <li><a href="#portfolio" class="nav-link" data-num="03">Portfolio</a></li>
-                <li><a href="#pricing" class="nav-link" data-num="04">Pacchetti</a></li>
-                <li><a href="#contact" class="nav-link" data-num="05">Contatti</a></li>
+                <li><a href="#offerte" class="nav-link" data-num="04">Pacchetti</a></li>
+                <li><a href="#contatti" class="nav-link" data-num="05">Contatti</a></li>
             </ul>
         </nav>
     </header>
 
     <main>
-        <section class="s-hero">
-            <div class="hero-bg-base"></div>
-            <div class="hero-grain"></div>
-            <div class="hero-vignette"></div>
+        <section id="hero" class="s-hero">
+            <div class="hero-bg-base"><div class="hero-grain"></div><div class="hero-vignette"></div></div>
             <canvas id="hero-canvas"></canvas>
-            <div class="container">
-                <div class="hero-inner">
-                    <div class="hero-body">
-                        <div class="hero-loc js-reveal-fade">
-                            <span class="live-dot"></span> Disponibile Worldwide
-                        </div>
-                        <h1 class="hero-name js-reveal-clip">
-                            <span class="hero-line">Visual</span>
-                            <span class="hero-line-em">Storyteller</span>
-                        </h1>
-                        <p class="hero-tagline js-reveal-fade">Produzioni video <em>High-End</em> per Brand e Privati che cercano l'eccellenza visiva.</p>
-                        <p class="hero-sub js-reveal-fade">Trasformo idee in esperienze cinematografiche, curando ogni fotogramma dalla pre-produzione al color grading finale.</p>
-                        <div class="hero-btns js-reveal-fade">
-                            <a href="#portfolio" class="btn-fill">Guarda i lavori</a>
-                            <a href="#contact" class="btn-line">Prenota sessione</a>
-                        </div>
+            <div class="container hero-inner">
+                <div class="hero-body">
+                    <div class="hero-loc js-reveal-fade"><span class="live-dot"></span> Milano — Italia</div>
+                    <h1 class="hero-name">
+                        <span class="hero-line js-reveal-clip">JACOPO</span>
+                        <span class="hero-line-em js-reveal-clip">FUSÉ</span>
+                    </h1>
+                    <p class="hero-tagline js-reveal-fade">Fotografia automotive & content creation. · <em>Risultati che vendono.</em></p>
+                    <div class="hero-btns js-reveal-fade">
+                        <a href="#contatti" class="btn-fill">Prenota shooting</a>
+                        <a href="#portfolio" class="btn-line">Vedi il portfolio</a>
                     </div>
                 </div>
-            </div>
-            <div class="hero-meta">
-                <span class="scroll-hint">Scroll</span>
-                <div class="scroll-track"><div class="scroll-thumb"></div></div>
+                <div class="hero-meta js-reveal-fade">
+                    <span class="scroll-hint">scroll</span>
+                    <div class="scroll-track"><div class="scroll-thumb"></div></div>
+                </div>
             </div>
         </section>
 
-        <section id="about" class="section s-exp s-gradient">
+        <section id="esperienze" class="section s-about s-exp">
             <div class="container">
-                <div class="sec-tag js-reveal-left"><span class="sec-num">01</span> <span class="sec-line"></span> Experience</div>
+                <div class="sec-tag js-reveal-fade"><span class="sec-num">01</span><span class="sec-line"></span><span>Chi Sono</span></div>
                 <div class="about-grid">
                     <div class="about-visual js-reveal-left">
-                        <div class="photo-ph"><img src="https://images.unsplash.com/photo-1533107862482-0e6974b06ec4?auto=format&fit=crop&q=80" alt="Jacopo Fusé"></div>
+                        <div class="photo-ph"><img src="./foto-profilo.jpg" onerror="this.style.display='none'"></div>
                         <div class="photo-frame"></div>
                     </div>
-                    <div class="about-copy js-reveal-right">
-                        <h2 class="about-h2">Emozioni in <em>4K</em>,<br>Visione Senza Compromessi.</h2>
-                        <p>Mi chiamo Jacopo Fusé e non mi limito a "riprendere". Il mio obiettivo è catturare l'anima di un momento o l'identità di un brand attraverso un'estetica ricercata e un montaggio ritmico che non lascia indifferenti.</p>
-                        <p>Con anni di esperienza nel settore del videomaking professionale, ho affinato un linguaggio visivo che unisce la pulizia del commerciale alla grinta dell'editoria moderna.</p>
+                    <div class="about-content js-reveal-right">
+                        <h2 class="about-h2">Racconto ogni veicolo. <br><em>Un frame alla volta.</em></h2>
+                        <p>Sono Jacopo, fotografo automotive a Milano. Trasformo shooting in contenuti che attirano attenzione e portano risultati concreti.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="services" class="section s-target">
+        <section id="servizi" class="section s-target s-gradient">
             <div class="container">
-                <div class="sec-tag js-reveal-left"><span class="sec-num">02</span> <span class="sec-line"></span> Services</div>
-                <h2 class="sec-h2 js-reveal-clip">A chi mi rivolgo</h2>
+                <div class="sec-tag js-reveal-fade"><span class="sec-num">02</span><span class="sec-line"></span><span>Servizi</span></div>
+                <h2 class="sec-h2">A chi è rivolto</h2>
                 <div class="target-grid">
-                    <div class="target-card js-reveal-fade">
-                        <div class="target-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
-                        <h3>Aziende & Brand</h3>
-                        <p>Spot pubblicitari e contenuti social per scalare la tua presenza digitale.</p>
-                        <ul class="target-bullets">
-                            <li>Commercials High-End</li>
-                            <li>Corporate Storytelling</li>
-                            <li>Social Content Strategy</li>
-                        </ul>
-                    </div>
-                    <div class="target-card js-reveal-fade">
-                        <div class="target-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-                        <h3>Eventi & Wedding</h3>
-                        <p>Reportage cinematografici che rendono i tuoi ricordi immortali.</p>
-                        <ul class="target-bullets">
-                            <li>Wedding Cinema</li>
-                            <li>Aftermovie Eventi</li>
-                            <li>Live Performance</li>
-                        </ul>
-                    </div>
-                    <div class="target-card js-reveal-fade">
-                        <div class="target-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
-                        <h3>Personal Brand</h3>
-                        <p>Costruisci la tua autorità con video che parlano della tua professionalità.</p>
-                        <ul class="target-bullets">
-                            <li>Interviste Pro</li>
-                            <li>Video Corsi / Vlog</li>
-                            <li>YouTube Setup</li>
-                        </ul>
-                    </div>
+                    <article class="target-card js-reveal-fade">
+                        <div class="target-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+                        <h3>Privati</h3>
+                        <p>Shooting su misura per valorizzare il tuo veicolo.</p>
+                    </article>
+                    <article class="target-card js-reveal-fade">
+                        <div class="target-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 21 17 13 7 13 7 21"/></svg></div>
+                        <h3>Venditori</h3>
+                        <p>Contenuti studiati per accelerare la vendita.</p>
+                    </article>
+                    <article class="target-card js-reveal-fade">
+                        <div class="target-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+                        <h3>Brand</h3>
+                        <p>Produzione premium per social e campagne.</p>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="portfolio" class="section s-video">
+        <section id="portfolio" class="section s-photo">
             <div class="container">
-                <div class="sec-tag js-reveal-left"><span class="sec-num">03</span> <span class="sec-line"></span> Portfolio</div>
-                <h2 class="sec-h2 js-reveal-clip">Selected Works</h2>
-                <div class="filters js-reveal-fade">
-                    <button class="f-btn active" data-filter="all">All</button>
-                    <button class="f-btn" data-filter="brand">Commercial</button>
-                    <button class="f-btn" data-filter="event">Events</button>
-                    <button class="f-btn" data-filter="wedding">Wedding</button>
-                </div>
-
-                <div class="collage-grid">
-                    <div class="collage-item span-h2 js-reveal-fade" data-cat="brand">
-                        <img src="https://images.unsplash.com/photo-1492691523567-6170c3295db6?auto=format&fit=crop&q=80" alt="Video Project">
-                        <div class="collage-label"><span>Commercial — 2024</span></div>
-                    </div>
-                    <div class="collage-item js-reveal-fade" data-cat="wedding">
-                        <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?auto=format&fit=crop&q=80" alt="Video Project">
-                        <div class="collage-label"><span>Wedding — Lake Como</span></div>
-                    </div>
-                    <div class="collage-item js-reveal-fade" data-cat="event">
-                        <img src="https://images.unsplash.com/photo-1470225620780-dba8ba36b745?auto=format&fit=crop&q=80" alt="Video Project">
-                        <div class="collage-label"><span>Fashion Show</span></div>
-                    </div>
-                </div>
-
-                <div class="poster-section">
-                    <div class="poster-section-head">
-                        <span class="poster-eyebrow js-reveal-left">Visual Art</span>
-                        <h3 class="poster-heading js-reveal-clip">Poster Gallery</h3>
-                        <p class="poster-sub js-reveal-fade">Ogni video è preceduto da una ricerca estetica che si riflette in queste locandine originali.</p>
-                    </div>
-                    <div class="poster-grid">
-                        <div class="poster-card js-reveal-fade">
-                            <div class="poster-img-wrap"><img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?auto=format&fit=crop&q=80" alt="Poster 1"></div>
-                            <span class="poster-cap">Project Alpha — 2024</span>
-                        </div>
-                        <div class="poster-card js-reveal-fade">
-                            <div class="poster-img-wrap"><img src="https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=80" alt="Poster 2"></div>
-                            <span class="poster-cap">Ethereal Moments</span>
-                        </div>
-                        <div class="poster-card js-reveal-fade">
-                            <div class="poster-img-wrap"><img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=80" alt="Poster 3"></div>
-                            <span class="poster-cap">Urban Pulse</span>
-                        </div>
-                    </div>
+                <div class="sec-tag js-reveal-fade"><span class="sec-num">03</span><span class="sec-line"></span><span>Portfolio</span></div>
+                <h2 class="sec-h2">Scatti selezionati</h2>
+                <div class="collage-grid js-reveal-fade">
+                    <div class="collage-item span-h2"><img src="./portfolio-1.jpg" onerror="this.style.display='none'"><div class="collage-label"><span>Clienti</span></div></div>
+                    <div class="collage-item"><img src="./portfolio-2.jpg" onerror="this.style.display='none'"><div class="collage-label"><span>Urban</span></div></div>
                 </div>
             </div>
         </section>
 
-        <section id="pricing" class="section s-pricing s-gradient">
+        <section id="offerte" class="section s-pricing s-gradient">
             <div class="container">
-                <div class="sec-tag js-reveal-left"><span class="sec-num">04</span> <span class="sec-line"></span> Pricing</div>
-                <h2 class="sec-h2 js-reveal-clip">Investment</h2>
+                <div class="sec-tag js-reveal-fade"><span class="sec-num">04</span><span class="sec-line"></span><span>Pacchetti</span></div>
+                <h2 class="sec-h2">Pacchetti e Soluzioni</h2>
                 <div class="pricing-grid">
                     <div class="price-card js-reveal-fade">
-                        <div class="price-head">
-                            <span class="price-tier">Social Starter</span>
-                            <div class="price-val"><strong>€450</strong><small>/progetto</small></div>
-                            <p>Ideale per chi deve lanciare un nuovo prodotto o aggiornare il feed con qualità.</p>
-                        </div>
-                        <ul class="price-feats">
-                            <li>3 Reels / TikTok professionali</li>
-                            <li>Editing & Color base</li>
-                            <li>1 Revisione inclusa</li>
-                            <li class="feat-no">Drone 4K</li>
-                        </ul>
-                        <a href="#contact" class="btn-price">Scegli Starter</a>
+                        <span class="price-tier">Personal Drive</span>
+                        <div class="price-val"><small>da</small><strong>69€</strong></div>
+                        <ul class="price-feats"><li>15 foto HQ ritoccate</li><li>Shooting 1h</li><li>Poster digitale</li></ul>
+                        <a href="#contatti" class="btn-price">Scegli Personal</a>
                     </div>
                     <div class="price-card price-hot js-reveal-fade">
-                        <div class="price-badge">Most Popular</div>
-                        <div class="price-head">
-                            <span class="price-tier">Brand Story</span>
-                            <div class="price-val"><strong>€1.200</strong><small>/spot</small></div>
-                            <p>Lo standard per le aziende che vogliono uno spot che converte.</p>
-                        </div>
-                        <ul class="price-feats">
-                            <li>Video Hero (60-90 sec)</li>
-                            <li>Sound Design Premium</li>
-                            <li>Riprese Drone incluse</li>
-                            <li>Consegna in 10 giorni</li>
-                        </ul>
-                        <a href="#contact" class="btn-price-inv">Scegli Brand</a>
+                        <span class="price-badge">Popolare</span>
+                        <span class="price-tier">Social Starter</span>
+                        <div class="price-val"><small>da</small><strong>119€</strong></div>
+                        <ul class="price-feats"><li>30 foto HQ</li><li>2 Reels montati</li><li>Ottimizzato IG/TikTok</li></ul>
+                        <a href="#contatti" class="btn-price-inv">Scegli Social</a>
                     </div>
                     <div class="price-card js-reveal-fade">
-                        <div class="price-head">
-                            <span class="price-tier">Event / Wedding</span>
-                            <div class="price-val"><strong>€1.800</strong><small>/day</small></div>
-                            <p>Reportage completo per non perdere nemmeno un istante del tuo evento.</p>
-                        </div>
-                        <ul class="price-feats">
-                            <li>Film (15-20 min)</li>
-                            <li>Trailer emozionale (3 min)</li>
-                            <li>2 Operatori video</li>
-                            <li>Scatola USB di lusso</li>
-                        </ul>
-                        <a href="#contact" class="btn-price">Scegli Event</a>
+                        <span class="price-tier">Seller Boost</span>
+                        <div class="price-val"><small>da</small><strong>149€</strong></div>
+                        <ul class="price-feats"><li>Shooting per vendita</li><li>Video Walkaround</li><li>30 scatti annuncio</li></ul>
+                        <a href="#contatti" class="btn-price">Scegli Seller</a>
                     </div>
                 </div>
-                
+
                 <div class="help-decide-row js-reveal-fade">
                     <div class="help-decide-box">
                         <span class="help-icon">?</span>
                         <div class="help-content">
-                            <h4>Problemi a decidere il pacchetto giusto?</h4>
-                            <p>Ogni progetto è unico. Scrivimi e troveremo la soluzione su misura per il tuo budget.</p>
+                            <h4>Problemi a decidere il pacchetto?</h4>
+                            <p>Ogni mezzo è unico. Contattami per una consulenza gratuita e troveremo la soluzione perfetta.</p>
                         </div>
-                        <a href="#contact" class="btn-line help-btn">Parliamone</a>
+                        <a href="#contatti" class="btn-line help-btn">Aiutami a scegliere</a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="section s-contact">
+        <section id="contatti" class="section s-contact">
             <div class="container">
-                <div class="sec-tag js-reveal-left"><span class="sec-num">05</span> <span class="sec-line"></span> Connection</div>
+                <div class="sec-tag js-reveal-fade"><span class="sec-num">05</span><span class="sec-line"></span><span>Contatti</span></div>
                 <div class="contact-grid">
                     <div class="contact-info js-reveal-left">
-                        <h3>Inizia la tua<br>storia qui.</h3>
-                        <p>Hai un progetto in mente o vuoi semplicemente salutarmi? Scrivimi pure, rispondo di solito entro 24 ore.</p>
+                        <h3>Lavoriamo insieme.</h3>
+                        <p>Scrivimi per fissare la tua prossima sessione fotografica.</p>
                         <div class="c-links">
-                            <a href="mailto:info@jacopofuse.it" class="c-link">
+                            <a href="mailto:jacopo.fuse@gmail.com" class="c-link">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                                info@jacopofuse.it
+                                jacopo.fuse@gmail.com
                             </a>
-                            <a href="tel:+393400000000" class="c-link">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                                +39 340 000 0000
-                            </a>
-                            <a href="https://instagram.com" target="_blank" class="c-link">
+                            <a href="https://instagram.com/jacofuz" class="c-link">
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                                @jacopofuse_visuals
+                                @jacofuz
+                            </a>
+                            <a href="tel:+393756278807" class="c-link">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.81 12.81 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                +39 375 627 8807
                             </a>
                         </div>
                     </div>
-                    <form class="contact-form js-reveal-right">
+                    <form id="contact-form" class="contact-form js-reveal-right">
                         <div class="form-row">
-                            <div class="f-group"><label>Nome</label><input type="text" placeholder="Mario Rossi" required></div>
-                            <div class="f-group"><label>Email</label><input type="email" placeholder="mario@esempio.it" required></div>
-                        </div>
-                        <div class="f-group"><label>Interesse</label>
-                            <select>
-                                <option>Aziendale / Commercial</option>
-                                <option>Evento / Wedding</option>
-                                <option>Social Content</option>
-                                <option>Altro</option>
-                            </select>
+                            <div class="f-group"><label>Nome</label><input type="text" placeholder="Nome" required></div>
+                            <div class="f-group"><label>Email</label><input type="email" placeholder="Email" required></div>
                         </div>
                         <div class="f-group"><label>Messaggio</label><textarea placeholder="Parlami del tuo progetto..."></textarea></div>
-                        <div class="form-send-row">
-                            <button type="submit" class="btn-send">Invia Messaggio</button>
-                        </div>
+                        <button type="submit" class="btn-send">Invia richiesta</button>
                     </form>
                 </div>
             </div>
@@ -291,12 +191,9 @@
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="footer-brand">JACOPO FUSÉ</div>
-            <p class="footer-copy">© 2024 — Tutti i diritti riservati</p>
+            <p class="footer-copy">© 2026 — Tutti i diritti riservati</p>
         </div>
     </footer>
-
-    <div class="toast">Messaggio inviato con successo!</div>
-
-    <script src="script.js"></script>
+    <div id="toast" class="toast">Messaggio inviato!</div>
 </body>
 </html>
