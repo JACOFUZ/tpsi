@@ -1,66 +1,119 @@
+/**
+ * JACOPO FUSÉ — script.js
+ */
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Loader
-    const loader = document.querySelector('.loader');
-    const bar = document.querySelector('.loader-bar');
-    let p = 0;
+    
+    // 1. LOADER DINAMICO
+    const loader = document.getElementById('loader');
+    const bar = document.getElementById('loader-bar');
+    let progress = 0;
     const interval = setInterval(() => {
-        p += Math.random() * 30;
-        if(p >= 100) {
-            p = 100;
+        progress += Math.random() * 20;
+        if(progress >= 100) {
+            progress = 100;
             clearInterval(interval);
-            setTimeout(() => loader.classList.add('gone'), 500);
+            setTimeout(() => {
+                loader.classList.add('gone');
+                document.body.style.overflow = 'auto';
+            }, 500);
         }
-        bar.style.width = p + '%';
-    }, 150);
+        bar.style.width = progress + '%';
+    }, 120);
 
-    // 2. Custom Cursor
-    const cursor = document.querySelector('.cursor');
-    const ring = document.querySelector('.cursor-ring');
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-        ring.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
-    });
+    // 2. HERO LIQUID CANVAS (Matematica avanzata per effetto blob)
+    const canvas = document.getElementById('hero-canvas');
+    if(canvas) {
+        const ctx = canvas.getContext('2d');
+        let w, h, mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        let blobX = mouse.x, blobY = mouse.y;
 
-    document.querySelectorAll('a, button, .collage-item').forEach(el => {
-        el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
-        el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
-    });
+        const resize = () => { 
+            w = canvas.width = window.innerWidth; 
+            h = canvas.height = window.innerHeight; 
+        };
+        window.addEventListener('resize', resize); resize();
+        window.addEventListener('mousemove', e => { 
+            mouse.x = e.clientX; 
+            mouse.y = e.clientY; 
+        });
 
-    // 3. Header Scroll
-    const header = document.querySelector('.site-header');
+        function animateBlob() {
+            ctx.clearRect(0, 0, w, h);
+            // Inseguimento morbido
+            blobX += (mouse.x - blobX) * 0.08;
+            blobY += (mouse.y - blobY) * 0.08;
+            
+            const gradient = ctx.createRadialGradient(blobX, blobY, 0, blobX, blobY, 250);
+            gradient.addColorStop(0, 'rgba(168, 85, 247, 0.15)');
+            gradient.addColorStop(1, 'rgba(0, 0, 0, 0)');
+            
+            ctx.fillStyle = gradient;
+            ctx.beginPath();
+            ctx.arc(blobX, blobY, 250, 0, Math.PI * 2);
+            ctx.fill();
+            requestAnimationFrame(animateBlob);
+        }
+        animateBlob();
+    }
+
+    // 3. CURSORE PERSONALIZZATO
+    const cursor = document.getElementById('cursor');
+    const ring = document.getElementById('cursor-ring');
+    if(cursor && ring) {
+        document.addEventListener('mousemove', e => {
+            cursor.style.left = ring.style.left = e.clientX + 'px';
+            cursor.style.top = ring.style.top = e.clientY + 'px';
+        });
+        document.querySelectorAll('a, button, .price-card').forEach(el => {
+            el.addEventListener('mouseenter', () => ring.classList.add('hovered'));
+            el.addEventListener('mouseleave', () => ring.classList.remove('hovered'));
+        });
+    }
+
+    // 4. HEADER SCROLL EFFECT
+    const header = document.getElementById('site-header');
     window.addEventListener('scroll', () => {
-        header.classList.toggle('scrolled', window.scrollY > 50);
-    });
+        if(window.scrollY > 60) header.classList.add('scrolled');
+        else header.classList.remove('scrolled');
+    }, {passive: true});
 
-    // 4. Reveal Animations
+    // 5. MENU TOGGLE
+    const hamburger = document.getElementById('hamburger');
+    const dropdown = document.getElementById('nav-dropdown');
+    if(hamburger && dropdown) {
+        hamburger.addEventListener('click', () => {
+            dropdown.toggleAttribute('hidden');
+        });
+        // Chiudi al click fuori
+        document.addEventListener('click', (e) => {
+            if(!hamburger.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.setAttribute('hidden', '');
+            }
+        });
+    }
+
+    // 6. INTERSECTION OBSERVER (Animazioni al caricamento)
+    const observerOptions = { threshold: 0.15, rootMargin: '0px 0px -50px 0px' };
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(en => {
-            if(en.isIntersecting) en.target.classList.add('in');
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('in');
+                observer.unobserve(entry.target);
+            }
         });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    document.querySelectorAll('[class*="js-reveal-"]').forEach(el => observer.observe(el));
+    document.querySelectorAll('[class*="js-reveal"]').forEach(el => observer.observe(el));
 
-    // 5. Menu Toggle
-    const ham = document.querySelector('.hamburger');
-    const nav = document.querySelector('.nav-dropdown');
-    ham.addEventListener('click', () => {
-        const isHidden = nav.hasAttribute('hidden');
-        if(isHidden) nav.removeAttribute('hidden');
-        else nav.setAttribute('hidden', '');
-    });
-
-    // 6. Portfolio Filters
-    const fBtns = document.querySelectorAll('.f-btn');
-    const items = document.querySelectorAll('.collage-item');
-    fBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            fBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            const f = btn.dataset.filter;
-            items.forEach(item => {
-                item.style.display = (f === 'all' || item.dataset.cat === f) ? 'block' : 'none';
-            });
+    // 7. FORM SUBMISSION (Toast fake)
+    const form = document.getElementById('contact-form');
+    const toast = document.getElementById('toast');
+    if(form && toast) {
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            form.reset();
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 3000);
         });
-    });
+    }
 });
