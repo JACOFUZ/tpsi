@@ -296,3 +296,47 @@ try {
     btn.addEventListener('click',()=>{body.classList.toggle('light');localStorage.setItem('jf-theme',body.classList.contains('light')?'light':'dark');});
   })();
 } catch(e) {}
+
+/* ── PRICING MODAL (POP-UP INFO) ── */
+try {
+  (function initModal() {
+    const infoBtns = $$('.info-btn');
+    const modalOverlay = $('#pricing-modal');
+    if (!infoBtns.length || !modalOverlay) return;
+    
+    const titleEl = $('#modal-title');
+    const descEl = $('#modal-desc');
+    const closeBtn = $('.modal-close');
+
+    const openModal = (title, desc) => {
+      titleEl.textContent = title;
+      descEl.textContent = desc;
+      modalOverlay.removeAttribute('hidden');
+      document.body.style.overflow = 'hidden'; // Blocca lo scroll del sito dietro
+    };
+
+    const closeModal = () => {
+      modalOverlay.setAttribute('hidden', '');
+      document.body.style.overflow = ''; // Sblocca lo scroll
+    };
+
+    infoBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        openModal(btn.dataset.title, btn.dataset.desc);
+      });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+    
+    // Chiude se clicchi nello sfondo scuro fuori dal box
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) closeModal();
+    });
+    
+    // Chiude premendo il tasto ESC sulla tastiera
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && !modalOverlay.hasAttribute('hidden')) closeModal();
+    });
+  })();
+} catch(e) {}
