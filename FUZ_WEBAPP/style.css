@@ -310,3 +310,40 @@ textarea { resize:vertical; min-height:130px; }
 .how-num { font-family: var(--font-display); font-weight: 900; font-size: 2.5rem; color: var(--accent); line-height: 1; letter-spacing: -.03em; opacity: .45; }
 .how-step h3 { font-family: var(--font-display); font-weight: 800; font-size: 1.1rem; text-transform: uppercase; letter-spacing: .06em; color: var(--text); }
 .how-step p { font-size: .88rem; color: var(--text-dim); line-height: 1.65; }
+
+/* ---- OVERRIDES PER LE NUOVE SEZIONI ---- */
+
+/* PORTFOLIO: Stile per i pulsanti con SVG */
+.f-btn { padding: 0.6rem; display: inline-flex; align-items: center; justify-content: center; }
+.f-btn svg { width: 22px; height: 22px; }
+
+/* PRICING: Layout a Griglia Adattiva (Gestisce perfettamente 5 pacchetti) */
+.pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; align-items: stretch; }
+.price-head p { margin-top: 0.5rem; }
+.price-val { display: none; /* Rimosso il prezzo per una contrattazione più flessibile/professionale o reinseribile se serve */ }
+
+/* VIDEO: Layout Showcase + Sidebar Social */
+.video-showcase { display: flex; flex-direction: column; gap: 1.5rem; }
+@media (min-width: 860px) { .video-showcase { flex-direction: row; align-items: stretch; } }
+
+.video-grid { flex: 1; display: grid; grid-template-columns: 1fr; gap: 1.2rem; }
+@media (min-width: 600px) { .video-grid { grid-template-columns: repeat(2, 1fr); } }
+
+.video-thumb-card { position: relative; border-radius: var(--r); background: var(--bg3); overflow: hidden; border: 1px solid var(--border); aspect-ratio: 16/9; transition: border-color 0.3s; cursor: pointer; }
+.video-thumb-card:hover { border-color: var(--accent); }
+.video-thumb-card .video-ph { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; transition: transform 0.6s var(--easing); }
+.video-thumb-card:hover .video-ph { transform: scale(1.05); }
+
+.v-time { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.85); color: #fff; font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 4px; font-family: var(--font-body); letter-spacing: 0.05em; z-index: 2; pointer-events: none; }
+.v-long { background: var(--accent); color: #fff; }
+
+.v-play { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: white; display: flex; align-items: center; justify-content: center; transition: transform 0.3s, box-shadow 0.3s; z-index: 2; }
+.video-thumb-card:hover .v-play { transform: scale(1.12); box-shadow: 0 0 25px rgba(168,85,247,0.5); }
+
+.social-sidebar { display: flex; flex-direction: row; gap: 1rem; align-items: center; justify-content: center; padding: 1.5rem; border: 1px solid var(--border); border-radius: var(--r); background: var(--bg3); }
+@media (min-width: 860px) { .social-sidebar { flex-direction: column; width: 80px; padding: 2rem 0; } }
+
+.soc-link { color: var(--text-dim); transition: color 0.3s, transform 0.3s, background 0.3s; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 50%; background: var(--bg2); }
+.soc-link:hover { color: var(--text); background: var(--accent); transform: translateY(-4px); }
+
+
