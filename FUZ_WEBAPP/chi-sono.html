@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chi Sono | JACO VISUALS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&family=Barlow+Condensed:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+  <style>
+    /* stili esclusivi di questa pagina */
+    .about-page { padding-block: clamp(7rem, 14vw, 11rem) clamp(5rem, 10vw, 9rem); background: var(--bg); }
+    .about-page-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    @media (min-width: 768px) {
+      .about-page-grid { grid-template-columns: 360px 1fr; gap: 6rem; }
+    }
+
+    /* foto + frame */
+    .about-page-visual { position: relative; }
+    .about-page-photo {
+      aspect-ratio: 4/5;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      border-radius: var(--r);
+    }
+    .about-page-photo img { width:100%; height:100%; object-fit:cover; display:block; }
+    .about-page-frame {
+      position: absolute;
+      top: 16px; left: 16px; right: -16px; bottom: -16px;
+      border: 1px solid var(--accent-dim);
+      border-radius: var(--r);
+      z-index: -1;
+      pointer-events: none;
+    }
+    /* social sotto la foto */
+    .about-page-social {
+      display: flex;
+      gap: .8rem;
+      margin-top: 1.8rem;
+      flex-wrap: wrap;
+    }
+    .about-page-social .soc-link { background: var(--bg3); }
+
+    /* contenuto testuale */
+    .about-page-content { display: flex; flex-direction: column; gap: 3rem; }
+    .about-intro-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 5vw, 4rem);
+      text-transform: uppercase;
+      line-height: .95;
+      letter-spacing: -.01em;
+      margin-bottom: 1.5rem;
+    }
+    .about-intro-title em {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 300;
+      color: var(--accent-sat);
+      text-transform: none;
+    }
+    .about-intro-lead {
+      font-size: 1.05rem;
+      color: var(--text-dim);
+      line-height: 1.85;
+      max-width: 60ch;
+    }
+
+    /* blocchi info (curriculum) */
+    .about-blocks { display: flex; flex-direction: column; gap: 2rem; }
+    .about-block {
+      border-left: 2px solid var(--accent-dim);
+      padding-left: 1.5rem;
+    }
+    .about-block-label {
+      font-family: var(--font-display);
+      font-size: .72rem;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: .5rem;
+      display: block;
+    }
+    .about-block-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--text);
+      margin-bottom: .5rem;
+    }
+    .about-block p {
+      font-size: .92rem;
+      color: var(--text-dim);
+      line-height: 1.8;
+    }
+
+    /* tag passioni */
+    .about-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .6rem;
+      margin-top: .8rem;
+    }
+    .about-tag {
+      font-family: var(--font-display);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent-dim);
+      background: var(--accent-glow);
+      border-radius: 2px;
+      padding: .3rem .9rem;
+    }
+
+    /* CTA finale */
+    .about-cta-row {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .about-cta-row p {
+      font-size: .95rem;
+      color: var(--text-dim);
+      line-height: 1.7;
+    }
+    .about-cta-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body class="dark">
+
+  <div id="loader" class="loader">
+    <div class="loader-name">JACO VISUALS</div>
+    <div class="loader-progress">
+      <div id="loader-bar" class="loader-bar"></div>
+    </div>
+  </div>
+
+  <div id="cursor" class="cursor"></div>
+  <div id="cursor-ring" class="cursor-ring"></div>
+
+  <!-- HEADER (identico all'index) -->
+  <header id="site-header" class="site-header">
+    <a href="./index.html" class="brand-mark">JACO VISUALS</a>
+    <div class="header-actions">
+      <a href="./index.html" class="nav-home-btn">HOME</a>
+      <a href="./chi-sono.html" class="nav-chisono-btn" style="color:var(--accent);">Chi Sono</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button id="hamburger" class="hamburger" aria-label="Menu" aria-expanded="false">
+        <span class="ham-bar"></span>
+        <span class="ham-bar"></span>
+      </button>
+    </div>
+    <nav id="nav-dropdown" class="nav-dropdown" hidden>
+      <ul class="nav-list">
+        <li><a href="./index.html#servizi"   class="nav-link" data-num="01">Servizi</a></li>
+        <li><a href="./index.html#portfolio" class="nav-link" data-num="02">Portfolio</a></li>
+        <li><a href="./index.html#video"     class="nav-link" data-num="03">Produzione Video</a></li>
+        <li><a href="./index.html#processo"  class="nav-link" data-num="04">Come Funziona</a></li>
+        <li><a href="./index.html#offerte"   class="nav-link" data-num="05">Pacchetti</a></li>
+        <li><a href="./chi-sono.html"        class="nav-link" data-num="06">Chi Sono</a></li>
+        <li><a href="./index.html#contatti"  class="nav-link" data-num="07">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="about-page">
+      <div class="container">
+
+        <div class="sec-tag js-reveal-fade">
+          <span class="sec-num">—</span>
+          <span class="sec-line"></span>
+          <span>Chi Sono</span>
+        </div>
+
+        <div class="about-page-grid">
+
+          <!-- COLONNA SINISTRA: foto + social -->
+          <div class="about-page-visual js-reveal-left">
+            <div class="about-page-photo">
+              <img src="./foto-profilo.jpg" alt="Jacopo — JACO VISUALS" onerror="this.style.display='none'">
+            </div>
+            <div class="about-page-frame"></div>
+
+            <div class="about-page-social">
+              <a href="https://instagram.com/jacovisuals" target="_blank" class="soc-link" title="@JACOVISUALS">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+              </a>
+              <a href="https://instagram.com/jacofuz" target="_blank" class="soc-link" title="@JACOFUZ">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="https://youtube.com/@JACOFUZ" target="_blank" class="soc-link" title="YouTube @JACOFUZ">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.17 1 12 1 12s0 3.83.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.83 23 12 23 12s0-3.83-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+              </a>
+              <a href="https://tiktok.com/@JACOFUZ" target="_blank" class="soc-link" title="TikTok @JACOFUZ">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- COLONNA DESTRA: testo -->
+          <div class="about-page-content js-reveal-right">
+
+            <div>
+              <h1 class="about-intro-title">
+                Sono Jacopo.<br>
+                <em>Racconto veicoli.</em>
+              </h1>
+              <p class="about-intro-lead">
+                Fotografo automotive e content creator con base a Milano. Trasformo shooting in contenuti che attirano attenzione, generano interesse e portano risultati concreti — che tu sia un privato, un rivenditore o un brand.
+              </p>
+            </div>
+
+            <div class="about-blocks">
+
+              <div class="about-block js-reveal-fade">
+                <span class="about-block-label">Cosa faccio</span>
+                <div class="about-block-title">Fotografia & Content Creation</div>
+                <p>Produco shooting fotografici professionali per auto e moto, contenuti video per YouTube e i social, poster grafici personalizzati e campagne visive per brand. Ogni progetto parte da un brief chiaro e finisce con contenuti pronti all'uso — senza scuse.</p>
+              </div>
+
+              <div class="about-block js-reveal-fade">
+                <span class="about-block-label">Chi sono davvero</span>
+                <div class="about-block-title">Passioni e vita</div>
+                <p>Le moto e le auto non sono un lavoro che ho scelto a caso: sono sempre state al centro della mia vita. Guido, fotografo, filmo. Parallelamente studio Informatica — e la logica del codice mi ha insegnato che ogni elemento deve avere uno scopo. Lo stesso principio lo porto in ogni scatto: composizione, luce e dettaglio non sono casuali, sono decisi.</p>
+                <div class="about-tags">
+                  <span class="about-tag">Auto</span>
+                  <span class="about-tag">Moto</span>
+                  <span class="about-tag">Vlog</span>
+                  <span class="about-tag">Motovlog</span>
+                  <span class="about-tag">Informatica</span>
+                  <span class="about-tag">Milano</span>
+                </div>
+              </div>
+
+              <div class="about-block js-reveal-fade">
+                <span class="about-block-label">Approccio al lavoro</span>
+                <div class="about-block-title">Niente fronzoli. Solo risultati.</div>
+                <p>Non faccio fuffa. Se prenoti uno shooting con me, ricevi contenuti che funzionano davvero — ottimizzati per i social, per gli annunci o per il branding, dipende da cosa ti serve. Rispondo entro 24h, lavoro in modo preciso e consegno nei tempi concordati. Sempre.</p>
+              </div>
+
+              <div class="about-block js-reveal-fade">
+                <span class="about-block-label">Dove trovarmi</span>
+                <div class="about-block-title">Online & Offline</div>
+                <p>Opero principalmente a Milano e dintorni, ma mi sposto per shooting su commissione. Online trovi il mio lavoro su Instagram <strong>@JACOVISUALS</strong> (fotografia) e <strong>@JACOFUZ</strong> (vlog e video), su YouTube e TikTok.</p>
+              </div>
+
+            </div><!-- /about-blocks -->
+
+            <!-- CTA FINALE -->
+            <div class="about-cta-row js-reveal-fade">
+              <p>Hai un progetto in mente? Non aspettare. Scrivimi adesso — ti rispondo senza impegno.</p>
+              <div class="about-cta-btns">
+                <a href="./index.html#contatti" class="btn-fill">Prenota il tuo shooting</a>
+                <a href="./index.html#offerte"  class="btn-line">Vedi i pacchetti</a>
+              </div>
+            </div>
+
+          </div><!-- /about-page-content -->
+
+        </div><!-- /about-page-grid -->
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">JACO VISUALS</div>
+      <div class="footer-copy">© <span class="year-span">2026</span> — Tutti i diritti riservati</div>
+    </div>
+  </footer>
+
+  <div id="toast" class="toast">Messaggio inviato!</div>
+
+</body>
+</html>
