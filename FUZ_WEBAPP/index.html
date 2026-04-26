@@ -1,388 +1,388 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JACOPO FUSÉ | Automotive Photography & Content Creation</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&family=Barlow+Condensed:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="./style.css">
-    <script src="./script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JACOPO FUSÉ | Automotive Photography & Content Creation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&family=Barlow+Condensed:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
 </head>
 <body class="dark">
-
-    <div id="loader" class="loader">
-        <div class="loader-name">JACOPO FUSÉ</div>
-        <div class="loader-progress">
-            <div id="loader-bar" class="loader-bar"></div>
-        </div>
+  <div id="loader" class="loader">
+    <div class="loader-name">JACOPO FUSÉ</div>
+    <div class="loader-progress">
+      <div id="loader-bar" class="loader-bar"></div>
     </div>
+  </div>
+  <div id="cursor" class="cursor"></div>
+  <div id="cursor-ring" class="cursor-ring"></div>
+  
+  <header id="site-header" class="site-header">
+    <a href="#" class="brand-mark">JF</a>
+    <div class="header-actions">
+      <a href="#hero" class="nav-home-btn">HOME</a>
+      <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button id="hamburger" class="hamburger" aria-label="Menu" aria-expanded="false">
+        <span class="ham-bar"></span>
+        <span class="ham-bar"></span>
+      </button>
+    </div>
+    <nav id="nav-dropdown" class="nav-dropdown" hidden>
+      <ul class="nav-list">
+        <li><a href="#esperienze" class="nav-link" data-num="01">Chi Sono</a></li>
+        <li><a href="#servizi" class="nav-link" data-num="02">Servizi</a></li>
+        <li><a href="#portfolio" class="nav-link" data-num="03">Portfolio</a></li>
+        <li><a href="#video" class="nav-link" data-num="04">Produzione Video</a></li>
+        <li><a href="#processo" class="nav-link" data-num="05">Come Funziona</a></li>
+        <li><a href="#offerte" class="nav-link" data-num="06">Pacchetti</a></li>
+        <li><a href="#contatti" class="nav-link" data-num="07">Contatti</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <div id="cursor" class="cursor"></div>
-    <div id="cursor-ring" class="cursor-ring"></div>
-
-    <header id="site-header" class="site-header">
-        <a href="#" class="brand-mark">JF</a>
-        
-        <div class="header-actions">
-            <a href="#hero" class="nav-home-btn">HOME</a>
-            
-            <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
-                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-            </button>
-            
-            <button id="hamburger" class="hamburger" aria-label="Menu" aria-expanded="false">
-                <span class="ham-bar"></span>
-                <span class="ham-bar"></span>
-            </button>
+  <main>
+    <section id="hero" class="s-hero">
+      <div class="hero-bg-base">
+        <div class="hero-grain"></div>
+        <div class="hero-vignette"></div>
+      </div>
+      <canvas id="hero-canvas"></canvas>
+      <div class="container hero-inner">
+        <div class="hero-body">
+          <div class="hero-loc js-reveal-fade">
+            <span class="live-dot"></span> Milano Italia
+          </div>
+          <h1 class="hero-name">
+            <span class="hero-line js-reveal-clip">JACOPO</span>
+            <span class="hero-line-em js-reveal-clip">FUSÉ</span>
+          </h1>
+          <p class="hero-tagline js-reveal-fade">Fotografia automotive & content creation.. <em>Risultati che vendono.</em></p>
+          <p class="hero-sub js-reveal-fade">Shooting professionali per privati, brand e aziende. Dal veicolo al contenuto finale pronto per i social, la vendita e il branding.</p>
+          <div class="hero-btns js-reveal-fade">
+            <a href="#contatti" class="btn-fill">Prenota il tuo shooting</a>
+            <a href="#portfolio" class="btn-line">Vedi il portfolio</a>
+          </div>
         </div>
+        <div class="hero-meta js-reveal-fade">
+          <span class="scroll-hint">scroll</span>
+          <div class="scroll-track">
+            <div class="scroll-thumb"></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <nav id="nav-dropdown" class="nav-dropdown" hidden>
-            <ul class="nav-list">
-                <li><a href="#esperienze" class="nav-link" data-num="01">Chi Sono</a></li>
-                <li><a href="#servizi" class="nav-link" data-num="02">Servizi</a></li>
-                <li><a href="#portfolio" class="nav-link" data-num="03">Portfolio</a></li>
-                <li><a href="#processo" class="nav-link" data-num="04">Come Funziona</a></li>
-                <li><a href="#offerte" class="nav-link" data-num="05">Pacchetti</a></li>
-                <li><a href="#contatti" class="nav-link" data-num="06">Contatti</a></li>
+    <section id="esperienze" class="section s-about s-exp">
+      <div class="container">
+        <div class="sec-tag js-reveal-fade"><span class="sec-num">01</span><span class="sec-line"></span><span>Chi Sono</span></div>
+        <div class="about-grid">
+          <div class="about-visual js-reveal-left">
+            <div class="photo-ph"><img src="./foto-profilo.jpg" alt="Jacopo Fusé - Ritratto" onerror="this.style.display='none'"></div>
+            <div class="photo-frame"></div>
+          </div>
+          <div class="about-content js-reveal-right">
+            <h2 class="about-h2">Racconto ogni veicolo. <br><em>Un frame alla volta.</em></h2>
+            <div class="about-copy">
+              <p>Sono Jacopo, fotografo automotive e content creator con base a Milano. Trasformo shooting in contenuti che attirano attenzione, generano interesse e portano risultati concreti che tu sia un privato, un rivenditore o un brand.</p>
+              <p>Ogni scatto è studiato per comunicare: composizione, luce, dettaglio. Ogni video è costruito per convertire. Parallelamente studio Informatica, e la logica del codice mi ha insegnato che ogni elemento deve avere uno scopo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="servizi" class="section s-target">
+      <div class="container">
+        <div class="sec-tag js-reveal-fade"><span class="sec-num">02</span><span class="sec-line"></span><span>Servizi</span></div>
+        <h2 class="sec-h2 js-reveal-fade">A chi è rivolto</h2>
+        <p class="sec-sub js-reveal-fade">Tre contesti, un unico obiettivo: contenuti che fanno la differenza.</p>
+        <div class="target-grid">
+          <article class="target-card js-reveal-fade">
+            <div class="target-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <h3>Privati</h3>
+            <p>Hai un veicolo di cui vai fiero e vuoi un servizio fotografico che lo valorizzi davvero.</p>
+            <ul class="target-bullets">
+              <li>Shooting su misura</li>
+              <li>Foto pronte in 48h</li>
+              <li>Poster personalizzato</li>
             </ul>
-        </nav>
-    </header>
-
-    <main>
-        <section id="hero" class="s-hero">
-            <div class="hero-bg-base">
-                <div class="hero-grain"></div>
-                <div class="hero-vignette"></div>
+            <a href="#contatti" class="target-cta">Richiedi shooting →</a>
+          </article>
+          <article class="target-card js-reveal-fade">
+            <div class="target-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 21 17 13 7 13 7 21"/><path d="M2 14.5l5-4.5h10l5 4.5"/></svg>
             </div>
-            <canvas id="hero-canvas"></canvas>
-            
-            <div class="container hero-inner">
-                <div class="hero-body">
-                    <div class="hero-loc js-reveal-fade">
-                        <span class="live-dot"></span> Milano — Italia
-                    </div>
-                    <h1 class="hero-name">
-                        <span class="hero-line js-reveal-clip">JACOPO</span>
-                        <span class="hero-line-em js-reveal-clip">FUSÉ</span>
-                    </h1>
-                    <p class="hero-tagline js-reveal-fade">Fotografia automotive & content creation. · <em>Risultati che vendono.</em></p>
-                    <p class="hero-sub js-reveal-fade">Shooting professionali per privati, brand e aziende. Dal veicolo al contenuto finale — pronto per i social, la vendita e il branding.</p>
-                    
-                    <div class="hero-btns js-reveal-fade">
-                        <a href="#contatti" class="btn-fill">Prenota il tuo shooting</a>
-                        <a href="#portfolio" class="btn-line">Vedi il portfolio</a>
-                    </div>
-                </div>
-                <div class="hero-meta js-reveal-fade">
-                    <span class="scroll-hint">scroll</span>
-                    <div class="scroll-track">
-                        <div class="scroll-thumb"></div>
-                    </div>
-                </div>
+            <h3>Automotive & Vendita</h3>
+            <p>Vendi veicoli e hai bisogno di contenuti che accelerino la decisione d'acquisto.</p>
+            <ul class="target-bullets">
+              <li>Immagini che comunicano valore</li>
+              <li>Contenuti per annunci</li>
+              <li>Reels per social</li>
+            </ul>
+            <a href="#contatti" class="target-cta">Richiedi preventivo →</a>
+          </article>
+          <article class="target-card js-reveal-fade">
+            <div class="target-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
             </div>
-        </section>
-
-        <section id="esperienze" class="section s-about s-exp">
-            <div class="container">
-                <div class="sec-tag js-reveal-fade">
-                    <span class="sec-num">01</span>
-                    <span class="sec-line"></span>
-                    <span>Chi Sono</span>
-                </div>
-                <div class="about-grid">
-                    <div class="about-visual js-reveal-left">
-                        <div class="photo-ph">
-                            <img src="./foto-profilo.jpg" alt="Jacopo Fusé - Ritratto" onerror="this.style.display='none'">
-                        </div>
-                        <div class="photo-frame"></div>
-                    </div>
-                    <div class="about-content js-reveal-right">
-                        <h2 class="about-h2">Racconto ogni veicolo. <br><em>Un frame alla volta.</em></h2>
-                        <div class="about-copy">
-                            <p>Sono Jacopo, fotografo automotive e content creator con base a Milano. Trasformo shooting in contenuti che attirano attenzione, generano interesse e portano risultati concreti — che tu sia un privato, un rivenditore o un brand.</p>
-                            <p>Ogni scatto è studiato per comunicare: composizione, luce, dettaglio. Ogni video è costruito per convertire. Parallelamente studio Informatica, e la logica del codice mi ha insegnato che ogni elemento deve avere uno scopo.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="servizi" class="section s-target">
-            <div class="container">
-                <div class="sec-tag js-reveal-fade">
-                    <span class="sec-num">02</span>
-                    <span class="sec-line"></span>
-                    <span>Servizi</span>
-                </div>
-                <h2 class="sec-h2 js-reveal-fade">A chi è rivolto</h2>
-                <p class="sec-sub js-reveal-fade">Tre contesti, un unico obiettivo: contenuti che fanno la differenza.</p>
-                
-                <div class="target-grid">
-                    <article class="target-card js-reveal-fade">
-                        <div class="target-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        </div>
-                        <h3>Privati</h3>
-                        <p>Hai un veicolo di cui vai fiero e vuoi un servizio fotografico che lo valorizzi davvero.</p>
-                        <ul class="target-bullets">
-                            <li>Shooting su misura</li>
-                            <li>Foto pronte in 48h</li>
-                            <li>Poster personalizzato</li>
-                        </ul>
-                        <a href="#contatti" class="target-cta">Richiedi shooting →</a>
-                    </article>
-
-                    <article class="target-card js-reveal-fade">
-                        <div class="target-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="15" rx="2" ry="2"/><polyline points="17 21 17 13 7 13 7 21"/><path d="M2 14.5l5-4.5h10l5 4.5"/></svg>
-                        </div>
-                        <h3>Automotive & Vendita</h3>
-                        <p>Vendi veicoli e hai bisogno di contenuti che accelerino la decisione d'acquisto.</p>
-                        <ul class="target-bullets">
-                            <li>Immagini che comunicano valore</li>
-                            <li>Contenuti per annunci</li>
-                            <li>Reels per social</li>
-                        </ul>
-                        <a href="#contatti" class="target-cta">Richiedi preventivo →</a>
-                    </article>
-
-                    <article class="target-card js-reveal-fade">
-                        <div class="target-icon">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                        </div>
-                        <h3>Brand & Social</h3>
-                        <p>Hai un brand e cerchi contenuti visivi coerenti, premium e pronti alla pubblicazione.</p>
-                        <ul class="target-bullets">
-                            <li>Piano contenuti su misura</li>
-                            <li>Shooting campagne</li>
-                            <li>Collaborazione continuativa</li>
-                        </ul>
-                        <a href="#contatti" class="target-cta">Parliamo del brand →</a>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section id="portfolio" class="section s-photo">
-            <div class="container">
-                <div class="sec-tag js-reveal-fade">
-                    <span class="sec-num">03</span>
-                    <span class="sec-line"></span>
-                    <span>Portfolio</span>
-                </div>
-                <h2 class="sec-h2 js-reveal-fade">Scatti selezionati</h2>
-                
-                <div class="filters js-reveal-fade">
-                    <button class="f-btn active" data-filter="all">Tutti</button>
-                    <button class="f-btn" data-filter="clienti">Clienti</button>
-                    <button class="f-btn" data-filter="urban">Urban</button>
-                    <button class="f-btn" data-filter="eicma">EICMA</button>
-                </div>
-
-                <div class="collage-grid js-reveal-fade">
-                    <div class="collage-item span-h2 visible" data-cat="clienti">
-                        <img src="./portfolio-1.jpg" onerror="this.style.display='none'">
-                        <div class="collage-label"><span>Clienti</span></div>
-                    </div>
-                    <div class="collage-item visible" data-cat="urban">
-                        <img src="./portfolio-2.jpg" onerror="this.style.display='none'">
-                        <div class="collage-label"><span>Urban</span></div>
-                    </div>
-                    <div class="collage-item visible" data-cat="eicma">
-                        <img src="./portfolio-3.jpg" onerror="this.style.display='none'">
-                        <div class="collage-label"><span>EICMA</span></div>
-                    </div>
-                    <div class="collage-item visible" data-cat="clienti">
-                        <img src="./portfolio-4.jpg" onerror="this.style.display='none'">
-                        <div class="collage-label"><span>Clienti</span></div>
-                    </div>
-                </div>
-
-                <div class="poster-section">
-                    <div class="poster-section-head js-reveal-fade">
-                        <span class="poster-eyebrow">Extra incluso</span>
-                        <h3 class="poster-heading">Poster Edit</h3>
-                        <p class="poster-sub">Ogni shooting può includere un poster grafico personalizzato — formato stampa o social, pronto all'uso.</p>
-                    </div>
-                    <div class="poster-grid">
-                        <div class="poster-card js-reveal-fade">
-                            <div class="poster-img-wrap"><img src="./poster-1.jpg" onerror="this.style.display='none'"></div>
-                            <span class="poster-cap">Aprilia RS660 · 2025</span>
-                        </div>
-                        <div class="poster-card js-reveal-fade">
-                            <div class="poster-img-wrap"><img src="./poster-2.jpg" onerror="this.style.display='none'"></div>
-                            <span class="poster-cap">SM 125 · 2017</span>
-                        </div>
-                        <div class="poster-card js-reveal-fade">
-                            <div class="poster-img-wrap"><img src="./poster-3.jpg" onerror="this.style.display='none'"></div>
-                            <span class="poster-cap">Yamaha R125 · 2023</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="video" class="section s-video">
-            <div class="container">
-                <div class="sec-tag js-reveal-fade">
-                    <span class="sec-num">04</span>
-                    <span class="sec-line"></span>
-                    <span>Video</span>
-                </div>
-                <h2 class="sec-h2 js-reveal-fade">Produzione Video</h2>
-                <div class="video-featured js-reveal-fade">
-                    <div class="video-embed">
-                        <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./video-copertina.jpg') center/cover;">
-                            <div class="play-big"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
-                            <div class="video-ph-label" style="color: white; font-weight: bold; text-shadow: 0 2px 8px rgba(0,0,0,0.9);">Guarda lo Showreel</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="processo" class="section s-how">
-            <div class="container">
-                <div class="sec-tag js-reveal-fade">
-                    <span class="sec-num">05</span>
-                    <span class="sec-line"></span>
-                    <span>Processo</span>
-                </div>
-                <h2 class="sec-h2 js-reveal-fade">Come funziona</h2>
-                <p class="sec-sub js-reveal-fade">Semplice, veloce, senza stress. Dalla prima idea al contenuto finale.</p>
-                
-                <div class="how-grid">
-                    <div class="how-step js-reveal-fade">
-                        <span class="how-num">01</span>
-                        <h3>Contatto</h3>
-                        <p>Scrivimi cosa vuoi ottenere. Ti rispondo entro 24h con disponibilità e preventivo.</p>
-                    </div>
-                    <div class="how-step js-reveal-fade">
-                        <span class="how-num">02</span>
-                        <h3>Pianificazione</h3>
-                        <p>Decidiamo location, orario e stile. Ogni shooting è studiato a tavolino.</p>
-                    </div>
-                    <div class="how-step js-reveal-fade">
-                        <span class="how-num">03</span>
-                        <h3>Shooting</h3>
-                        <p>Il giorno dello shooting penso a tutto io: luce, inquadrature, movimento.</p>
-                    </div>
-                    <div class="how-step js-reveal-fade">
-                        <span class="how-num">04</span>
-                        <h3>Consegna</h3>
-                        <p>Gallery digitale privata entro i tempi concordati. File ottimizzati per ogni uso.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="offerte" class="section s-pricing">
-            <div class="container">
-                <div class="sec-tag js-reveal-fade">
-                    <span class="sec-num">06</span>
-                    <span class="sec-line"></span>
-                    <span>Pacchetti</span>
-                </div>
-                <h2 class="sec-h2 js-reveal-fade">Pacchetti disponibili</h2>
-                
-                <div class="pricing-grid">
-                    <div class="price-card js-reveal-fade">
-                        <div class="price-head">
-                            <span class="price-tier">Basic</span>
-                            <div class="price-val"><small>da</small><strong>99€</strong></div>
-                            <p>Ideale per il primo shooting o per chi vuole contenuti social di qualità.</p>
-                        </div>
-                        <ul class="price-feats">
-                            <li>1,5 ore di shooting</li>
-                            <li>25 foto ritoccate</li>
-                            <li>Gallery digitale privata</li>
-                            <li class="feat-no">Video / Reels</li>
-                        </ul>
-                        <a href="#contatti" class="btn-price">Prenota Basic</a>
-                    </div>
-
-                    <div class="price-card price-hot js-reveal-fade">
-                        <span class="price-badge">Più richiesto</span>
-                        <div class="price-head">
-                            <span class="price-tier">Medium</span>
-                            <div class="price-val"><small>da</small><strong>219€</strong></div>
-                            <p>Il pacchetto completo per chi vuole dominare i social con foto e video.</p>
-                        </div>
-                        <ul class="price-feats">
-                            <li>Mezza giornata foto + video</li>
-                            <li>50 foto ritoccate</li>
-                            <li>1–2 Reels professionali</li>
-                            <li>Poster personalizzato incluso</li>
-                        </ul>
-                        <a href="#contatti" class="btn-price-inv">Prenota Medium</a>
-                    </div>
-
-                    <div class="price-card js-reveal-fade">
-                        <div class="price-head">
-                            <span class="price-tier">Premium</span>
-                            <div class="price-val"><small>da</small><strong>449€</strong></div>
-                            <p>Full-service per aziende e brand. Dal concept alla consegna finale.</p>
-                        </div>
-                        <ul class="price-feats">
-                            <li>Giornata intera foto + video</li>
-                            <li>100+ foto ritoccate</li>
-                            <li>Video 3-5 min cinematografico</li>
-                            <li>Consegna prioritaria</li>
-                        </ul>
-                        <a href="#contatti" class="btn-price">Prenota Premium</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contatti" class="s-contact">
-            <div class="contact-body section">
-                <div class="container">
-                    <div class="contact-grid">
-                        <div class="contact-info js-reveal-left">
-                            <h3>Scriviamo insieme <br>la prossima storia.</h3>
-                            <p>Hai un veicolo, un progetto o un brand da raccontare? Compila il modulo — ti rispondo entro 24h.</p>
-                            <div class="c-links">
-                                <a href="mailto:jacopo.fuse@gmail.com" class="c-link">jacopo.fuse@gmail.com</a>
-                                <a href="https://instagram.com/jacofuz" class="c-link">@JACOFUZ</a>
-                                <a href="tel:+393756278807" class="c-link">+39 375.627.88.07</a>
-                            </div>
-                        </div>
-                        <form id="contact-form" class="contact-form js-reveal-right">
-                            <div class="form-row">
-                                <div class="f-group">
-                                    <label for="f-name">Nome e cognome *</label>
-                                    <input type="text" id="f-name" required>
-                                </div>
-                                <div class="f-group">
-                                    <label for="f-email">Email *</label>
-                                    <input type="email" id="f-email" required>
-                                </div>
-                            </div>
-                            <div class="f-group">
-                                <label for="f-msg">Raccontami il tuo progetto *</label>
-                                <textarea id="f-msg" required></textarea>
-                            </div>
-                            <div class="form-send-row">
-                                <button type="submit" class="btn-send"><span>Invia richiesta</span></button>
-                            </div>
-                            <div id="form-ok" class="form-ok" hidden>✓ Ricevuto! Ti rispondo entro 24h.</div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div class="footer-brand">JACOPO FUSÉ</div>
-            <div class="footer-copy">© <span class="year-span">2026</span> — Tutti i diritti riservati</div>
+            <h3>Brand & Social</h3>
+            <p>Hai un brand e cerchi contenuti visivi coerenti, premium e pronti alla pubblicazione.</p>
+            <ul class="target-bullets">
+              <li>Piano contenuti su misura</li>
+              <li>Shooting campagne</li>
+              <li>Collaborazione continuativa</li>
+            </ul>
+            <a href="#contatti" class="target-cta">Parliamo del brand →</a>
+          </article>
         </div>
-    </footer>
-    <div id="toast" class="toast">Messaggio inviato!</div>
+      </div>
+    </section>
+
+    <section id="portfolio" class="section s-photo">
+      <div class="container">
+        <div class="sec-tag js-reveal-fade"><span class="sec-num">03</span><span class="sec-line"></span><span>Portfolio</span></div>
+        <h2 class="sec-h2 js-reveal-fade">Scatti selezionati</h2>
+        
+        <div class="filters js-reveal-fade">
+          <button class="f-btn active" data-filter="all" aria-label="Tutti">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          </button>
+          <button class="f-btn" data-filter="auto" aria-label="Auto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11v6h-1v2a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-2H9v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-2H5v-6z"/><circle cx="7.5" cy="14.5" r="1.5"/><circle cx="16.5" cy="14.5" r="1.5"/></svg>
+          </button>
+          <button class="f-btn" data-filter="moto" aria-label="Moto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><circle cx="5.5" cy="15.5" r="3.5"/><circle cx="18.5" cy="15.5" r="3.5"/><path d="M15 6a3.5 3.5 0 1 0-7 0"/><path d="M12 9v6.5"/><path d="M12 11h3.5l1.5 1"/></svg>
+          </button>
+        </div>
+
+        <div class="collage-grid js-reveal-fade">
+          <div class="collage-item span-h2 visible" data-cat="auto">
+            <img src="./portfolio-1.jpg" onerror="this.style.display='none'">
+            <div class="collage-label"><span>Auto</span></div>
+          </div>
+          <div class="collage-item visible" data-cat="moto">
+            <img src="./portfolio-2.jpg" onerror="this.style.display='none'">
+            <div class="collage-label"><span>Moto</span></div>
+          </div>
+          <div class="collage-item visible" data-cat="auto">
+            <img src="./portfolio-3.jpg" onerror="this.style.display='none'">
+            <div class="collage-label"><span>Auto</span></div>
+          </div>
+          <div class="collage-item visible" data-cat="moto">
+            <img src="./portfolio-4.jpg" onerror="this.style.display='none'">
+            <div class="collage-label"><span>Moto</span></div>
+          </div>
+        </div>
+
+        <div class="poster-section">
+          <div class="poster-section-head js-reveal-fade">
+            <span class="poster-eyebrow">Extra incluso</span>
+            <h3 class="poster-heading">Poster Edit</h3>
+            <p class="poster-sub">Ogni shooting può includere un poster grafico personalizzato formato stampa o social, pronto all'uso.</p>
+          </div>
+          <div class="poster-grid">
+            <div class="poster-card js-reveal-fade">
+              <div class="poster-img-wrap"><img src="./poster-1.jpg" onerror="this.style.display='none'"></div>
+              <span class="poster-cap">Aprilia RS660 2025</span>
+            </div>
+            <div class="poster-card js-reveal-fade">
+              <div class="poster-img-wrap"><img src="./poster-2.jpg" onerror="this.style.display='none'"></div>
+              <span class="poster-cap">SM 125 2017</span>
+            </div>
+            <div class="poster-card js-reveal-fade">
+              <div class="poster-img-wrap"><img src="./poster-3.jpg" onerror="this.style.display='none'"></div>
+              <span class="poster-cap">Yamaha R125 2023</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="video" class="section s-video">
+      <div class="container">
+        <div class="sec-tag js-reveal-fade"><span class="sec-num">04</span><span class="sec-line"></span><span>Video</span></div>
+        <h2 class="sec-h2 js-reveal-fade">Produzione Video</h2>
+        
+        <div class="video-showcase js-reveal-fade">
+          <div class="video-grid">
+            <div class="video-thumb-card">
+              <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./video-1.jpg') center/cover;">
+                <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+              <span class="v-time v-long">12:45 • VLOG</span>
+            </div>
+            <div class="video-thumb-card">
+              <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./video-2.jpg') center/cover;">
+                <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+              <span class="v-time">0:45</span>
+            </div>
+            <div class="video-thumb-card">
+              <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./video-3.jpg') center/cover;">
+                <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+              <span class="v-time">1:30</span>
+            </div>
+            <div class="video-thumb-card">
+              <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./video-4.jpg') center/cover;">
+                <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg></div>
+              </div>
+              <span class="v-time">2:15</span>
+            </div>
+          </div>
+          
+          <div class="social-sidebar">
+            <a href="https://tiktok.com/@JACOFUZ" target="_blank" class="soc-link" title="TikTok: JACOFUZ">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+            </a>
+            <a href="https://youtube.com/@JACOFUZ" target="_blank" class="soc-link" title="YouTube: JACOFUZ">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.17 1 12 1 12s0 3.83.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.83 23 12 23 12s0-3.83-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+            </a>
+            <a href="https://instagram.com/jacofuz" target="_blank" class="soc-link" title="Instagram Vlog: JACOFUZ">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+            </a>
+            <a href="https://instagram.com/jacovisuals" target="_blank" class="soc-link" title="Instagram Foto: JACOVISUALS">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="processo" class="section s-how">
+      <div class="container">
+        <div class="sec-tag js-reveal-fade"><span class="sec-num">05</span><span class="sec-line"></span><span>Processo</span></div>
+        <h2 class="sec-h2 js-reveal-fade">Come funziona</h2>
+        <p class="sec-sub js-reveal-fade">Semplice, veloce, senza stress. Dalla prima idea al contenuto finale.</p>
+        <div class="how-grid">
+          <div class="how-step js-reveal-fade"><span class="how-num">01</span><h3>Contatto</h3><p>Scrivimi cosa vuoi ottenere. Ti rispondo entro 24h con disponibilità e preventivo.</p></div>
+          <div class="how-step js-reveal-fade"><span class="how-num">02</span><h3>Pianificazione</h3><p>Decidiamo location, orario e stile. Ogni shooting è studiato a tavolino.</p></div>
+          <div class="how-step js-reveal-fade"><span class="how-num">03</span><h3>Shooting</h3><p>Il giorno dello shooting penso a tutto io: luce, inquadrature, movimento.</p></div>
+          <div class="how-step js-reveal-fade"><span class="how-num">04</span><h3>Consegna</h3><p>Gallery digitale privata entro i tempi concordati. File ottimizzati per ogni uso.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="offerte" class="section s-pricing">
+      <div class="container">
+        <div class="sec-tag js-reveal-fade"><span class="sec-num">06</span><span class="sec-line"></span><span>Pacchetti</span></div>
+        <h2 class="sec-h2 js-reveal-fade">Pacchetti disponibili</h2>
+        
+        <div class="pricing-grid">
+          <div class="price-card js-reveal-fade">
+            <div class="price-head">
+              <span class="price-tier">Privati</span>
+              <p>Ideale per il primo shooting o per esaltare al massimo la tua auto/moto.</p>
+            </div>
+            <ul class="price-feats">
+              <li>Shooting su misura</li>
+              <li>25 foto ritoccate HD</li>
+              <li>Poster personalizzato</li>
+              <li class="feat-no">Video escluso</li>
+            </ul>
+            <a href="#contatti" class="btn-price">Richiedi Info</a>
+          </div>
+
+          <div class="price-card js-reveal-fade">
+            <div class="price-head">
+              <span class="price-tier">Social Starter</span>
+              <p>Per chi inizia a farsi notare sui social e cerca contenuti ottimizzati per l'algoritmo.</p>
+            </div>
+            <ul class="price-feats">
+              <li>Shooting dinamico</li>
+              <li>15 foto ritoccate (formato IG)</li>
+              <li>1 Reel base in verticale</li>
+              <li>Consigli per pubblicazione</li>
+            </ul>
+            <a href="#contatti" class="btn-price">Richiedi Info</a>
+          </div>
+
+          <div class="price-card price-hot js-reveal-fade">
+            <span class="price-badge">Più richiesto</span>
+            <div class="price-head">
+              <span class="price-tier">Creator Pro</span>
+              <p>Il pacchetto completo per dominare con qualità. Fotografia, vlog e short video.</p>
+            </div>
+            <ul class="price-feats">
+              <li>Mezza giornata Foto + Video</li>
+              <li>Copertine/Thumbnail YouTube</li>
+              <li>2-3 Reels professionali</li>
+              <li>Supporto Setup Vlog</li>
+            </ul>
+            <a href="#contatti" class="btn-price-inv">Richiedi Info</a>
+          </div>
+
+          <div class="price-card js-reveal-fade">
+            <div class="price-head">
+              <span class="price-tier">Corporate</span>
+              <p>Per aziende e brand che necessitano di comunicazione visiva premium.</p>
+            </div>
+            <ul class="price-feats">
+              <li>Campagna social dedicata</li>
+              <li>Foto e video commerciali</li>
+              <li>Storytelling del brand</li>
+              <li>Diritti d'uso inclusi</li>
+            </ul>
+            <a href="#contatti" class="btn-price">Richiedi Info</a>
+          </div>
+
+          <div class="price-card js-reveal-fade">
+            <div class="price-head">
+              <span class="price-tier">Vendita</span>
+              <p>Per le concessionarie che vogliono accelerare la decisione d'acquisto del cliente.</p>
+            </div>
+            <ul class="price-feats">
+              <li>Esterni/Interni dettagliati</li>
+              <li>Video walkaround emozionale</li>
+              <li>Formati per annunci web</li>
+              <li>Consegna ultra-rapida</li>
+            </ul>
+            <a href="#contatti" class="btn-price">Richiedi Info</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contatti" class="s-contact">
+      <div class="contact-body section">
+        <div class="container">
+          <div class="contact-grid">
+            <div class="contact-info js-reveal-left">
+              <h3>Scriviamo insieme <br>la prossima storia.</h3>
+              <p>Hai un veicolo, un progetto o un brand da raccontare? Compila il modulo — ti rispondo entro 24h.</p>
+              <div class="c-links">
+                <a href="mailto:jacopo.fuse@gmail.com" class="c-link">jacopo.fuse@gmail.com</a>
+                <a href="https://instagram.com/jacofuz" class="c-link">@JACOFUZ</a>
+                <a href="tel:+393756278807" class="c-link">+39 375.627.88.07</a>
+              </div>
+            </div>
+            <form id="contact-form" class="contact-form js-reveal-right">
+              <div class="form-row">
+                <div class="f-group"><label for="f-name">Nome e cognome *</label><input type="text" id="f-name" required></div>
+                <div class="f-group"><label for="f-email">Email *</label><input type="email" id="f-email" required></div>
+              </div>
+              <div class="f-group"><label for="f-msg">Raccontami il tuo progetto *</label><textarea id="f-msg" required></textarea></div>
+              <div class="form-send-row"><button type="submit" class="btn-send"><span>Invia richiesta</span></button></div>
+              <div id="form-ok" class="form-ok" hidden>✓ Ricevuto! Ti rispondo entro 24h.</div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">JACOPO FUSÉ</div>
+      <div class="footer-copy">© <span class="year-span">2026</span> — Tutti i diritti riservati</div>
+    </div>
+  </footer>
+  <div id="toast" class="toast">Messaggio inviato!</div>
 </body>
 </html>
