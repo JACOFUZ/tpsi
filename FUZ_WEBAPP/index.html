@@ -9,15 +9,17 @@
   <script src="./script.js" defer></script>
 </head>
 <body class="dark">
+
   <div id="loader" class="loader">
     <div class="loader-name">JACOPO FUSÉ</div>
     <div class="loader-progress">
       <div id="loader-bar" class="loader-bar"></div>
     </div>
   </div>
+
   <div id="cursor" class="cursor"></div>
   <div id="cursor-ring" class="cursor-ring"></div>
-  
+
   <header id="site-header" class="site-header">
     <a href="#" class="brand-mark">JF</a>
     <div class="header-actions">
@@ -45,6 +47,8 @@
   </header>
 
   <main>
+
+    <!-- HERO -->
     <section id="hero" class="s-hero">
       <div class="hero-bg-base">
         <div class="hero-grain"></div>
@@ -76,6 +80,7 @@
       </div>
     </section>
 
+    <!-- CHI SONO -->
     <section id="esperienze" class="section s-about s-exp">
       <div class="container">
         <div class="sec-tag js-reveal-fade"><span class="sec-num">01</span><span class="sec-line"></span><span>Chi Sono</span></div>
@@ -95,6 +100,7 @@
       </div>
     </section>
 
+    <!-- SERVIZI -->
     <section id="servizi" class="section s-target">
       <div class="container">
         <div class="sec-tag js-reveal-fade"><span class="sec-num">02</span><span class="sec-line"></span><span>Servizi</span></div>
@@ -144,42 +150,152 @@
       </div>
     </section>
 
+    <!-- ============================================================
+         PORTFOLIO — SEZIONE AGGIORNATA
+    ============================================================ -->
     <section id="portfolio" class="section s-photo">
       <div class="container">
-        <div class="sec-tag js-reveal-fade"><span class="sec-num">03</span><span class="sec-line"></span><span>Portfolio</span></div>
-        <h2 class="sec-h2 js-reveal-fade">Scatti selezionati</h2>
-        
-        <div class="filters js-reveal-fade">
-          <button class="f-btn active" data-filter="all" aria-label="Tutti">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          </button>
-          <button class="f-btn" data-filter="auto" aria-label="Auto">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11v6h-1v2a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-2H9v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-2H5v-6z"/><circle cx="7.5" cy="14.5" r="1.5"/><circle cx="16.5" cy="14.5" r="1.5"/></svg>
-          </button>
-          <button class="f-btn" data-filter="moto" aria-label="Moto">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><circle cx="5.5" cy="15.5" r="3.5"/><circle cx="18.5" cy="15.5" r="3.5"/><path d="M15 6a3.5 3.5 0 1 0-7 0"/><path d="M12 9v6.5"/><path d="M12 11h3.5l1.5 1"/></svg>
-          </button>
+
+        <div class="sec-tag js-reveal-fade">
+          <span class="sec-num">03</span>
+          <span class="sec-line"></span>
+          <span>Portfolio</span>
         </div>
 
+        <!-- TITOLO SU DUE RIGHE -->
+        <h2 class="sec-h2 gallery-title js-reveal-fade">
+          <span class="gallery-main">GALLERIA</span>
+          <em class="gallery-em">Selezionata</em>
+        </h2>
+
+        <!-- FILTRI: 5 categorie, solo icone SVG -->
+        <div class="filters js-reveal-fade">
+
+          <!-- TUTTI: griglia -->
+          <button class="f-btn active" data-filter="all" aria-label="Tutti" title="Tutti">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;">
+              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/>
+            </svg>
+          </button>
+
+          <!-- AUTO: volante -->
+          <button class="f-btn" data-filter="auto" aria-label="Auto" title="Auto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="pointer-events:none;">
+              <circle cx="12" cy="12" r="9"/>
+              <circle cx="12" cy="12" r="2.5"/>
+              <line x1="12" y1="9.5" x2="12" y2="3"/>
+              <line x1="10.2" y1="10.7" x2="5" y2="7.5"/>
+              <line x1="13.8" y1="10.7" x2="19" y2="7.5"/>
+            </svg>
+          </button>
+
+          <!-- MOTO -->
+          <button class="f-btn" data-filter="moto" aria-label="Moto" title="Moto">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;">
+              <circle cx="5.5" cy="15.5" r="3.5"/>
+              <circle cx="18.5" cy="15.5" r="3.5"/>
+              <path d="M15 6a3.5 3.5 0 1 0-7 0"/>
+              <path d="M12 9v6.5"/>
+              <path d="M12 11h3.5l1.5 1"/>
+            </svg>
+          </button>
+
+          <!-- URBAN: aereo -->
+          <button class="f-btn" data-filter="urban" aria-label="Urban" title="Urban">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;">
+              <path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/>
+            </svg>
+          </button>
+
+          <!-- EVENTI: bandiera a scacchi -->
+          <button class="f-btn" data-filter="eventi" aria-label="Eventi" title="Eventi">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;">
+              <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+              <line x1="4" y1="22" x2="4" y2="15"/>
+            </svg>
+          </button>
+
+        </div><!-- /filters -->
+
+        <!-- COLLAGE GRID — 20 foto (5 per categoria) -->
         <div class="collage-grid js-reveal-fade">
+
+          <!-- ROW 1: auto[×2] | moto | urban -->
           <div class="collage-item span-h2 visible" data-cat="auto">
-            <img src="./portfolio-1.jpg" onerror="this.style.display='none'">
-            <div class="collage-label"><span>Auto</span></div>
+            <img src="./portfolio-auto-1.jpg" alt="" onerror="this.style.display='none'">
           </div>
           <div class="collage-item visible" data-cat="moto">
-            <img src="./portfolio-2.jpg" onerror="this.style.display='none'">
-            <div class="collage-label"><span>Moto</span></div>
+            <img src="./portfolio-moto-1.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="collage-item visible" data-cat="urban">
+            <img src="./portfolio-urban-1.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+
+          <!-- ROW 2: eventi | auto | moto[×2] -->
+          <div class="collage-item visible" data-cat="eventi">
+            <img src="./portfolio-eventi-1.jpg" alt="" onerror="this.style.display='none'">
           </div>
           <div class="collage-item visible" data-cat="auto">
-            <img src="./portfolio-3.jpg" onerror="this.style.display='none'">
-            <div class="collage-label"><span>Auto</span></div>
+            <img src="./portfolio-auto-2.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="collage-item span-h2 visible" data-cat="moto">
+            <img src="./portfolio-moto-2.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+
+          <!-- ROW 3: urban[×2] | auto | eventi -->
+          <div class="collage-item span-h2 visible" data-cat="urban">
+            <img src="./portfolio-urban-2.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="collage-item visible" data-cat="auto">
+            <img src="./portfolio-auto-3.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="collage-item visible" data-cat="eventi">
+            <img src="./portfolio-eventi-2.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+
+          <!-- ROW 4: tutti 1×1 -->
+          <div class="collage-item visible" data-cat="moto">
+            <img src="./portfolio-moto-3.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="collage-item visible" data-cat="eventi">
+            <img src="./portfolio-eventi-3.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="collage-item visible" data-cat="auto">
+            <img src="./portfolio-auto-4.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="collage-item visible" data-cat="urban">
+            <img src="./portfolio-urban-3.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+
+          <!-- ROW 5: auto[×2] | moto | eventi -->
+          <div class="collage-item span-h2 visible" data-cat="auto">
+            <img src="./portfolio-auto-5.jpg" alt="" onerror="this.style.display='none'">
           </div>
           <div class="collage-item visible" data-cat="moto">
-            <img src="./portfolio-4.jpg" onerror="this.style.display='none'">
-            <div class="collage-label"><span>Moto</span></div>
+            <img src="./portfolio-moto-4.jpg" alt="" onerror="this.style.display='none'">
           </div>
-        </div>
+          <div class="collage-item visible" data-cat="eventi">
+            <img src="./portfolio-eventi-4.jpg" alt="" onerror="this.style.display='none'">
+          </div>
 
+          <!-- ROW 6: tutti 1×1 -->
+          <div class="collage-item visible" data-cat="urban">
+            <img src="./portfolio-urban-4.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="collage-item visible" data-cat="moto">
+            <img src="./portfolio-moto-5.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="collage-item visible" data-cat="urban">
+            <img src="./portfolio-urban-5.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+          <div class="collage-item visible" data-cat="eventi">
+            <img src="./portfolio-eventi-5.jpg" alt="" onerror="this.style.display='none'">
+          </div>
+
+        </div><!-- /collage-grid -->
+
+        <!-- POSTER SECTION — invariata -->
         <div class="poster-section">
           <div class="poster-section-head js-reveal-fade">
             <span class="poster-eyebrow">Extra incluso</span>
@@ -201,14 +317,15 @@
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
+    <!-- VIDEO -->
     <section id="video" class="section s-video">
       <div class="container">
         <div class="sec-tag js-reveal-fade"><span class="sec-num">04</span><span class="sec-line"></span><span>Video</span></div>
         <h2 class="sec-h2 js-reveal-fade">Produzione Video</h2>
-        
         <div class="video-showcase js-reveal-fade">
           <div class="video-grid">
             <div class="video-thumb-card">
@@ -236,7 +353,6 @@
               <span class="v-time">2:15</span>
             </div>
           </div>
-          
           <div class="social-sidebar">
             <a href="https://tiktok.com/@JACOFUZ" target="_blank" class="soc-link" title="TikTok: JACOFUZ">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
@@ -255,6 +371,7 @@
       </div>
     </section>
 
+    <!-- COME FUNZIONA -->
     <section id="processo" class="section s-how">
       <div class="container">
         <div class="sec-tag js-reveal-fade"><span class="sec-num">05</span><span class="sec-line"></span><span>Processo</span></div>
@@ -269,11 +386,11 @@
       </div>
     </section>
 
+    <!-- PACCHETTI -->
     <section id="offerte" class="section s-pricing">
       <div class="container">
         <div class="sec-tag js-reveal-fade"><span class="sec-num">06</span><span class="sec-line"></span><span>Pacchetti</span></div>
         <h2 class="sec-h2 js-reveal-fade">Pacchetti disponibili</h2>
-        
         <div class="pricing-grid">
           <div class="price-card js-reveal-fade">
             <div class="price-head">
@@ -288,7 +405,6 @@
             </ul>
             <a href="#contatti" class="btn-price">Richiedi Info</a>
           </div>
-
           <div class="price-card js-reveal-fade">
             <div class="price-head">
               <span class="price-tier">Social Starter</span>
@@ -302,7 +418,6 @@
             </ul>
             <a href="#contatti" class="btn-price">Richiedi Info</a>
           </div>
-
           <div class="price-card price-hot js-reveal-fade">
             <span class="price-badge">Più richiesto</span>
             <div class="price-head">
@@ -317,7 +432,6 @@
             </ul>
             <a href="#contatti" class="btn-price-inv">Richiedi Info</a>
           </div>
-
           <div class="price-card js-reveal-fade">
             <div class="price-head">
               <span class="price-tier">Corporate</span>
@@ -331,7 +445,6 @@
             </ul>
             <a href="#contatti" class="btn-price">Richiedi Info</a>
           </div>
-
           <div class="price-card js-reveal-fade">
             <div class="price-head">
               <span class="price-tier">Vendita</span>
@@ -349,6 +462,7 @@
       </div>
     </section>
 
+    <!-- CONTATTI -->
     <section id="contatti" class="s-contact">
       <div class="contact-body section">
         <div class="container">
@@ -375,6 +489,7 @@
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="site-footer">
@@ -383,6 +498,8 @@
       <div class="footer-copy">© <span class="year-span">2026</span> — Tutti i diritti riservati</div>
     </div>
   </footer>
+
   <div id="toast" class="toast">Messaggio inviato!</div>
+
 </body>
 </html>
