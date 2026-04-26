@@ -21,30 +21,31 @@
   <div id="cursor-ring" class="cursor-ring"></div>
 
   <header id="site-header" class="site-header">
-    <a href="#" class="brand-mark">JF</a>
-    <div class="header-actions">
-      <a href="#hero" class="nav-home-btn">HOME</a>
-      <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <button id="hamburger" class="hamburger" aria-label="Menu" aria-expanded="false">
-        <span class="ham-bar"></span>
-        <span class="ham-bar"></span>
-      </button>
-    </div>
-    <nav id="nav-dropdown" class="nav-dropdown" hidden>
-      <ul class="nav-list">
-        <li><a href="#servizi"    class="nav-link" data-num="01">Servizi</a></li>
-        <li><a href="#portfolio"  class="nav-link" data-num="02">Portfolio</a></li>
-        <li><a href="#video"      class="nav-link" data-num="03">Produzione Video</a></li>
-        <li><a href="#processo"   class="nav-link" data-num="04">Come Funziona</a></li>
-        <li><a href="#offerte"    class="nav-link" data-num="05">Pacchetti</a></li>
-        <li><a href="#esperienze" class="nav-link" data-num="06">Chi Sono</a></li>
-        <li><a href="#contatti"   class="nav-link" data-num="07">Contatti</a></li>
-      </ul>
-    </nav>
-  </header>
+  <a href="./index.html" class="brand-mark">JACO VISUALS</a>
+  <div class="header-actions">
+    <a href="./index.html" class="nav-home-btn">HOME</a>
+    <a href="./chi-sono.html" class="nav-chisono-btn">Chi Sono</a>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+    <button id="hamburger" class="hamburger" aria-label="Menu" aria-expanded="false">
+      <span class="ham-bar"></span>
+      <span class="ham-bar"></span>
+    </button>
+  </div>
+  <nav id="nav-dropdown" class="nav-dropdown" hidden>
+    <ul class="nav-list">
+      <li><a href="#servizi"    class="nav-link" data-num="01">Servizi</a></li>
+      <li><a href="#portfolio"  class="nav-link" data-num="02">Portfolio</a></li>
+      <li><a href="#video"      class="nav-link" data-num="03">Produzione Video</a></li>
+      <li><a href="#processo"   class="nav-link" data-num="04">Come Funziona</a></li>
+      <li><a href="#offerte"    class="nav-link" data-num="05">Pacchetti</a></li>
+      <li><a href="./chi-sono.html" class="nav-link" data-num="06">Chi Sono</a></li>
+      <li><a href="#contatti"   class="nav-link" data-num="07">Contatti</a></li>
+    </ul>
+  </nav>
+</header>
 
   <main>
 
@@ -52,33 +53,34 @@
          01 · HERO
     ══════════════════════════════════════════ -->
     <section id="hero" class="s-hero">
-      <div class="hero-bg-base">
-        <div class="hero-grain"></div>
-        <div class="hero-vignette"></div>
+  <div class="hero-bg-base">
+    <div class="hero-grain"></div>
+    <div class="hero-vignette"></div>
+  </div>
+  <canvas id="hero-canvas"></canvas>
+  <div class="container hero-inner">
+    <div class="hero-body">
+      <div class="hero-loc js-reveal-fade">
+        <span class="live-dot"></span> Milano Italia
       </div>
-      <canvas id="hero-canvas"></canvas>
-      <div class="container hero-inner">
-        <div class="hero-body">
-          <div class="hero-loc js-reveal-fade">
-            <span class="live-dot"></span> Milano Italia
-          </div>
-          <h1 class="hero-name">
-            <span class="hero-line js-reveal-clip">JACOPO</span>
-            <span class="hero-line-em js-reveal-clip">FUSÉ</span>
-          </h1>
-          <p class="hero-tagline js-reveal-fade">Fotografia automotive & content creation.. <em>Risultati che vendono.</em></p>
-          <p class="hero-sub js-reveal-fade">Shooting professionali per privati, brand e aziende. Dal veicolo al contenuto finale pronto per i social, la vendita e il branding.</p>
-          <div class="hero-btns js-reveal-fade">
-            <a href="#contatti" class="btn-fill">Prenota il tuo shooting</a>
-            <a href="#portfolio" class="btn-line">Vedi il portfolio</a>
-          </div>
-        </div>
-        <div class="hero-meta js-reveal-fade">
-          <span class="scroll-hint">scroll</span>
-          <div class="scroll-track"><div class="scroll-thumb"></div></div>
-        </div>
+      <h1 class="hero-name">
+        <span class="hero-line js-reveal-clip">JACO</span>
+        <span class="hero-line-em js-reveal-clip">VISUALS</span>
+      </h1>
+      <p class="hero-tagline js-reveal-fade">Fotografia automotive & content creation.. <em>Risultati che vendono.</em></p>
+      <p class="hero-sub js-reveal-fade">Shooting professionali per privati, brand e aziende. Dal veicolo al contenuto finale pronto per i social, la vendita e il branding.</p>
+      <div class="hero-btns js-reveal-fade">
+        <a href="#contatti" class="btn-fill">Prenota il tuo shooting</a>
+        <a href="#offerte"  class="btn-fill btn-fill-outline">Richiedi un preventivo</a>
+        <a href="#portfolio" class="btn-line">Vedi il portfolio</a>
       </div>
-    </section>
+    </div>
+    <div class="hero-meta js-reveal-fade">
+      <span class="scroll-hint">scroll</span>
+      <div class="scroll-track"><div class="scroll-thumb"></div></div>
+    </div>
+  </div>
+</section>
 
     <!-- ══════════════════════════════════════════
          02 · A CHI È RIVOLTO
@@ -283,7 +285,7 @@
             <h3 class="poster-heading">Poster Edit</h3>
             <p class="poster-sub">Ogni shooting può includere un poster grafico personalizzato formato stampa o social, pronto all'uso.</p>
           </div>
-          <div class="poster-grid">
+          <div class="poster-grid poster-grid-4">
             <div class="poster-card js-reveal-fade">
               <div class="poster-img-wrap"><img src="./poster-1.jpg" onerror="this.style.display='none'"></div>
               <span class="poster-cap">Aprilia RS660 2025</span>
@@ -296,9 +298,12 @@
               <div class="poster-img-wrap"><img src="./poster-3.jpg" onerror="this.style.display='none'"></div>
               <span class="poster-cap">Yamaha R125 2023</span>
             </div>
+            <div class="poster-card js-reveal-fade">
+              <div class="poster-img-wrap"><img src="./poster-4.jpg" onerror="this.style.display='none'"></div>
+              <span class="poster-cap">Shooting Auto 2024</span>
+            </div>
           </div>
         </div>
-
       </div>
     </section>
 
@@ -306,67 +311,65 @@
          04 · PRODUZIONE VIDEO
     ══════════════════════════════════════════ -->
     <section id="video" class="section s-video">
-      <div class="container">
-        <div class="sec-tag js-reveal-fade"><span class="sec-num">03</span><span class="sec-line"></span><span>Video</span></div>
-        <h2 class="sec-h2 js-reveal-fade">Produzione Video</h2>
-        <p class="sec-sub js-reveal-fade">Non solo foto. Produco contenuti video per chi vuole costruire una presenza online reale: vlog, motovlog, short per i social. Formato lungo o breve, l'obiettivo è sempre lo stesso — fare visualizzazioni e portare clienti.</p>
+  <div class="container">
+    <div class="sec-tag js-reveal-fade"><span class="sec-num">03</span><span class="sec-line"></span><span>Video</span></div>
+    <h2 class="sec-h2 js-reveal-fade">Produzione Video</h2>
+    <p class="sec-sub js-reveal-fade">Non solo foto. Produco contenuti video per chi vuole costruire una presenza online reale: vlog, motovlog, short per i social. Formato lungo o breve, l'obiettivo è sempre lo stesso — fare visualizzazioni e portare clienti.</p>
 
-        <div class="video-showcase js-reveal-fade">
-          <div class="video-grid">
+    <div class="video-showcase js-reveal-fade">
+      <div class="video-grid">
 
-            <div class="video-thumb-card">
-              <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./video-1.jpg') center/cover;">
-                <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg></div>
-              </div>
-              <span class="v-time v-long">12:45 • VLOG</span>
-            </div>
-
-            <div class="video-thumb-card">
-              <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./video-2.jpg') center/cover;">
-                <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg></div>
-              </div>
-              <span class="v-time">0:45</span>
-            </div>
-
-            <div class="video-thumb-card">
-              <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./video-3.jpg') center/cover;">
-                <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg></div>
-              </div>
-              <span class="v-time">1:30</span>
-            </div>
-
-            <div class="video-thumb-card">
-              <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.6)), url('./video-4.jpg') center/cover;">
-                <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M8 5v14l11-7z"/></svg></div>
-              </div>
-              <span class="v-time">2:15</span>
-            </div>
-
+        <div class="video-thumb-card">
+          <div class="video-thumb-title">Motovlog Alpi — Una giornata perfetta</div>
+          <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.55)), url('./video-1.jpg') center/cover;">
+            <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg></div>
           </div>
-
-          <!-- SIDEBAR SOCIAL: tutti e 4 i canali -->
-          <div class="social-sidebar">
-
-            <a href="https://tiktok.com/@JACOFUZ" target="_blank" class="soc-link" title="TikTok: @JACOFUZ">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
-            </a>
-
-            <a href="https://youtube.com/@JACOFUZ" target="_blank" class="soc-link" title="YouTube: @JACOFUZ">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.17 1 12 1 12s0 3.83.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.83 23 12 23 12s0-3.83-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
-            </a>
-
-            <a href="https://instagram.com/jacofuz" target="_blank" class="soc-link" title="Instagram Vlog: @JACOFUZ">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-            </a>
-
-            <a href="https://instagram.com/jacovisuals" target="_blank" class="soc-link" title="Instagram Foto: @JACOVISUALS">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
-            </a>
-
-          </div>
+          <span class="v-time v-long">12:45 • MOTOVLOG</span>
         </div>
+
+        <div class="video-thumb-card">
+          <div class="video-thumb-title">Shooting in 60 secondi — Aprilia RS660</div>
+          <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.55)), url('./video-2.jpg') center/cover;">
+            <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <span class="v-time">0:45 • REEL</span>
+        </div>
+
+        <div class="video-thumb-card">
+          <div class="video-thumb-title">Vlog — Dietro le quinte di uno shooting</div>
+          <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.55)), url('./video-3.jpg') center/cover;">
+            <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <span class="v-time v-long">14:20 • VLOG</span>
+        </div>
+
+        <div class="video-thumb-card">
+          <div class="video-thumb-title">Brand Content — Yamaha R125 2023</div>
+          <div class="video-ph" style="background: linear-gradient(rgba(0,0,0,0.25), rgba(0,0,0,0.55)), url('./video-4.jpg') center/cover;">
+            <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg></div>
+          </div>
+          <span class="v-time">2:15 • BRAND VIDEO</span>
+        </div>
+
       </div>
-    </section>
+
+      <div class="social-sidebar">
+        <a href="https://tiktok.com/@JACOFUZ" target="_blank" class="soc-link" title="TikTok: @JACOFUZ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"/></svg>
+        </a>
+        <a href="https://youtube.com/@JACOFUZ" target="_blank" class="soc-link" title="YouTube: @JACOFUZ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.42a2.78 2.78 0 0 0-1.94 2C1 8.17 1 12 1 12s0 3.83.46 5.58a2.78 2.78 0 0 0 1.94 2C5.12 20 12 20 12 20s6.88 0 8.6-.42a2.78 2.78 0 0 0 1.94-2C23 15.83 23 12 23 12s0-3.83-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+        </a>
+        <a href="https://instagram.com/jacofuz" target="_blank" class="soc-link" title="Instagram Vlog: @JACOFUZ">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </a>
+        <a href="https://instagram.com/jacovisuals" target="_blank" class="soc-link" title="Instagram Foto: @JACOVISUALS">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
 
     <!-- ══════════════════════════════════════════
          05 · COME FUNZIONA
@@ -404,92 +407,114 @@
     <!-- ══════════════════════════════════════════
          06 · PACCHETTI
     ══════════════════════════════════════════ -->
-    <section id="offerte" class="section s-pricing">
-      <div class="container">
-        <div class="sec-tag js-reveal-fade"><span class="sec-num">05</span><span class="sec-line"></span><span>Pacchetti</span></div>
-        <h2 class="sec-h2 js-reveal-fade">Pacchetti disponibili</h2>
+   <section id="offerte" class="section s-pricing">
+  <div class="container">
+    <div class="sec-tag js-reveal-fade"><span class="sec-num">05</span><span class="sec-line"></span><span>Pacchetti</span></div>
+    <h2 class="sec-h2 js-reveal-fade">Pacchetti disponibili</h2>
 
-        <div class="pricing-grid">
+    <div class="pricing-grid">
 
-          <!-- IL TUO VEICOLO -->
-          <div class="price-card js-reveal-fade">
-            <div class="price-head">
-              <span class="price-tier">Il Tuo Veicolo</span>
-              <p>Per chi vuole ricordarsi del proprio mezzo come merita — per sempre.</p>
-            </div>
-            <ul class="price-feats">
-              <li>Shooting su misura</li>
-              <li>25 foto ritoccate HD</li>
-              <li>Poster personalizzato</li>
-              <li class="feat-no">Video non incluso</li>
-            </ul>
-            <a href="#contatti" class="btn-price">Richiedi Info</a>
+      <!-- IL TUO VEICOLO — 69€ -->
+      <div class="price-card js-reveal-fade">
+        <div class="price-head">
+          <span class="price-tier">Il Tuo Veicolo</span>
+          <div class="price-val-block">
+            <span class="price-amount">69<span class="price-currency">€</span></span>
           </div>
-
-          <!-- PRESENZA SOCIAL -->
-          <div class="price-card js-reveal-fade">
-            <div class="price-head">
-              <span class="price-tier">Presenza Social</span>
-              <p>Per chi vuole iniziare a fare numeri sui social senza perdere tempo.</p>
-            </div>
-            <ul class="price-feats">
-              <li>Shooting dinamico</li>
-              <li>15 foto formato Instagram</li>
-              <li>1 Reel verticale ottimizzato</li>
-              <li>Consigli strategici per la pubblicazione</li>
-            </ul>
-            <a href="#contatti" class="btn-price">Richiedi Info</a>
-          </div>
-
-          <!-- CREATOR PRO — più richiesto -->
-          <div class="price-card price-hot js-reveal-fade">
-            <span class="price-badge">Più richiesto</span>
-            <div class="price-head">
-              <span class="price-tier">Creator Pro</span>
-              <p>Per chi vuole dominare foto e video senza gestire tre fornitori diversi.</p>
-            </div>
-            <ul class="price-feats">
-              <li>Mezza giornata Foto + Video</li>
-              <li>Thumbnail / Copertine YouTube</li>
-              <li>2–3 Reels professionali</li>
-              <li>Setup e supporto vlog</li>
-            </ul>
-            <a href="#contatti" class="btn-price-inv">Richiedi Info</a>
-          </div>
-
-          <!-- BRAND PREMIUM -->
-          <div class="price-card js-reveal-fade">
-            <div class="price-head">
-              <span class="price-tier">Brand Premium</span>
-              <p>Per aziende e brand che non possono permettersi contenuti mediocri.</p>
-            </div>
-            <ul class="price-feats">
-              <li>Campagna social dedicata</li>
-              <li>Foto e video commerciali</li>
-              <li>Storytelling del brand</li>
-              <li>Diritti d'uso inclusi</li>
-            </ul>
-            <a href="#contatti" class="btn-price">Richiedi Info</a>
-          </div>
-
-          <!-- VENDI PRIMA -->
-          <div class="price-card js-reveal-fade">
-            <div class="price-head">
-              <span class="price-tier">Vendi Prima</span>
-              <p>Per concessionarie e privati che devono vendere il veicolo nel minor tempo possibile.</p>
-            </div>
-            <ul class="price-feats">
-              <li>Esterni + interni in dettaglio</li>
-              <li>Video walkaround emozionale</li>
-              <li>Formati pronti per annunci web</li>
-              <li>Consegna ultra-rapida</li>
-            </ul>
-            <a href="#contatti" class="btn-price">Richiedi Info</a>
-          </div>
-
+          <p>Per chi vuole ricordarsi del proprio mezzo come merita — per sempre.</p>
         </div>
+        <ul class="price-feats">
+          <li>Shooting su misura</li>
+          <li>25 foto ritoccate HD</li>
+          <li>Poster personalizzato</li>
+          <li class="feat-no">Video non incluso</li>
+        </ul>
+        <a href="#contatti" class="btn-price">Prenota ora</a>
       </div>
-    </section>
+
+      <!-- PRESENZA SOCIAL — 149€ -->
+      <div class="price-card js-reveal-fade">
+        <div class="price-head">
+          <span class="price-tier">Presenza Social</span>
+          <div class="price-val-block">
+            <span class="price-amount">149<span class="price-currency">€</span></span>
+          </div>
+          <p>Per chi vuole iniziare a fare numeri sui social senza perdere tempo.</p>
+        </div>
+        <ul class="price-feats">
+          <li>Shooting dinamico</li>
+          <li>15 foto formato Instagram</li>
+          <li>1 Reel verticale ottimizzato</li>
+          <li>Consigli strategici per la pubblicazione</li>
+        </ul>
+        <a href="#contatti" class="btn-price">Prenota ora</a>
+      </div>
+
+      <!-- CREATOR PRO — 299€ — PIÙ SCELTO -->
+      <div class="price-card price-hot js-reveal-fade">
+        <span class="price-badge">Più scelto</span>
+        <div class="price-head">
+          <span class="price-tier">Creator Pro</span>
+          <div class="price-val-block">
+            <span class="price-amount">299<span class="price-currency">€</span></span>
+          </div>
+          <p>Per chi vuole dominare foto e video senza gestire tre fornitori diversi.</p>
+        </div>
+        <ul class="price-feats">
+          <li>Mezza giornata Foto + Video</li>
+          <li>Thumbnail / Copertine YouTube</li>
+          <li>2–3 Reels professionali</li>
+          <li>Setup e supporto vlog</li>
+        </ul>
+        <a href="#contatti" class="btn-price-inv">Prenota ora</a>
+      </div>
+
+      <!-- BRAND PREMIUM — preventivo -->
+      <div class="price-card js-reveal-fade">
+        <div class="price-head">
+          <span class="price-tier">Brand Premium</span>
+          <div class="price-val-block">
+            <span class="price-amount-custom">Su preventivo</span>
+          </div>
+          <p>Per aziende e brand che non possono permettersi contenuti mediocri.</p>
+        </div>
+        <ul class="price-feats">
+          <li>Campagna social dedicata</li>
+          <li>Foto e video commerciali</li>
+          <li>Storytelling del brand</li>
+          <li>Diritti d'uso inclusi</li>
+        </ul>
+        <a href="#contatti" class="btn-price">Richiedi un preventivo</a>
+      </div>
+
+      <!-- VENDI PRIMA — preventivo -->
+      <div class="price-card js-reveal-fade">
+        <div class="price-head">
+          <span class="price-tier">Vendi Prima</span>
+          <div class="price-val-block">
+            <span class="price-amount-custom">Su preventivo</span>
+          </div>
+          <p>Per concessionarie e privati che devono vendere il veicolo nel minor tempo possibile.</p>
+        </div>
+        <ul class="price-feats">
+          <li>Esterni + interni in dettaglio</li>
+          <li>Video walkaround emozionale</li>
+          <li>Formati pronti per annunci web</li>
+          <li>Consegna ultra-rapida</li>
+        </ul>
+        <a href="#contatti" class="btn-price">Richiedi un preventivo</a>
+      </div>
+
+    </div>
+
+    <!-- CTA SOTTO I PACCHETTI -->
+    <div class="pricing-cta-row js-reveal-fade">
+      <p class="pricing-cta-note">Non sai quale scegliere? Scrivimi e ti aiuto a trovare il pacchetto giusto — senza impegno.</p>
+      <a href="#contatti" class="btn-fill">Contattami ora</a>
+    </div>
+
+  </div>
+</section>
 
     <!-- ══════════════════════════════════════════
          07 · CHI SONO
@@ -524,6 +549,7 @@
             <div class="contact-info js-reveal-left">
               <h3>Hai un veicolo da fotografare?<br><em>Scrivimi — rispondo in 24h.</em></h3>
               <p>Dimmi cosa hai in mente: ti mando disponibilità e preventivo senza impegno. Niente lunghe telefonate, niente perditempo.</p>
+              <a href="#contact-form" class="btn-fill btn-cta-contact">Contattami ora</a>
               <div class="c-links">
                 <a href="mailto:jacopo.fuse@gmail.com" class="c-link">jacopo.fuse@gmail.com</a>
                 <a href="https://instagram.com/jacofuz" class="c-link">@JACOFUZ</a>
@@ -561,7 +587,7 @@
 
   <footer class="site-footer">
     <div class="container footer-inner">
-      <div class="footer-brand">JACOPO FUSÉ</div>
+      <div class="footer-brand">JACO VISUALS</div>
       <div class="footer-copy">© <span class="year-span">2026</span> — Tutti i diritti riservati</div>
     </div>
   </footer>
