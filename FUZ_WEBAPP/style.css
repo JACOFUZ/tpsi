@@ -100,6 +100,18 @@ body.light .icon-moon { opacity:1; position:relative; }
 .s-hero { position:relative; min-height:100svh; display:flex; align-items:flex-end; padding:clamp(4rem,8vh,7rem) clamp(1.5rem,5vw,4rem) clamp(3rem,6vh,5rem); overflow:hidden; }
 .hero-bg-base { position:absolute; inset:0; z-index:0; background:radial-gradient(ellipse 110% 80% at 50% 35%, #150a21 0%, var(--bg) 68%); overflow:hidden; }
 body.light .hero-bg-base { background:radial-gradient(ellipse 110% 80% at 50% 35%, #e8d0ff 0%, var(--bg) 68%); }
+
+/* HERO BG IMAGE — aggiunta immagine sfondo hero */
+.hero-bg-img {
+  position: absolute;
+  inset: 0;
+  background: url('./hero-bg.jpg') center / cover no-repeat;
+  opacity: 0.22;
+  z-index: 0;
+}
+body.light .hero-bg-img { opacity: 0.12; }
+/* /HERO BG IMAGE */
+
 .hero-grain { position:absolute; inset:-50%; width:200%; height:200%; opacity:.4; pointer-events:none; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E"); animation:grain 8s steps(10) infinite; z-index:1; }
 @keyframes grain {
   0%{transform:translate(0,0)} 10%{transform:translate(-2%,-3%)} 20%{transform:translate(3%,1%)}
@@ -222,6 +234,25 @@ body.light .hero-bg-base { background:radial-gradient(ellipse 110% 80% at 50% 35
 .soc-link { color:var(--text-dim); transition:color 0.3s,transform 0.3s,background 0.3s; display:flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:var(--bg2); }
 .soc-link:hover { color:var(--text); background:var(--accent); transform:translateY(-4px); }
 
+/* VIDEO WIP BANNER — rimuovibile in futuro: blocco isolato */
+.video-wip-banner {
+  display: inline-flex;
+  align-items: center;
+  gap: .7rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .75rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  background: var(--accent-glow);
+  border-radius: var(--r);
+  padding: .55rem 1.3rem;
+  margin-bottom: 2.5rem;
+}
+/* /VIDEO WIP BANNER */
+
 /* HOW */
 .s-how { background:var(--bg2); position:relative; overflow:hidden; }
 .s-how > .container { position:relative; z-index:1; }
@@ -296,7 +327,6 @@ textarea { resize:vertical; min-height:130px; }
 /* ================================================================
    AGGIUNTE CSS — incolla in fondo a style.css
 ================================================================ */
-
 /* BRAND MARK — testo più lungo, riduci size */
 .brand-mark {
   font-size: 1.1rem;
@@ -341,6 +371,7 @@ textarea { resize:vertical; min-height:130px; }
   line-height: 1.3;
   text-transform: uppercase;
 }
+
 /* thumbnail più grandi */
 .video-thumb-card .video-ph {
   aspect-ratio: 16/9;
@@ -411,6 +442,7 @@ textarea { resize:vertical; min-height:130px; }
 @media (max-width: 480px) {
   .poster-grid-4 { grid-template-columns: 1fr !important; }
 }
+
 /* poster stessa altezza immagine */
 .poster-grid-4 .poster-img-wrap {
   aspect-ratio: 2/3;
@@ -421,4 +453,3 @@ textarea { resize:vertical; min-height:130px; }
   height: 100%;
   object-fit: cover;
 }
-
