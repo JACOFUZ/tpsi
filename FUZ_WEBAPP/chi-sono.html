@@ -19,7 +19,6 @@
     @media (min-width: 768px) {
       .about-page-grid { grid-template-columns: 360px 1fr; gap: 6rem; }
     }
-
     /* foto + frame */
     .about-page-visual { position: relative; }
     .about-page-photo {
@@ -46,7 +45,6 @@
       flex-wrap: wrap;
     }
     .about-page-social .soc-link { background: var(--bg3); }
-
     /* contenuto testuale */
     .about-page-content { display: flex; flex-direction: column; gap: 3rem; }
     .about-intro-title {
@@ -71,7 +69,6 @@
       line-height: 1.85;
       max-width: 60ch;
     }
-
     /* blocchi info (curriculum) */
     .about-blocks { display: flex; flex-direction: column; gap: 2rem; }
     .about-block {
@@ -102,7 +99,6 @@
       color: var(--text-dim);
       line-height: 1.8;
     }
-
     /* tag passioni */
     .about-tags {
       display: flex;
@@ -122,7 +118,6 @@
       border-radius: 2px;
       padding: .3rem .9rem;
     }
-
     /* CTA finale */
     .about-cta-row {
       display: flex;
@@ -144,7 +139,6 @@
   </style>
 </head>
 <body class="dark">
-
   <div id="loader" class="loader">
     <div class="loader-name">JACO VISUALS</div>
     <div class="loader-progress">
@@ -172,13 +166,10 @@
     </div>
     <nav id="nav-dropdown" class="nav-dropdown" hidden>
       <ul class="nav-list">
-        <li><a href="./index.html#servizi"   class="nav-link" data-num="01">Servizi</a></li>
-        <li><a href="./index.html#portfolio" class="nav-link" data-num="02">Portfolio</a></li>
-        <li><a href="./index.html#video"     class="nav-link" data-num="03">Produzione Video</a></li>
-        <li><a href="./index.html#processo"  class="nav-link" data-num="04">Come Funziona</a></li>
-        <li><a href="./index.html#offerte"   class="nav-link" data-num="05">Pacchetti</a></li>
-        <li><a href="./chi-sono.html"        class="nav-link" data-num="06">Chi Sono</a></li>
-        <li><a href="./index.html#contatti"  class="nav-link" data-num="07">Contatti</a></li>
+        <li><a href="./index.html#portfolio" class="nav-link" data-num="01">Portfolio</a></li>
+        <li><a href="./index.html#video" class="nav-link" data-num="02">Video</a></li>
+        <li><a href="./chi-sono.html" class="nav-link" data-num="03">Chi Sono</a></li>
+        <li><a href="./contatti.html" class="nav-link" data-num="04">Contatti</a></li>
       </ul>
     </nav>
   </header>
@@ -186,7 +177,6 @@
   <main>
     <section class="about-page">
       <div class="container">
-
         <div class="sec-tag js-reveal-fade">
           <span class="sec-num">—</span>
           <span class="sec-line"></span>
@@ -194,14 +184,12 @@
         </div>
 
         <div class="about-page-grid">
-
           <!-- COLONNA SINISTRA: foto + social -->
           <div class="about-page-visual js-reveal-left">
             <div class="about-page-photo">
               <img src="./foto-profilo.jpg" alt="Jacopo — JACO VISUALS" onerror="this.style.display='none'">
             </div>
             <div class="about-page-frame"></div>
-
             <div class="about-page-social">
               <a href="https://instagram.com/jacovisuals" target="_blank" class="soc-link" title="@JACOVISUALS">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
@@ -220,7 +208,6 @@
 
           <!-- COLONNA DESTRA: testo -->
           <div class="about-page-content js-reveal-right">
-
             <div>
               <h1 class="about-intro-title">
                 Sono Jacopo.<br>
@@ -232,7 +219,6 @@
             </div>
 
             <div class="about-blocks">
-
               <div class="about-block js-reveal-fade">
                 <span class="about-block-label">Cosa faccio</span>
                 <div class="about-block-title">Fotografia & Content Creation</div>
@@ -256,7 +242,7 @@
               <div class="about-block js-reveal-fade">
                 <span class="about-block-label">Approccio al lavoro</span>
                 <div class="about-block-title">Niente fronzoli. Solo risultati.</div>
-                <p>Non faccio fuffa. Se prenoti uno shooting con me, ricevi contenuti che funzionano davvero — ottimizzati per i social, per gli annunci o per il branding, dipende da cosa ti serve. Rispondo entro 24h, lavoro in modo preciso e consegno nei tempi concordati. Sempre.</p>
+                <p>Non faccio fuffa. Se lavori con me, ricevi contenuti che funzionano davvero — ottimizzati per i social, per gli annunci o per il branding, dipende da cosa ti serve. Rispondo entro 24h, lavoro in modo preciso e consegno nei tempi concordati. Sempre.</p>
               </div>
 
               <div class="about-block js-reveal-fade">
@@ -264,22 +250,18 @@
                 <div class="about-block-title">Online & Offline</div>
                 <p>Opero principalmente a Milano e dintorni, ma mi sposto per shooting su commissione. Online trovi il mio lavoro su Instagram <strong>@JACOVISUALS</strong> (fotografia) e <strong>@JACOFUZ</strong> (vlog e video), su YouTube e TikTok.</p>
               </div>
-
             </div><!-- /about-blocks -->
 
             <!-- CTA FINALE -->
             <div class="about-cta-row js-reveal-fade">
               <p>Hai un progetto in mente? Non aspettare. Scrivimi adesso — ti rispondo senza impegno.</p>
               <div class="about-cta-btns">
-                <a href="./index.html#contatti" class="btn-fill">Prenota il tuo shooting</a>
-                <a href="./index.html#offerte"  class="btn-line">Vedi i pacchetti</a>
+                <a href="./contatti.html" class="btn-fill">Parliamo del tuo progetto</a>
+                <a href="./index.html#portfolio" class="btn-line">Vedi il portfolio</a>
               </div>
             </div>
-
           </div><!-- /about-page-content -->
-
         </div><!-- /about-page-grid -->
-
       </div>
     </section>
   </main>
@@ -292,6 +274,5 @@
   </footer>
 
   <div id="toast" class="toast">Messaggio inviato!</div>
-
 </body>
 </html>
