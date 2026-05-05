@@ -3,7 +3,9 @@
  */
 const $ = (sel, ctx = document) => ctx.querySelector(sel);
 const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
+
 function sanitize(str) { const d = document.createElement('div'); d.textContent = String(str); return d.textContent; }
+
 try { $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); }); } catch(e) {}
 
 /* ── TRANSLATIONS ── */
@@ -96,27 +98,23 @@ const translations = {
   }
 };
 
-/* ── LANGUAGE ── */
+/* ── LANGUAGE — mostra SEMPRE ad ogni apertura, nessun localStorage ── */
 try {
   (function initLang() {
     const overlay = document.getElementById('lang-overlay');
-    const savedLang = localStorage.getItem('jf-lang');
-    if (savedLang) {
-      applyLang(savedLang);
-      if (overlay) overlay.setAttribute('hidden', '');
-    } else {
-      if (overlay) overlay.removeAttribute('hidden');
-    }
-    if (overlay) {
-      overlay.querySelectorAll('.lang-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-          const lang = btn.dataset.lang;
-          localStorage.setItem('jf-lang', lang);
-          applyLang(lang);
-          overlay.setAttribute('hidden', '');
-        });
+    if (!overlay) return;
+
+    // Mostra sempre il banner — nessun salvataggio persistente
+    overlay.removeAttribute('hidden');
+
+    overlay.querySelectorAll('.lang-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        applyLang(lang);
+        overlay.setAttribute('hidden', '');
       });
-    }
+    });
+
     function applyLang(lang) {
       const t = translations[lang];
       if (!t) return;
@@ -216,6 +214,7 @@ function initReveal() {
     try { $$('.js-reveal-fade,.js-reveal-clip,.js-reveal-left,.js-reveal-right').forEach(el => el.classList.add('in')); } catch(e2) {}
   }
 }
+
 function triggerInitialReveals() {
   try {
     initReveal();
