@@ -17,7 +17,7 @@
       <h2 class="lang-heading">Scegli la lingua<span class="lang-slash"> / </span>Choose language</h2>
       <div class="lang-btns">
         <button class="lang-btn" data-lang="it"><span class="lang-flag">🇮🇹</span><span>Italiano</span></button>
-        <button class="lang-btn" data-lang="en"><span class="lang-flag">🇬🇧</span><span>English</span></button>
+        <button class="lang-btn" data-lang="en"><span class="lang-flag">🇺🇸</span><span>ENG (USA)</span></button>
       </div>
     </div>
   </div>
@@ -74,8 +74,8 @@
             <span class="hero-line js-reveal-clip">JACO</span>
             <span class="hero-line-em js-reveal-clip">VISUALS</span>
           </h1>
-          <p class="hero-tagline js-reveal-fade" data-i18n="hero.tagline">Fotografia automotive &amp; content creation — frame dopo frame.</p>
-          <p class="hero-sub js-reveal-fade" data-i18n="hero.sub">Creo immagini e video che raccontano veicoli. Per privati, brand e chi vuole che il proprio mezzo parli da solo.</p>
+          <p class="hero-tagline js-reveal-fade" data-i18n="hero.tagline">Non documento. Racconto.</p>
+          <p class="hero-sub js-reveal-fade" data-i18n="hero.sub">Ogni macchina, ogni moto — ha una luce giusta e un frame che la racconta meglio di mille parole. Fotografia e video automotive: frame dopo frame, senza compromessi.</p>
           <div class="hero-btns js-reveal-fade">
             <a href="./contatti.html" class="btn-fill"><span data-i18n="hero.cta1">Collaboriamo</span></a>
             <a href="./chi-sono.html" class="btn-line"><span data-i18n="hero.cta2">Conoscimi</span></a>
@@ -96,7 +96,6 @@
           <span class="gallery-main" data-i18n="portfolio.h2.main">GALLERIA</span>
           <em class="gallery-em" data-i18n="portfolio.h2.em">Selezionata</em>
         </h2>
-
         <div class="filters js-reveal-fade">
           <button class="f-btn active" data-filter="all" aria-label="Tutti" title="Tutti">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
@@ -108,56 +107,71 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><circle cx="5.5" cy="15.5" r="3.5"/><circle cx="18.5" cy="15.5" r="3.5"/><path d="M15 6a3.5 3.5 0 1 0-7 0"/><path d="M12 9v6.5"/><path d="M12 11h3.5l1.5 1"/></svg>
           </button>
           <button class="f-btn" data-filter="urban" aria-label="Urban" title="Urban">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v1.5L13 19v-5.5l8 2.5z"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
           </button>
           <button class="f-btn" data-filter="eventi" aria-label="Eventi" title="Eventi">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
           </button>
         </div>
 
-        <!-- COLLAGE GRID 5 colonne, 8 per categoria = 32 items -->
+        <!-- COLLAGE GRID — 11 per categoria -->
         <div class="collage-grid js-reveal-fade">
-          <!-- R1: auto(2) moto urban(2) = 5 -->
+          <!-- R1 -->
           <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-1.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-1.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item span-h2 visible" data-cat="urban"><img src="./portfolio-urban-1.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R2: eventi auto(2) moto urban = 5 -->
+          <!-- R2 -->
           <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-1.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-2.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-2.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-2.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R3: eventi(2) auto(2) moto = 5 -->
+          <!-- R3 -->
           <div class="collage-item span-h2 visible" data-cat="eventi"><img src="./portfolio-eventi-2.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-3.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-3.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R4: urban moto eventi auto(2) = 5 -->
+          <!-- R4 -->
           <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-3.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-4.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-3.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-4.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R5: urban(2) eventi auto(2) = 5 -->
+          <!-- R5 -->
           <div class="collage-item span-h2 visible" data-cat="urban"><img src="./portfolio-urban-4.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-4.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-5.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R6: moto urban eventi auto(2) = 5 -->
+          <!-- R6 -->
           <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-5.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-5.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-5.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-6.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R7: moto(2) urban(2) eventi = 5 -->
+          <!-- R7 -->
           <div class="collage-item span-h2 visible" data-cat="moto"><img src="./portfolio-moto-6.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item span-h2 visible" data-cat="urban"><img src="./portfolio-urban-6.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-6.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R8: auto moto eventi urban(2) = 5 -->
+          <!-- R8 -->
           <div class="collage-item visible" data-cat="auto"><img src="./portfolio-auto-7.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-7.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-7.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item span-h2 visible" data-cat="urban"><img src="./portfolio-urban-7.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R9: auto(2) moto eventi urban = 5 -->
+          <!-- R9 -->
           <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-8.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-8.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-8.jpg" alt="" onerror="this.style.display='none'"></div>
           <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-8.jpg" alt="" onerror="this.style.display='none'"></div>
+          <!-- R10 — +3 per categoria -->
+          <div class="collage-item visible" data-cat="auto"><img src="./portfolio-auto-9.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="collage-item span-h2 visible" data-cat="moto"><img src="./portfolio-moto-9.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-9.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-9.jpg" alt="" onerror="this.style.display='none'"></div>
+          <!-- R11 -->
+          <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-10.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-10.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-10.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-10.jpg" alt="" onerror="this.style.display='none'"></div>
+          <!-- R12 -->
+          <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-11.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="collage-item span-h2 visible" data-cat="eventi"><img src="./portfolio-eventi-11.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="collage-item visible" data-cat="auto"><img src="./portfolio-auto-11.jpg" alt="" onerror="this.style.display='none'"></div>
+          <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-11.jpg" alt="" onerror="this.style.display='none'"></div>
         </div>
 
         <!-- POST PRODUCTION / POSTER -->
@@ -195,12 +209,10 @@
         <div class="sec-tag js-reveal-fade"><span class="sec-num">02</span><span class="sec-line"></span><span data-i18n="nav.video">Video</span></div>
         <h2 class="sec-h2 js-reveal-fade" data-i18n="video.h2">Produzione Video</h2>
         <p class="sec-sub js-reveal-fade" data-i18n="video.sub">Non solo foto. Creo contenuti video per chi vuole costruire una presenza online reale: vlog, motovlog, short per i social. Formato lungo o breve — visualizzazioni e risultati concreti.</p>
-
         <div class="video-wip-banner js-reveal-fade">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
           <span data-i18n="video.wip">Work in Progress — Coming Soon</span>
         </div>
-
         <div class="video-showcase js-reveal-fade">
           <!-- LEFT: 4 YouTube cards 2x2 -->
           <div class="video-grid">
@@ -233,7 +245,7 @@
               <span class="v-time">2:15 • BRAND VIDEO</span>
             </div>
           </div>
-          <!-- RIGHT: 2 vertical TikTok-style videos -->
+          <!-- RIGHT: 2 vertical videos -->
           <div class="video-verticals">
             <video class="video-v-item" autoplay loop muted playsinline>
               <source src="./video-vertical-1.mp4" type="video/mp4">
