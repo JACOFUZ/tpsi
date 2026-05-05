@@ -1,293 +1,259 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JACOPO FUSÉ | Fotografia Automotive & Content Creation</title>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&family=Barlow+Condensed:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css">
-  <script src="./script.js" defer></script>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <title>JACOPO FUSÉ | Fotografia Automotive & Content Creation</title>
+ <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,600;0,700;0,800;0,900;1,300&family=Barlow+Condensed:wght@700;800;900&family=Cormorant+Garamond:ital,wght@0,300;1,300&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="./style.css">
+ <script src="./script.js" defer></script>
 </head>
 <body class="dark">
-
-  <!-- LANGUAGE BANNER -->
-  <div id="lang-overlay" class="lang-overlay" hidden>
-    <div class="lang-card">
-      <div class="lang-brand">JACO VISUALS</div>
-      <h2 class="lang-heading">Scegli la lingua<span class="lang-slash"> / </span>Choose language</h2>
-      <div class="lang-btns">
-        <button class="lang-btn" data-lang="it"><span class="lang-flag">🇮🇹</span><span>Italiano</span></button>
-        <button class="lang-btn" data-lang="en"><span class="lang-flag">🇺🇸</span><span>ENG (USA)</span></button>
-      </div>
-    </div>
-  </div>
-
-  <div id="loader" class="loader">
-    <div class="loader-name">JACOPO FUSÉ</div>
-    <div class="loader-progress"><div id="loader-bar" class="loader-bar"></div></div>
-  </div>
-
-  <div id="cursor" class="cursor"></div>
-  <div id="cursor-ring" class="cursor-ring"></div>
-
-  <header id="site-header" class="site-header">
-    <a href="./index.html" class="brand-mark">JACO VISUALS</a>
-    <div class="header-actions">
-      <a href="./index.html" class="nav-home-btn" data-i18n="nav.home">HOME</a>
-      <a href="./chi-sono.html" class="nav-chisono-btn" data-i18n="nav.about">Chi Sono</a>
-      <a href="./contatti.html" class="nav-contact-btn" data-i18n="nav.contact">Contattami</a>
-      <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <button id="hamburger" class="hamburger" aria-label="Menu" aria-expanded="false">
-        <span class="ham-bar"></span>
-        <span class="ham-bar"></span>
-      </button>
-    </div>
-    <nav id="nav-dropdown" class="nav-dropdown" hidden>
-      <ul class="nav-list">
-        <li><a href="#portfolio" class="nav-link" data-num="01" data-i18n="nav.portfolio">Portfolio</a></li>
-        <li><a href="#video" class="nav-link" data-num="02" data-i18n="nav.video">Video</a></li>
-        <li><a href="./contatti.html" class="nav-link" data-num="03" data-i18n="nav.contact">Contattami</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- 01 HERO -->
-    <section id="hero" class="s-hero">
-      <div class="hero-bg-base">
-        <div class="hero-bg-img"></div>
-        <div class="hero-grain"></div>
-        <div class="hero-vignette"></div>
-      </div>
-      <canvas id="hero-canvas"></canvas>
-      <div class="container hero-inner">
-        <div class="hero-body">
-          <div class="hero-loc js-reveal-fade">
-            <span class="live-dot"></span>
-            <span data-i18n="hero.loc">Milano Italia</span>
-          </div>
-          <h1 class="hero-name">
-            <span class="hero-line js-reveal-clip">JACO</span>
-            <span class="hero-line-em js-reveal-clip">VISUALS</span>
-          </h1>
-          <p class="hero-tagline js-reveal-fade" data-i18n="hero.tagline">Non documento. Racconto.</p>
-          <p class="hero-sub js-reveal-fade" data-i18n="hero.sub">Ogni macchina, ogni moto — ha una luce giusta e un frame che la racconta meglio di mille parole. Fotografia e video automotive: frame dopo frame, senza compromessi.</p>
-          <div class="hero-btns js-reveal-fade">
-            <a href="./contatti.html" class="btn-fill"><span data-i18n="hero.cta1">Collaboriamo</span></a>
-            <a href="./chi-sono.html" class="btn-line"><span data-i18n="hero.cta2">Conoscimi</span></a>
-          </div>
-        </div>
-        <div class="hero-meta js-reveal-fade">
-          <span class="scroll-hint">scroll</span>
-          <div class="scroll-track"><div class="scroll-thumb"></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 02 PORTFOLIO -->
-    <section id="portfolio" class="section s-photo">
-      <div class="container">
-        <div class="sec-tag js-reveal-fade"><span class="sec-num">01</span><span class="sec-line"></span><span data-i18n="nav.portfolio">Portfolio</span></div>
-        <h2 class="sec-h2 gallery-title js-reveal-fade">
-          <span class="gallery-main" data-i18n="portfolio.h2.main">GALLERIA</span>
-          <em class="gallery-em" data-i18n="portfolio.h2.em">Selezionata</em>
-        </h2>
-        <div class="filters js-reveal-fade">
-          <button class="f-btn active" data-filter="all" aria-label="Tutti" title="Tutti">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-          </button>
-          <button class="f-btn" data-filter="auto" aria-label="Auto" title="Auto">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="pointer-events:none;"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><line x1="12" y1="9.5" x2="12" y2="3"/><line x1="10.2" y1="10.7" x2="5" y2="7.5"/><line x1="13.8" y1="10.7" x2="19" y2="7.5"/></svg>
-          </button>
-          <button class="f-btn" data-filter="moto" aria-label="Moto" title="Moto">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><circle cx="5.5" cy="15.5" r="3.5"/><circle cx="18.5" cy="15.5" r="3.5"/><path d="M15 6a3.5 3.5 0 1 0-7 0"/><path d="M12 9v6.5"/><path d="M12 11h3.5l1.5 1"/></svg>
-          </button>
-          <button class="f-btn" data-filter="urban" aria-label="Urban" title="Urban">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
-          </button>
-          <button class="f-btn" data-filter="eventi" aria-label="Eventi" title="Eventi">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
-          </button>
-        </div>
-
-        <!-- COLLAGE GRID — 11 per categoria -->
-        <div class="collage-grid js-reveal-fade">
-          <!-- R1 -->
-          <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-1.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-1.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item span-h2 visible" data-cat="urban"><img src="./portfolio-urban-1.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R2 -->
-          <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-1.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-2.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-2.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-2.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R3 -->
-          <div class="collage-item span-h2 visible" data-cat="eventi"><img src="./portfolio-eventi-2.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-3.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-3.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R4 -->
-          <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-3.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-4.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-3.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-4.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R5 -->
-          <div class="collage-item span-h2 visible" data-cat="urban"><img src="./portfolio-urban-4.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-4.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-5.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R6 -->
-          <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-5.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-5.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-5.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-6.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R7 -->
-          <div class="collage-item span-h2 visible" data-cat="moto"><img src="./portfolio-moto-6.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item span-h2 visible" data-cat="urban"><img src="./portfolio-urban-6.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-6.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R8 -->
-          <div class="collage-item visible" data-cat="auto"><img src="./portfolio-auto-7.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-7.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-7.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item span-h2 visible" data-cat="urban"><img src="./portfolio-urban-7.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R9 -->
-          <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-8.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-8.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-8.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-8.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R10 — +3 per categoria -->
-          <div class="collage-item visible" data-cat="auto"><img src="./portfolio-auto-9.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item span-h2 visible" data-cat="moto"><img src="./portfolio-moto-9.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-9.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-9.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R11 -->
-          <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-10.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-10.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-10.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-10.jpg" alt="" onerror="this.style.display='none'"></div>
-          <!-- R12 -->
-          <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-11.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item span-h2 visible" data-cat="eventi"><img src="./portfolio-eventi-11.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="auto"><img src="./portfolio-auto-11.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-11.jpg" alt="" onerror="this.style.display='none'"></div>
-        </div>
-
-        <!-- POST PRODUCTION / POSTER -->
-        <div class="poster-section">
-          <div class="poster-section-head js-reveal-fade">
-            <span class="poster-eyebrow" data-i18n="poster.eyebrow">Editing &amp; Grafica</span>
-            <h3 class="poster-heading" data-i18n="poster.heading">Post Production</h3>
-            <p class="poster-sub" data-i18n="poster.sub">Fotografo, filmo, edito. Photoshop e Lightroom per retouch, color grading e grafiche custom — dal raw al contenuto finito.</p>
-          </div>
-          <div class="poster-grid poster-grid-4">
-            <div class="poster-card js-reveal-fade">
-              <div class="poster-img-wrap"><img src="./poster-1.jpg" onerror="this.style.display='none'"></div>
-              <span class="poster-cap" data-i18n="poster.cap1">Edit 01</span>
-            </div>
-            <div class="poster-card js-reveal-fade">
-              <div class="poster-img-wrap"><img src="./poster-2.jpg" onerror="this.style.display='none'"></div>
-              <span class="poster-cap" data-i18n="poster.cap2">Edit 02</span>
-            </div>
-            <div class="poster-card js-reveal-fade">
-              <div class="poster-img-wrap"><img src="./poster-3.jpg" onerror="this.style.display='none'"></div>
-              <span class="poster-cap" data-i18n="poster.cap3">Edit 03</span>
-            </div>
-            <div class="poster-card js-reveal-fade">
-              <div class="poster-img-wrap"><img src="./poster-4.jpg" onerror="this.style.display='none'"></div>
-              <span class="poster-cap" data-i18n="poster.cap4">Edit 04</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 03 VIDEO -->
-    <section id="video" class="section s-video">
-      <div class="container">
-        <div class="sec-tag js-reveal-fade"><span class="sec-num">02</span><span class="sec-line"></span><span data-i18n="nav.video">Video</span></div>
-        <h2 class="sec-h2 js-reveal-fade" data-i18n="video.h2">Produzione Video</h2>
-        <p class="sec-sub js-reveal-fade" data-i18n="video.sub">Non solo foto. Creo contenuti video per chi vuole costruire una presenza online reale: vlog, motovlog, short per i social. Formato lungo o breve — visualizzazioni e risultati concreti.</p>
-        <div class="video-wip-banner js-reveal-fade">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-          <span data-i18n="video.wip">Work in Progress — Coming Soon</span>
-        </div>
-        <div class="video-showcase js-reveal-fade">
-          <!-- LEFT: 4 YouTube cards 2x2 -->
-          <div class="video-grid">
-            <div class="video-thumb-card">
-              <div class="video-thumb-title" data-i18n="video.title1">Motovlog Alpi — Una giornata perfetta</div>
-              <div class="video-ph" style="background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.55)),url('./video-1.jpg') center/cover;">
-                <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg></div>
-              </div>
-              <span class="v-time v-long">12:45 • MOTOVLOG</span>
-            </div>
-            <div class="video-thumb-card">
-              <div class="video-thumb-title" data-i18n="video.title2">Shooting in 60 secondi — Aprilia RS660</div>
-              <div class="video-ph" style="background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.55)),url('./video-2.jpg') center/cover;">
-                <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg></div>
-              </div>
-              <span class="v-time">0:45 • REEL</span>
-            </div>
-            <div class="video-thumb-card">
-              <div class="video-thumb-title" data-i18n="video.title3">Vlog — Dietro le quinte di uno shooting</div>
-              <div class="video-ph" style="background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.55)),url('./video-3.jpg') center/cover;">
-                <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg></div>
-              </div>
-              <span class="v-time v-long">14:20 • VLOG</span>
-            </div>
-            <div class="video-thumb-card">
-              <div class="video-thumb-title" data-i18n="video.title4">Brand Content — Yamaha R125 2023</div>
-              <div class="video-ph" style="background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.55)),url('./video-4.jpg') center/cover;">
-                <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg></div>
-              </div>
-              <span class="v-time">2:15 • BRAND VIDEO</span>
-            </div>
-          </div>
-          <!-- RIGHT: 2 vertical videos -->
-          <div class="video-verticals">
-            <video class="video-v-item" autoplay loop muted playsinline>
-              <source src="./video-vertical-1.mp4" type="video/mp4">
-            </video>
-            <video class="video-v-item" autoplay loop muted playsinline>
-              <source src="./video-vertical-2.mp4" type="video/mp4">
-            </video>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 04 THUMBNAIL -->
-    <section id="thumbnail" class="section s-thumb">
-      <div class="container">
-        <div class="sec-tag js-reveal-fade"><span class="sec-num">03</span><span class="sec-line"></span><span data-i18n="thumb.tag">Editing</span></div>
-        <h2 class="sec-h2 js-reveal-fade" data-i18n="thumb.h2">THUMBNAIL</h2>
-        <p class="sec-sub js-reveal-fade" data-i18n="thumb.sub">Ogni video parte da una thumbnail che converte. Cover personalizzate con Photoshop — ottimizzate per YouTube e i social.</p>
-        <div class="thumb-grid js-reveal-fade">
-          <div class="thumb-item"><img src="./thumb-1.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="thumb-item"><img src="./thumb-2.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="thumb-item"><img src="./thumb-3.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="thumb-item"><img src="./thumb-4.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="thumb-item"><img src="./thumb-5.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="thumb-item"><img src="./thumb-6.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="thumb-item"><img src="./thumb-7.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="thumb-item"><img src="./thumb-8.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="thumb-item"><img src="./thumb-9.jpg" alt="" onerror="this.style.display='none'"></div>
-          <div class="thumb-item"><img src="./thumb-10.jpg" alt="" onerror="this.style.display='none'"></div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">JACO VISUALS</div>
-      <div class="footer-copy">© <span class="year-span">2026</span> — <span data-i18n="footer.rights">Tutti i diritti riservati</span></div>
-    </div>
-  </footer>
-
-  <div id="toast" class="toast">Messaggio inviato!</div>
+ <!-- LANGUAGE BANNER -->
+ <div id="lang-overlay" class="lang-overlay">
+ <div class="lang-card">
+ <div class="lang-brand">JACO VISUALS</div>
+ <div class="lang-btns">
+ <button class="lang-btn" data-lang="it"><span class="lang-flag">🇮🇹</span><span>ITA</span></button>
+ <button class="lang-btn" data-lang="en"><span class="lang-flag">🇺🇸</span><span>ENG</span></button>
+ </div>
+ </div>
+ </div>
+ <div id="loader" class="loader">
+ <div class="loader-name">JACOPO FUSÉ</div>
+ <div class="loader-progress"><div id="loader-bar" class="loader-bar"></div></div>
+ </div>
+ <div id="cursor" class="cursor"></div>
+ <div id="cursor-ring" class="cursor-ring"></div>
+ <header id="site-header" class="site-header">
+ <a href="./index.html" class="brand-mark">JACO VISUALS</a>
+ <div class="header-actions">
+ <a href="./index.html" class="nav-home-btn" data-i18n="nav.home">HOME</a>
+ <a href="./chi-sono.html" class="nav-chisono-btn" data-i18n="nav.about">Chi Sono</a>
+ <a href="./contatti.html" class="nav-contact-btn" data-i18n="nav.contact">Contattami</a>
+ <button id="theme-toggle" class="theme-toggle" aria-label="Cambia tema">
+ <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+ <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+ </button>
+ <button id="hamburger" class="hamburger" aria-label="Menu" aria-expanded="false">
+ <span class="ham-bar"></span>
+ <span class="ham-bar"></span>
+ </button>
+ </div>
+ <nav id="nav-dropdown" class="nav-dropdown" hidden>
+ <ul class="nav-list">
+ <li><a href="#portfolio" class="nav-link" data-num="01" data-i18n="nav.portfolio">Portfolio</a></li>
+ <li><a href="#video" class="nav-link" data-num="02" data-i18n="nav.video">Video</a></li>
+ </ul>
+ </nav>
+ </header>
+ <main>
+ <!-- 01 HERO -->
+ <section id="hero" class="s-hero">
+ <div class="hero-bg-base">
+ <div class="hero-bg-img"></div>
+ <div class="hero-grain"></div>
+ <div class="hero-vignette"></div>
+ </div>
+ <canvas id="hero-canvas"></canvas>
+ <div class="container hero-inner">
+ <div class="hero-body">
+ <div class="hero-loc js-reveal-fade">
+ <span class="live-dot"></span>
+ <span data-i18n="hero.loc">Milano Italia</span>
+ </div>
+ <h1 class="hero-name">
+ <span class="hero-line js-reveal-clip">JACO</span>
+ <span class="hero-line-em js-reveal-clip">VISUALS</span>
+ </h1>
+ <p class="hero-tagline js-reveal-fade" data-i18n="hero.tagline">Non documento. Racconto.</p>
+ <p class="hero-sub js-reveal-fade" data-i18n="hero.sub">Ogni macchina, ogni moto — ha una luce giusta e un frame che la racconta meglio di mille parole. Fotografia e video automotive: frame dopo frame, senza compromessi.</p>
+ <div class="hero-btns js-reveal-fade">
+ <a href="./contatti.html" class="btn-fill"><span data-i18n="hero.cta1">Collaboriamo</span></a>
+ <a href="./chi-sono.html" class="btn-line"><span data-i18n="hero.cta2">Conoscimi</span></a>
+ </div>
+ </div>
+ <div class="hero-meta js-reveal-fade">
+ <span class="scroll-hint">scroll</span>
+ <div class="scroll-track"><div class="scroll-thumb"></div></div>
+ </div>
+ </div>
+ </section>
+ <!-- 02 PORTFOLIO -->
+ <section id="portfolio" class="section s-photo">
+ <div class="container">
+ <div class="sec-tag js-reveal-fade"><span class="sec-num">01</span><span class="sec-line"></span><span data-i18n="nav.portfolio">Portfolio</span></div>
+ <h2 class="sec-h2 gallery-title js-reveal-fade">
+ <span class="gallery-main" data-i18n="portfolio.h2.main">GALLERIA</span>
+ <em class="gallery-em" data-i18n="portfolio.h2.em">Selezionata</em>
+ </h2>
+ <div class="filters js-reveal-fade">
+ <button class="f-btn active" data-filter="all" aria-label="Tutti" title="Tutti">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+ </button>
+ <button class="f-btn" data-filter="auto" aria-label="Auto" title="Auto">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" style="pointer-events:none;"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2.5"/><line x1="12" y1="9.5" x2="12" y2="3"/><line x1="10.2" y1="10.7" x2="5" y2="7.5"/><line x1="13.8" y1="10.7" x2="19" y2="7.5"/></svg>
+ </button>
+ <button class="f-btn" data-filter="moto" aria-label="Moto" title="Moto">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><circle cx="5.5" cy="15.5" r="3.5"/><circle cx="18.5" cy="15.5" r="3.5"/><path d="M15 6a3.5 3.5 0 1 0-7 0"/><path d="M12 9v6.5"/><path d="M12 11h3.5l1.5 1"/></svg>
+ </button>
+ <button class="f-btn" data-filter="urban" aria-label="Urban" title="Urban">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z"/></svg>
+ </button>
+ <button class="f-btn" data-filter="eventi" aria-label="Eventi" title="Eventi">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="pointer-events:none;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+ </button>
+ </div>
+ <!-- COLLAGE GRID -->
+ <div class="collage-grid js-reveal-fade">
+ <!-- R1 -->
+ <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-1.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-1.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item span-h2 visible" data-cat="urban"><img src="./portfolio-urban-1.jpg" alt="" onerror="this.style.display='none'"></div>
+ <!-- R2 -->
+ <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-1.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-2.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-2.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-2.jpg" alt="" onerror="this.style.display='none'"></div>
+ <!-- R3 -->
+ <div class="collage-item span-h2 visible" data-cat="eventi"><img src="./portfolio-eventi-2.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-3.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-3.jpg" alt="" onerror="this.style.display='none'"></div>
+ <!-- R4 -->
+ <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-3.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-4.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-3.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-4.jpg" alt="" onerror="this.style.display='none'"></div>
+ <!-- R5 -->
+ <div class="collage-item span-h2 visible" data-cat="urban"><img src="./portfolio-urban-4.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-4.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-5.jpg" alt="" onerror="this.style.display='none'"></div>
+ <!-- R6 -->
+ <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-5.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-5.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-5.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-6.jpg" alt="" onerror="this.style.display='none'"></div>
+ <!-- R7 -->
+ <div class="collage-item span-h2 visible" data-cat="moto"><img src="./portfolio-moto-6.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item span-h2 visible" data-cat="urban"><img src="./portfolio-urban-6.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-6.jpg" alt="" onerror="this.style.display='none'"></div>
+ <!-- R8 -->
+ <div class="collage-item visible" data-cat="auto"><img src="./portfolio-auto-7.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-7.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-7.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item span-h2 visible" data-cat="urban"><img src="./portfolio-urban-7.jpg" alt="" onerror="this.style.display='none'"></div>
+ <!-- R9 -->
+ <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-8.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-8.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-8.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-8.jpg" alt="" onerror="this.style.display='none'"></div>
+ <!-- R10 -->
+ <div class="collage-item visible" data-cat="auto"><img src="./portfolio-auto-9.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item span-h2 visible" data-cat="moto"><img src="./portfolio-moto-9.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-9.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-9.jpg" alt="" onerror="this.style.display='none'"></div>
+ <!-- R11 -->
+ <div class="collage-item span-h2 visible" data-cat="auto"><img src="./portfolio-auto-10.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="eventi"><img src="./portfolio-eventi-10.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-10.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-10.jpg" alt="" onerror="this.style.display='none'"></div>
+ <!-- R12 -->
+ <div class="collage-item visible" data-cat="urban"><img src="./portfolio-urban-11.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item span-h2 visible" data-cat="eventi"><img src="./portfolio-eventi-11.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="auto"><img src="./portfolio-auto-11.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="collage-item visible" data-cat="moto"><img src="./portfolio-moto-11.jpg" alt="" onerror="this.style.display='none'"></div>
+ </div>
+ <!-- POST PRODUCTION / POSTER -->
+ <div class="poster-section">
+ <div class="poster-section-head js-reveal-fade">
+ <span class="poster-eyebrow" data-i18n="poster.eyebrow">Editing &amp; Grafica</span>
+ <h3 class="poster-heading" data-i18n="poster.heading">Post Production</h3>
+ <p class="poster-sub" data-i18n="poster.sub">Fotografo, filmo, edito. Photoshop e Lightroom per retouch, color grading e grafiche custom — dal raw al contenuto finito.</p>
+ </div>
+ <div class="poster-grid poster-grid-4">
+ <div class="poster-card js-reveal-fade">
+ <div class="poster-img-wrap"><img src="./poster-1.jpg" onerror="this.style.display='none'"></div>
+ <span class="poster-cap" data-i18n="poster.cap1">Edit 01</span>
+ </div>
+ <div class="poster-card js-reveal-fade">
+ <div class="poster-img-wrap"><img src="./poster-2.jpg" onerror="this.style.display='none'"></div>
+ <span class="poster-cap" data-i18n="poster.cap2">Edit 02</span>
+ </div>
+ <div class="poster-card js-reveal-fade">
+ <div class="poster-img-wrap"><img src="./poster-3.jpg" onerror="this.style.display='none'"></div>
+ <span class="poster-cap" data-i18n="poster.cap3">Edit 03</span>
+ </div>
+ <div class="poster-card js-reveal-fade">
+ <div class="poster-img-wrap"><img src="./poster-4.jpg" onerror="this.style.display='none'"></div>
+ <span class="poster-cap" data-i18n="poster.cap4">Edit 04</span>
+ </div>
+ </div>
+ </div>
+ </div>
+ </section>
+ <!-- 03 VIDEO -->
+ <section id="video" class="section s-video">
+ <div class="container">
+ <div class="sec-tag js-reveal-fade"><span class="sec-num">02</span><span class="sec-line"></span><span data-i18n="nav.video">Video</span></div>
+ <h2 class="sec-h2 js-reveal-fade" data-i18n="video.h2">Produzione Video</h2>
+ <p class="sec-sub js-reveal-fade" data-i18n="video.sub">Non solo foto. Creo contenuti video per chi vuole costruire una presenza online reale: vlog, motovlog, short per i social. Formato lungo o breve — visualizzazioni e risultati concreti.</p>
+ <div class="video-wip-banner js-reveal-fade">
+ <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="15" height="15"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+ <span data-i18n="video.wip">Work in Progress — Coming Soon</span>
+ </div>
+ <div class="video-showcase js-reveal-fade">
+ <!-- LEFT: 2 YouTube cards -->
+ <div class="video-grid">
+ <div class="video-thumb-card">
+ <div class="video-thumb-title" data-i18n="video.title1">Motovlog Alpi — Una giornata perfetta</div>
+ <div class="video-ph" style="background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.55)),url('./video-1.jpg') center/cover;">
+ <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg></div>
+ </div>
+ <span class="v-time v-long">12:45 • MOTOVLOG</span>
+ </div>
+ <div class="video-thumb-card">
+ <div class="video-thumb-title" data-i18n="video.title2">Shooting in 60 secondi — Aprilia RS660</div>
+ <div class="video-ph" style="background:linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.55)),url('./video-2.jpg') center/cover;">
+ <div class="v-play"><svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M8 5v14l11-7z"/></svg></div>
+ </div>
+ <span class="v-time">0:45 • REEL</span>
+ </div>
+ </div>
+ <!-- RIGHT: 2 vertical videos affiancati -->
+ <div class="video-verticals">
+ <video class="video-v-item" autoplay loop muted playsinline>
+ <source src="./video-vertical-1.mp4" type="video/mp4">
+ </video>
+ <video class="video-v-item" autoplay loop muted playsinline>
+ <source src="./video-vertical-2.mp4" type="video/mp4">
+ </video>
+ </div>
+ </div>
+ </div>
+ </section>
+ <!-- 04 THUMBNAIL -->
+ <section id="thumbnail" class="section s-thumb">
+ <div class="container">
+ <div class="sec-tag js-reveal-fade"><span class="sec-num">03</span><span class="sec-line"></span><span data-i18n="thumb.tag">Editing</span></div>
+ <h2 class="sec-h2 js-reveal-fade" data-i18n="thumb.h2">THUMBNAIL</h2>
+ <p class="sec-sub js-reveal-fade" data-i18n="thumb.sub">Ogni video parte da una thumbnail che converte. Cover personalizzate con Photoshop — ottimizzate per YouTube e i social.</p>
+ <div class="thumb-grid js-reveal-fade">
+ <div class="thumb-item"><img src="./thumb-1.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="thumb-item"><img src="./thumb-2.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="thumb-item"><img src="./thumb-3.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="thumb-item"><img src="./thumb-4.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="thumb-item"><img src="./thumb-5.jpg" alt="" onerror="this.style.display='none'"></div>
+ <div class="thumb-item"><img src="./thumb-6.jpg" alt="" onerror="this.style.display='none'"></div>
+ </div>
+ </div>
+ </section>
+ </main>
+ <footer class="site-footer">
+ <div class="container footer-inner">
+ <div class="footer-brand">JACO VISUALS</div>
+ <div class="footer-copy">© <span class="year-span">2026</span> — <span data-i18n="footer.rights">Tutti i diritti riservati</span></div>
+ </div>
+ </footer>
+ <div id="toast" class="toast">Messaggio inviato!</div>
 </body>
 </html>
