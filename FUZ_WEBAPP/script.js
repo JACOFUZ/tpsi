@@ -6,6 +6,129 @@ const $$ = (sel, ctx = document) => [...ctx.querySelectorAll(sel)];
 function sanitize(str) { const d = document.createElement('div'); d.textContent = String(str); return d.textContent; }
 try { $$('.year-span').forEach(el => { el.textContent = new Date().getFullYear(); }); } catch(e) {}
 
+/* ── TRANSLATIONS ── */
+const translations = {
+  it: {
+    'nav.home': 'HOME',
+    'nav.about': 'Chi Sono',
+    'nav.contact': 'Contattami',
+    'nav.portfolio': 'Portfolio',
+    'nav.video': 'Video',
+    'hero.loc': 'Milano Italia',
+    'hero.tagline': 'Non documento. Racconto.',
+    'hero.sub': 'Ogni macchina, ogni moto — ha una luce giusta e un frame che la racconta meglio di mille parole. Fotografia e video automotive: frame dopo frame, senza compromessi.',
+    'hero.cta1': 'Collaboriamo',
+    'hero.cta2': 'Conoscimi',
+    'portfolio.h2.main': 'GALLERIA',
+    'portfolio.h2.em': 'Selezionata',
+    'poster.eyebrow': 'Editing & Grafica',
+    'poster.heading': 'Post Production',
+    'poster.sub': 'Fotografo, filmo, edito. Photoshop e Lightroom per retouch, color grading e grafiche custom — dal raw al contenuto finito.',
+    'poster.cap1': 'Edit 01',
+    'poster.cap2': 'Edit 02',
+    'poster.cap3': 'Edit 03',
+    'poster.cap4': 'Edit 04',
+    'video.h2': 'Produzione Video',
+    'video.sub': 'Non solo foto. Creo contenuti video per chi vuole costruire una presenza online reale: vlog, motovlog, short per i social. Formato lungo o breve — visualizzazioni e risultati concreti.',
+    'video.wip': 'Work in Progress — Coming Soon',
+    'video.title1': 'Motovlog Alpi — Una giornata perfetta',
+    'video.title2': 'Shooting in 60 secondi — Aprilia RS660',
+    'video.title3': 'Vlog — Dietro le quinte di uno shooting',
+    'video.title4': 'Brand Content — Yamaha R125 2023',
+    'thumb.tag': 'Editing',
+    'thumb.h2': 'THUMBNAIL',
+    'thumb.sub': 'Ogni video parte da una thumbnail che converte. Cover personalizzate con Photoshop — ottimizzate per YouTube e i social.',
+    'footer.rights': 'Tutti i diritti riservati',
+    'contact.heading': 'Parliamo del tuo progetto.',
+    'contact.lead': 'Sei un brand, un rivenditore, o hai un mezzo che merita di essere raccontato? Scrivimi — rispondo entro 24 ore, senza impegno.',
+    'contact.label.name': 'Nome',
+    'contact.label.email': 'Email',
+    'contact.label.phone': 'Telefono (opz.)',
+    'contact.label.service': 'Servizio di interesse',
+    'contact.label.message': 'Racconta il tuo progetto',
+    'contact.send': 'Mandami il messaggio',
+    'about.title1': 'Sono Jacopo.',
+    'about.title2': 'Dietro il casco.',
+    'about.lead': 'Fotografo automotive e content creator con base a Milano. Trasformo ogni shooting in contenuti che attirano attenzione e restano — per privati, rivenditori e brand.',
+  },
+  en: {
+    'nav.home': 'HOME',
+    'nav.about': 'About',
+    'nav.contact': 'Contact',
+    'nav.portfolio': 'Portfolio',
+    'nav.video': 'Video',
+    'hero.loc': 'Milan, Italy',
+    'hero.tagline': "I don't document. I tell stories.",
+    'hero.sub': 'Every car, every bike — has the right light and a frame that says more than words. Automotive photography and video: frame by frame, no compromises.',
+    'hero.cta1': "Let's Collaborate",
+    'hero.cta2': 'Meet Me',
+    'portfolio.h2.main': 'GALLERY',
+    'portfolio.h2.em': 'Selected',
+    'poster.eyebrow': 'Editing & Graphics',
+    'poster.heading': 'Post Production',
+    'poster.sub': 'I shoot, film, edit. Photoshop and Lightroom for retouching, color grading and custom graphics — from raw to finished content.',
+    'poster.cap1': 'Edit 01',
+    'poster.cap2': 'Edit 02',
+    'poster.cap3': 'Edit 03',
+    'poster.cap4': 'Edit 04',
+    'video.h2': 'Video Production',
+    'video.sub': 'Not just photos. I create video content for those who want a real online presence: vlogs, motovlogs, social shorts. Long or short format — real results.',
+    'video.wip': 'Work in Progress — Coming Soon',
+    'video.title1': 'Alps Motovlog — A Perfect Day',
+    'video.title2': 'Shooting in 60 Seconds — Aprilia RS660',
+    'video.title3': 'Vlog — Behind the Scenes',
+    'video.title4': 'Brand Content — Yamaha R125 2023',
+    'thumb.tag': 'Editing',
+    'thumb.h2': 'THUMBNAILS',
+    'thumb.sub': 'Every video starts with a thumbnail that converts. Custom covers with Photoshop — optimized for YouTube and social media.',
+    'footer.rights': 'All rights reserved',
+    'contact.heading': "Let's talk about your project.",
+    'contact.lead': "Are you a brand, a dealer, or do you have a vehicle that deserves to be told? Write to me — I'll reply within 24 hours, no commitment.",
+    'contact.label.name': 'Name',
+    'contact.label.email': 'Email',
+    'contact.label.phone': 'Phone (opt.)',
+    'contact.label.service': 'Service of interest',
+    'contact.label.message': 'Tell me about your project',
+    'contact.send': 'Send message',
+    'about.title1': "I'm Jacopo.",
+    'about.title2': 'Behind the helmet.',
+    'about.lead': 'Automotive photographer and content creator based in Milan. I turn every shoot into content that attracts attention and lasts — for private clients, dealers and brands.',
+  }
+};
+
+/* ── LANGUAGE ── */
+try {
+  (function initLang() {
+    const overlay = document.getElementById('lang-overlay');
+    const savedLang = localStorage.getItem('jf-lang');
+    if (savedLang) {
+      applyLang(savedLang);
+      if (overlay) overlay.setAttribute('hidden', '');
+    } else {
+      if (overlay) overlay.removeAttribute('hidden');
+    }
+    if (overlay) {
+      overlay.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const lang = btn.dataset.lang;
+          localStorage.setItem('jf-lang', lang);
+          applyLang(lang);
+          overlay.setAttribute('hidden', '');
+        });
+      });
+    }
+    function applyLang(lang) {
+      const t = translations[lang];
+      if (!t) return;
+      try { document.documentElement.lang = lang; } catch(e) {}
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.dataset.i18n;
+        if (t[key] !== undefined) el.textContent = t[key];
+      });
+    }
+  })();
+} catch(e) {}
+
 /* ── LOADER ── */
 (function initLoader() {
   const loader = $('#loader'), bar = $('#loader-bar');
@@ -286,6 +409,7 @@ try {
     });
   })();
 } catch(e) {}
+
 function showToast(msg, dur=3000) {
   try { const t = $('#toast'); if (!t) return; t.textContent = sanitize(msg); t.classList.add('show'); setTimeout(() => t.classList.remove('show'), dur); } catch(e) {}
 }
