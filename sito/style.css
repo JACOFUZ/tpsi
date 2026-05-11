@@ -1,0 +1,167 @@
+/* Variabili CSS e Tema Base (Light) */
+:root {
+    --bg-color: #f8f9fa;
+    --text-color: #212529;
+    --primary-color: #0d6efd;
+    --primary-hover: #0b5ed7;
+    --card-bg: #ffffff;
+    --border-color: #dee2e6;
+    --shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --transition-speed: 0.3s;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+}
+
+/* Tema Dark */
+[data-theme="dark"] {
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --primary-color: #bb86fc;
+    --primary-hover: #9965f4;
+    --card-bg: #1e1e1e;
+    --border-color: #333333;
+    --shadow: 0 4px 6px rgba(0,0,0,0.5);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    transition: background-color var(--transition-speed), color var(--transition-speed);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-lg);
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo { font-size: 1.5rem; font-weight: bold; }
+
+.nav-links {
+    display: flex;
+    gap: var(--spacing-md);
+    align-items: center;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: 500;
+    transition: color var(--transition-speed);
+}
+.nav-link:hover, .nav-link:focus { color: var(--primary-color); }
+
+#theme-toggle {
+    background: none; border: none; font-size: 1.2rem; cursor: pointer;
+}
+
+/* Hamburger Menu (Mobile) */
+.hamburger {
+    display: none; background: none; border: none; cursor: pointer;
+    flex-direction: column; gap: 5px;
+}
+.hamburger .bar { width: 25px; height: 3px; background-color: var(--text-color); transition: 0.3s; }
+
+/* Sections */
+.view-section { display: none; padding: var(--spacing-lg); min-height: 80vh; }
+.view-section.active-section { display: block; animation: fadeIn 0.4s ease; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* Hero */
+.hero { text-align: center; padding: 4rem 1rem; }
+.hero h1 { font-size: 2.5rem; margin-bottom: 1rem; }
+.cta-btn {
+    padding: 0.75rem 1.5rem; background-color: var(--primary-color);
+    color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem;
+    transition: background-color var(--transition-speed);
+}
+.cta-btn:hover { background-color: var(--primary-hover); }
+
+/* Controlli Catalogo */
+.controls-container {
+    display: flex; flex-direction: column; gap: var(--spacing-sm); margin-bottom: var(--spacing-lg);
+}
+.controls-container input, .controls-container select {
+    padding: 0.5rem; border: 1px solid var(--border-color); border-radius: 4px;
+    background-color: var(--card-bg); color: var(--text-color);
+}
+.secondary-btn {
+    padding: 0.5rem 1rem; background-color: transparent; border: 1px solid var(--border-color);
+    color: var(--text-color); cursor: pointer; border-radius: 4px;
+}
+
+/* Grid Prodotti */
+.grid { display: grid; grid-template-columns: 1fr; gap: var(--spacing-md); }
+
+.card {
+    background-color: var(--card-bg); border: 1px solid var(--border-color);
+    border-radius: 8px; padding: var(--spacing-md); display: flex; flex-direction: column;
+    box-shadow: var(--shadow); transition: transform var(--transition-speed);
+}
+.card:hover { transform: translateY(-5px); }
+.card img { width: 100%; height: 200px; object-fit: cover; border-radius: 4px; }
+.card-content { flex-grow: 1; display: flex; flex-direction: column; margin-top: var(--spacing-md); }
+.card-title { font-size: 1.2rem; margin-bottom: var(--spacing-sm); }
+.card-price { font-weight: bold; color: var(--primary-color); margin-bottom: var(--spacing-md); }
+.card-actions { display: flex; gap: var(--spacing-sm); margin-top: auto; }
+.card-actions button { flex: 1; padding: 0.5rem; cursor: pointer; border: none; border-radius: 4px; }
+.btn-details { background-color: var(--primary-color); color: white; }
+.btn-fav { background-color: transparent; border: 1px solid var(--border-color); color: var(--text-color); }
+.btn-fav.active { color: red; border-color: red; }
+
+/* Modale */
+.modal {
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.5); z-index: 1000; justify-content: center; align-items: center;
+}
+.modal.show { display: flex; }
+.modal-content {
+    background-color: var(--card-bg); padding: var(--spacing-lg); border-radius: 8px;
+    width: 90%; max-width: 500px; position: relative;
+}
+.close-modal {
+    position: absolute; top: 10px; right: 15px; font-size: 1.5rem; background: none;
+    border: none; cursor: pointer; color: var(--text-color);
+}
+.modal-img { width: 100%; max-height: 300px; object-fit: cover; margin-bottom: 1rem; border-radius: 4px; }
+
+/* Toast */
+#toast-container { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; z-index: 1100; }
+.toast { background-color: var(--primary-color); color: white; padding: 10px 20px; border-radius: 4px; box-shadow: var(--shadow); animation: slideIn 0.3s forwards; }
+@keyframes slideIn { from { transform: translateX(100%); } to { transform: translateX(0); } }
+
+/* Footer */
+footer { text-align: center; padding: var(--spacing-md); background-color: var(--card-bg); border-top: 1px solid var(--border-color); margin-top: auto; }
+
+/* Breakpoints Responsivi */
+@media (min-width: 768px) {
+    .controls-container { flex-direction: row; }
+    .grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (min-width: 1024px) {
+    .grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 767px) {
+    .hamburger { display: flex; }
+    .nav-links {
+        display: none; flex-direction: column; position: absolute; top: 100%; left: 0;
+        width: 100%; background-color: var(--card-bg); padding: var(--spacing-md);
+        border-bottom: 1px solid var(--border-color);
+    }
+    .nav-links.active { display: flex; }
+}
