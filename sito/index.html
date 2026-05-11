@@ -1,72 +1,275 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="it" data-theme="dark">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechSpace - Showroom Digitale</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="TechSpace — I migliori gadget tecnologici. Cuffie, smartwatch, smart home e accessori premium.">
+  <meta name="theme-color" content="#050510">
+  <title>TechSpace — Showroom Digitale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header class="navbar">
-        <div class="logo">TechSpace</div>
-        <button class="hamburger" aria-label="Menu" aria-expanded="false">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </button>
-        <nav class="nav-links">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="#catalog" class="nav-link">Catalogo</a>
-            <a href="#favorites" class="nav-link" id="nav-favorites">Preferiti (<span id="fav-count">0</span>)</a>
-            <button id="theme-toggle" aria-label="Cambia tema">🌓</button>
-        </nav>
-    </header>
 
-    <main>
-        <section id="home" class="view-section active-section">
-            <div class="hero">
-                <h1>Il futuro è oggi</h1>
-                <p>Scopri i migliori gadget tecnologici del momento.</p>
-                <button class="cta-btn" onclick="document.querySelector('a[href=\'#catalog\']').click()">Vai al Catalogo</button>
-            </div>
-        </section>
+  <div id="scroll-progress" role="progressbar" aria-hidden="true"></div>
 
-        <section id="catalog" class="view-section">
-            <div class="controls-container">
-                <input type="text" id="search-bar" placeholder="Cerca un prodotto..." aria-label="Cerca">
-                <select id="category-filter" aria-label="Filtra per categoria">
-                    <option value="all">Tutte le categorie</option>
-                    <option value="audio">Audio</option>
-                    <option value="wearable">Wearables</option>
-                    <option value="smart-home">Smart Home</option>
-                </select>
-                <select id="sort-select" aria-label="Ordina prodotti">
-                    <option value="default">Ordina per...</option>
-                    <option value="price-asc">Prezzo: Crescente</option>
-                    <option value="price-desc">Prezzo: Decrescente</option>
-                    <option value="name-asc">Nome: A-Z</option>
-                </select>
-                <button id="reset-filters" class="secondary-btn">Reset</button>
-            </div>
+  <!-- ─── Navbar ─── -->
+  <header class="navbar" role="banner">
+    <a href="#home" class="logo" aria-label="TechSpace — torna alla home">Tech<span>Space</span></a>
 
-            <div id="product-grid" class="grid">
-                </div>
-        </section>
-    </main>
+    <nav class="nav-links" id="nav-links" role="navigation" aria-label="Navigazione principale">
+      <a href="#home"      class="nav-link active" data-section="home">Home</a>
+      <a href="#catalog"   class="nav-link"         data-section="catalog">Catalogo</a>
+      <a href="#favorites" class="nav-link"         data-section="favorites">Preferiti</a>
+    </nav>
 
-    <footer>
-        <p>&copy; 2026 TechSpace. Tutti i diritti riservati.</p>
-    </footer>
-
-    <div id="product-modal" class="modal" aria-hidden="true" role="dialog">
-        <div class="modal-content">
-            <button class="close-modal" aria-label="Chiudi modale">&times;</button>
-            <div id="modal-body"></div>
-        </div>
+    <div class="nav-actions">
+      <button class="nav-icon-btn" id="theme-toggle" aria-label="Cambia tema" title="Cambia tema">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+      </button>
+      <button class="nav-icon-btn" id="fav-btn" aria-label="Preferiti">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="nav-badge" id="fav-count" aria-label="prodotti nei preferiti">0</span>
+      </button>
+      <button class="nav-icon-btn" id="cart-toggle" aria-label="Carrello">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+        <span class="nav-badge" id="cart-count" aria-label="articoli nel carrello" style="display:none">0</span>
+      </button>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-links">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
     </div>
+  </header>
 
-    <div id="toast-container"></div>
+  <!-- ─── Cart Drawer ─── -->
+  <div class="cart-overlay" id="cart-overlay" aria-hidden="true"></div>
+  <aside class="cart-drawer" id="cart-drawer" role="dialog" aria-label="Carrello" aria-hidden="true">
+    <div class="cart-header">
+      <h2 class="cart-title">Carrello</h2>
+      <button class="icon-btn close-cart" id="close-cart" aria-label="Chiudi carrello">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-footer" id="cart-footer" style="display:none">
+      <div class="cart-total-row">
+        <span class="cart-total-label">Totale</span>
+        <span class="cart-total-value" id="cart-total">€0</span>
+      </div>
+      <button class="btn-checkout" id="btn-checkout">Procedi all'acquisto →</button>
+      <button class="btn-clear-cart" id="btn-clear-cart">Svuota carrello</button>
+    </div>
+  </aside>
 
-    <script src="script.js"></script>
+  <!-- ─── Main ─── -->
+  <main id="main" role="main">
+
+    <!-- HOME -->
+    <section id="home" class="view-section active-section" aria-label="Home">
+      <div class="hero">
+        <div class="hero-content">
+          <div class="hero-tag">
+            <span class="hero-tag-dot"></span>
+            Novità 2026
+          </div>
+          <h1>Il futuro<br>è <span class="gradient-text">adesso.</span></h1>
+          <p class="hero-subtitle">Scopri i gadget tecnologici che stanno ridefinendo il modo in cui viviamo, lavoriamo e ci muoviamo.</p>
+          <div class="hero-actions">
+            <button class="cta-btn" id="hero-cta">Esplora il Catalogo <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="margin-left:4px"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button class="outline-btn" id="hero-fav-btn">I miei Preferiti</button>
+          </div>
+          <div class="hero-stats">
+            <div class="hero-stat">
+              <span class="hero-stat-value">9+</span>
+              <span class="hero-stat-label">Prodotti Top</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+              <span class="hero-stat-value">4.7★</span>
+              <span class="hero-stat-label">Rating Medio</span>
+            </div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat">
+              <span class="hero-stat-value">15k+</span>
+              <span class="hero-stat-label">Clienti Felici</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-glow hero-glow-1"></div>
+          <div class="hero-glow hero-glow-2"></div>
+          <div class="hero-pcard hero-pcard-1">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=300&q=85" alt="" loading="lazy">
+            <div class="hero-pcard-body">
+              <p class="hero-pcard-name">Cuffie NC Pro</p>
+              <p class="hero-pcard-price">€349</p>
+            </div>
+          </div>
+          <div class="hero-pcard hero-pcard-2">
+            <img src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=300&q=85" alt="" loading="lazy">
+            <div class="hero-pcard-body">
+              <p class="hero-pcard-name">TWS Pro X</p>
+              <p class="hero-pcard-price">€199</p>
+            </div>
+          </div>
+          <div class="hero-pcard hero-pcard-3">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=300&q=85" alt="" loading="lazy">
+            <div class="hero-pcard-body">
+              <p class="hero-pcard-name">Smartwatch X</p>
+              <p class="hero-pcard-price">€299</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATALOG / FAVORITES -->
+    <section id="catalog" class="view-section" aria-label="Catalogo prodotti">
+      <div class="catalog-wrap">
+        <div class="catalog-header">
+          <div>
+            <h2 class="catalog-title" id="catalog-title">Catalogo</h2>
+            <p class="catalog-count" id="catalog-count" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <!-- Category pills -->
+        <div class="filter-pills" role="group" aria-label="Filtra per categoria">
+          <button class="pill active" data-cat="all">Tutti</button>
+          <button class="pill" data-cat="audio">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+            Audio
+          </button>
+          <button class="pill" data-cat="wearable">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></svg>
+            Wearables
+          </button>
+          <button class="pill" data-cat="smart-home">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Smart Home
+          </button>
+          <button class="pill" data-cat="accessories">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            Accessori
+          </button>
+        </div>
+
+        <!-- Search + Sort -->
+        <div class="controls-row">
+          <div class="search-wrapper">
+            <svg class="search-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+            <input type="search" id="search-bar" placeholder="Cerca prodotto, categoria..." aria-label="Cerca prodotto">
+          </div>
+          <select id="sort-select" class="sort-select" aria-label="Ordina prodotti">
+            <option value="default">Ordina per...</option>
+            <option value="price-asc">Prezzo crescente</option>
+            <option value="price-desc">Prezzo decrescente</option>
+            <option value="rating">Più votati</option>
+            <option value="name-asc">Nome A–Z</option>
+          </select>
+          <button id="reset-filters" class="reset-btn" title="Azzera filtri">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
+            Reset
+          </button>
+        </div>
+
+        <div id="product-grid" class="grid" role="list" aria-label="Prodotti"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── Footer ─── -->
+  <footer role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="footer-logo">Tech<span>Space</span></div>
+          <p class="footer-tagline">Il tuo showroom digitale per la tecnologia del domani. Gadget curati, spedizione rapida, soddisfazione garantita.</p>
+          <div class="newsletter">
+            <input type="email" placeholder="La tua email..." aria-label="Iscriviti alla newsletter">
+            <button type="button" id="newsletter-btn">Iscriviti</button>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Negozio</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="#catalog">Catalogo</a></li>
+            <li><a href="#favorites">Preferiti</a></li>
+            <li><a href="#">Offerte</a></li>
+            <li><a href="#">Novità</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Supporto</h4>
+          <ul class="footer-links" role="list">
+            <li><a href="#">FAQ</a></li>
+            <li><a href="#">Spedizioni</a></li>
+            <li><a href="#">Resi</a></li>
+            <li><a href="#">Contatti</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy">&copy; 2026 TechSpace S.r.l. — P.IVA 12345678901 — Milano, Italia</p>
+        <div class="footer-socials" aria-label="Social media">
+          <a href="#" class="social-btn" aria-label="Instagram" title="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="Twitter / X" title="Twitter / X">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l16 16M20 4 4 20"/></svg>
+          </a>
+          <a href="#" class="social-btn" aria-label="YouTube" title="YouTube">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="2" y="7" width="20" height="15" rx="2"/><path d="m10 12 5 3-5 3V12z" fill="currentColor" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ─── Product Modal ─── -->
+  <div class="modal-overlay" id="product-modal" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="modal-title">
+    <div class="modal-content">
+      <div class="modal-img-wrap">
+        <img id="modal-img" src="" alt="" loading="lazy">
+        <button class="close-modal" id="close-modal" aria-label="Chiudi dettaglio">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+        </button>
+        <span class="modal-badge" id="modal-badge"></span>
+      </div>
+      <div class="modal-body">
+        <p class="modal-cat" id="modal-cat"></p>
+        <h2 class="modal-title" id="modal-title"></h2>
+        <div class="modal-rating" id="modal-rating"></div>
+        <p class="modal-desc" id="modal-desc"></p>
+        <div class="modal-tags" id="modal-tags"></div>
+        <div class="modal-price-row">
+          <span class="modal-price" id="modal-price"></span>
+          <span class="modal-old-price" id="modal-old-price"></span>
+        </div>
+        <div class="modal-actions">
+          <button class="btn-add-cart" id="modal-add-cart">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="margin-right:6px"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+            Aggiungi al Carrello
+          </button>
+          <button class="btn-modal-fav" id="modal-fav-btn" aria-label="Aggiungi ai preferiti">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Toast container ─── -->
+  <div id="toast-container" role="status" aria-live="polite" aria-atomic="false"></div>
+
+  <!-- ─── Back to top ─── -->
+  <button id="back-to-top" aria-label="Torna in cima" title="Torna in cima">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
+  </button>
+
+  <script src="script.js"></script>
 </body>
 </html>
