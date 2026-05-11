@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechSpace - Showroom Digitale</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">TechSpace</div>
+        <button class="hamburger" aria-label="Menu" aria-expanded="false">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <nav class="nav-links">
+            <a href="#home" class="nav-link">Home</a>
+            <a href="#catalog" class="nav-link">Catalogo</a>
+            <a href="#favorites" class="nav-link" id="nav-favorites">Preferiti (<span id="fav-count">0</span>)</a>
+            <button id="theme-toggle" aria-label="Cambia tema">🌓</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="view-section active-section">
+            <div class="hero">
+                <h1>Il futuro è oggi</h1>
+                <p>Scopri i migliori gadget tecnologici del momento.</p>
+                <button class="cta-btn" onclick="document.querySelector('a[href=\'#catalog\']').click()">Vai al Catalogo</button>
+            </div>
+        </section>
+
+        <section id="catalog" class="view-section">
+            <div class="controls-container">
+                <input type="text" id="search-bar" placeholder="Cerca un prodotto..." aria-label="Cerca">
+                <select id="category-filter" aria-label="Filtra per categoria">
+                    <option value="all">Tutte le categorie</option>
+                    <option value="audio">Audio</option>
+                    <option value="wearable">Wearables</option>
+                    <option value="smart-home">Smart Home</option>
+                </select>
+                <select id="sort-select" aria-label="Ordina prodotti">
+                    <option value="default">Ordina per...</option>
+                    <option value="price-asc">Prezzo: Crescente</option>
+                    <option value="price-desc">Prezzo: Decrescente</option>
+                    <option value="name-asc">Nome: A-Z</option>
+                </select>
+                <button id="reset-filters" class="secondary-btn">Reset</button>
+            </div>
+
+            <div id="product-grid" class="grid">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 TechSpace. Tutti i diritti riservati.</p>
+    </footer>
+
+    <div id="product-modal" class="modal" aria-hidden="true" role="dialog">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Chiudi modale">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <div id="toast-container"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
