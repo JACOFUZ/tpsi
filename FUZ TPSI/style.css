@@ -1,0 +1,172 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, sans-serif;
+    background:#f4f6f9;
+    color:#222;
+}
+
+.header{
+    background:#111827;
+    color:white;
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.header a{
+    color:white;
+    text-decoration:none;
+}
+
+.products-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+    padding:30px;
+}
+
+.product-card{
+    background:white;
+    border-radius:16px;
+    overflow:hidden;
+    box-shadow:0 4px 15px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.product-card:hover{
+    transform:translateY(-5px);
+}
+
+.product-card img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+}
+
+.product-content{
+    padding:20px;
+}
+
+.product-content h3{
+    margin-bottom:10px;
+}
+
+.product-content p{
+    margin-bottom:10px;
+}
+
+.price{
+    font-size:20px;
+    font-weight:bold;
+    color:#2563eb;
+}
+
+button,
+.cart-btn,
+.back-btn{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 18px;
+    border-radius:10px;
+    cursor:pointer;
+    text-decoration:none;
+}
+
+button:hover{
+    opacity:0.9;
+}
+
+.product-page{
+    display:flex;
+    gap:40px;
+    padding:40px;
+    flex-wrap:wrap;
+}
+
+.product-page img{
+    width:400px;
+    border-radius:20px;
+}
+
+.cart-container{
+    padding:30px;
+}
+
+.cart-item{
+    background:white;
+    padding:20px;
+    border-radius:16px;
+    margin-bottom:20px;
+}
+
+.cart-summary{
+    margin-top:30px;
+}
+
+.config-container{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.config-form{
+    background:white;
+    padding:40px;
+    border-radius:20px;
+    width:350px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.1);
+}
+
+.config-form input{
+    width:100%;
+    padding:14px;
+    margin-bottom:20px;
+    border-radius:10px;
+    border:1px solid #ccc;
+}
+
+#toastContainer{
+    position:fixed;
+    bottom:20px;
+    right:20px;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+    z-index:999;
+}
+
+.toast{
+    background:#111827;
+    color:white;
+    padding:14px 18px;
+    border-radius:10px;
+    animation:fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+@media(max-width:768px){
+
+    .product-page img{
+        width:100%;
+    }
+
+}
