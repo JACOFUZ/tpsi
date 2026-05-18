@@ -73,3 +73,4 @@ document.getElementById("downloadPdfBtn")
     generatePDF(cart);
 
 });
+
