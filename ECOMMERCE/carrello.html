@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrello</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1 id="store-name-display">Il mio Store</h1>
+        <nav>
+            <a href="index.html">Catalogo</a>
+            <a href="carrello.html">Carrello <span id="cart-badge" class="cart-badge">0</span></a>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Il tuo Carrello</h2>
+        <div id="cart-container" style="margin-top: 2rem;">
+            <div id="cart-items">
+                </div>
+            
+            <div class="cart-summary">
+                <h3>Totale: €<span id="cart-total">0.00</span></h3>
+                <div class="cart-actions">
+                    <button id="btn-clear-cart" class="btn btn-danger">Svuota Carrello</button>
+                    <button id="btn-checkout" class="btn">Genera PDF Ordine</button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
