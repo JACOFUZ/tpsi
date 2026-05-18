@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrello</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>Carrello</h1>
+</header>
+
+<main class="cart-container">
+
+    <div id="cartItems"></div>
+
+    <div class="cart-summary">
+        <h2 id="cartTotal">Totale: €0</h2>
+
+        <button id="clearCartBtn">Svuota carrello</button>
+        <button id="downloadPdfBtn">Scarica PDF</button>
+    </div>
+
+</main>
+
+<div id="toastContainer"></div>
+
+<script src="libs/jspdf.umd.min.js"></script>
+<script src="js/toast.js"></script>
+<script src="js/pdf.js"></script>
+<script src="js/cart.js"></script>
+
+</body>
+</html>
