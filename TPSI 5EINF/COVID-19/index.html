@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>TABELLA COVID</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h2>| DATI COVID-19 |</h2>
+    <table id="miaTabella"></table>
+
+    <script>
+        // RICHIESTA PER PER DATI JSON
+        var richiesta = new XMLHttpRequest();
+        richiesta.open("GET", "https://raw.githubusercontent.com/pcm-dpc/COVID-19/master/dati-json/dpc-covid19-ita-andamento-nazionale.json", true);
+
+        // CALLBACK: QUANDO LA RICHIESTA E' COMPLETATA, CHIAMO LA FUNZIONE CREA TABELLA
+        richiesta.onload = creaTabella;
+        richiesta.send();
+
+        function creaTabella() {
+            // TESTO RICEVUTO IN ARRAY DI OGGETTI JSON
+            var dati = JSON.parse(richiesta.responseText);
+
+            var tabella = document.getElementById("miaTabella");
+
+            // PRENDO I NOMI DELLE CHIAVI DEL PRIMO OGGETTO
+            var chiavi = Object.keys(dati[0]);
+
+            // PRIMA RIGA: INTESTAZIONE DELLA TABELLA
+            var rigaHeader = document.createElement("tr");
+            for (var k = 0; k < chiavi.length; k = k + 1) {
+                var th = document.createElement("th");
+                th.innerHTML = chiavi[k];
+                rigaHeader.appendChild(th);
+            }
+            tabella.appendChild(rigaHeader);
+
+            // UNA RIGA PER OGNI GIORNO
+            for (var i = 0; i < dati.length; i = i + 1) {
+                var riga = document.createElement("tr");
+
+                // UNA CELLA PER CHIAVE
+                for (var j = 0; j < chiavi.length; j = j + 1) {
+                    var td = document.createElement("td");
+                    var nomeColonna = chiavi[j];
+                    td.innerHTML = dati[i][nomeColonna];
+                    riga.appendChild(td);
+                }
+
+                tabella.appendChild(riga);
+            }
+        }
+    </script>
+
+</body>
+</html>
